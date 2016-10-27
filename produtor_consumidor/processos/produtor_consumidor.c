@@ -21,7 +21,7 @@
 
 //define a quantidade de produtos produzidos pelos produtores 
 //e a quantidade de pacotes que um pipe suporta
-#define QUANTIDADE_MAX_PRODUTOS  100
+#define QUANTIDADE_MAX_PRODUTOS  5
 #define LIMITE_CARGA_PIPE  30
 
 //define a quantidade de produtores e de consumidores
@@ -67,8 +67,13 @@ void fornecedor()
 		printf("Novo item produzido pelo processo %d! \n", getpid());
 
 		 // insere novo item no pipe
-		write(memoria_compartilhada_pipe[ESCRITA],&novo_produto,sizeof(prod));    
+		 // acorda o processo consumidor
+		write(memoria_compartilhada_pipe[ESCRITA],&novo_produto,sizeof(prod));
 	}
+	printf("\n===============================================");    
+	printf("\nProcesso produtor %d terminou producao",getpid());
+	printf("\n===============================================");
+	printf("\n");
 
 	 // Fecha o lado utilizado
 	close(memoria_compartilhada_pipe[ESCRITA]);
@@ -84,17 +89,23 @@ void cliente()
 
 	while( 1 )
 	{
-
+		// acorda o processo produtor		
 	   quantidade_itens = read(memoria_compartilhada_pipe[LEITURA],&consumeprod,sizeof(prod));
-	   if(quantidade_itens==-1)
+	   
+	   if(quantidade_itens == -1)
 	   {        
 		   printf("Erro na leitura do pipe\n");
 	   }
 	   else
 	   {
-		   if(quantidade_itens==0)
+		   if(quantidade_itens == 0)
 		   {
-			   printf("Pipe estah vazio... \n");
+			   printf("\n++++++++++ %d achou Pipe vazio \n",getpid());
+			   printf("\n+++++++++++++++++++++++++++++++++++++++++++");
+			   printf("\nconsumidor %d finalizando",getpid());
+			   printf("\n+++++++++++++++++++++++++++++++++++++++++");
+			   printf("\n");
+			   break;
 		   }
 		   else
 		   {
