@@ -1,0 +1,31 @@
+COMPILADOR               = g++
+ARGUMENTOS_COMPILACAO    = -g -c -Wall
+ARGUMENTOS_LINKAGEM      = 
+ARQUIVOS_FONTE           = cliente.cpp tcpstream.cpp tcpconnector.cpp
+ARQUIVOS_CABECALHO       = -I.
+ARQUIVOS_OBJETO          = $(ARQUIVOS_FONTE:.cpp=.o)
+NOME_PROJETO             = binario_cliente.bin
+
+all: $(ARQUIVOS_FONTE) $(NOME_PROJETO)
+
+$(NOME_PROJETO): $(ARQUIVOS_OBJETO) 
+	@echo ""
+	@echo "************************************************************"
+	@echo "Linkando arquivos objeto do servidor... "
+	@echo "" 
+	$(COMPILADOR) $(ARGUMENTOS_LINKAGEM) $(ARQUIVOS_OBJETO) -o $@
+
+.cpp.o:
+	@echo ""
+	@echo "************************************************************"
+	@echo "Compilando arquivo fonte do servidor... "
+	@echo "" 
+	$(COMPILADOR) $(ARGUMENTOS_COMPILACAO) $(ARQUIVOS_CABECALHO) $< -o $@
+
+clean:
+	@echo ""
+	@echo "************************************************************"
+	@echo "Limpando arquivos da compilacao e linkagem do servidor... "
+	@echo "************************************************************"
+	rm -rf $(ARQUIVOS_OBJETO) $(NOME_PROJETO)
+

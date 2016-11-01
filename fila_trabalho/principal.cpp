@@ -4,10 +4,11 @@
    
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <string>
-#include <unistd.h>
+#include <cstring>
+#include <cunistd>
 #include "thread.h"
 #include "FilaTrabalho.h"
  
