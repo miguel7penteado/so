@@ -41,14 +41,23 @@ No modo real, a segmentação é relativamente simples. Um endereço lógico de 
 ## Segmentação de memória no *Modo Protegido*:
 No modo protegido, usamos a mesma forma A:B que no modo real, exceto que no modo protegido A não é um valor absoluto do segmento, mas um seletor de segmento. Seletor é um índice em uma tabela. Cada uma das entradas na tabela descreve o segmento (endereço físico, nível de proteção, etc...). O endereço físico do segmento é lido a partir da entrada da tabela (que também é conhecida como seletor de segmento) e B (também conhecido como deslocamento) é adicionado a esse endereço físico para obter o endereço físico real do local da memória.
 
-Existem duas tabelas onde os seletores de segmento podem ser armazenados. Eles são chamados de Global Descriptor Table (também conhecido como GDT) e Local Descriptor Table (LDT).
+Existem duas tabelas onde os seletores de segmento podem ser armazenados. Eles são chamados de **Global Descriptor Table** (também conhecido como **GDT** ) e **Local Descriptor Table** ( **LDT** ).
 
-O que isso significa que antes de podermos mudar nossa CPU para o modo protegido, precisamos configurar pelo menos o GDT.
+O que isso significa que antes de podermos mudar nossa CPU para o modo protegido, precisamos configurar pelo menos o **GDT**.
 
-Felizmente, há uma boa chance de você nunca precisar configurar o GDT para o modo protegido, pois o x86 pode alternar para o modo protegido com a paginação habilitada diretamente do modo real.
+Felizmente, há uma boa chance de você nunca precisar configurar o **GDT** para o modo protegido, pois o x86 pode alternar para o modo protegido com a paginação habilitada diretamente do modo real.
 
 ## Paginação de Memória
-A paginação é uma maneira diferente de acessar a memória física. Em vez de a memória ser dividida em segmentos, ela é dividida em páginas e quadros. Frame é um bloco de memória física de um tamanho específico (por exemplo, 4Kb), enquanto a página é um bloco de memória virtual do mesmo tamanho. As páginas são do mesmo tamanho que os quadros. Neste modo o programa não acessa a memória usando o endereço físico. Em vez disso, os endereços de memória virtual são usados. Esses endereços virtuais são traduzidos em endereços físicos pela CPU. Este é um processo muito caro comparado ao acesso direto à memória e quase todas as CPUs têm circuitos adicionais para ajudar com isso. Esse circuito é chamado de MMU ou Unidade de Gerenciamento de Memória.
+A paginação é uma maneira diferente de acessar a memória física. Em vez de a memória ser dividida em segmentos, ela é dividida em **páginas** e **quadros**. 
+
+### Quadros (Frames)
+Quadros ou Frame é um bloco de memória física de um tamanho específico (por exemplo, 4Kb).
+
+### Páginas (Pages)
+Página é um bloco de memória virtual do mesmo tamanho. As páginas são do mesmo tamanho que os quadros. 
+
+### Endereços Físicos x Endereços Virtuais: A inclusão da MMU na CPU
+Neste modo o programa não acessa a memória usando o endereço físico. Em vez disso, os endereços de memória virtual são usados. Esses endereços virtuais são traduzidos em endereços físicos pela CPU. Este é um processo muito caro comparado ao acesso direto à memória e quase todas as CPUs têm circuitos adicionais para ajudar com isso. Esse circuito é chamado de **MMU** ou **Unidade de Gerenciamento de Memória**.
 
 A imagem a seguir ilustra o processo de tradução de memória. Tenha em mente que a imagem é bastante simplificada e não representa exatamente o que acontece em uma CPU. No entanto, ilustra conceitos básicos sobre os quais construiremos quando estivermos configurando a paginação.
 
