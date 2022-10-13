@@ -41,10 +41,28 @@ Poder de endereçamento do processador 8088 (IBM-PC 5150, primeiro PC com MS-DOS
 *Barramento de dados* ISA (IBM-PC XT) de tamanho *8-bits* para promover compatibilidade de hardware com o processador 8080.
 ![](imagens/8088-barramento.jpg)
 *Barramento de endereçamento de memória* de *20 bits*. O primeiro IBM-PC podia endereçar até 1 MB de memória:
-
 | Operação Binária | Tamanho do Barramento de memória | Endereços possíveis | Tamanho em Bytes |
 |------------------|----------------------------------|---------------------|------------------|
 | 2^               | 20 bits                          | 1.048.576           | 1MB              |
+Neste modeloA memória de *1MB* podia ser dividia em até 16 segmentos de *64KB*.
+| ordem do segmento | Endereço Absoluto | Tamanho segmento |
+|:-----------------:|:-----------------:|:----------------:|
+|    segmento-01    |    00000-0FFFF    |       64kb       |
+|    Segmento-02    |    10000-1FFFF    |       64kb       |
+|    Segmento-03    |    20000-2FFFF    |       64kb       |
+|    Segmento-04    |    30000-3FFFF    |       64kb       |
+|    Segmento-05    |    40000-4FFFF    |       64kb       |
+|    Segmento-06    |    50000-5FFFF    |       64kb       |
+|    Segmento-07    |    60000-6FFFF    |       64kb       |
+|    Segmento-08    |    70000-7FFFF    |       64kb       |
+|    Segmento-09    |    80000-8FFFF    |       64kb       |
+|    Segmento-10    |    90000-9FFFF    |       64kb       |
+|    Segmento-11    |    A0000-AFFFF    |       64kb       |
+|    Segmento-12    |    B0000-BFFFF    |       64kb       |
+|    Segmento-13    |    C0000-CFFFF    |       64kb       |
+|    Segmento-14    |    D0000-DFFFF    |       64kb       |
+|    Segmento-15    |    E0000-EFFFF    |       64kb       |
+|    Segmento-16    |    F0000-FFFFF    |       64kb       |
 
 A memória deveria ser organizada em segmentos de 64KB totalizando até 1MB.
 ![](imagens/memoria-8086.jpg)
@@ -57,7 +75,9 @@ Ao carregar um programa em memória, a CPU 8088 segmenta o programa em 5 áreas:
 |                 | . BSS            | Bloco inicializado por símbolo | Variáveis não inicializadas         |
 | DS              | . Data           | Dados                          | Variáveis com valores iniciais      |
 |                 | . Heap           |                                | Empilhamento de variáveis dinâmicas |
-| SS              | . Stack          | Stack ( pilha de apontamentos) | Empilhamento de ponteiros e funções |
+| SS, SP e BP     | . Stack          | Stack ( pilha de apontamentos) | Empilhamento de ponteiros e funções |
+O registrador **BP** contém o endereçamento da base da pilha de apontamento (Stack);
+O registrador **SP** contém o endereçamento do topo da pilha de apontamento (Stack);
 
 Destacando a porção de memória dinâmica (HEAP) e a porção de memória de apontamentos, ponteiros e funções (Stack).
 
