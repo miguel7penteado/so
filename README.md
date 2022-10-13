@@ -45,7 +45,7 @@ Poder de endereçamento do processador 8088 (IBM-PC 5150, primeiro PC com MS-DOS
 |------------------|----------------------------------|---------------------|------------------|
 | 2^               | 20 bits                          | 1.048.576           | 1MB              |
 
-Neste modeloA memória de *1MB* podia ser dividia em até 16 segmentos de *64KB*.
+Neste modelo, teoricamente, a memória de *1MB* podia ser dividia em até 16 segmentos de *64KB*.
 
 | ordem do segmento | Endereço Absoluto | Tamanho segmento |
 |:-----------------:|:-----------------:|:----------------:|
@@ -66,10 +66,10 @@ Neste modeloA memória de *1MB* podia ser dividia em até 16 segmentos de *64KB*
 |    Segmento-15    |    E0000-EFFFF    |       64kb       |
 |    Segmento-16    |    F0000-FFFFF    |       64kb       |
 
-A memória deveria ser organizada em segmentos de 64KB totalizando até 1MB.
+A memória pode ser organizada em segmentos de 64KB totalizando até 1MB.
 ![](imagens/memoria-8086.jpg)
 
-Ao carregar um programa em memória, a CPU 8088 segmenta o programa em 5 áreas:
+Ao carregar um programa em memória, a CPU 8088 o aloca dentro de um segmento de 64kb. O segmento é dividido em 5 áreas:
 
 | Registrador CPU | Área (assembler) | Nome                           | Finalidade                          |
 |-----------------|------------------|--------------------------------|-------------------------------------|
@@ -81,6 +81,30 @@ Ao carregar um programa em memória, a CPU 8088 segmenta o programa em 5 áreas:
 O registrador **BP** contém o endereçamento da base da pilha de apontamento (Stack);
 O registrador **SP** contém o endereçamento do topo da pilha de apontamento (Stack);
 
+
+Como a CPU inicia no modo real, vamos primeiro falar sobre como a segmentação funciona neste modo.
+No modo real, a segmentação é relativamente simples. Um endereço lógico de formato A:B (onde A ∈ [CS, SS, DS, ES, FS, GS]) é usado. Este endereço lógico é então traduzido em endereço físico usando *A * 10(hex) + B* . Como no modo real os registradores são limitados a 16 bits para endereçamento, isso nos permite endereçar 2^16 = 64Kb de memória dentro de um único segmento.
+
+Exemplo:
+```
+O tamanho da pilha de apontamentos STACK de um determinado processo do MS-DOS é o intervalo entre os registradores BP e SP.
+Supondo BP contém o valor 3333(hex).
+Supondo SP contém o valor 4444(hex)
+Usando a fórmula do endereço físico no modo real **A * 10(hex) + B**, calcule o endereço físico de 20 bits na memória para o início e o fim da pilha.
+
+O valor de BP, 3333(hex) é o *A*.
+*A* = 3333(hex)
+
+O valor de SP, 4444(hex) é o *B*
+*B* = 4444(hex)
+
+Fórmula **A * 10(hex) + B**:
+3333(hex) x 10(hex) + 4444(hex)
+33330(hex) + 4444(hex) = 37774(hex)
+
+O endereço físico da pilha de apontamentos começa em 33330(hex) e termina em 37774(hex) naquele instante da execução do programa.
+```
+
 Destacando a porção de memória dinâmica (HEAP) e a porção de memória de apontamentos, ponteiros e funções (Stack).
 
 ![](imagens/ponteiro_memoria.jpg)
@@ -89,10 +113,6 @@ Como ficaria um único programa (processo) carregado na memória:
 
 ![](imagens/programa_em_memoria.jpg)
 
-
-Como a CPU inicia no modo real, vamos primeiro falar sobre como a segmentação funciona neste modo.
-
-No modo real, a segmentação é relativamente simples. Um endereço lógico de formato A:B (onde A ∈ [CS, SS, DS, ES, FS, GS]) é usado. Este endereço lógico é então traduzido em endereço físico usando A * 0x10 + B. Como no modo real os registradores são limitados a 16 bits para endereçamento, isso nos permite endereçar 2^16 = 64Kb de memória dentro de um único segmento.
 
 ## Segmentação de memória no *Modo Protegido*:
 No modo protegido, usamos a mesma forma A:B que no modo real, exceto que no modo protegido A não é um valor absoluto do segmento, mas um seletor de segmento. Seletor é um índice em uma tabela. Cada uma das entradas na tabela descreve o segmento (endereço físico, nível de proteção, etc...). O endereço físico do segmento é lido a partir da entrada da tabela (que também é conhecida como seletor de segmento) e B (também conhecido como deslocamento) é adicionado a esse endereço físico para obter o endereço físico real do local da memória.
