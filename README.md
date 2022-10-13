@@ -33,8 +33,16 @@ A CPU usa esses segmentos ao executar determinadas instruções. Por exemplo:
 Como a CPU x86 começa a rodar no modo real que você provavelmente não quer usar e quer mudar para o modo de 32 bits com paginação habilitada ou modo de 64 bits (também conhecido como modo longo), precisamos alterar o modo de execução de alguma forma. Para fazer isso, precisamos configurar a CPU e executar determinadas instruções. Isso significa que precisaremos trabalhar um pouco (só um pouco) no modo real e entender como a CPU se comporta nesse modo.
 
 
-## Segmentação de memória no *modo Real*:
+## Segmentação de memória no *Modo Real*:
 Como a CPU inicia no modo real, vamos primeiro falar sobre como a segmentação funciona neste modo.
 
 No modo real, a segmentação é relativamente simples. Um endereço lógico de formato A:B (onde A ∈ [CS, SS, DS, ES, FS, GS]) é usado. Este endereço lógico é então traduzido em endereço físico usando A * 0x10 + B. Como no modo real os registradores são limitados a 16 bits para endereçamento, isso nos permite endereçar 2^16 = 64Kb de memória dentro de um único segmento.
 
+## Segmentação de memória no *Modo Protegido*:
+No modo protegido, usamos a mesma forma A:B que no modo real, exceto que no modo protegido A não é um valor absoluto do segmento, mas um seletor de segmento. Seletor é um índice em uma tabela. Cada uma das entradas na tabela descreve o segmento (endereço físico, nível de proteção, etc...). O endereço físico do segmento é lido a partir da entrada da tabela (que também é conhecida como seletor de segmento) e B (também conhecido como deslocamento) é adicionado a esse endereço físico para obter o endereço físico real do local da memória.
+
+Existem duas tabelas onde os seletores de segmento podem ser armazenados. Eles são chamados de Global Descriptor Table (também conhecido como GDT) e Local Descriptor Table (LDT).
+
+O que isso significa que antes de podermos mudar nossa CPU para o modo protegido, precisamos configurar pelo menos o GDT.
+
+Felizmente, há uma boa chance de você nunca precisar configurar o GDT para o modo protegido, pois o x86 pode alternar para o modo protegido com a paginação habilitada diretamente do modo real.
