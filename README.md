@@ -34,8 +34,23 @@ Como a CPU x86 começa a rodar no modo real que você provavelmente não quer us
 
 
 ## Segmentação de memória no *Modo Real*:
+Ao carregar um programa em memória, a CPU 8088 segmenta o programa em 5 áreas:
+
+| Registrador CPU | Área (assembler) | Nome                           | Finalidade                          |
+|-----------------|------------------|--------------------------------|-------------------------------------|
+| CS              | . Text           | Código                         |                                     |
+|                 | . BSS            | Bloco inicializado por símbolo | Variáveis não inicializadas         |
+| DS              | . Data           | Dados                          | Variáveis com valores iniciais      |
+|                 | . Heap           |                                | Empilhamento de variáveis dinâmicas |
+|                 | . Stack          |                                | Empilhamento de ponteiros e funções |
+
+Destacando a porção de memória dinâmica (HEAP) e a porção de memória de apontamentos, ponteiros e funções (Stack).
+
+![](imagens/ponteiro_memoria.jpg)
 
 ![](imagens/programa_em_memoria.jpg)
+
+
 
 Como a CPU inicia no modo real, vamos primeiro falar sobre como a segmentação funciona neste modo.
 
