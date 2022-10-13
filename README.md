@@ -54,6 +54,10 @@ A imagem a seguir ilustra o processo de tradução de memória. Tenha em mente q
 
 ![](imagens/memoria1.jpg)
 
+Para uma CPU traduzir um endereço virtual 0x5006 em um endereço físico, a CPU primeiro pega um prefixo e procura esse prefixo em sua "tabela de páginas" e descobre qual endereço físico está associado a esse prefixo. Por enquanto você pode pensar na tabela de páginas como um lugar especial na CPU. No nosso caso, o endereço físico associado à entrada da tabela de páginas 0x500 é 0x0011. A CPU então pega esse endereço (0x011) e adiciona a última parte do endereço (0x6). 0x0010 + 0x6 = 0x0016. E é assim que a CPU traduz o endereço virtual 0x5006 para o endereço físico 0x0016.
+
+Essa abordagem pode ser estendida para tabelas de páginas de vários níveis:
+
 
 ![](imagens/memoria2.jpg)
 
