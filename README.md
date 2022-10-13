@@ -42,7 +42,7 @@ Ao carregar um programa em memória, a CPU 8088 segmenta o programa em 5 áreas:
 |                 | . BSS            | Bloco inicializado por símbolo | Variáveis não inicializadas         |
 | DS              | . Data           | Dados                          | Variáveis com valores iniciais      |
 |                 | . Heap           |                                | Empilhamento de variáveis dinâmicas |
-|                 | . Stack          |                                | Empilhamento de ponteiros e funções |
+| SS              | . Stack          | Stack ( pilha de apontamentos) | Empilhamento de ponteiros e funções |
 
 Destacando a porção de memória dinâmica (HEAP) e a porção de memória de apontamentos, ponteiros e funções (Stack).
 
