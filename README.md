@@ -46,3 +46,16 @@ Existem duas tabelas onde os seletores de segmento podem ser armazenados. Eles s
 O que isso significa que antes de podermos mudar nossa CPU para o modo protegido, precisamos configurar pelo menos o GDT.
 
 Felizmente, há uma boa chance de você nunca precisar configurar o GDT para o modo protegido, pois o x86 pode alternar para o modo protegido com a paginação habilitada diretamente do modo real.
+
+## Paginação de Memória
+A paginação é uma maneira diferente de acessar a memória física. Em vez de a memória ser dividida em segmentos, ela é dividida em páginas e quadros. Frame é um bloco de memória física de um tamanho específico (por exemplo, 4Kb), enquanto a página é um bloco de memória virtual do mesmo tamanho. As páginas são do mesmo tamanho que os quadros. Neste modo o programa não acessa a memória usando o endereço físico. Em vez disso, os endereços de memória virtual são usados. Esses endereços virtuais são traduzidos em endereços físicos pela CPU. Este é um processo muito caro comparado ao acesso direto à memória e quase todas as CPUs têm circuitos adicionais para ajudar com isso. Esse circuito é chamado de MMU ou Unidade de Gerenciamento de Memória.
+
+A imagem a seguir ilustra o processo de tradução de memória. Tenha em mente que a imagem é bastante simplificada e não representa exatamente o que acontece em uma CPU. No entanto, ilustra conceitos básicos sobre os quais construiremos quando estivermos configurando a paginação.
+
+![](imagens/memoria1.jpg)
+
+
+![](imagens/memoria2.jpg)
+
+
+
