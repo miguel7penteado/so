@@ -44,7 +44,9 @@ Poder de endereçamento do processador 8088 (IBM-PC 5150, primeiro PC com MS-DOS
 | Operação Binária | Tamanho do Barramento de memória | Endereços possíveis | Tamanho em Bytes |
 |------------------|----------------------------------|---------------------|------------------|
 | 2^               | 20 bits                          | 1.048.576           | 1MB              |
+
 Neste modeloA memória de *1MB* podia ser dividia em até 16 segmentos de *64KB*.
+
 | ordem do segmento | Endereço Absoluto | Tamanho segmento |
 |:-----------------:|:-----------------:|:----------------:|
 |    segmento-01    |    00000-0FFFF    |       64kb       |
