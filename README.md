@@ -34,6 +34,9 @@ Como a CPU x86 começa a rodar no modo real que você provavelmente não quer us
 
 
 ## Segmentação de memória no *Modo Real*:
+
+![](imagens/programa_em_memoria.jpg)
+
 Como a CPU inicia no modo real, vamos primeiro falar sobre como a segmentação funciona neste modo.
 
 No modo real, a segmentação é relativamente simples. Um endereço lógico de formato A:B (onde A ∈ [CS, SS, DS, ES, FS, GS]) é usado. Este endereço lógico é então traduzido em endereço físico usando A * 0x10 + B. Como no modo real os registradores são limitados a 16 bits para endereçamento, isso nos permite endereçar 2^16 = 64Kb de memória dentro de um único segmento.
