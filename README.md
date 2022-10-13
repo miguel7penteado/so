@@ -48,8 +48,9 @@ Destacando a porção de memória dinâmica (HEAP) e a porção de memória de a
 
 ![](imagens/ponteiro_memoria.jpg)
 
-![](imagens/programa_em_memoria.jpg)
+Como ficaria um único programa (processo) carregado na memória:
 
+![](imagens/programa_em_memoria.jpg)
 
 
 Como a CPU inicia no modo real, vamos primeiro falar sobre como a segmentação funciona neste modo.
