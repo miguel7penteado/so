@@ -35,9 +35,10 @@ Como a CPU x86 começa a rodar no modo real que você provavelmente não quer us
 
 ## Segmentação de memória no *Modo Real*:
 A CPU base dos sistemas x86, o processador Intel 8086 (e seu irmão 8088) possuem os seguintes registradores para processamento:
-
+![](imagens/cpu-intel-8086.jpg)
 ![](imagens/8086.jpg)
-
+Poder de endereçamento do processador 8088 (IBM-PC 5150, primeiro PC com MS-DOS 1.0)
+![](imagens/memoria-8086.jpg)
 Ao carregar um programa em memória, a CPU 8088 segmenta o programa em 5 áreas:
 
 | Registrador CPU | Área (assembler) | Nome                           | Finalidade                          |
