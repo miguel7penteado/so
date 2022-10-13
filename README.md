@@ -70,5 +70,8 @@ Essa abordagem pode ser estendida para tabelas de páginas de vários níveis:
 
 ![](imagens/memoria2.jpg)
 
+Na imagem acima, os primeiros dois bytes são usados como índice em "Diretório de páginas". O byte a seguir é usado como índice na "Tabela de páginas" e o último byte é deslocado na página de memória.
+
+Processadores x86 normalmente usam paginação de 3 ou 4 níveis com os mais recentes podendo usar até sistema de paginação de 5 níveis.
 
 
