@@ -38,9 +38,14 @@ A CPU base dos sistemas x86, o processador Intel 8086 (e seu irmão 8088) possue
 ![](imagens/cpu-intel-8086.jpg)
 ![](imagens/8086.jpg)
 Poder de endereçamento do processador 8088 (IBM-PC 5150, primeiro PC com MS-DOS 1.0)
-Barramento de dados ISA (IBM-PC XT) de tamanho 8-bits.
+*Barramento de dados* ISA (IBM-PC XT) de tamanho *8-bits* para promover compatibilidade de hardware com o processador 8080.
 ![](imagens/8088-barramento.jpg)
-Barramento de endereçamento de memória de 20 bits. O primeiro IBM-PC podia endereçar até 1 MB de memória.
+*Barramento de endereçamento de memória* de *20 bits*. O primeiro IBM-PC podia endereçar até 1 MB de memória:
+
+| Operação Binária | Tamanho do Barramento de memória | Endereços possíveis | Tamanho em Bytes |
+|------------------|----------------------------------|---------------------|------------------|
+| 2^               | 20 bits                          | 1.048.576           | 1MB              |
+
 A memória deveria ser organizada em segmentos de 64KB totalizando até 1MB.
 ![](imagens/memoria-8086.jpg)
 
