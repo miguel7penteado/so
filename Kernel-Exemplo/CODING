@@ -1,0 +1,37 @@
+PADRÕES DE CODIFICAÇÃO JOS
+
+É mais fácil para todos se todos os autores que trabalham em um
+base de código são consistentes na maneira como escrevem seus programas.
+Temos as seguintes convenções em nosso código:
+
+* Sem espaço após o nome de uma função em uma chamada
+  Por exemplo, printf("olá") não printf ("olá").
+
+* Um espaço após as palavras-chave "if", "for", "while", "switch".
+  Por exemplo, se (x) não se (x).
+
+* Espaço antes de chaves.
+  Por exemplo, se (x) { não se (x){.
+
+* Os nomes das funções são todos em minúsculas separados por sublinhados.
+
+* Recuo do início da linha por tabulações, não por espaços.
+
+* As macros do pré-processador são sempre MAIÚSCULAS.
+  Existem algumas exceções antigas: assert, panic,
+  static_assert, offsetof.
+
+* Os tipos de ponteiro têm espaços: (uint16_t *) not (uint16_t*).
+
+* Nomes com várias palavras são lower_case_with_underscores.
+
+* Comentários em código importado geralmente são C /* ... */ comentários.
+  Comentários no novo código são // estilo C++.
+
+* Em uma definição de função, o nome da função inicia uma nova linha.
+  Então você pode grep -n '^foo' */*.c para encontrar a definição de foo.
+
+* Funções que não recebem argumentos são declaradas f(void) e não f().
+
+O arquivo .dir-locals.el incluído configurará automaticamente o básico
+estilo de recuo no Emacs.
