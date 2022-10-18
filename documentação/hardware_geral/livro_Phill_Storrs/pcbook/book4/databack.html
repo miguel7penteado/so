@@ -1,0 +1,183 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/databack.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:12 GMT -->
+<HEAD>
+   <TITLE>Backup (making data safe)</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC="../images/pc2.jpg"  ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>Backing up Data</H3>
+The need for low cost backup storage systems is becoming more important
+now that more "mission critical" applications are making their way onto
+<B>Desk Top and Server PC hardware</B>. Computer System Managers must rely
+heavily upon sophisticated backup and recovery solutions to ensure data
+access and integrity.
+<P>For desk top systems where we are required to backup the system onto
+a drive inside the computer, we can use Floppy Disks, Magnetic Tape or
+High Capacity Removable Magnetic Media . If the computer is on a local
+area network we can backup over the network to larger drives on a file
+server or more commonly, to a tape or optical backup system.
+<P><B>Four backup technologies are is use with PC hardware:</B>
+<UL>
+<LI>
+Floppy disk</LI>
+
+<LI>
+Magnetic tape</LI>
+
+<LI>
+High Capacity Removable Magnetic Media</LI>
+
+<LI>
+Optical disks</LI>
+</UL>
+
+<H4>Full or incremental backup</H4>
+We can create an image of the entire hard disk drive, this is called a
+<B>full backup</B>, but we can save time by just backing up the data that
+has changed since the last time a backup was done. This is called an <B>incremental
+backup</B>.
+<P>It is common procedure to do a full backup once a week, and to do incremental
+backups on the other days of the week. If we need to restore the data from
+backups created this way, we must start by restoring the full backup first,
+and them restoring each incremental backup in the order they were made
+in. This means if the system failed on the last day of the cycle, we would
+have to restore five to seven individual backups.
+<P>When working with desk top systems it is often sufficient to just backup
+the actual data and not the operating system or applications. These can
+usually be restored easily and quickly from the original disks or CDROMs.
+To do this efficiently we must setup our directory structures and the applications
+so the data is stored in easily accessed and identified sub directories,
+and we must educate the users in how to save data in the correct areas.
+<P>Backup software can be made to do an unattended backup overnight or
+while the user is expected to be out for a break, and this will not disrupt
+the users productivity. All that is required is for suitable media to be
+left in the drive. This procedure can also be done over a network and all
+users data stored on a high capacity storage device in some central location.
+
+<H4>Partial backup</H4>
+It is often economical to backup just the individual data related to one
+project, application or user, and this can be done, for example, as projects
+are finalised. The only problem with this approach is to make sure the
+backup is redone when any changes are made to the data at a later date.
+High Capacity Removable Magnetic media, CDW and CDRW media are ideal for
+this purpose.
+
+<H4>Making data very safe</H4>
+Another evolving area in the data storage market that also has a bearing
+on what type of backup is required is disk array technology, which includes
+<B>Redundant Array of Inexpensive Disks (RAID)</B>. RAID systems are designed
+to be "fault tolerant" and many allow failed hard drives to be replaced
+and the data reconstructed without shutting the system down. The process
+of replacing a drive in this manner is called <B>Hot Swapping</B>.
+
+<H4>RAID</H4>
+Storing redundant information which can be used to recreate data when a
+drive fails, can help prevent data loss. This is the approach used in redundant
+arrays of inexpensive disks, or RAID systems.
+<P>RAID uses multiple disk drives to achieve higher data availability.
+The redundancy of the disk drives in RAID ensures that no data is lost
+due to the failure of a single drive unit.
+<P>The term RAID (for <B>Redundant Array of Inexpensive Disks</B>), originated
+at the University of California at Berkeley, in the late 1980s. Most RAID
+systems use SCSI drives and controllers but some levels of RAID can be
+implemented using EIDE drives. The actual RAID process in some levels can
+be performed by the operating system or by the controller.
+<P><B>RAID level 0:</B> Striped disk array without fault tolerance. Data
+is broken up into blocks and each successive block is written to a separate
+disk drive in the array. Can be implemented with a minimum of two drives.
+<B>This is not true RAID</B> because it does not provide Fault Tolerance
+of any sort and is said to have no redundancy, all the drives in the array
+are used to store data. If one disk in the array fails the data is lost.
+Low cost way of achieving high storage capacity from smaller disk drives,
+fastest access performance is achieved by having one controller per disk
+drive. RAID Level 0 can be used with cheap EIDE drives and Windows NT to
+provide greater storage capacity from two three or four smaller hard drives.
+<P><B>RAID Level 1 - Mirroring:</B> Each disk in the array has a corresponding
+mirror disk and the same data is written to each drive. When data is read
+back, the data from each drive is read back and compared. This technique
+provides high reliability as this system is said to have 100 percent redundancy.
+This doubles the cost of each Mbytes stored. If one disk in the array fails
+the data on the other disk can be simply copied onto a replacement disk,
+restoring the data security quickly.
+<P><B>RAID Level 1 - Duplexing:</B> This is a variation of mirroring which
+duplicates the controllers as well as the disk drives. Both mirroring and
+duplexing require twice the disk space provided by the array. Mirroring
+and Duplexing are the simplest RAID systems and are usually done by the
+Operating System, lowering overall system performance.
+<P><B>RAID Level 2 - Hamming Code ECC:</B> Data is written bit by bit across
+multiple drives and another set of drives hold (ECC) Error Correction Codes
+that are used to check the data when it is read back. On read, the ECC
+codes are used to verify the data and can correct single word disk errors
+on the fly. With two or more ECC drives in the array, data can be reconstituted
+onto a replacement drive when one drive in the array fails. Extremely high
+data transfer rates can be obtained, and hot swapping of failed drives
+is usually possible.
+<P><B>RAID Level 3 - Parallel transfer with parity:</B> The array has multiple
+data disk drives and only one parity drive. The data is stripped (written
+bit by bit) across the data drives. The controller can determine which
+drive in the array has failed using additional check-sum information recorded
+at the end of each sector on the data drives. Although the total number
+of disks required for a RAID Level 3 subsystem is lower than that of a
+RAID Level 2, the usable capacity of the disks is less because of the extra
+check information required on each sector on the data disks. The RAID Level
+3 technique is usually provided by the controller card as it is difficult
+to do with software. It provides very high data transfer rates and a disk
+failure will have low impact on the system throughput.
+<P><B>RAID Level 4 - Independent Data disks with shared Parity disk:</B>
+Similar to RAID Level 3 in that it requires multiple data drives and only
+one parity drive but each whole block (sector) of data is written on the
+same drive. In RAID Level 4 data is written across the drives sector by
+sector. The controller design is complex and rebuilding a failed drive
+is slow.
+<P><B>RAID Level 5 - Independent Data Disks with distributed parity blocks:</B>
+Each data block is written on same drive but parity for each block is distributed
+across the disks in the array. Good overall data transfer rate, complex
+controller design, difficult to rebuild a drive if one fails.
+<P><B>RAID level 6 - Independent Data disks with two independent distributed
+parity schemes:</B> An expansion of RAID Level 5 that provides an extra
+level of fault tolerance by using a second independent distributed parity
+scheme. The best solution for "Mission Critical" applications but requires
+a very complex controller and has poor write performance.
+<P><B>RAID level 7 - Optimised Asynchrony for high I/O rates as well as
+high data transfer rates:</B> This is a proprietary RAID system from IBM
+that is very expensive but provides the fastest overall performance.
+<P><B>RAID level 10 - Very high reliability with high performance:</B>
+This is a hybrid implementation which uses features of both RAID-0 and
+RAID-1. Block striping of data is done at the operating system level and
+parallel mirroring is done at the disk controller level. It is very expensive
+to implement, has the same overheads and fault tolerance as Mirroring but
+provides higher data throughput.
+<P><B>RAID level 53 - High I/O rates and data transfer performance:</B>
+This should be called RAID 03 because it is implemented as a striped (RAID
+Level 0) array whose segments are RAID Level 3 arrays. Expensive to implement
+but does provide high data transfer rates with RAID Level 3 fault tolerance.
+
+<H4>Exotic hardware</H4>
+In very large Server installations, <B>Juke Box</B> Disk or Tape changers
+are used to swap media in and out of Tape or Optical drives as required.
+This technology can provide vast automated storage space for data backup
+or archival storage. As many Mainframe computer systems are replaced with
+powerful PC based hardware, the need for keeping vast amounts of data very
+safe and with a very high availability factors is now very important. RAID
+arrays combined with hot swapping technology and fast reliable backup achieves
+these aims.
+<P>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>Copyright &copy; Phil. Storr, last updated 4<SUP>th</SUP> December
+1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/databack.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:12 GMT -->
+</HTML>

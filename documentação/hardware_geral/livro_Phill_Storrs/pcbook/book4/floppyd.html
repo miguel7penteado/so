@@ -1,0 +1,436 @@
+<HTML>
+<TITLE>Floppy Disk Formats</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/floppyd.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:04 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>DOS Computers and floppy disk drives</H3>
+<H4>Floppy Disk Drive Mechanics.</H4>
+<IMG SRC="../images/fdmotor.jpg" ALIGN=RIGHT>
+The Floppy Disk is rotated at <STRONG>300 RPM for normal disks (DD)</STRONG> and <STRONG>360 RPM for high density disks (HD)</STRONG>. The speed must be within 3%. A magnetic head assembly is moved back and forth across the surface of the disk by a stepper motor and must be aligned to very close tolerances in relation to the centre of rotation of the floppy disk. An alignment of the head assembly can be performed with the aid of digital alignment disk but is not usually cost effective. The image at the right shows a typical direct drive motor that rotates the floppy disk media.
+
+<H4>Floppy Disk Drive Interface.</H4>
+Floppy Disk Drives require an interface circuit to interface them to the computer bus and the "standard" interface uses a 34 wire ribbon cable. <STRONG>5.25 inch drives use an edge connector</STRONG> on the drive and the <STRONG>3.5 inch floppies use a 34 pin header (pin) plug</STRONG>. 
+<P>
+The floppy drive interface can control two drives and the interface cable has two sets of control signals - one for each drive.  Floppy Disk Drives have drive select jumpers on them that configure the drives as either first or second drive. In a PC computer the first drive is called A: drive and the second drive is called B: drive. The original way the drives were meant to be configured was to select one drive as the first drive and the other as the second drive, via the jumpers on the drive. Most PC Computers use a strange standard interface cable originally used by IBM, where each drive is selected as the second drive and a twist in the cable transposes the control signal between one drive and the next. This standard 34 wire Floppy Disk Drive Interface cable used in most PC computers has Drive A:, as the drive at the end of the cable, and drive B: further in, before the twist. Most cables suppled with modern hardware  have four connectors on the floppy drive end of the cable with  a <STRONG>34 pin edge connector</STRONG> and a <STRONG>34 pin header connector</STRONG> for each drive. It is easy to <A HREF="#floppy">re-assign the A: and B:</A> drives in modern PC computers.
+<P>
+The 5.25 inch Floppy Disk Drives require a +12 volt and a +5 volt supply. Most 3.5 inch Floppy Disk Drives only require a +5 volt supply.
+
+<h4>Disk Nomenclature</h4>
+The surface of a Floppy Disk is divided into Track's, Sector's and Side's.  Tracks (also referred to as cylinders) are concentric circles around the disk, and each track is divided into sectors. 
+<P>
+<ul>
+<li>Tracks are numbered from Zero and can be a max. of either 39 or 79 per side. (40 or 80 tracks) 
+<li> Sectors are numbered from 1 and there can be 8, 9, 15, 18 or 21 sectors per track.
+<li>sides are numbers 0 and 1. The first IBM PC's used a single sided floppy disk drive.
+</ul>
+<P>
+<CENTER><IMG SRC="../images/fdtracks.gif"></CENTER>
+<P>
+Over the years as Floppy Disk technology has improved, DOS has followed this evolution and quite a few disk formats have resulted. DOS and Windows operating systems can recognise a Floppy Disks format and will read from, and write to, almost any disk format. The one exception involves the 720K, 5.25 inch format. This is not an official DOS format and may not be recognised by DOS, and Windows.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TH>SIZE<br> (in inches)</TH>
+<TH>TRACKS<br> (per side) </TH>
+<TH>SECTORS<br> (per track)</TH>
+<TH>SIDES</TH>
+<TH>CAPACITY<br> (nominal)</TH>
+</TR>
+<TR>                                                                        
+<TD>5.25</TD>
+<TD>40</TD>
+<TD>8</TD>
+<TD>1</TD>
+<TD>160K</TD>
+</TR>
+<TR>
+<TD>5.25</TD>
+<TD>40</TD>
+<TD>8</TD>
+<TD>2</TD>
+<TD>320K</TD>
+</TR>
+<TR>
+<TD>5.25</TD>
+<TD>40</TD>
+<TD>9</TD>
+<TD>1</TD>
+<TD>180K</TD>
+</TR>
+<TR>
+<TD>5.25</TD>
+<TD>40</TD>
+<TD>9</TD>
+<TD>2</TD>
+<TD>360K</TD>
+</TR>
+<TR>
+<TD>5.25</TD>
+<TD>80</TD>
+<TD>9</TD>
+<TD>2</TD>
+<TD>720K (note 2)</TD>
+</TR>
+<TR>
+<TD>5.25</TD>
+<TD>80</TD>
+<TD>15</TD>
+<TD>2</TD>
+<TD>1.2Meg</TD>
+</TR>
+<TR>
+<TD>3.5</TD>
+<TD>80</TD>
+<TD>9</TD>
+<TD>2</TD>
+<TD>720K</TD>
+</TR>
+<TR>
+<TD>3.5</TD>
+<TD>80</TD>
+<TD>18</TD>
+<TD>2</TD>
+<TD>1.44Meg</TD>
+</TR>
+<TR>
+<TD>3.5</TD>
+<TD>80</TD>
+<TD>21</TD>
+<TD>2</TD>
+<TD>1.72Meg (DMF format)</TD>
+</TR>
+<TR>
+<TD>3.5</TD>
+<TD>80</TD>
+<TD>36</TD>
+<TD>2</TD>
+<TD>2.88Meg</TD>
+</TR>
+</TABLE>
+</CENTER> <p>
+
+<h4>Notes on the various DOS Floppy Disk Formats</h4>
+<ol>
+<li><STRONG>The 360K was the most common PC/XT format.</STRONG>
+<li> The 720K, 5.25 inch format was used by NEC and some other companies but was not used by IBM, they introduced the 3.5 inch, 720K disk in its first PS/2 computers in 1987, some Laptop computers also used it at that time.
+<li>The 5.25 inch, 1.2Meg format introduced by IBM with the AT in 1984 was also used by NEC with 8" floppy disk drives on some if its early DOS computers.
+<li><STRONG>The 3.5 inch, 1.44Meg Disk is now the industry standard.</STRONG>
+<li>The DMF format was introduced by Microsoft for the distribution of software and these disks cannot be copied by the DOS Diskcopy command - it is meant to be a Read-only format. DMF disks can be copied with after market copy utilities.
+<li>The 3.5 inch, 2.88Meg format was introduced by IBM but has not been used much .
+</ol>
+
+<h4>How big is a sector ?</h4>
+DOS uses a Sector size of <STRONG>512 Bytes</STRONG>. Each Sector can store 512 Bytes of data. In addition to the 512 bytes of data stored in a sector, each sector also has quite a few Bytes of  Over Heads that identify the Sector, provide Error Checking Check Sums and provides Synchronisation data for the drive as its reads data from the sectors. 
+<P>
+The sectors on a disk must be read and rewritten by different disk drives, usually with slight variations in the speed of rotation, and so Inter Sector Gaps of unused disk space are needed between the sectors to stop the data from one sector overlapping into the next.
+<P>
+In addition to the gaps between the sectors each sector must be supported by a sector Identifier called the Sector ID field. The Sector ID field is written only once when the disk is formatted and is never written again, only the 512 bytes of data in the data field are written to, in normal operation.
+<P>
+<STRONG>The structure of a single sector is as follows</STRONG>. (all numbers are in hexadecimal)
+<UL>
+<LI>0C bytes of 00
+<LI>3 bytes 0f A1
+<LI>1 byte of FE
+<LI>a one byte number to indicate the track
+<LI>one byte to indicate the side (or head number in hard disks)
+<LI>one byte to indicate the sector number
+<LI>one byte to indicte the sector size (the standard sector size is 512 (dec) bytes, but this can be altered if desired)
+<LI>two bytes of CRC (Cyclic Redundanvy Code) that keeps a check on the data in the Sector ID Field
+<LI>16 bytes of 4E
+<LI>0C bytes of 00
+<LI>3 bytes of A1
+<LI>1 byte of FA or FB
+<LI>The 512 bytes of the Data Field
+<LI>2 bytes of CRC that keeps a check on the Data Field
+<LI>many bytes of 4E, filling in the Inter Sector Gap
+</UL>
+
+<H4>The capacity of Floppy Disks</H4>
+The capacity of a Floppy Disk can be calculated by multiplying the number of  Tracks by the number of Sides, by the number of Sectors per track by 512 bytes. For example, the actual capacity of a 360K Disk is: Tracks (40) times Sides (2) times Sectors (9) times 512 bytes = 368,648 bytes.
+<p>
+In addition to the overheads required for each sector, the start of each track also has it's own identification field consisting of ,
+<UL>
+<LI>50 bytes of 4E
+<LI>0C bytes of 00
+<LI>3 bytes of C2
+<LI>one byte of FC
+<LI>32 bytes of 4E
+</UL>
+
+<h4>How is all this disk space used ?</h4>
+Not all of the sectors on a disk are available for the storage of data. The sectors on a Floppy Disk are assigned into four areas. 
+<ol>
+<li>Boot Sector. On a Floppy Disk, his occupies the first sector, Sector one of Track zero, Side zero contains a description of the disks format and Boot Strap Loader to load the DOS operating system.
+<li>File Allocation Table (FAT). This is a record of the status of each sector of the data space it contains an "ENTRY" for each Sector and this entry indicates: 
+<ul>
+<li>Free (Available Space)
+<li>Bad sector
+<li>in use by a file.
+</ul>
+<li>Directory  The Directory consists of 32 Byte entries that keep track of the files that are saved of the disk. 
+<li>Data Space This is were the files are kept. 
+</ol>
+<p>
+
+<h4>How much disk space is used by the Boot Record, FAT and Directory ?</h4>
+The <b>Boot record</b> on a Floppy Disk requires only one sector and this occupies the first sector on the disk.
+
+The amount of disk space (the number of sectors) allocated to the<b> FAT</b> and the <b>Directory</b> on a DOS disk depends on the disks Logical Format. Here is a table for the various Floppy Disk formats in use with DOS and Windows operating systems.
+<CENTER> 
+<TABLE BORDER>
+<TR><TH>FORMAT</TH>
+<TH>CLUSTER SIZE</TH>
+<TH>FAT TYPE</TH>
+<TH>FAT</TH>
+<TH>DIRECTORY </TH>
+</TR>
+<TR>
+<TD>160K</TD>
+<TD>1 = 512 byte</TD>
+<TD>12 bit</TD>
+<TD>1 sector</TD>
+<TD>4 sectors = 64 entries</TD>
+</TR>
+<TR>
+<TD>180K</TD>
+<TD>1 = 512 byte</TD>
+<TD>12 bit</TD>
+<TD>2 sector</TD>
+<TD>4 sectors = 64 entries</TD>
+</TR>
+<TR>
+<TD>320K</TD>
+<TD>2 = 1024 byte</TD>
+<TD>12 bit</TD>
+<TD>1 sector</TD>
+<TD>7 sectors = 112 entries</TD>
+</TR>
+<TR>
+<TD>360K</TD>
+<TD>2 = 1024 byte</TD>
+<TD>12 bit</TD>
+<TD>2 sector</TD>
+<TD>7 sectors = 112 entries</TD>
+</TR>
+<TR>
+<TD>720K</TD>
+<TD>2 = 1024 byte</TD>
+<TD>12 bit</TD>
+<TD>3 sector</TD>
+<TD>7 sectors = 112 entries</TD>
+</TR>
+<TR>
+<TD>1.2Meg</TD>
+<TD>1 = 512 byte</TD>
+<TD>12 bit</TD>
+<TD>7 sector</TD>
+<TD>14 sectors = 224 entries</TD>
+</TR>
+<TR>
+<TD>1.44Meg</TD>
+<TD>1 = 512 byte</TD>
+<TD>12 bit</TD>
+<TD>9 sector</TD>
+<TD>14 sectors = 224 entries</TD>
+</TR>
+<TR>
+<TD>2.88Meg</TD>
+<TD>2 = 1024 byte</TD>
+<TD>12 bit</TD>
+<TD>9 sector</TD>
+<TD>15 sectors = 240 entries</TD>
+<TR>
+</TABLE></CENTER>
+<P>
+Two copies of the FAT are stored on the disk just in case one gets damaged.
+
+<h4>The File System Overheads</h4>
+The sectors allocated to the first three sections of the disk can be looked at as overheads, they are required to support the Data Space. A 360K Floppy Disk has twelve sectors allocated to the DOS file system overheads and they are used like this.
+<P>
+<CENTER><TABLE BORDER>
+<TR><TD><STRONG><CENTER>Boot Sector</CENTER></STRONG></TD>
+<TD>1 sector (the very first sector on Track Zero, Side Zero)</TD>
+</TR>
+<TR><TD><STRONG><CENTER>FAT</CENTER></STRONG></TD>
+<TD>4 sectors (the next four sectors on Track Zero, Side zero)<BR>Two sectors for each copy of the FAT</TD>
+</TR>
+<TR><TD><STRONG><CENTER>Directory</CENTER></STRONG></TD>
+<TD>7 sectors (the next seven sectors on Track Zero, Side zero)</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+This leaves this disk format with <STRONG>708 sectors available</STRONG>, and as the cluster size is two sectors this gives a total of <STRONG>354 clusters</STRONG> in the Data Space to store files in. The <STRONG>cluster size of two sectors, 1024 bytes</STRONG>, means the smallest amount of disk space that can be allocated to a file is 1024 bytes, even if that file is only ten bytes long.
+
+<h4>1. The BOOT SECTOR</h4>
+On a floppy disk, the Boot Sector is the very first sector of that disk. It is Sector One of Track Zero, Side Zero. The Boot Sector is 512 Bytes long and contains:
+<ul>
+<li>A record of the Floppy Disks Format. 
+<li>A Boot Strap Loader. 
+</ul>
+<P>
+When the computer is booted the Boot Strap Loader in the BIOS ROM, loads the Boot Sector from the Boot disk into the memory, and then the Boot Strap Loader from the Boot Sector, loads the Operating System. NOTE: Both Bootable and non-bootable disks have identical Boot Sectors. When you try to boot a PC Computer from a non system disk, the error message is coming from the simple Boot Strap Loader, loaded into RAM, from the Boot Sector. When it cant find the DOS System Files, it gives an error message.
+
+<h4>2. The File Allocation Table (FAT) </h4>
+This is the area of a disk that is used to keep track of how the storage space in the Data Space is being used. Entries in this table indicate Bad Clusters, Free Clusters, Clusters In USE by a file, or the End of a File. The smallest unit of space that can allocated to a file is not necessarily a Sector.
+
+<H4>Clusters</H4>
+Storage space on any DOS formatted disk is allocate in units called <A HREF="#cluster">CLUSTERS.</A> The number of Sectors in each Cluster depends on the actual capacity (the Format) of the disk in question. This was done to reduce the Overheads in the system by combining sectors into Clusters, thus making the size of the table needed to keep track of Cluster usage smaller. 
+<P>
+The old single sided 40 track disk formats had a Cluster size of one sector (512 bytes), double sided 40 track formats used two sectors per Cluster (1024 bytes) and all High Density Floppy Disk formats use Cluster sizes of one sector (512 bytes). Hard Disk Drives can have Clusters of up to 64 sectors per Cluster.  What this means is that the smallest amount of disk space that can be allocated to a file when it is written to a disk is the size of the cluster. This size is number of sectors per cluster times 512 bytes per sector.
+<P>
+You can see the Cluster size of a Disk Drive by using the CHKDSK command from the DOS prompt, either under DOS 6.xx or under Windows 95 DOS. CHKDSK reports on the <EM>bytes in each allocation unit</EM>, this is talking about the Cluster size.
+<P>
+When a very small file is saved onto a Disk Drive, the amount of disk space taken up by that file is the size of the Cluster. The rest of that Cluster cannot be allocated to another file and is wasted space on the disk. For example, if we save a file that is only 10 bytes long on a 1.44Meg Floppy Disk, the rest of the 512 byte Cluster will be wasted. This is a BIG problem when we look at high capacity Hard Disk Drives where the cluster size can be as high as 64 Sectors, 32,758 bytes.
+<P>
+The File Allocation table takes three forms, the FAT can be constructed of either 12 bit, 16 bit or 32 bit numbers. The 12 bit FAT is made up of one and a half bytes per entry, and is only used on Floppy Disks. Until the recent introduction of OSR2 release of Windows 95 with the option of using a 32 bit FAT, Hard Disk Drive Partitions were limited, by the 16 bit FAT, to a maximum size of 2.1 GByte. At present the 32 bit FAT is only available when you format a Hard Disk Drive with the OSR2 release of windows 95, it cannot be put on a systems that is already formatted with the older Windows 95. This problem will be overcome by Windows 98 when it is released, it will have provision to convert Hard Disk Drives from 16 bit FAT to 32 bit FAT.
+
+<h4>3. The Directory</h4>
+Each entry in the Directory requires 32 bytes and these bytes are used like this :-
+<p>
+<CENTER><TABLE BORDER>
+<TR>
+<TH>Use</TH>
+<TH>Number of bytes</TH>
+</TR>
+<TR>
+<TD>File Name</TD>
+<TD>8 (this is why the file name be a max. of 8 characters)</TD>
+</TR>
+<TR>
+<TD>File Name Extension</TD>
+<TD>3 (this is why the extension  is limited to 3 characters)</TD>
+</TR>
+<TR>
+<TD>Attribute Byte</TD>
+<TD>1 (see table below for how the bis are used)</TD>
+</TR>
+<TR>
+<TD>not used by the DOS file system</TD>
+<TD>10 (Oh what a waste)</TD>
+</TR>
+<TR>
+<TD>Time the file was written</TD>
+<TD>2</TD>
+</TR>
+<TR>
+<TD>Date the file was written</TD>
+<TD>2</TD>
+</TR>
+<TR>
+<TD>The number of the first Cluster used by that file</TD>
+<TD>2</TD>
+</TR>
+<TR>
+<TD>The file size</TD>
+<TD>4</TD>
+</TR>
+</TABLE></CENTER>
+<p>
+The "bits" of the Attribute Byte are used like this
+<p>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TH>Bit</TH>
+<TH>Use</TH>
+</TR>
+<TR>
+<TD>0</TD>
+<TD>File is read-only</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>File is hidden from view</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>File is a System file</TD>
+</TR>
+<TR>
+<TD>3</TD>
+<TD>This directory entry is a Volume Label rather than a file name</TD>
+</TR>
+<TR>
+<TD>4
+<TD>This entry is a Subdirectory name rather than a file name</TD>
+</TR>
+<TR>
+<TD>5</TD>
+<TD>Archive bit - used to control Data Backup</TD>
+</TR>
+<TR>
+<TD>6</TD>
+<TD>not used</TD>
+</TR>
+<TR>
+<TD>7</TD>
+<TD>not used</TD>
+</TR>
+</TABLE></CENTER>
+<p>
+<b>Volume Label</b> - A Volume Label, a name that can be put on the top of a disk's directory listing, is stored in the Directory like a file name and it can have a maximum of 11 characters.
+<p>
+<b>Subdirectory</b> - When a Subdirectory is created its name is recorded in the directory and one cluster of the data space is allocated to it for storage of file names. When that space is used up by file names additional clusters are allocated to that Subdirectory for it to store file names. The first two entries in a sub-directories structure is occupied by entries that indicate the parent of the sub directory. Look at in a subdirectory and you will see two entries, one with one dot, the other with two dots.
+<p>
+The <b>Directory</b> entry for each file stored on a disk indicates to DOS which Cluster is the first cluster used to store that file and the<b> FAT</b> then forms an Allocation Chain that tells DOS which other Clusters contain the rest of the file. The last cluster used by each file has the hex code FFF in its FAT entry to tell DOS this is the last Cluster. The hex code FFF is used to indicate "end of file".
+
+<h4>Putting it all together </h4>
+<ol>
+<li>The directory entry for each file has a number that points to the first cluster used by that file.
+<li>Each Cluster of the Data Space on the disk has a corresponding FAT entry.
+<li>The FAT entry for each cluster is used to indicate one of four things.
+<ul>
+<li>If the cluster is not in use then its FAT entry has the number zero in it that indicates to DOS that the cluster is available. (not in use yet)
+<li>If the cluster is BAD then its FAT entry has the number FF7 in it indicating to DOS not to use that cluster.
+<li>If the cluster is in use to hold a file then it's FAT entry will have either :-
+<ul>
+<li>A number that indicates the next cluster in that particular Allocation Chain.
+<li>If that cluster is the last cluster in that particular Allocation Chain then the FAT entry will contain FFF- indicating "the End Of File"
+</ul>
+</ul>
+<li>The first two entries in the FAT are DOS overheads and do not represent any cluster. This means  the first cluster is called Cluster Two. 
+</ol>
+<p>
+<A NAME="cluster"></A><STRONG>Important:</STRONG> A cluster is the smallest unit of disk space that can be assigned to a file. When a file is saved on a disk the file system allocates space to the files in "clusters" rather than in sectors. A cluster can be from one sector long (512 bytes) to 64 sectors (32,768 bytes), and this depends on the format of the disk. The use of clusters was an attempt at reducing the size of the File Allocation Table by cutting down the number of units that had to be accounted for by the FAT.
+
+<A NAME="floppy"></A><H4>Changing over Drive A: and Drive B:</H4>
+Many older PC computer systems have both 5.25 and 3.5 inch floppy drives fitted and the it was more common some years ago to have the 5.25 inch drive assigned as the A: drive. Today it is difficult to obtain original software on 5.25 inch disks and it is better to change the disk drives over so drive A: is the 3.5 inch drive. 
+<P>
+All you have to do to achieve this is to swap the interface plugs over on the back of the drives and then to go into the CMOS setup and reconfigure drive A: and drive B:.
+
+<H4>High capacity removable magnetic disk technology</H4>
+Floppy disks have provided a convenient way of storing files on a removable magnetic media and over the years there has been quite a few attempts at marketing higher capacity removable magnetic disk devices. One of the first of these was a 10 Meg device from Verbatum, and one of the most recent is the 1000 Meg Jaz drive from Iomega corporation. Along the way we have had various drives from Syquest, the latest of which provides 230 Meg of storage space. 
+<P>
+The 100 Meg Zip drive from Iomega is gaining popularity at present and Compaq and 3M have developed LS-120 technology, a 120 Meg device, that will be marketed during 1996, and will be standard fitting to some Compaq models. Until now, the high capacity magnetic devices have been interfaced via a SCSI interface, or via the Parallel port, and have mostly been used as backup and transport devices. Each brand and model has been unique in the technology used.
+<P>
+LS-120 has the advantage of being able to read and write 1.44 Meg high density, 3.5 inch, floppy disks. We will look at these technologies in PC Servicing Two.
+
+<h4>The difference between Floppy Disks and Hard Disk Drives</h4>
+<p>
+<IMG SRC="../images/hddrive.gif" ALIGN=RIGHT>
+
+On a Floppy Disk Drive the Boot Record is on Sector One of Side Zero, Track Zero and the other two sections of overheads follow on from there - the first sector of the FAT is on Sector Two of Side Zero, Track Zero.
+<p>
+A Hard Drive Drive has an extra area of overhead. This is the Partition Table and is in the first sector on a hard drive - on Sector One of Side Zero, Track Zero. The Boot Sector on a hard drive is on Sector One of Side One, Track Zero and the rest of the DOS file system overheads follow on from there.
+<P>
+<HR>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table></CENTER>
+
+<HR>
+Copyright &copy; Phil. Storr 4<SUP>th </SUP>December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/floppyd.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:06 GMT -->
+</HTML>

@@ -1,0 +1,118 @@
+<HTML>
+<TITLE>XMS and other memory mysteries</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/xmsmem.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>Extended Memory and High Memory</H3>
+
+<H4>History</H4>
+When DOS was first thought of, the micro processors available then, could only address one Meg Byte of memory. This set the stage for the futue of DOS and this is as far as DOS can see. If we look at the memory map of a DOS computer we can see the first 640K bytes of this memory space is allocated as Conventional Memory and the 384K bytes above this area is allocated to various other uses. These other uses include the System BIOS ROM, the Video RAM, any BIOS Extension ROMs on plug in cards, and RAM on some I/O adapters. This area of memory is called the Reserved Memory area. 
+
+<H4>The AT Computer</H4>
+The AT computer had a larger Address bus and it introduced more memory, memory above the one Meg limit imposed on DOS by the 8088 processor chip used in the PC and PC/XT. To keep DOS compatible with all DOS computer hardware, DOS was never made fully aware of all this extra memory it could use.
+
+<H4>Expanded Memory</H4>
+The first attempts at making more memory available to DOS applications was EXPANDED memory, also known in its various forms as EMS or LIM memory. Expanded memory was made available to DOS Applications (but not DOS itself) by an expanded memory manager that was loaded as a Device driver from the CONFIG.SYS file. Expanded memory was only available to applications that was aware of it and was of no use to DOS itself. 
+<P>
+<STRONG>LIM</STRONG> stands for Lotus, Intel and Microsoft, the three heavy weight companies in the DOS computing field that got together in 1985 to put together an Extended Memory Specification that would overcome the 640K byte limit imposed by DOS on application software. Expanded memory used a "paging" scheme that could move blocks of RAM memory in and out of a "Page Frame in the Reserved Memory area.
+<P>
+Today expanded memory is not of much use as more and more modern software is designed to work with Extended or XMS memory rather than expanded memory. The provision of expanded memory in older hardware required an EMS board but as RAM chips advanced in capacity many manufacturers made the hardware so some or all of the memory above one meg (the extended memory) could be used as expanded memory via an EMS device driver. DOS 5 and DOS 6 provide expanded memory via the extended memory manager driver.
+
+<H4>Extended Memory</H4>
+Memory above the one meg limit imposed by DOS is called EXTENDED memory and is available to applications that are aware of it. EXTENDED memory is made available to Applications via DOS using an interrupt call, INT 15(hex). INT 15 is a "software" interrupt provided by DOS to supply extended memory to application programs that can make use of it. The EMS device driver, loaded from the config,sys file, uses INT 15 to provide Extended memory to operating systems and applications that can make use of it.
+
+<H4>HIMEM.SYS</H4>
+DOS version 5 introduced an alternative to INT 15, a device driver called HIMEM.SYS.
+Memory made available through this device driver is called XMS memory and now most applications request extra memory as XMS memory rather than via INT 15.  XMS services are provided by adding the line <STRONG>DEVICE=C:\DOS\HIMEM.SYS</STRONG> to the config.sys file. When you issue the DOS MEM command, it will report the amount of  XMS Memory available. This figure will not be the same as your total amount of memory above one Meg because some of this Memory may have been allocated to HIGH MEMORY, and to shadowing the BIOS and BIOS Extension ROMs in the computer. Some may have also been allocated to a Disk Cache "device" like Smartdrv.
+
+<H4>High Memory Area</H4>
+The High Memory Area is a special 64K byte block of Extended Memory that lies directly above the base one Meg memory space. High Memory is available on 286, 386 and 486 based computers and is made available to DOS by the device driver HIMEM.SYS. 
+<P>
+<STRONG>DEVICE=C:\DOS\HIMEM.SYS</STRONG>
+<P>
+DOS can relocate itself into this area and due to a trick worked by the processor on the A20 address line, DOS will think this memory is located at the start of the bottom one meg of memory space. Loading DOS into this area saves up to 64K of the Conventional memory area for applications to use.
+<P>
+The 386 and 486 processors have the ability to treat some of the extended memory as though it was part of the 384K byte Reserved Memory Area. This process provides "islands" of RAM scattered amongst the other uses of this memory area and these are called <STRONG>Upper Memory Blocks</STRONG> (UMB's). These Upper Memory Blocks can be put to good use holding device drivers, and TSR routines. This makes more conventional memory available to applications.
+<P>
+To make use of  High Memory and Upper memory Blocks you must add these device drivers to the CONFIG.SYS file.
+<UL>
+<LI>DEVICE=C:\DOS\HIMEM.SYS
+<LI>DEVICE=C:\DOS\EMM386.EXE
+<LI>DOS=HIGH, UMB
+</UL>
+<P>
+The explanation for each line above is :-
+<UL>
+<LI>The first line is the Extended memory manager that takes over from the old DOS INT 15 routine.
+<LI>The second line is the 386 device driver that makes Upper Memory Blocks available.
+<LI>The last line loads DOS high and allows the use of Upper Memory Blocks.
+</UL>
+<P>
+Some early DOS computers had trouble with the A20 trick and if this was the case a  /MACHINE:n  switch at the end of the HIMEM.SYS line usually fixed the problem. See the DOS manual for details. Use the DOS <STRONG>MEM command</STRONG> to see if DOS has loaded high.
+<P>
+EMM386.EXE is not available to AT (286 based) computers. These computers can make use of High Memory but not of UMB's.
+<P>
+You can add some more parameters to the EMM386.EXE line. These include,
+<UL>
+<LI>NOEMS (do not set aside some of the XMS memory as EXPANDED memory)
+<LI>X=aaaa-bbbb (exclude some area of the reserved memory because it is used by ROM or RAM in the Reserved Memory Area)
+</UL>
+<P>
+An example of this is when some network cards, advanced hard disk controllers and SCSI interface cards are fitted. These cards sometimes have RAM or ROM on board and you must stop EMM386 from using these areas of memory for UMB's. EMM386 will see the area C0000 to C7FFF hex is used by the VGA Video card but it may not see other cards using parts of the C8000 to DFFFF hex region of Reserved memory. All I/O cards that have RAM or ROM in the Reserved memory area have jumpers for configuring these to various addresses in this region.
+<P> 
+<STRONG>My suggestions for assignments in this area are;-</STRONG>
+<UL>
+<LI>Hard disk controllers that require a BIOS Extension ROM - C800-C9FF hex<BR> 
+<EM>The same area as allocated to the "old" XT controller.</EM><BR>
+Some older enhanced IDE controller cards and all Hardware Cached Controllers require a BIOS Extension ROM.
+<LI>If a SCSI hard drive controller is used with a boot device, then this is the logical choice for its BIOS Extension ROM. <BR>
+<EM>If a SCSI interface is used with a boot device, it requires a BIOS Extension ROM.</EM>
+<LI>Network card - CC00-CDFF hex 
+<EM>This is a common default for network cards</EM><BR>
+Some network cards have some RAM that must be given space in the Reserved Memory area. <BR>
+If a network card is used in a computer to provide a "Diskless Workstation" the network card requires a Boot ROM.
+<LI>Any other card that requires memory space could use CE00-CFFF hex
+</UL>
+<P>
+Note how these addresses are expresses as Segment only rather than as segment and offset.  
+The start of the ROM on the old XT hard disk controller is C8000 "absolute" and C800:0000 hex when expressed in segment and offset.
+<P>
+<H4>Optimising memory under DOS and Windows 3xx</H4>
+You can add the command lines for EMM386 and HIMEM to the CONFIG.SYS yourself and then experiment with the various parameters required to optimise the memory, or you can simply use the DOS <STRONG>MEMMAKER</STRONG> command to do it for you. MEMMAKER usually works quite well but you may have to edit the results to exclude some memory areas used by BIOS Extension ROMs on cards in the system. Several after-market programs have been available to do the same thing.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="memory.html"><font
+color="#FFFFFF">Back to the PC memory chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="memchips.html"><font
+color="#FFFFFF">PC Memory hardware over the years</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="lowmem.html"><font
+color="#FFFFFF">How the PC uses its Low Memory area</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="../images/memmap.jpg"><font
+color="#FFFFFF">The PC Memory Map</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="cache.html"><font
+color="#FFFFFF">Cache memory</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/xmsmem.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

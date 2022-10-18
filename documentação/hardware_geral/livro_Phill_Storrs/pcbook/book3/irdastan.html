@@ -1,0 +1,145 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/irdastan.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:04 GMT -->
+<HEAD>
+<TITLE>Infrared Data Association: Overview</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC="../images/pc2.jpg" ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The IrDA interface</H3></CENTER>
+
+This document is derived from material found at the Infrared Data Association Web site.
+<P>
+The IrDA, whose stated purpose is "to create an interoperable, low cost, low power, half-duplex serial data interconnection standard that supports a walk-up, point-to-point user model that is adaptable to a wide range of appliances and devices". IrDA will provide lower costs than current wire/cable/connector setups and should prove to be popular with Laptop Computer users. Basically, if something works over a wire/cable connection, it will work over the IrDA infrared data link. These visions led to the IrDA Standard herein summarized with three mandatory compliance level sections of the Physical, IrLAP and IrLMP (plus optional sections including the Higher Speed Extensions (1.15 and 4 Mbits/sec), IrCOMM, TinyTP and PnP) and titled the IrDA Serial Infrared Data Link Standard, Version 1.1.
+
+<H4>IrDA Serial Infrared Physical Layer Link (IrDA-SIR)</H4>
+
+Key Features of IrDA-SIR/Serial IR Physical Layer are listed as follows.
+<P>
+<STRONG>Low Cost Implementation</STRONG><BR>
+The standard was developed to utilize low cost components with implementation costs to the manufacturer expected to be only several dollars per device.  With expected integrated chips including IrDA functionality there will be only the very low cost (less than a dollar) of common opto-electronic components.  No special or proprietary hardware is required.
+<P>
+<STRONG>Low Power Requirements</STRONG><BR>
+IrDA-SIR is designed to be power efficient so that it will not be a drain on the batteries of portable devices like notebook computers, PDAs, mobile phones and other handheld IrDA devices. As IrDA devices are intended for short-range, point-to-point communications, the technology will display an advantage over diffuse IR technologies (wide area coverage devices) since it uses very low power when transmitting.
+<P>
+<STRONG>Directed, Point-to-Point Connectivity</STRONG><BR>
+IrDA-SIR is designed to be easy to use and supports a conscious connectivity usage model. Directionality of the IR beam provides additional user comfort of not unintentionally "spilling" the transmitted data to nearby devices.  However, the angular spread of the IR beam does not require the user to align the handheld device perfectly at the target device to achieve an IR link.
+<P>
+<STRONG>High Noise Immunity</STRONG><BR>
+IrDA-SIR is specified to achieve bit error rates of better than 1 in 10^9 at ranges of up to 1m, while still providing a high level of noise immunity within a typical office environment illuminated with flourescent light as well as in the sunlight.  Appropriately implemented, a product would also conform to level 3 severity electromagnetic fields as defined in IEC 801-3 specifications.
+<P>
+<STRONG>Optimized for Data Transfers</STRONG><BR>
+In it's first form, IrDA-SIR is a half-duplex system with the maximum UART based data rate of 115.2 kbits per second. Because the design can be driven by a standard UART, its data rate can be easily programmed from software to a lower data rate to match with slower devices.  Also note that version 2.0 also defines non-UART environments (see High Speed Extensions - 1.15 and 4.0 Mbit/sec Options.)
+<P>
+<STRONG>Other Features</STRONG>
+<P>
+The IR LED peak wavelength is specified to range from 0.85um to 0.90um.
+<P>
+The IrDA-SIR physical hardware is very simple. It consists of an encoder/decoder (which performs the IR transmit encoder and IR receiver decoder) and the IR transducer (which consists of the output driver and IR emitter for transmitting and the receiver/detector).  The encoder/decoder interfaces to the UART, which is expected to already be present in most computers.
+<P>
+The IrDA-SIR specification takes a standard asynchronous serial character stream from the UART (where a frame is defined as a start bit, 8 data bits, no parity bit and a stop bit) and encodes the output such that "0" is represented by a pulse and "1" is represented by no pulse.  A pulse is further defined as occupying a nominal minimum of 1.6 microseconds to a maximum of 3/16th of a bit period, the length of which is inversely proportional to the bit rate of the data (ie, the slower the data rate, the longer will be the pulse).  This pulse stream forms the input to the driver for the IR emitter that converts the electrical pulses to IR energy.
+<P>
+The IrDA-SIR specifications were established for worst case optical link parameters needed to support the defined link performance.   Optical interface specifications are independent of technology and apply over the life of the link and are readily testable for conformance.
+
+<H4>IrDA Infrared Link Access Protocol (IrLAP)</H4>
+The Infrared Data Association has defined and adopted a link protocol for the serial infrared link.  IrDA's Infrared Link Access Protocol, or IrLAP, is derived from an existing asynchronous data communications standard (an adaptation of HDLC.)  A key element of IrLAP is the relationship between a primary and one or more secondary stations.
+<P>
+<STRONG>Primary and Secondary Station Roles</STRONG><BR>
+The data transfer operation of the data link protocol has remained very close to its original heritage from HDLC. A data link involves at least two participating stations.  IRLAP provides two roles for participating stations.
+<P>
+<OL>
+<LI>Primary (commanding) station   
+<LI>Secondary (responding) station
+</OL>
+<P>
+The primary station has responsibility for the data link. All transmissions over a data link go to, or from, the primary station. IRLAP communication links can be point-to-point or point-to-multipoint.  There is always one and only one primary station; all other stations must be secondary stations.  Any station that is capable can contend to play the primary station role.  The role of primary is determined dynamically when the link connection is established and continues until the connection is closed (the exception is that there is a method provided for a primary and secondary on a point to point link to exchange roles without closing the connection).
+<P>
+<STRONG>Framing, Procedures and Data Link Operation</STRONG><BR>
+IrLAP uses most of the standard types of frame defined by the HDLC standards.  The frames are classified by function as follows: unnumbered or U frames, supervisory or S frames and information or I frames.  U frames are used for such functions as establishing and removing connections and discovery of other station device addresses etc.  I frames are used to transfer information from one station to another.  S frames are used to assist in the transfer of information, they may be used to specifically acknowledge receipt of I frames (I frames can implicitly acknowledge other I frames also) and to convey ready and busy conditions.
+<P>
+IrLAP also describes procedures that support link initialization, device address discovery, connection startup (including link data rate negotiation), information exchange, disconnection, link shutdown, and device 
+address conflict resolution.  While each of these procedures is adapted to the IrDA serial infrared environment the link initialization and shutdown, and the connection startup, disconnection and information transfer 
+procedures all resemble similar operations in HDLC protocols.  The discovery and address conflict resolution procedures are somewhat unique to IrLAP.
+<P>
+A link operates essentially as follows.  A device will want to connect to another device (either by automatic detection via the discovery and sniffing capability of IrLAP, or via direct user request).  After obeying the media access rules the initiator will send connection request information at 9600 bps to the other device, this data will include information such as its address and its other capabilities (e.g., data rate, etc...).  The responding 
+device will assume the secondary role and after obeying the media access rules return information that contains its address and capabilities.  The primary and secondary will then change the data rate and other link parameters to the common set defined by the capabilities described in the information transfer.  The primary will then send data to the secondary confirming the link data rate and capabilities.  The two devices are now connected and the data is transferred between primary and secondary under the complete control of the primary.  Rules are defined which ensure that the secondary and primary are both able to efficiently transfer data.
+
+<H4>IrDA Infrared Link Management Protocol  (IrLMP)</H4>
+Infrared is a communications medium that makes it easy to establish connections between devices.  In such a situation, the configuration of devices is not a static configuration, but is highly dynamic.  It is determined by the services and protocols offered by the devices within range and the applications the user wishes to use.
+<P>
+Three additional elements are necessary for an IrDA IR enabled device:
+<OL>
+<LI>Discovery
+<LI>Link Control
+<LI>Multiplexing
+</OL>
+<P>
+Discovery occurs when two devices first encounter each other.  Each service and each protocol on a device will have registered with the link management.  The information registered includes both standard and protocol specific information.  An application can query the capabilities of devices within range.
+<P>
+Once an application on one device has determined which service or protocol it wishes to use, it requests the link control to use the protocol.  The link management framework allows multiplexing of application or transport protocols on the same link connection at the same time.
+<P>
+Multifunctional devices may have requirements for the IR link to support concurrent activities.  While the IrDA Link Access Protocol, IrLAP, provides a single connection between a given pair of IrDA compliant devices, it provides no means for multiple application components to share coexisting access to that connection.  An useful future set of capabilities would have the mobile user wishing his handheld/PDA or notebook computer to synchronizing file systems, check/send/receive electronic mail, reconcile scheduling and address book (PIM) data plus initiate deferred printing when it makes contact with the owner's desktop personal computer (PC) and 
+network gateway.  Each activity may be controlled by distinct application components within each device (mobile unit and PC) and each component has a separate requirement to locate its peer component and establish the 
+relevant connection.
+<P>
+IrDA Link Management Protocol, IrLMP, is a mandatory component of IrDA compliant devices and addresses both the previous mentioned needs.
+<UL>
+<LI>Connection multiplexing services provided by IrLMP Multiplexer (LM-MUX).
+<LI>Location of peer application components supported by IrLMP Information Access Service (LM-IAS)
+</UL>
+
+<H4>IrLMP Multiplexer (LM-MUX)</H4>
+IrLMP Multiplexer (LM-MUX) provides multiplexed channels on top of an IrLAP connection. Each of these 'so called' Link Service Access Point or LSAP-connections (distinquished from IrLAP connections) carries a logical separated information stream.  The multiplexer operates in two modes.  In multiplexed mode, the multiplexer will accept data from any of its clients (transport entities or directly bound applications).  In exclusive 
+mode a single LSAP-connection claims access to the IR medium.   Exclusive mode provides time sensitive applications may be implemented with turnaround time guaranteed by the underlying IrLAP connection.
+
+<H4>IrLMP Information Access Service (LM-IAS)</H4>
+IrLMP Information Access Service (LM-IAS) is a direct client of LM-MUX and operates in a 'client-server' manner.  Application components that wish to make thenselves accessible to peer components in other device 'describe' themselves by creating an object whose attributes carry the essential parameters required to establish a connection between the two peers.  An application component seeking a peer application component inspects the objects within  the remote LM-IAS information base.  Assuming a suitable object exists, the connection parameters are retrieved and the mechanism, which is accessible at the top of the LM-MUX is used to enumerate the available devices.  The resulting list of devices may be sorted/prioritized on the basis of the hints information supplied in discovery responses.
+
+<H4>Flow Control</H4>
+In multiplexed mode LM-MUX does not provide flow-control and cannot indefinitely buffer data that has been reliably delivered by IrLAP.  Without flow-control an LM-MUX may discard received data when an LM-MUX client is unable to accept it.  To assure the reliable delivery, IrLMP clients must provide either;
+
+<OL>
+<LI>their own flow-control method to ensure acceptance of all delivered data
+<LI>a recovery mechanism that causes the retransmission of lost data.
+</OL>
+
+IrLMP doesn't provide a convenient communications paradigm for addressing potential loss of data.
+
+<H4>IrDA Transport Protocols ( Tiny TP)</H4>
+TinyTP defines a credit based flow control scheme and relies on LM-MUX for multiplexing while providing 1- per transport connection flow control and 2- segmentation and reassembly of arbitrary sized PDUs.  
+<P>
+There is also scope for development of transport protocols that exploit the deterministic behavior provided by the exclusive mode.
+
+<H4>Legacy and Native Application Interfaces</H4>
+Two types of APIs are under development by the IrDA community.  First is legacy serial and parallel port communications that presently use RS232 cabling (IrCOMM emulates legacy device comm drivers). Second are native APIs for IrDA which would allow application peers to identify and locate each other, thus exposing the full functionality of IrLMP, and TinyTP.  Members are working to define a Winsock 2 Service Provider mapping LM-IAS services.  Finally, relevant Plug and Play (PNP) application notes are described.
+
+<H4>IrDA High Speed Extensions (1.15 and 4.0 Mbit/sec Data Speed Options)</H4>
+IrDA has included 1.152 and 4.0 Mbit/sec operational modes which need a few important upgrades and modifications to the transceiver circuitry and driver software needed for these higher speeds.  The main architectural difference is related to the need for the Communications Controller.  Note all implementations are backward compatible to the IrDA compliancy mandate of 9600 b/s negotiation (and likely speeds up to the UART based 115 kb/s.)   
+<P>
+The 1.152 Mb/s  mode requires a new circuit or component, termed a Communications Controller, since this mode does not directly interface to a standard UART as does the 115 kb mode as described in version 1.0.  
+The Communications Controller provides monitoring and data flow control between ISA Bus/FIFO and the UART/FIFO and allows direct access by the external bus.  
+<P>
+The 4.0 Mb mode uses Pulse Position Modulation (PPM) data encoding with four possible chip or time slice positions per data symbol.  The system can recognize and prevent interference with UART based systems by including the emission of a SIR Interaction Pulse (SIP) at least every 500 milliseconds.  High speed modes are transparent to IrLAP and IrLMP with speed options negotiated during normal IrLMP discovery processes. 
+
+<H4>IrDA Compliancy Trademark Licensing Program</H4>
+IrDA has developed a Compliancy Trademark Licencing program for products from members and non-members with use of the IrDA "Beaming IR" mark available to products that pass IrDA approved testing.  
+<P>
+Compliancy specifications for the IrDA's SIR, IrLAP and IrLMP levels are mandatory for both classifications of devices ( 'primary/commanding and secondary'  or  'secondary/responding only'  functionality.)
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><A HREF=http://www.irda.org/><font
+color="#FFFFFF">Infrared Data Association Web site</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/irdastan.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:04 GMT -->
+</HTML>

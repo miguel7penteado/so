@@ -1,0 +1,76 @@
+<html>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/eidetech.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:09 GMT -->
+<head>
+	<title>More about EIDE</title>
+</head>
+<body>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>How does EIDE work ? <FONT COLOR="#FF0000">Under construction</FONT></H3>
+To understand the basic concepts of Enhanced IDE and Advanced ATA drives, we must first understand the basics of hard disk drive technology and its relationship to the Operating System. Basically, when the Operating System needs data to be either "read from" or "written to" a hard drive, a BIOS routine (the Interrupt 13h routine) gets the command, and passes that command to the drive.  
+<P>
+How the command is passed, interpreted, and responded to, forms the basis for EIDE . In a nutshell, there are 7 registers, the Task File, that the BIOS writes to and reads from to create a command. An eighth register is used to read and write data. The signals that create these read and write signals are controlled by the BIOS, but their timing is determined by the interface hardware. The EIDE specifications dictate how fast these signals can be asserted or deasserted.
+<P>
+There are currently 4 modes of Programmed Input/Output (PIO) and 4 modes of Direct Memory Access  (DMA). The numbers all of you have been reading about are only a small portion of these specifications, but they are the ones that marketing people can use to impress you. These "transfer rates" are a result of the specification that controls how fast the I/O Read and Write cycle times of the data register can operate at. 
+
+<H4>The PIO modes</H4>
+The PIO mode determines how fast data is transferred to and from the drive. In the slowest possible mode, PIO mode 0, the data cycle time can not exceed 600 nanoseconds. In a single cycle, 16 bits are transferred in or out of the drive. In a single sector, there are 256 words (16 bits = 1 word). Remember a DOS disk sector contains 512 bytes of data but the EIDE Interface access this data as a 16 bit word, rather than a byte at a time. 2048 sectors are required to make up a megabyte. 
+<P>
+The theoretical transfer rate of PIO Mode 0 (600ns cycle time) is 3.3 megabytes per second. 
+<P>
+<STRONG>The PIO modes, with their respective transfer rates: </STRONG>
+<CENTER><P>
+<TABLE BORDER=4 CELLPADDING=7>
+<TR ALIGN=CENTER><TH>PIO Mode<TH>Cycle time<BR>(ns)<TH>Transfer rate<BR>(MB/s)<TH>Notes</TR>
+<TR ALIGN=CENTER><TD>0<TD>600<TD>3.3<TD ROWSPAN=3>these are the old ATA modes</TR>
+<TR ALIGN=CENTER><TD>1<TD>383<TD>5.2</TR>
+<TR ALIGN=CENTER><TD>2<TD>240<TD>8.3</TR>
+<TR ALIGN=CENTER><TD>3<TD>180 IORDY<TD>11.1<TD ROWSPAN=2>These are the newer ATA modes</TR>
+<TR ALIGN=CENTER><TD>4<TD>120 IORDY<TD>16.6</TR>
+</TABLE></CENTER>
+<P>
+The ATA-2 specific modes (3 and 4) use IORDY hardware flow control. The IORDY line is a hardware flow control line available on the I/O bus connectors. This means that the drive can use the IORDY line to slow down the interface when necessary. Interfaces without proper IORDY support may cause data corruption in the fast PIO modes. With these you're stuck with the slower modes, with typically half the bandwidth. When interrogated with an Identify Drive command, a routine provided by the enhanced BIOS ROMs required to support EIDE, a hard disk returns, among other things, information about the PIO and DMA modes it is capable of using. 
+
+<H4>The DMA modes</H4>
+DMA or Direct Memory Access means that the data is transferred directly between drive and memory without using the CPU as an intermediary, in contrast to PIO. In true multitasking operating systems like OS/2 or Linux, DMA leaves the CPU free to do something useful during disk transfers. In a DOS/Windows environment the CPU will have to wait for the transfer to finish anyway, so in these cases DMA isn't terribly useful. 
+<P>
+There are two distinct types of direct memory access. DMA and bus-mastering DMA. Ordinary DMA relies on the DMA controller on the computers system board to perform the complex task of arbitration, grabbing the system bus and transferring the data. In the case of bus-mastering DMA, all this is done by logic on the interface card itself. This adds considerably to the complexity and the price of a bus-mastering interface. 
+<P>
+Unfortunately, the DMA controller on ISA systems is ancient and slow, and out of the question for use with modern hard disk drives. VESA Local Bus cards cannot be used as DMA targets at all and can only do bus-mastering DMA. It is only on EISA and PCI based interfaces that non-bus-mastering DMA is viable. EISA type 'B' DMA will transfer 4MB/s, PCI type 'F' DMA between 6 and 8MB/s. 
+<P>
+<STRONG>The DMA modes supported are:</STRONG> (with their respective transfer rates)
+<CENTER><P>
+<TABLE BORDER=4 CELLPADDING=5>
+<TR ALIGN=center><TH COLSPAN=2>DMA Mode<TH>Cycle time<BR>(ns)<TH>Transfer rate<BR>(MB/s)<TH>Notes</TR>
+<TR ALIGN=center><TH ROWSPAN=3>Single Word<TD>0<TD>960<TD>2.1<TD ROWSPAN=2>also in ATA</TR>
+<TR ALIGN=center><TD>1<TD>480<TD>4.2 </TR>
+<TR ALIGN=center><TD>2<TD>240<TD>8.3</TR>
+<TR ALIGN=center><TH ROWSPAN=3>Multiword<TD>0<TD>480<TD>4.2<TD>also in ATA</TR>
+<TR ALIGN=center><TD>1<TD>150<TD>13.3</TR>
+<TR ALIGN=center><TD>2<TD>120<TD>16.6</TR>
+</TABLE></CENTER>
+<P>
+<HR>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="20%" bgcolor="#008080" align="center"><a href="eide.html"><font
+color="#FFFFFF">IDE, ATA, CAM, ATAPI and LBA</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="hdtech.html"><font
+color="#FFFFFF">Hard Disk Drive technologies</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="hdinter.html"><font
+color="#FFFFFF">Hard Disk Drive Interfaces</font></a></td>
+<td width="20%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="20%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table></CENTER>
+<HR>
+<A HREF="eideintr.html">Back to the IDE, ATA, CAM, ATAPI and LBA chapter</A><BR>
+
+</body>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/eidetech.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:10 GMT -->
+</html>

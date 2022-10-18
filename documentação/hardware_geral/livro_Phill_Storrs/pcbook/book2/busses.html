@@ -1,0 +1,191 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/busses.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<HEAD>
+<TITLE>PC Bus standards</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The PC external Bus slots</H3>
+
+<H4>A brief history of the PC busses</H4>
+In the early days of microprocessor chip based microcomputers, all microcomputers were built using their own proprietary bus designs. Before long someone had the bright idea that if designers used the same design specifications, you could build a computer out of "boards" from different companies. This idea created the the S-100, a bus that is still in use today in some areas. About the middle of 1975 Apple used an expansion bus on their Apple II, and its success set the stage for the desk top computers that followed, including the IBM PC when it appeared in 1981. The original PC used Intel's 8088 processor which was a 16-bit CPU that spoke to the world through an 8-bit data path. The original <A HREF= "../images/xt8bit.jpg">PC 8-bit bus slot</A> is still used by some simple I/O cards today. The 8088 ran at 4.77MHz, which was fine for the expansion cards, and running the expansion slots at the same clock speed as the CPU made the system boards easier to design and cheaper to build.
+<P>
+The IBM AT introduced a 16 bit data bus and the expansion slots had to handle 16 data bits.  
+The industry wanted to be able to use existing 8-bit cards, so the new "AT" slot had to be designed to be backward compatible with the PC slots. The AT extension connector was added to the end of the <STRONG>62 pin edge connector</STRONG> of the original 8-bit bus slot. This <STRONG>extension is a 36 pin edge connector</STRONG>. This bus slot was later given the name <A HREF="../images/isa1.jpg">Industry Standard Architecture (ISA)</A> and has survived to this day. One important aspect of this bus was that IBM never made any specification about bus speeds. 
+<P>
+In the original 6MHz IBM AT, and the subsequent 8MHz version, the bus simply ran along at the same speed as the CPU. It was not surprising that as clone vendors started looking for a marketing edge over IBM, they simply kept the bus running at the CPU speed as they boosted speeds to 10MHz, 12MHz, and even faster. This lead to problems with users starting to run into problems. Boards that ran fine in a 6 or 8 MHz computer were not reliable in faster ones.  The problem was especially severe with network cards.  It turned out that they couldn't run at these higher clock speeds. The industry eventually settled on 8MHz as the standard maximum clock speed and the name <STRONG>Industry Standard Architecture.</STRONG>
+
+<H4>Proprietary Bus problems</H4>
+Everything was fine until Intel made the 80386 available. Here was a processor that could access the world in 32-bit chunks and how should the industry provide for the wider data path?. In particular the data bus to the RAM needed to be 32 bits wide in order to take advantage of the 386 processors wider data bus. Up to this point many DOS computer systems has some of it's RAM on "expansion cards" plugged into the Bus slots and the ISA bus limited such RAM to being only 16 bit wide and to an access speed of 8MHz.
+<P>
+One answer was to put the system memory on a local bus with the processor on the system board.
+The memory could be connected directly to the processors data bus and have no buffer devices between it and the processor. This way it could be 32 bits wide and accessed at the processors clock speed. At this stage in the development of RAM technology the industry was still using DIL package RAM chips of 256k bits or one Meg bit capacity and it took a lot of system board real estate to fit in more than a few megabytes of RAM.  
+<P>
+Many companies decided to make special 32-bit expansion slots for proprietary memory boards that could be added later. This is where we can learn a lesson - many owners of computers with these system boards soon discover that they could not find these proprietary boards for their computers only a few months after they purchased the computer. Many manufacturers realised that a standard 32-bit bus was a better answer than many proprietary designs, and if it could run at the processor bus speed that would be even better.
+
+<H4>Micro Channel Architecture (MCA) and Extended Industry Architecture (EISA)</H4>
+IBM tried to regain control of the PC computer market with it's PS/2 range and the <A HREF="../images/mca.jpg">Micro Channel (MCA) bus</A>. The response from a number of influential clone manufacturers was to get together and design the <A HREF="../images/eisa1.jpg">Extended Industry Standard Architecture (EISA) bus</A>, providing a 32-bit data path.  The advantage of the EISA design over Micro Channel was that it remained backward compatible with ISA boards, right back to 8-bit cards. The cost of the computers using the MCA or EISA buses were high and so these new busses failed to get much of a market share. Computer purchasers went on buying more ISA Bus machines than anything else.
+<P>
+<CENTER><IMG SRC="../images/mcaisa1.jpg"><BR>
+<STRONG>The bottom card is an MCA card, the top card is an ISA bus card</STRONG></CENTER>
+<P>
+<CENTER><IMG SRC="../images/eisaisa.jpg"><BR>
+<STRONG>Here is an ISA bus card sitting on top of an EISA bus card</STRONG></CENTER>
+
+<H4>The need for speed</H4>
+Eventually a point was reached where the ISA bus just was no longer fast or wide enough. Windows 3.1 raised user expectations for high-resolution graphics displays and more than VGA's original 16 colours. The images produced required far more data than a simple text screen, and so performance was unacceptable as the computer tried to squeeze megabytes of information per second through a 16-bit bus running at 8MHz. 
+<P>
+Not only would the video system benefited from a faster/wider bus, faster hard drives and hard drive interfaces and network interface cards had outgrown the ISA bus. One solution was to design a faster bus for video and other components. Bringing the Bus Slot speed up to the then typical Bus Clock speed of 33 MHz, would provide a four-fold increase in data transfer rate.  Double the width of the data bus from 16 to 32 bits, and the transfer rate could be up to eight times that of the ISA bus.
+<P>
+Some designers started by simply wiring video circuitry into the CPU bus on system boards. The system board already had a "<STRONG>local bus" between the processor and it's RAM</STRONG> and this could be extended to include the video interface. This provided speed gains, but at the cost of flexibility. If you wished to upgrade the Video System all you could do was to disable the video on the system board, and resort to an ISA card in a bus slot.
+<P>
+The next solution was a throwback to the proprietary 32-bit memory cards of the early 386 systems. Designers created their own unique solutions for local bus video slots. This approach left the buyer dependent on the original vendor to develop and offer new video options as technologies change and improve and at the rate of development of PC hardware, this usually never happened.
+
+<H4>The VESA LOCAL BUS - a Bus buss built by a committee</H4>
+<CENTER><IMG SRC="../images/ex33c1.jpg"><BR>
+<STRONG>A VESA bus Video card</STRONG></CENTER>
+<P>
+The problem was first solved by the <STRONG>Video Electronics Standards Association</STRONG>. This is the group that made sense out of the mayhem that occurred when vendors tried to go beyond IBM's original specification for VGA.  When you wanted to run a system at higher than VGA's original specification of 640 by 480 you had to get drivers that worked with your application programs and hardware. 
+<P>
+The VESA standards for Super VGA signal timing and resolutions sorted out much of this trouble. The committee set some basic goals for a local bus specification. It had to be low cost, based on existing technology and system chip sets as much as possible. It had to offer significantly higher performance, handling not only the present data transfer loads, but the additional traffic expected from even higher resolution displays and multimedia applications. It had to be an open standard, so anyone could use it, and it had to be software transparent, so you would not need to use any troublesome drivers. It also should be also extendible to handle future technology, such as the Pentium processor with its 64-bit data path.
+<P>
+The result was the VESA-Bus specification. This set forth the basic characteristics of the bus, such as mechanical, physical, timing, and protocol details. For maximum flexibility, it was designed in such a way that it could easily be added to ISA, EISA, or Micro Channel system boards. To keep the design simple, the committee designed the VESA-Bus as an extension of the internal bus used within the 80486 processor. As a result, the VESA-Bus could use the full address range of the 486 chip. 
+<P>
+Many VESA slot equipped computer systems used a VESA, IDE/FDC/SPG interface card. The IDE interface on this card was the only part of the card that used the VESA-bus slot. The Floppy Disk Controller and the SPG functions still used the ISA portion of the slot.
+<P>
+Local Bus devices can be implemented with devices either integrated into the system board, or plugged into an expansion slot. The problem with integrated devices is the higher bus clock speeds push technology to its engineering limits. As the signals travel around the traces of printed circuit boards faster and faster, it is more and more difficult to maintain accurate timings. If an electrical signal is slowed too much on the way to its destination, then critical events may not take place at the correct instant, and processing crashes to a halt.
+<P>
+The faster the CPU runs, the smaller the load it can handle (the load on it's outputs). Sending a signal through an expansion slot rather than to a device located on the system board adds to the load on the bus. The VESA committee recommended only two VESA-Bus slots and two VESA-Bus devices (system board mounted devices) with a 33MHz (or slower) bus speed, one slot at 40MHz, and no slots at all for a 50MHz bus speed. 
+
+<H4>The VESA Bus connector</H4>
+A Micro Channel connector was used, placed in line with the existing ISA expansion slots. This layout meant the ISA slot was still available if the slot was not occupied by a VESA-Bus adaptor. The VESA-Bus devices did not make any use of the original ISA bus (except for the power connections) but instead got all the signals necessary from the VESA connector. This meant the original ISA bus connections were available to the expansion card for other purposes. Manufacturers were able to put multiple devices on a single expansion card, such as a IDE Hard Drive interface on the Local Bus and Floppy Disk Controller and SPG I/O functions on the ISA portion of the slot
+
+<H4>The VESA Bus was soon obsolete</H4>
+In 1993 plans were under way to develop the VESA-Bus to include a 64 bit version for the Pentium and to increase the number of devices that could be put on the Bus. The success of the PCI-Bus put an end to any further development. The VESA-Bus served the PC industry well for about two years but it faded away as more and more system board offered only PCI local bus slots.
+
+<H4>How much faster is the VESA-Bus ?</H4>
+The theoretical transfer rate for the ISA bus is about 5 Mbits per second, and the EISA-Bus is about 32 Mbits per second. A VESA Bus with a 33MHz CPU clock speed could provide transfer rates of 132 Mbits per second, 26 times more data than the ISA-Bus. The VESA-Bus was simply referred to as the Local-Bus by some authors and vendors.
+
+<H4>THE PCI LOCAL BUS - a bus built by INTEL</H4>
+<CENTER><IMG SRC="../images/pci.jpg"><BR>
+A typical PCI video interface card</CENTER>
+<P>
+<CENTER><IMG SRC="../images/vgapci2.jpg"><BR>
+A PCI video card in a PCI Bus slot on a 686 system board</CENTER>
+<P>
+The PCI-Bus (Peripheral Component Interconnect) was originally designed to speed up the display of graphics on Intel-based personal computers, but the standard itself is processor independent and suitable for other hardware add-ons that require high bandwidth, including network, video and SCSI adaptors. PCI was developed by INTEL but it did take some time to get it to work reliably. By the middle of 1993 the VESA-Bus became firmly entrenched in the market place and almost all DOS computer systems had VESA-Bus slots as standard. The wide acceptance of local bus technology only took a few months and by default, VESA-Bus become the first Local Bus standard.
+<P>
+For a while, many people in the computer industry saw a local-bus war between the two competing local-bus standards (VESA-Bus and PCI-Bus) but in reality they were not in the same battlefield. The PCI and VESA Local-Busses did basically the same thing - both speed up PC computers by letting peripherals like graphics adaptors and hard disk controllers run at up to 33MHz, instead of the 8MHz that the ISA-Bus limited them to. The similarity breaks down when we start talking about how the two designs work. 
+<P>
+The VESA-Bus bypassed the ISA bus by using the same bus the CPU is connected to it's RAM memory by and so it was relatively cheap and easy for system and peripheral makers to implement. Intel's PCI-Bus on the other hand, was a whole new bus, in much the same way the EISA and MCA busses were. The PCI bus gave only a slight speed improvement when used with 486 based systems, but it was far ahead when used with the Pentium chip. 
+
+<H4>Some more technical details of the PCI bus</H4>
+The PCI-Bus has some attractive features, such as concurrent bus-mastering, a full burst mode, and a type of pipe lining queue that can reduce the number of potential wait states compared to the VESA-Bus design.
+<P>
+The PCl-Bus uses three elegant techniques to resolve local bus problems. The first, known as reflective wave signalling, reduces the amount of electrical amplification required on the signal paths and thus reduces noise and loading problems. The second is multiplexing.  Multiplexing allows two different signals to use the same electrical path, reducing the number of pins required for peripheral chips and lowering manufacturing costs. The third is a protocol letting the PCl controller receive specific configuration information from the PCl devices themselves. Intel did not defined a standard adaptor connector for the bus, leaving that job up to a PCl-Bus special-interest group who settled on the white 112 pin connector.
+
+<H4>PCI the Universal Bus</H4>
+PCI is platform independent and was soon used in computers built around the PowerPC chip. This is one of the few times a standard I/O bus has been used across platforms and so this has to be a big feature in it's favour. The various companies involved in the PowerPC development, including Apple and IBM adopted the PCI-Bus for PowerPC based computers. Apple had been using the Macintosh NuBus for many years, but switched to the PCI-Bus for it's PowerPC products. It is ironical that the largest user of Motorola based processors lined up to buy bus technology from Intel. 
+<P>
+Other computer manufacturers are also using the PCI-Bus in there computer platforms with  Digital Equipment Corp. (DEC) with their Alpha RISC-based systems, and Hewlett-Packard and SUN Microsystems all including PCI-Bus slots in there products. Intel licensed its patents on the PCI Bus free of royalties to all who wished to use it.
+<P>
+By adopting an established industry standard the manufacturers of the other computer platforms are ensuring lower costs and more options for both users and developers who are no longer locked into their own proprietary options. The wide range of cards that have followed the use of the PCI-Bus on PC systems are available for the first time to users of other hardware. All that should be required is alternative driver software for the various platforms.
+
+<H4>Multi Bus architecture</H4>
+Multi Bus System boards helped to overcome problems in the continuing evolution of the DOS computer buses. System boards with VESA-Bus slots are dual bus boards as they have ISA and VESA-Bus slots by the design of the VESA-Bus standard. 
+<P>
+Many combinations of the various buses that have been available over the years are possible and some system board manufacturers produced boards with combinations of ISA, EISA, MCA, VESA and PCI-Bus. This was to allow users to make use of older exotic cards such as SCSI controllers and hardware cache boards in upgraded equipment.
+<P>
+Most system boards available today still have two ISA bus slots but there are PCI bus slot only boards, and EISA and PCI only boards available.
+
+<H4>What else is wrong with the good old ISA bus ?</H4>
+The ISA busses 24 address lines limit it to allowing I/O cards to use the first 16 Meg of addressable memory space for RAM or ROM on the card. Some specialised video cards and video capture cards look for a memory aperture (also known as a linear frame buffer), a hole in system memory, where they can insert and address their own continuous 1 or 2 Megbyte of video memory. This memory aperture overcomes the problem of page switching brought about by the assignment of only a 128 Kbyte area for the Video RAM. Remember most VGA video cards have at least 1 Megbyte of Video RAM on the video card but they must access it by switching parts of the RAM in and out of the assigned memory range. 
+<P>
+<CENTER><STRONG>The Characteristics of the various busses</STRONG>
+<TABLE BORDER>
+<TR><TH>Bus type</TH>
+<TH>Bus data width</TH>
+<TH>Bus speed</TH>
+<TH>Data transfer rate</TH>
+</TR>
+<TR><TD>PC/XT</TD>
+<TD>8 bits</TD>
+<TD>4.7 - 8 MHz</TD>
+<TD>3.25 (Mbits/Sec)</TD>
+</TR>
+<TR><TD>ISA</TD>
+<TD>16 bits</TD>
+<TD>8 MHz</TD>
+<TD>6.5 (Mbits/Sec)</TD>
+</TR>
+<TR><TD>EISA</TD>
+<TD>32 bits</TD>
+<TD>8 MHz</TD>
+<TD>32 (Mbits/Sec)</TD>
+</TR>
+<TR><TD>MCA</TD>
+<TD>32 bits</TD>
+<TD>8 MHz</TD>
+<TD>20 (Mbits/Sec)</TD>
+</TR>
+<TR><TD>VESA</TD>
+<TD>32 bits</TD>
+<TD>33 MHz to 50 MHz</TD>
+<TD>132 (Mbits/Sec) and above</TD>
+</TR>
+<TR><TD>PCI</TD>
+<TD>32 bits</TD>
+<TD>33 MHz</TD>
+<TD>132 (Mbits/Sec)</TD>
+</TR>
+</TABLE></CENTER>
+
+<H4>The Advanced Graphics Port (AGP Bus)</H4>
+AGP was announced, and started to find it's way into "top end" System Boards, during the last few months of 1997. This is called a Port rather than a Bus because it is intended for a particular purpose, instead of a universal bus slot. AGP is based on the latest PCI specification (ver 2.1), running at 66 MHz instead of 33 MHz like all existing PCI Bus cards, and having three extensions to the PCI specification. These extensions are:
+<OL>
+<LI>Pipelined memory read/write operations <BR>
+<LI>Demultiplexing of address and data on the bus <BR>
+<LI>Timing for data transfer rate as if clocked at 133 MHz <BR>
+</OL>
+Due to the high data transfer rate between the graphics accelerator and main memory, AGP enables graphic accelerators to use main memory in addition to memory on the Video card. 
+<P>
+This memory is referred to as AGP Memory. AGP in theory allows a peak data transfer rate of up to 528 Mbytes/second between the PC's main memory and the AGP graphics accelerator, compared to a transfer rate of only 132 Mbytes/second attainable by today's PCI bus. Doubts exist about this claim because this figure is the whole bandwidth of main memory and it has to be shared with CPU and other devices. AGP may never be able to get a throughput of 528 MB/s, but the trend to 100MHz bus speeds will speed main memory transfers and make this more likely.
+<P>
+Like most other modern PC developments, the chipset has to provide services for the AGP bus, in particular, the function to map the 'AGP memory' to normal main memory. Intel calls this GART (Graphics Address Remapping Table). This means the Video Interface can use some of the System Memory rather than having dedicated Video RAM on the card.
+<P>
+<STRONG>The benefits AGP is offering:</STRONG><BR>
+<OL>
+<LI>Higher bandwidth than PCI, up to 4 times as high 
+<LI>No sharing of bandwidth with other components like the PCI bus
+<LI>DIME (direct memory execution) of textures 
+<LI>CPU accesses to system RAM can proceed concurrently with the graphics chip's AGP RAM reads 
+Allowing the CPU to write directly to shared system AGP memory when it needs to provide graphics
+data, such as commands or animated textures. Generally the CPU can more quickly access main
+memory than it can graphics local memory via AGP, and certainly faster than via the PCI bus. 
+</OL>
+<P>
+<STRONG>Software Considerations</STRONG><BR>
+Unfortunately, getting an AGP board plus an AGP graphic accelerator won't be enough to take advantage of AGP's new performance. The operating system has to take care of particularly the DIME/GART part of the AGP benefits. The Operating System has to provide main memory for the AGP RAM. This is achieved via DirectDraw in Windows98 and Windows NT 5.
+<P>
+<A HREF="../images/p2agp.jpg">Example of a Pentium II System Board with an AGP socket</A>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/busses.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

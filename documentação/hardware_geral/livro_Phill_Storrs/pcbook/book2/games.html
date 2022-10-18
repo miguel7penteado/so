@@ -1,0 +1,150 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/games.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:44 GMT -->
+<HEAD>
+<TITLE>The details of the games port</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The PC Games Port</H3>
+
+The Games ports available on PC computers provide for two Analog joysticks, each with X and a Y controls, and two "fire buttons" per joystick. The joystick controls are based on simple timer circuits and the resistance elements in the X and Y controls are typically 150K ohm max resistance. 
+<P>
+Some Games port hardware have problems with drift as the capacitors used in the timers (usually 0.01uF) are not of sufficient stability. These capacitors should be plastic type not ceramic.
+<P>
+The standard Games connector is a DB15S socket on the back of the computer and due to the connections to this plug  only one joystick can be used when a "standard" joystick is used. If we wish to connect two joysticks we usually have to use a "Y" cable that makes the second joystick port available for connection to a second joystick.
+<P><CENTER>
+<STRONG>The connections on the DB15S connector are as follows:-</STRONG>
+<P>
+<TABLE BORDER>
+<TR>
+<TH>Pin</TH>
+<TH>Used for</TH>
+<TH>Notes</TH>
+</TR>
+<TR>
+<TD ALIGN=CENTER>1</TD>
+<TD ALIGN=CENTER><STRONG>Plus 5 Volt</STRONG> </TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>2 </TD>
+<TD ALIGN=CENTER>Joystick 1 </TD>
+<TD ALIGN=CENTER>Button A </TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>3 </TD>
+<TD ALIGN=CENTER>Joystick 1</TD>
+<TD ALIGN=CENTER>X coordinate</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>4 </TD>
+<TD ALIGN=CENTER><STRONG>Ground</STRONG> </TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>5 </TD>
+<TD ALIGN=CENTER><STRONG>Ground</STRONG></TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>6</TD>		
+<TD ALIGN=CENTER>Joystick 1</TD>	
+<TD ALIGN=CENTER>Y coordinate </TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>7</TD>		
+<TD ALIGN=CENTER>Joystick 1</TD>	
+<TD ALIGN=CENTER>Button B</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>8</TD>
+<TD ALIGN=CENTER><STRONG>Plus 5 Volt</STRONG></TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>9</TD>		
+<TD ALIGN=CENTER><STRONG>Plus 5 Volt</STRONG> </TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>10</TD>		
+<TD ALIGN=CENTER>Joystick 2</TD>	
+<TD ALIGN=CENTER>Button A </TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>11</TD>		
+<TD ALIGN=CENTER>Joystick 2</TD>	
+<TD ALIGN=CENTER>X coordinate </TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>12</TD>		
+<TD ALIGN=CENTER><STRONG>Midi out</STRONG> or ground</TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>13</TD>		
+<TD ALIGN=CENTER>Joystick 2</TD>	
+<TD ALIGN=CENTER>Y coordinate</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>14</TD>		
+<TD ALIGN=CENTER>Joystick 2</TD>	
+<TD ALIGN=CENTER>Button B </TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER>15</TD>		
+<TD ALIGN=CENTER><STRONG>Midi in</STRONG> or Plus 5 Volt </TD>
+<TD></TD>
+</TR>
+</TABLE></CENTER>
+<P>
+The Potentiometers making up the X and Y coordinate controls are wired back to the Plus 5 volt and the "Fire Buttons" switch to ground. The potentiometers are usually 150K linear potentiometers
+<P>
+<CENTER><STRONG>Here we have a diagram of the modern Joy Stick configuration.</STRONG>
+<P>
+<IMG SRC="../images/joyone.gif"></CENTER>
+<P>
+<STRONG>Important:</STRONG> When the games port was first designed Midi devices did not exist. When early sound cards started providing a games port, the same connector was also used to provide a Midi interface. <STRONG>This meant two of the pins, pins 12 and 15, had to be assigned to the Midi interface rather than to providing ground and +5 volt as they originally did</STRONG>.
+<P>
+Most joysticks you buy are wired to pins 1,2,3,4,5,6 and 7 which means only one joystick can be connected to the games port. No provision is made to use the second joystick port on pins 9,10,11,13 and 14.
+<P>
+This can be overcome by using a <STRONG>"Y" cable</STRONG> that brings the second joystick connections out to the pins 1,2,3,4,5,6 and 7 of another DB15 connector. This allows two joysticks to be connected to the DB15S connector found on the back of most DOS computers. Note due to the addition of the Midi interface, pins 12 and 15 on the second joystick side of the connector are not used to connect the joystick. The ground (4 and 5) and +5 volt (1 and 8) pins on the other side are used instead.
+<P>
+Games port cards are available that have two DB15S connectors on the back and these are wired such that two "standard" joysticks can be plugged into the card without the "Y" cable. These cards can be used to add a Games port to the few DOS computers that do not come with the Games port fitted.
+<P>
+We have already said modern sound interface cards also provide a Games Port and a MIDI interface via the same connector. When installing a sound interface card in a computer that already had a Games Port provided by an I/O card or the system board, you must turn one of the Games Port interfaces off. It is good practice to cover the DB15 connector of the unused Games Port so the user does not plug into the wrong socket. The Games Port interface on sound cards can usually be disabled and this is done either through the cards setup software or sometimes via a jumper on the card.
+<P>
+<CENTER><STRONG>The MIDI interface</STRONG>
+<P>
+<IMG SRC="../images/midi.gif"></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="ioports.html"><font
+color="#FFFFFF">Back to the PC and its I/O Ports</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="ioassign.html">The common I/O port assignments</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="parallel.html">The PCs Parallel ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="serial.html">The PCs Serial (Comms) ports</a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/games.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:45 GMT -->
+</HTML>

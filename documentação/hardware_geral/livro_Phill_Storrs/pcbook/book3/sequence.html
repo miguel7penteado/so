@@ -1,0 +1,64 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/sequence.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:49 GMT -->
+<HEAD>
+<TITLE>The PC Keyboard sequence of events</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC="../images/pc2.jpg" ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>The sequence of events involved with the PC keyboard</H3>
+
+<OL>
+<LI>The Keyboard Processor scans the Key Matrix over and over again and when a key on the Keyboard is pressed, the Keyboard Processor detects the key-press and determines a <A HREF=scancode.html>Scan Code</A> for that key, from its position in the matrix. At this point, the Scan Codes represent the keys position in the matrix, rather than what is written on top of the key.
+<P>
+<LI>The keyboard processor than clocks the Scan Code into the Keyboard Interface on the computers System Board. This is achieved by the Keyboard Processor sending the <STRONG>Scan Code as serial data</STRONG> on a data line, and <STRONG>clock pulses on a clock line</STRONG>. The cable between the Keyboard and the Computers System Board has four wires, Ground, Plus 5 volt, Data and Clock.
+<P>
+<LI>When the keyboard interface circuit has received 11 bits of Key Stroke data, (the old XT computer only used 8 bits) it generates a <STRONG>Hardware Interrupt on IRQ 1</STRONG>, to start the <STRONG>Keyboard Service Routine</STRONG>.  As mentioned earlier, the keyboard also generates release-codes when that key is released but as these are only used to generate "Typmatic keypresses",  we will not need to look at these here.
+<P>
+<LI>When the computers processor gets the <STRONG>Hardware Interrupt signal IRQ 1</STRONG>, via an 8259 IRQ Controller Chip, it runs the Interrupt Handling Routine to find out the Interrupt Number that caused the interrupt. The Interrupt controller chip expands the single IRQ input into the processor, out to 15 Interrupt lines, in modern PC hardware.
+<P>
+<LI>The Interrupt Handling Roputine then uses the Interrupt Number to find the Vector, from the <STRONG>Interrupt Vector Table</STRONG>, that points to the start of the Service Routine that processes the interrupt. This routine is called the <STRONG>Keyboard Service Routine</STRONG> and the Vector Address found above, is the Start Address of the Keyboard Service Routine</EM>.
+<P>
+<LI>The processor loads the Start Address of this routine into it's Program Counter and then proceeds to run the Keyboard Service Routine. 
+<P>
+<LI><B>The Keyboard Service Routine</B> takes the Scan Code from the Keyboard Interface Circuit on the System Board and <B>clonsults the Status Bytes</B>, stored in memory locations 00417 and 00418 hex. When we press most keys on the keyboard, they could be Upper or Lower case or Alternate characters, the <I>Status Bytes keep a record of the State of the Shift and ALT keys</I>. 
+<P>
+<LI>The keyboard Service Routine then generates a <STRONG>Two Byte code</STRONG> that it puts in the <STRONG>Keyboard Buffer</STRONG> area in <STRONG>RAM Memory</STRONG>, from 0041E hex to 0043D hex. 
+<P>
+<LI>The Two Byte codes take two forms:
+<UL>
+<STRONG>Normal Characters</STRONG>
+<UL>
+<LI>Main byte (low byte) ASCII code
+<LI>Aux byte (high byte) SCAN code
+</UL>
+<P>
+<STRONG>Special Characters</STRONG>
+<UL>
+<LI>Main byte (low byte) 00(zero)
+<LI>Aux byte (high byte) Scan-code or special code.
+</UL>
+</UL>
+<P>
+<LI>Some keys change the state of the Status Bytes and these do not produce a character in the Keyboard Buffer, they only change the bits in the Status Bytes.
+<P>
+<LI>Other routines within the operating system, or applications, read the Key Stroke Data from the Keyboard Buffer and make use of it.
+</OL>
+<STRONG>Important:</STRONG> Do not confuse the operation of the keyboard interface and the Video System. There is no direct link between the two. The Video System reads data from the Video RAM and produces the Video Display from that. The data in the Video RAM is written there by the Operating System or an Application.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="keyboard.html"><font
+color="#FFFFFF">Back to the Keyboard chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/sequence.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:49 GMT -->
+</HTML>

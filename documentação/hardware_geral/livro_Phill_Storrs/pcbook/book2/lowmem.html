@@ -1,0 +1,228 @@
+<HTML>
+<TITLE>DOS and Low Memory</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/lowmem.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>How DOS uses the Low Memory Addresses</H3>
+
+DOS, and later Operating Systems make use of  the first 1.5K bytes of the RAM Memory for some internal purposes. The first 1024 bytes, from 00000<SUB>hex</SUB> to 003FF<SUB>hex</SUB>, is occupied by the Interrupt Vector Table. The next 260 (or so) bytes, from 00400<SUB>hex</SUB> to about 00504<SUB>hex</SUB> is used for the  <A HREF="#bcia">BIOS Control Information Area</A> and the <A HREF="#iaca">Intra-Application Communications Area</A>.
+<P>
+The following list has been compiled with the help of the book Programmer's Guide to the IBM PC by Peter Norton. You will notice some addresses are not listed here, most of these were used by the Disastrous PC Junior, an IBM computer that was not really IBM compatible.
+<P>
+Much of the operation of an Intel Processor based computer is controlled by data that is stored in low-memory locations, particularly the two adjacent 256 byte areas beginning at 00400<SUB>hex</SUB> and 00500<SUB>hex</SUB>. Data is loaded into these areas from the startup routines in the BIOS ROM when the computer is booted.
+<P>
+The addresses in the following table are expressed in simple form but when requesting <STRONG>debug</STRONG> to supply details of these addresses you must express the addresses in Segment and Offset Format.
+<P>
+The address 00400<SUB>hex</SUB> could be expressed as 0000:0400<SUB>hex</SUB> or could be shortened to 0:400<SUB>hex</SUB>.
+<P>
+You can inspect these addresses by using the <STRONG>Display</STRONG> command in Debug. (D from the Debug prompt)
+<P>
+Where two bytes are involved in expressing some value, the order of the bytes is Low Byte followed by the High Byte. You must put the second byte in front of the first byte to see the actual value.<BR> <STRONG>An example of this is the two bytes at 00413 and 00414<SUB>hex</SUB></STRONG>. 
+<P>
+The hex numbers you will see are 80 and 20<SUB>hex</SUB>. The actual number is 0280<SUB>hex</SUB>, which is 640 decimal.
+<P>
+I have listed the most useful addresses and they are expressed in simple Hexadecimal form.
+<P>
+<STRONG>410<SUB>hex</SUB> (a 2-byte word)</STRONG> This word holds the equipment-list data that is reported by the equipment-list service, interrupt 11<SUB>hex</SUB>. the format of this word is shown in the table below.
+<P>
+<PRE>
+<STRONG>Byte 410<SUB>hex</SUB></STRONG>
+7 6 5 4 3 2 1 0 bit			<STRONG>Meaning</STRONG>
+x x			Number of Diskette drives installed (00=1, 01=2)
+    x x			Initial Video Mode 
+        x x 		Amount of RAM on the System Board *
+            x 		Not used
+              x		A (1) one if any Disk drives present
+</PRE>
+<P>
+The amount of memory fitted to the old original IBM PC/XT computers was often only 16K, hence the rather low numbers associated with the two bits that indicate the amount of RAM on the System board. 00=16K, 01=32K, 11=64K
+<P>
+* the meaning of these two bytes seems to have been lost in modern computer systems and you are likely to find any number in here.
+<P>
+<PRE>
+<STRONG>Byte 411<SUB>hex</SUB></STRONG>
+7 6 5 4 3 2 1 0  bit			<STRONG>Meaning</STRONG>
+x x			Number of printer ports installed
+    x			A (1) one of a serial printer is in use
+      x			A (1) one if a Game Adapter is installed
+        x x x		Number of serial (com) ports installed
+              x		Zero (0) if a DMA chip is installed
+</PRE>
+<P>
+<STRONG>Using Debug, you can display the contents of these locations thus:</STRONG><BR>
+At the debug prompt (-) type D 0000:0410 L2 and press Enter (segment 0000, offset 0410 for a Length of 2 bytes)
+<P>
+When Debug displays the contents of these two bytes as Hexadecimal numbers, break them down into their Binary components, put them into the tables above, and see how the computers configuration is reported by the BIOS start routines.
+<P>
+<STRONG>413<SUB>hex</SUB> (a 2-byte word) </STRONG>This word contains the usable memory size in Kbytes. BIOS interrupt service 12H reports the value of this word.
+<P>
+<STRONG>417 and 418<SUB>hex</SUB></STRONG> These two bytes are the Keyboard Status Bytes that are used to keep track of the various shift and control keys on the keyboard.
+<P>
+<STRONG>419<SUB>hex</SUB> (one byte)</STRONG> This byte was intended for future use to control an alternate keyboard.
+<P>
+<STRONG>41A<SUB>hex</SUB> (a 2-byte word)</STRONG> This word points to the start of the keyboard buffer.
+<P>
+<STRONG>41C<SUB>hex</SUB> (a 2-byte word)</STRONG> This word points to the tail of the keyboard buffer.
+<P>
+<STRONG>41E to 43D<SUB>hex</SUB> (a 32 byte area)</STRONG> This is the Keyboard Buffer area.
+<P>
+<STRONG>43E<SUB>hex</SUB> (one byte)</STRONG> This byte indicates if Diskette Drives need to be calibrated before seeking to a track. Bits 0 to 3 correspond to floppy drives A through to D. If a bit is set to Zero then re calibration is necessary.
+<P>
+<STRONG>43F<SUB>hex</SUB> (one byte)</STRONG> This byte returns the Diskette Motor Status. bits 0 to 3 correspond to floppy drives A through to D (the XT type computer could be equipped with four floppy drives).
+<P>
+<STRONG>440<SUB>hex</SUB> (one byte)</STRONG> This byte holds the count-down until the diskette motor is shut off. the count is set to 37 (about 2 seconds) at the beginning of each diskette operation.
+<P>
+<STRONG>441<SUB>hex</SUB> (one byte)</STRONG> This byte indicates the diskette status , each bit representing a particular kind of error. A bit value of 0 indicates no error, 1 indicates an error.
+<P>
+<CENTER><TABLE BORDER>
+<TR><TH>Binary Bit</TH>
+<TH>Meaning</TH>
+</TR>
+<TR><TD>7</TD>
+<TD>Diskette timed out failed to respond in time</TD>
+</TR>
+<TR><TD>6</TD>
+<TD>Seek to track failed</TD>
+</TR>
+<TR><TD>5</TD>
+<TD>Diskette controller chip failed</TD>
+</TR>
+<TR><TD>4</TD>
+<TD>Cyclical redundancy check failed (CRC) error in data</TD>
+</TR>
+<TR><TD>3</TD>
+<TD>DMA diskette error</TD>
+</TR>
+<TR><TD>2</TD>
+<TD>Sector not found-diskette damaged or not formatted</TD>
+</TR>
+<TR><TD>1</TD>
+<TD>Address mark on diskette not found</TD>
+</TR>
+<TR><TD>0</TD>
+<TD>Invalid diskette command requested</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+<STRONG>442<SUB>hex</SUB> (seven bytes)</STRONG> These seven bytes hold the diskette controller status information
+<P>
+Starting at <STRONG>449<SUB>hex</SUB> is a 30 byte</STRONG> area that is used to control the Video System.
+<P>
+<STRONG>449<SUB>hex</SUB> (one byte)</STRONG> This byte specifies the current Video Mode<BR>
+<P>
+<CENTER><TABLE BORDER>
+<TR><TH>Code</TH>
+<TH>Meaning</TH>
+</TR>
+<TR><TD>0</TD>
+<TD>40-column text, no colour</TD>
+</TR>
+<TR><TD>1</TD>
+<TD>40-column text, 16 colour</TD>
+</TR>
+<TR><TD>2</TD>
+<TD>80-column text, no colour</TD>
+</TR>
+<TR><TD>3</TD>
+<TD>80-column text, 16 colour</TD>
+</TR>
+<TR><TD>4</TD>
+<TD>320 by 200 graphics, 4-colour</TD>
+</TR>
+<TR><TD>5</TD>
+<TD>320 by 200 graphics, no colour (4 shades of grey)</TD>
+</TR>
+<TR><TD>6</TD>
+<TD>640 by 200 graphics, 2 colour</TD>
+</TR>
+<TR><TD>7</TD>
+<TD>Monochrome adapter mode</TD>
+</TR>
+</TABLE></CENTER>
+<P>	
+<STRONG>44A<SUB>hex</SUB> (a 2-byte word) </STRONG>This word holds the screen width in text columns. Column widths are stored in the Hex equivalent of 20, 40 or 80.
+<P>
+<STRONG>44C<SUB>hex</SUB> ( a 2-byte word)</STRONG> Here the screen regeneration length is held.
+<P>
+<STRONG>44E<SUB>hex</SUB> ( a 2-byte word)</STRONG> This word holds the screen location offset. This is the starting offset address into the Video RAM.
+<P>
+<STRONG>450<SUB>hex</SUB> (eight 2-byte words)</STRONG> These locations give the cursor locations for eight separate visual pages, starting at page zero.
+<P> 
+<STRONG>460<SUB>hex</SUB> (a 2-byte word) </STRONG>these two bytes hold the size of the cursor based on a range of cursor scan lines. The first byte gives the end scan line, the second the starting scan line.
+<P>
+<STRONG>462<SUB>hex</SUB> (one byte)</STRONG> This byte holds the current display page number.
+<P>
+<STRONG>463<SUB>hex</SUB> (a 2-byte word) </STRONG>This address stores to port address of the Video Controller Chip. It is usually set to 3D4<SUB>hex</SUB>.
+<P>
+<STRONG>465<SUB>hex</SUB> (one byte)</STRONG> This byte contains the CRT mode setting.
+<P>
+<STRONG>466<SUB>hex</SUB> (one byte) </STRONG>This byte contains the colour-palette mask settings.
+<P>
+<STRONG>467<SUB>hex</SUB> (five bytes) </STRONG>These bytes were used for Cassette Tape control in the original IBM PC.
+<P>
+<STRONG>46C<SUB>hex</SUB> (four bytes)</STRONG> These bytes stored as two 2-byte words provide the master clock count.
+<P>
+<STRONG>470<SUB>hex</SUB> (one byte)</STRONG> This byte indicates that clock roll-over has occurred and is used to increment the date.
+<P>
+<STRONG>471<SUB>hex</SUB> (one byte) </STRONG>This byte is used to indicate a keyboard break has occurred.
+<P>
+<STRONG>472<SUB>hex</SUB> (a 2-byte word) </STRONG>These two bytes are used to signal that a keyboard reboot is in progress. Whenever the system is rebooted with a Cont. Alt. Del key combination this word is set to 1234.
+<P>
+<STRONG>473<SUB>hex</SUB> (one byte)</STRONG> reserved for IBM ? Some say a hex code of 24 in this byte indicates a stock dividend is to be issued.
+<P>
+<STRONG>500<SUB>hex</SUB> (one byte)</STRONG> Used by DOS and by basic to control the Print-Screen operation.<BR>
+<UL>
+<LI>00 indicates all is OK
+<LI>01 indicates Print-Screen is in progress
+<LI>FF indicates that an error has occurred in a print-screen operation
+</UL>
+<P>
+<STRONG>504<SUB>hex</SUB> (one byte) </STRONG>This byte is used in a single floppy drive system to indicate whether the one real drive is acting as drive A of drive B.<BR>
+<UL>
+<LI>00 Acting as drive A
+<LI>01 Acting as drive B
+</UL>
+<P>
+<STRONG>510 to 51D<SUB>hex</SUB></STRONG> Was used by the Basic Interpreter for various purposes, can now be used by applications as the Basic Interpreter is never used.
+<P>
+<A NAME="bcia"></A><H4>The (BIOS) Control Information Area</H4>
+Many of the addresses in the 400<SUB>hex</SUB> and 500<SUB>hex</SUB> areas are interesting in that they contain data vital to the operation of the various BIOS and DOS service routines. In many instances programs can return the information stored in these addresses by invoking a BIOS interrupt, and in all cases programs can access the information directly. You can check on the values for yourself by starting Debug and using the syntax <STRONG>D 0:oooo Ln</STRONG>, where oooo is the address of the first byte of data and n is the number of bytes that are required for that data. For example, the amount of conventional memory is indicated by two bytes starting at 413<SUB>hex</SUB>, and so at the debug prompt you would type <STRONG><EM>D 0:413 L2</EM></STRONG>
+<P> 
+<A NAME="iaca"></A><H4>The Intra-Application Communications Area</H4>
+Although the BIOS Control Information Area comprises the largest part of the "400-block", the Intra-Application Area is also located there. This is a 16 byte reserved area from 4F0 to 4FF<SUB>hex</SUB> that is used to store data that can be shared by several different programs. 
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="memory.html"><font
+color="#FFFFFF">Back to the PC memory chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="memchips.html"><font
+color="#FFFFFF">PC Memory hardware over the years</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="xmsmem.html"><font
+color="#FFFFFF">Extended Memory and High Memory</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="../images/memmap.jpg"><font
+color="#FFFFFF">The PC Memory Map</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="cache.html"><font
+color="#FFFFFF">Cache memory</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/lowmem.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

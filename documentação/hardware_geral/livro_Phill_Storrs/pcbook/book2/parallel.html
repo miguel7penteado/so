@@ -1,0 +1,254 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/parallel.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<HEAD>
+<TITLE>The Parallel ports</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The PC Parallel Ports</H3>
+
+<H4>The Parallel Port:</H4>
+This port was first provided for a Printer (a hard copy device). DOS and many application programs expect the printer to be a Parallel interfaced device, connected to the first Printer Port, LPT 1.  The actual I/O address of LPT1 depends on the hardware present in the computer.
+<P>
+<STRONG>The Parallel Port I/O address assignment</STRONG>
+<P>
+Three addresses are available to the Parallel Ports and at boot-up, the setup routines in the BIOS ROM look for Parallel Ports on the I/O bus, and assigns the LPT numbers, from LPT 1, in this order :-
+<UL TYPE=SQUARE>
+<LI>03BC to 03BE
+<LI>0378 to 037A
+<LI>0278 to 027A
+</UL>
+<P>
+Officially LPT1 uses I/O address 0378 to 037A but when the BIOS setup routine is looking for Parallel Ports it <STRONG>assigns the first one it finds</STRONG> (in the order given above) as LPT1. The address 03BC to 03BE was first provided by a Parallel Port on IBMs Mono Display Adaptor Video Card but today it is quite common to find this address available on Parallel Port hardware.
+<P>
+<STRONG>The Parallel Ports are assigned an IRQ line as follows.</STRONG>
+<BLOCKQUOTE><PRE>
+<STRONG>Port	IRQ</STRONG>
+LPT 1	IRQ 7 
+LPT 2	IRQ 7 or IRQ 5
+</PRE></BLOCKQUOTE>
+In the eight bit PC computer (PC or PC/XT type) IRQ 7 was assigned to both LPT 1 and LPT 2  but in later generation hardware  IRQ 5 is assigned to LPT 2.
+<P>
+The IRQ line is not usually used by software communicating with the LPT Ports and so IRQ 7 and IRQ 5 is usually available for other I/O functions. This means IRQ 7 and IRQ5 can be used for some other I/O function. Sound Cards as a rule use either IRQ5, 7 or 10 as the default IRQ. 
+<P>
+<STRONG>Parallel Ports can be used for:</STRONG>
+<UL>
+<LI>Printer with a Parallel interface 
+<LI>Computer to Computer file transfer (utilities like Laplink and Interlink)
+<LI>Simple Network (software like Lantastic Z and Interserver)
+<LI>Low cost Tape Backup drives
+<LI>Removable high capacity magenetic media drives
+<LI>External CD-ROM drives
+<LI>Optical Scanner devices
+<LI>SCSI interface adaptors are available that provide a SCSI interface via a Parallel Port
+<LI>Pocket Hard Disk Drives interface via a Parallel Port
+<LI>Digital Camera
+<LI>Data Aquisition and Control
+<LI>Software Security Device
+</UL>
+<P>
+The Parallel Port Standard is based on the Centronics Parallel Interface Standard but it has been modified to be bidirectional. Some older Parallel Port hardware in some DOS type computers are not fully bidirectional and these will not work some devices such as Pocket Hard Drives and Tape Backup Drives. The standard Parallel Cable has a DB25P (plug) on the computer end (a socket is used on the computer) and a 36 pin Centronics plug on the printer end. The cable should be shielded and should be no longer than 3 metre. When ASICS chips were first used to provide the Parallel Port, some of these had trouble driving long cables (over 3 m) because they had LSI outputs rather than TTL outputs and they did not like high capacitance loading. 
+
+<H4>MORE DETAILS ON THE PC PARALLEL PORT</H4>
+Over the years the Parallel Port on the back of a typical PC Computer, has undergone slow but steady improvement. We now have six types of Parallel Port that have been used over the years.
+<P>
+<OL>
+<LI>Unidirectional (4 bit)
+<LI>Bidirectional (8 bit)
+<LI>Standard Parallel Port (SPP) also called Type 1
+<LI>DMA Type 3 (used only by IBM)
+<LI>Enhanced Parallel Port (EPP)
+<LI>Enhanced Capability Port (ECP)
+</OL>
+<P>
+By 1994 this development was getting out of hand, and so the IEEE set down standard modes of operation for the Parallel Port, in an document with the title IEEE 1284-1994, <EM>Standard Signaling Method for a Bi-directional Parallel Interface for Personal Computers</EM>.  Before this time there were no set standards as to how the Parallel Port should behave when connected to devices such as Printers, Scanners External Disk Drives etc. The IEEE defined five modes of operation. These modes take care of the various types of hardware that have developed over the years since the PC Computer was released.
+<P>
+<OL>
+<LI>Compatibility or Centronics Mode. 
+<LI>Nibble Mode.  
+<LI>Byte Mode 
+<LI>EPP Mode (Enhanced Parallel Port). 
+<LI>ECP Mode (Extended Capabilities Mode)
+</OL>
+<P>
+This IEEE specification is aimed at standardising the behavour between a PC Computer and an attached device. Although the specification deals mainly with <STRONG>Printers</STRONG>, devices like SCSI Adaptors, CDROM, High Capacity Disk Drive and Tape Backup Adaptors,  Optical Scanners and simple LAN interfaces are also covered to some extent.
+
+<H4>The Uni-directional (4 bit) Port</H4>
+When the PC was first designed the Parallel Port was only intended to send data to a printer. Eight Data lines sent eight bit data to the printer, and control lines available in the original Centronics Interface standard, provided for flow control and error signals. All of the 5 control lines from the peripheral to the PC are normally used for external status indications. Using these lines, a peripheral can send a byte of data (8 bits) by sending 2 nibbles (4 bits) of information to the PC in two data transfer cycles.
+<P>
+The Unidirectional (4 bit) Port was capable of data transfer rates of <STRONG>40 to 60 KB/s</STRONG> in the reverse direction and up to <STRONG>140 KB/s</STRONG> in the forward direction.
+
+<H4>The Bi-direction (8 bit) Port and Standard Parallel Port (SPP)</H4>
+This was introduced in 1987 with the IBM PS/2 range of computers. Alternative names include , <STRONG>PS/2</STRONG> type, or <STRONG>Type 1</STRONG>. Data transfer rates as high as <STRONG>300KB/s</STRONG> can be achieved.
+<P>
+The Bi-directional Parallel Port opened up the way for eight bit communications between the computer and peripheral devices across the Parallel I/O Port. This was done by redefining some unused pins in the Parallel (Centronics) connector, and by defining a Status Bit, used to indicate which direction data was traveling across the interface.
+
+<H4>Bidirectional (8 bit DMA) Type 3 Port</H4>
+The use of  a DMA Channel made this port much faster than the Type 1 port covered above. There was also a similar Type 2 port from IBM but this was not used for long and was superceded by the Type 3. IBM was the only company to use Type 2 and 3 Parallel I/O Ports.
+
+<H4>The Enhanced Parallel Port (EPP)</H4>
+The EPP was developed in 1992 by Intel, Xircom and Zenith and is sometimes referred to as the <STRONG>Fast Mode Parallel Port</STRONG>. EPP can operate at close to the ISA Bus speed, providing about ten times the data rate of the older Parallel Port modes. Transfer rates in the order of <STRONG>500K to 2MBytes</STRONG> per second are possible. This is achieved by allowing the hardware contained in the port to provide flow control, (hand shaking) rather than have the service routines do it.  
+<P>
+The IEEE incorporated the EPP standard into its document 1284-1994 but because some minor changes they made to the 1992 version of the standard, we now have two incompatible standards for EPP. There is the original EPP Standards Committee version 1.7, and the IEEE 1284 version. Because the differences were only minor, new peripherals can be designed to cope with the two variations, but older peripherals made to the original EPP 1.7 standard may not work with the newer IEEE 1284 ports.
+
+<H4>The Extended Capabilities Mode (ECP)</H4>
+The Extended Capabilities Mode was jointly designed by Hewlett Packard and Microsoft and announced in 1992. ECP was also included in the IEEE 1284 specification in 1994. Like EPP, ECP uses additional hardware to generate the flow control signals and runs at very much the same speed as an EPP Port. In addition ECP requires a DMA channel to move data about, and uses a FIFO buffer for sending and/or receiving data. The use of a DMA channel can lead to conflicts with other devices that also use DMA and it is often best to choose EPP mode rather than ECP. The rapid adoption of Plug and Play hardware, and Plug and Play aware operating systems like Windows 95, means the DMA channel should no longer be a problem in the near future.
+<P>
+Another feature of ECP is a real time data compression. It uses Run Length Encoding (RLE) to achieve data compression ratio's up to 64:1. This comes is useful with devices such as Optical Scanners and Printers where a good part of the data is long strings which are repetitive. 
+<P>
+The Extended Capabilities Port supports a method of channel addressing. This is not intended to be used to daisy chain devices but rather to address multiple devices within one device. Such an example is some of the latest Fax machines on the market. They can be connected to a computer via a Parallel Port and can operate as separate devices such as the Scanner, Modem/Fax and Printer, where each part can be addresses separately, even if the other devices cannot accept data due to full buffers. 
+
+<H4>Hardware Details of the Parallel Interface Connector</H4>
+The Parallel Port as implemented in the original PC Computer, consisted of a DB25S connector with 17 signal lines and 8 ground lines. The signal lines are can be divided into three groups: 
+<P>
+<UL>
+<LI>Control (4 lines) 
+<LI>Status (5 lines) 
+<LI>Data (8 lines) 
+</UL>
+<P>
+As originally designed, the Control lines were used as Interface Control and Flow Control (handshaking) signals from the PC to the printer. The Status lines were used for Flow Control signals and as Status Indicators for such things as paper empty, busy indication and interface or peripheral errors. The data lines were used to provide data from the PC to the printer, in that direction only. As we have already said, later implementations of the Parallel Port allowed for data to be driven from the peripheral to the PC. 
+<P>
+The original Parallel Interface Port used open collector TTL devices on each side of the interface and these can be damaged by ESD.
+<P>
+The Parallel Ports in modern PC hardware use V.L.S.I. devices that are not open collector devices and these are also easy to damage by ESD. These outputs often do not conform to the TTL standards, and they may have trouble driving older printers, long cables, and external signal-powered devices.
+
+<H4>The PC printer cable</H4>
+The printer cable has a DB25P connector on the "computer end" and a 36 pin Centronics connector on the "printer end". To limit the Radio Frequency Interference (RFI) generated the cable should be a shielded cable with shielded connectors on both ends. The original official limit on cable length was 3 metre but this depends on the type of Parallel Port hardware, some can drive far longer cables.
+<P>
+<CENTER>
+<STRONG>The Pin-outs for the Parallel Interface cable are as follows.</STRONG>
+<TABLE BORDER>
+<TR><TH><STRONG>Line name</TH>
+<TH>DB25S</TH>
+<TH>36 pin Centronics</TH>
+<TH>Notes</STRONG></TH>
+</TR>
+<TR><TD>Strobe</TD>
+<TD>1</TD>
+<TD>1</TD>
+<TD>a 1 usec pulse used to clock data into the printer</TD>
+</TR>
+<TR><TD>Data 0</TD>
+<TD>2</TD>
+<TD>2</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 1</TD>
+<TD>3</TD>
+<TD>3</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 2</TD>
+<TD>4</TD>
+<TD>4</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 3</TD>
+<TD>5</TD>
+<TD>5</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 4</TD>
+<TD>6</TD>
+<TD>6</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 5</TD>
+<TD>7</TD>
+<TD>7</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 6</TD>
+<TD>8</TD>
+<TD>8</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Data 7</TD>
+<TD>9</TD>
+<TD>9</TD>
+<TD> </TD>
+</TR>
+<TR><TD>Acknowledge</TD>
+<TD>10</TD>
+<TD>10</TD>
+<TD>acknowledge signal from printer to computer</TD>
+</TR>
+<TR><TD>Busy</TD>
+<TD>11</TD>
+<TD>11</TD>
+<TD>used by the printer to stop the flow of data</TD>
+</TR>
+<TR><TD>Paper Empty</TD>
+<TD>12</TD><TD>12</TD>
+<TD>indicates the printer has run out of paper</TD>
+</TR>
+<TR><TD>Select Out</TD>
+<TD>13</TD>
+<TD>13</TD>
+<TD>indicates the printer is "on line"</TD>
+</TR>
+<TR><TD>Auto Feed</TD>
+<TD>14</TD>
+<TD>14</TD>
+<TD>not often implemented - wired to ground</TD>
+</TR>
+<TR><TD>Error</TD>
+<TD>15</TD>
+<TD>32</TD>
+<TD>indicates a fault in the printer (motor jammed etc)</TD>
+</TR>
+<TR><TD>Initialisation</TD>
+<TD>16</TD>
+<TD>31</TD>
+<TD>clears the printers buffers and resets defaults</TD>
+</TR>
+<TR><TD>Select input</TD>
+<TD>17</TD>
+<TD>36</TD>
+<TD>a signal on this line is the same as "select button"</TD>
+</TR>
+<TR><TD>Ground</TD>
+<TD>20 to 25</TD>
+<TD>18 to 25, 16, 19 to 30, 33</TD>
+<TD>18 to 25 are paired with the Data wires pins 2 to 9 as shields</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+Note - the original specification included plus 5 volt on pin 18 and a "clock signal" from pin 15.
+<P>
+The IEEE 1284 standard specifies <A HREF=../images/1284conn.jpg>3 different connectors</A> for use with the Parallel Port. The first one  (1284 Type A) is the  DB25 connector found on the back of most computers, and the second is the (1284 Type B) 36 pin Centronics Connector found on most printers. The third, the IEEE 1284 Type C connector, is also a 36 conductor connector like the Centronics, but it is much smaller. IEEE 1284 Type C also defines two more pins for signals which can be used to see whether the other device connected via it, has power applied. 
+
+<H4>The Universal Serial Bus (USB) and The IrDA bus</H4>
+In the near future modern printers will possibly be interfaced by these new technologies rather than the parallel or serial ports.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="ioports.html"><font
+color="#FFFFFF">Back to the PC and its I/O Ports</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="ioassign.html">The common I/O port assignments</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="serial.html">The PCs Serial (Comms) ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="games.html">The Games (Joystick) port</a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR> 
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/parallel.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:44 GMT -->
+</HTML>

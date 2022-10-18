@@ -1,0 +1,72 @@
+<html>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book1/pentium.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:33 GMT -->
+<head>
+<title>Inside the Pentium Processor</title>
+</head>
+<body>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>Inside the Pentium Classic Processor</H3>
+
+Some parts of the Pentium, such as the Bus Interface Unit, are found in older Intel microprocessors. What really makes this chip faster is the separate Code and Data Caches and the Branch Prediction Unit.
+<P>
+The Pentium surpasses the 486 in speed and power by using internal 256-bit Data paths and Pipe-lined processing that lets operations in all components of the microprocessor happen at once. In addition instruction processing is split into dual arithmetic logic units.
+<UL>
+<LI>The Bus Interface Unit retrieves data and code from RAM, 64 bits at a time.
+<LI>The Bus Interface Unit sends code along one 64-bit path to the 8K Code Cache and sends data along another 64-bit path to the 8K Data Cache.  The two Caches collect data and Code until other components request that Data and Code.
+<LI>The Branch Prediction Unit inspects the code in the Code Cache to determine which of the two Pipelines, or Data paths, can most efficiently carry each instruction.
+<LI>The Instruction Pre-fetch Buffer obtains new instructions in 256-bit bursts and the Instruction Decode Unit prepares the Code for execution.
+<LI>The Floating Point Unit calculates any non-integer math and puts the result in the Data Cache.
+<LI>Two Integer Arithmetic Logic Units simultaneously take two sequential instructions of up to 32 bits each from the Instruction Decode Unit.
+<LI>The instructions are executed using Data placed in the Execution Unit's Registers from the Data Cache.
+<LI>The Data Cache receives the results of the calculation. The Cache sends the results to the Bus Interface Unit, which in turn writes the results to RAM.
+</UL>
+
+<H4>The evolution of the 8086 family of chips from CISC to RISC processors</H4>
+This family of microprocessor chips have been traditionally CISC (Complex Instruction Set) devices but in order to increase the performance of the latest generation of processors, Intel and it's competitors in the 8086 family quest for ever faster processors, have borrowed from RISC (Reduced Instruction Set) technology. The PowerPC chip's claim to fame is that they are RISC processors and as a result are inheritantly quicker. 
+<P>
+The first hint of the incorporation of RISC technology into the 8086 family came about in 1989 with the integration of a FPU (Floating Point Unit (better known as the maths co-processor)), more hard wired instruction logic and pipe lining. The FPU was Intel's response to the superior floating point performance of RISC processors and the additional hard wired instruction logic reduced the processors reliance on micro code (the stuff that drives a CISC processor internally). The pipe lining and the reduced micro code enabled the 486 processor to process many of it's instructions at an effective rate of one instruction per clock cycle, compared to a dozen or more clock cycles required by the earlier 8086 family chips. RISC processors achieve the same result partly by using simpler instructions that require fewer clock cycles.
+<P>
+Cyrix adapted these techniques to its improved 386 chips and created hybrids like there 486SLC. Texas Instruments and IBM took the technology even further with IBM using a larger Cache and introducing clock doubling technology. Because the 486 processor has only one pipeline it's theoretical throughput limit is one instruction per clock cycle and so Intel provided the Pentium with two pipelines so it could handle two instructions simultaneously. This allows the Pentium to issue some instructions at a rate of greater than one per clock cycle. 
+<P>
+The nature of CISC instructions makes multiple pipelines difficult to implement. RISC processors generally use fixed length instructions (usually 32 bits long) whereas CISC processors use variable length instructions ranging in length from 8 bits to 120 bits. This means a CISC processor must decode each instructions length before it fetches the next instruction. Overcoming these limitations of a CISC processor means the Pentium is really a Hybrid CISC/RISC processor. 
+<P>
+Another limitations imposed by the CISC origins of the 8086 family is the shortage of registers. This family of processors has only eight General Purpose Registers (GPR) but the Cyrix M1 chip overcame this limit with 32 GPRs that are Dynamically Renamed, making it appear as there are only eight general purpose registers. As the development of the PowerPC chips advances and IBM and the rest of the consortium espouse the virtues of RISC technology we will see more and more RISC technology incorporated into future Pentium microprocessor chips.
+
+<H4>Why call the Pentium a Pentium ?</H4>
+The 8086 through to the 80486 processors are collectively referred to as the 8086 family processors. Compatible or cloned processors have been produced by NEC, AMD, and Cyrix/IBM and the change of name from the 80xxx to the Pentium was an effort by Intel to stop the other manufacturers using Intels advertising to sell their products. The slogan "Intel inside" did not seem to stop people buying 80386 and 80486 processors from AMD and Cyrix ?. These "other brand" 8086 family processors were often cheaper than the Intel product, but some users and technical people claimed they were not as reliable or had "flaky" problems. 
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="process.html"><font
+color="#FFFFFF">Back to the The Pentium and beyond chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book1.html"><font
+color="#FFFFFF">Book one index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="settop.html"><font
+color="#FFFFFF">The Sub US$1000 PC</font></a></td>
+<td width="25%" bgcolor="#008080" align="center"><a href="morehist.html"><font
+color="#FFFFFF">Time line of Entry Level PC</font></a></td>
+<td width="25%" bgcolor="#008080" align="center"><a href="speed.html"><font
+color="#FFFFFF">Internal and external speeds of older Pentium type processors</font></a></td>
+<td width="25%" bgcolor="#008080" align="center"><a href="timeline.html"><font
+color="#FFFFFF">Time line of Intel processors</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</body>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book1/pentium.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:33 GMT -->
+</html>

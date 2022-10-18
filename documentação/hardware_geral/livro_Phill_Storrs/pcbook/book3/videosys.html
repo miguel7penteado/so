@@ -1,0 +1,341 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/videosys.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:50 GMT -->
+<HEAD>
+<title>The PC Video systems</title>
+</HEAD>
+<BODY>
+<IMG SRC="../images/pc2.jpg" ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>The PC Video Systems</H3>
+The original IBM PC computer required a Video Interface Card to be plugged into one of the BUS SLOTS on the computers System Board and a Video Display Monitor plugged into a Video Output connector, on the back of that Interface Card. The original IBM had two optional Video Interface (Adaptor) Cards: 
+<UL>
+<LI><STRONG>MDA</STRONG> - A high resolution character only mono display.
+<LI><STRONG>CGA</STRONG> - A colour display providing both character and graphics mode.
+</UL>
+<P>
+Most modern DOS computers continue the tradition of requiring a Video Interface Card to be plugged into a Bus Slot on the System Board but some do have the Video Interface circuitry built into the System Board. This is not good practice as it means the Video System can't be upgraded to a more advanced standard if required. Over the years, since the introduction of the PC computer in 1981, other Video Interface standards have been introduced to increase the <STRONG>Resolution</STRONG> and the <STRONG>Number of colours</STRONG> that could be displayed on the screen. 
+<P>
+<STRONG>Definition -</STRONG> The resolution of a Video System is measured by counting the number of Pixels (picture elements or dots) in an X direction (across the screen) and in a Y direction (down the screen) and expressing these figures as X by Y.
+<P>
+The next Video Standard was <STRONG>EGA</STRONG> and this was followed by <STRONG>VGA</STRONG>. VGA has evolved through many variations of Super VGA to a point now where a confusing array of combinations of Resolution and number of colours exists.
+
+<H4>What is on the Video Interface Card ?</H4>
+The video card contains three main functional blocks.
+<OL>
+<LI>The Video RAM
+<LI>The VGA Chip or Chipset (this used to be referred to as the CRTC)
+<LI>The Character ROM.
+</OL>
+
+<H4>The Video RAM</H4>
+The Video Interface has a Video RAM on the Interface Card and this is addressed in the Conventional Memory region in the area A0000 to BFFFF <SUB>hex</SUB>, a total allocation of 128 K. The lower resolution and lower number of colour Video Modes use only a small portion of this area and the simple Video Interfaces like the MDA use only 4 K bytes and the CGA uses 16 K bytes. Modern Super VGA Video Modes require at least one Meg byte of Video RAM and this is switched in and out of the 128K space allocated to the Video RAM, as required. Higher resolution and more colours each require more Video RAM. The highest video resolutions and numbers of colours available today may require as much as six Meg of Video RAM.
+<P>
+The Video RAM holds the data that is used to generate the display on the Video Display Screen. The Video Interface circuit scans the Video RAM regularly and generates the image on the screen. This scanning process must go on and on as the Phosphor on the Video Display Screen only has a short persistence, and the image will fade away.
+<P>
+The actual data stored in the Video RAM depends on the Video Mode in use. A video image can be generated on the screen in two ways.
+<UL>
+<LI>CHARACTER based mode (also called TEXT mode)
+<LI>GRAPHICS mode (also called BIT MAP mode)
+</UL>
+<P>
+The Video RAM is located on the Video Interface Card. The DATA for the Video RAM is provided by the Operating System and/or the Application Software and is written into the Video RAM either by using Interrupt Services provided by the operating system (INT 10 for example), or directly by the application. It is bad practice for applications to bypass the service routines and to write directly to the Video RAM, but it is often done to make operation of the Video System faster.
+<P>
+<STRONG>What is stored in the Video RAM In Character Mode</STRONG><BR>
+In this mode, <STRONG>each character position</STRONG> on the screen requires <STRONG>two bytes of data in the Video RAM</STRONG>. One byte for the <STRONG>ASCII code</STRONG> for the character, and one byte for the <STRONG>Attribute</STRONG> data that determines the characters colour.  The dot structure for each character, in the Character Set, is stored in a CHARACTER ROM. The ASCII Data in the Video RAM is used to Address the Character ROM to provide the dot structure data for each character. 
+
+<H4>Cathode Ray Tube Controller or CRTC</H4>
+In the older Video Interface Standards, This process is controlled by a chip called the Cathode Ray Tube Controller or CRTC. The CRTC controls the functions of the Video Interface, accessing the Video RAM, and the Character ROM, and generating the Horizontal and Vertical Scan Synchronising pulses. In modern Video Interfaces the <STRONG>VGA Chip</STRONG> takes the place of the CRTC. 
+
+<H4>The CGA Video Adaptor Card</H4>
+The simplest Video System used with DOS type computers is the Colour Graphics Adaptor, the CGA Video Card, and it provides two alternative Character Modes. 
+<UL>
+<LI>40 characters across and 25 rows down the screen
+<LI>80 characters across and 25 rows down the screen
+</UL>
+<P>
+The lower resolution mode was provided so the CGA card could be used with an American domestic colour Television set. The first CGA cards had an NTSC video output connector for this purpose. No attempt was made to provide a PAL video output suitable for Australian TV sets as the Horizontal and Vertical Scan Frequencies of the American system are quite different to those required by our television system. 
+<P>
+The CGA characters are made up from an eight by eight matrix. The <STRONG>Character ROM</STRONG> has eight bytes of <STRONG>dot structure data</STRONG> for each character in the character set. Each byte consists of eight bits and each bit in turn determines if a dot is turned on or turned off. 
+<P>
+In <STRONG>Graphics Mode</STRONG> the raw <STRONG>Dot Structure Data</STRONG> (the bit map) for every part of the Video Display Screen must be stored in the <STRONG>Video RAM</STRONG>. No Character ROM is used in this mode, every bit of pixel data must be written into the Video RAM. Graphics Modes require far more Video RAM than do Character Modes.
+<P>
+The <STRONG>CGA</STRONG> Video Interface provides a <STRONG>maximum graphics resolution of 640 dots by 200 dots</STRONG>. At maximum resolution in Character Mode there are 80 characters across the screen, and 25 rows of characters down the screen. As each character is made form an 8 by 8 matrix, this is equivalent to a resolution of 640 by 200.
+
+<H4>The Video Monitor</H4>
+A basic Monochrome monitor (used with an MDA Video Card) consists of the following blocks.<BR>
+<UL>
+<LI>The Cathode Ray Tube
+<LI>Magnetic Deflection Yoke
+<LI>The Horizontal Deflection circuit and EHT generator
+<LI>The Vertical Deflection circuit
+<LI>The Video Amplifier
+<LI>The Power Supply
+</UL>
+<CENTER><P>
+<IMG SRC="../images/monomon.jpg">
+<P></CENTER>
+This monitor has two Video Input Signals and two Synchronisation Signal inputs, supplied via a DB9S connector with these connections.
+<UL>
+<LI>Ground - pins 1 and 2
+<LI>Video ON / OFF - pin 7
+<LI>Video intensity, Normal / Bright - pin 6
+<LI>Horizontal Sync. - pin 8
+<LI>Vertical Sync. - pin 9
+</UL>
+<P>
+The Saw Tooth Drive Wave forms produced by the deflection circuits deflect the electron beams across and down the screen providing a scan Raster. The CRT has a Deflection Yoke assembly around it's neck and this provides <STRONG>magnetic deflection</STRONG> of the electron beam.
+<P>
+The electron beam is switched ON and OFF to provide dots of light ( Pixel's ) on the screen. The Horizontal Scan Rate is a high frequency ( 15,750 Hz to about 68 KHz ) and the Vertical Scan Rate is a low frequency ( 50 Hz to 90 Hz ). The scan rates for each type of Video Standard are different and the scan rates that a particular monitor can operate over is limited. 
+<P>
+Most Video Display Monitors can only be used with one type of Video Interface. The most popular Video Standard available at present is Super VGA, but many variations for Super VGA are available. Only the most expensive Super VGA monitors can operate over the full range of scan frequencies used by the various resolutions of VGA.
+<P>
+<STRONG>How is colour produced ?</STRONG>
+A colour display tube has three electron guns. These Electron Guns illuminate <FONT  COLOR=#FF0000>Red</FONT>, <FONT  COLOR=#00FF00>Green</FONT> and <FONT  COLOR=#0000FF>Blue</FONT> phosphors on the face of the Cathode Ray Tube. A colour Video Display Monitor will have at least three Video Input signals and three Video Amplifier Circuits. The video signals control the electron beams,turning then on and off and controlling the brightness of the individual colour phosphors. If all three colours are at maximum brightness the resulting colour is white. Each dot of light on the screen is made up of three different colour dots. 
+<P>
+An RGB Colour Monitor, used with a CGA Video Interface, will be similar to the Mono Monitor described above but will have three Video Amplifiers, one each for the Red Green and Blue electron guns. This monitor also uses a DB9S connector and the pin-out is as follows.
+<UL>
+<LI>Ground - pins 1 and 2
+<LI>Red Video Signal - pin 3
+<LI>Green Video Signal - pin 4
+<LI>Blue Video Signal - pin 5
+<LI>Intensity Video Signal - pin 6
+<LI>Horizontal Sync. - pin 8
+<LI>Vertical Sync. - pin 9
+</UL>
+The CGA Video System uses four Video Signals, Red, Green, Blue and Intensity and the maximum number of colours it can produce is 16, four binary inputs will produce 2<SUP>4</SUP> combinations.
+
+<H4>The Scan Frequencies for the CGA Video Standard</H4>
+Although the CGA Video System is now quite obsolete, we will use it in explaining the basics of the Video System and how the Horizontal and Vertical Scan Frequencies are arrived at. First we should look at the differences between the domestic Television systems in the USA and Australia, this is a clue to why we have not been able to use our Television sets as Computer Monitors for PC Computers.
+<UL>
+<LI>The CGA display uses the Scan Frequencies used by the US domestic Television system.<BR>
+Horizontal Scan = 15,750 Hz, Vertical Scan = 60 Hz.
+<LI>Our domestic Television system uses scan frequencies of,<BR>
+Horizontal Scan = 15,625 Hz, Vertical Scan = 50 Hz
+</UL>
+<P>
+<STRONG>The CGA Frequencies and the timing of the Signals</STRONG><BR>
+<UL>
+<LI>During each Vertical Scan, 262 &#189; horizontal lines are produced.
+<LI>Each Vertical Scan lasts for 16.6 msecs (1 divide by 60 Hz)
+<LI>Each Horizontal Scan lasts for 63.96 usecs (1 divide by 15,750 Hz)
+<LI>During each Vertical Scan, the Horizontal Scan makes 262 &#189; scans across the screen.(16.6 msecs divided by 63.96 usecs)
+<UL>
+<LI>Only 200 of these lines are required, so 62 &#189; of these lines are Over Scan, a technique used to improve the linearity of the scan. Each Horizontal Scan lasts for 63.69 ms but only about 47.7 ms of this time is used for generating dots. The rest is Over Scan.
+</UL>
+<LI>During the 47.7 ms of each Horizontal Scan time, 640 dots can be produced across the screen.
+<LI>47.7 ms/640 approximate. = 0.070 ms. This represents a Dot Clock Frequency of  14.31818 MHz.
+<LI>Each dot on the screen has a duration of about 0.07 ms.
+</UL>
+<P>
+The domestic Television system obtains double the line resolution by using a technique called <A HREF="#interlace">interlacing</A>. It takes two vertical scans to build up one image, the second scan draws lines between the scan lines produced by the first scan. 
+
+<H4>The characters take shape</H4>
+<STRONG>Character Modes</STRONG><BR>
+In <STRONG>CGA Character Modes</STRONG> the characters are constructed from an <STRONG>8 by 8 matrix</STRONG>. The raw data for each character is stored in the Character ROM, located on the Video Interface. This ROM is addressed by the ASCII data in the Video RAM and is not available on the computers bus, within the addressable memory space. The Video RAM holds an <STRONG>ASCII Code</STRONG> and an <STRONG>Attribute Byte</STRONG> for each character position on the screen. In 80 by 25 mode, the Video RAM requires 4000 locations, 2000 bytes for the ACSII Codes and 2000 bytes for the Attribute Bytes associated with each character. The ASCII Bytes and Attribute Bytes are stored in alternate locations in the Video RAM. 
+<P>
+The eight bits of the Attribute Byte are organised in a way that they control both the Foreground and Background colours. The least significant four bits are used for the Foreground Colours, giving a maximum of <STRONG>16 Foreground Colours</STRONG>. The next three bits are used for the Background Colours, giving a maximum of <STRONG>Eight Background Colours</STRONG>. The most significant bit (bit 7) causes the character to blink. 
+<P>
+A Zero bit in an attribute byte position means the attribute that bit controls is off and a One means it is on. The <STRONG>Attribute value for a White character is 07 <SUB>hex</SUB></STRONG>, this converts to 00000111 <SUB>2</SUB>. This means the Red Green and Blue Electron Guns are on, and combining Red, Green and Blue gives White. An attribute of 8F <SUB>hex</SUB> will produce a <BLINK>Blinking</BLINK> bright white character. ( 8F <SUB>hex</SUB> = 10001111 <SUB>2</SUB> ) 
+<P>
+Remember, CGA uses <STRONG>four Video Signals</STRONG>, one each for Red, Green and Blue and and Intensity. This means CGA can produce a <STRONG>maximum of 16 colours</STRONG>. Due to limitations imposed by the size of the available Video RAM, 16 colours is only available in Character Modes, not in Graphics Modes.
+<P>
+<TABLE WIDTH=100%>
+<TR><TD><STRONG>The Attribute Byte</STRONG>
+<TABLE BORDER>
+<TR><TH>BIT</TH>
+<TH>USED FOR</TH>
+</TR>
+<TR><TD>0</TD>
+<TD>Foreground - BLUE</TD>
+</TR>
+<TR><TD>1</TD>
+<TD>Foreground - GREEN</TD>
+</TR>
+<TR><TD>2</TD>
+<TD>Foreground - RED</TD>
+</TR>
+<TR><TD>3</TD>
+<TD>Foreground - INTENSITY</TD>
+</TR>
+<TR><TD>4</TD>
+<TD>Background - BLUE</TD>
+</TR>
+<TR><TD>5</TD>
+<TD>Background - GREEN</TD>
+</TR>
+<TR><TD>6</TD>
+<TD>Background - RED</TD>
+</TR>
+<TR><TD>7</TD>
+<TD><BLINK>BLINKING</BLINK></TD>
+</TR>
+</TABLE></TD>
+
+<TD><STRONG>Foreground colours</STRONG><BR>
+<TABLE BORDER>
+<TR><TD>0000</TD>
+<TD>Black</TD>
+<TD>1000</TD>
+<TD>Grey</TD>
+</TR>
+<TR><TD>0001</TD>
+<TD>Blue</TD>
+<TD>1001</TD>
+<TD>Light Blue</TD>
+</TR>
+<TR><TD>0010</TD>
+<TD>Green</TD>
+<TD>1010</TD>
+<TD>Light Green</TD>
+</TR>
+<TR><TD>0011</TD>
+<TD>Cyan</TD>
+<TD>1011</TD>
+<TD>Light Cyan</TD>
+</TR>
+<TR><TD>0100</TD>
+<TD>Red</TD>
+<TD>1100</TD>
+<TD>Light Red</TD>
+</TR>
+<TR><TD>0101</TD>
+<TD>Magenta</TD>
+<TD>1101</TD>
+<TD>Light Magenta</TD>
+</TR>
+<TR><TD>0110</TD>
+<TD>Brown</TD>
+<TD>1110</TD>
+<TD>Yellow</TD>
+</TR>
+<TR><TD>0111</TD>
+<TD>White</TD>
+<TD>1111</TD>
+<TD>"Bright" White</TD>
+</TR>
+</TABLE></TD>
+
+<TD><STRONG>Background colours</STRONG>
+<TABLE BORDER>
+<TR><TD>000</TD>
+<TD>Black</TD>
+<TD>100</TD>
+<TD>Red</TD>
+</TR>
+<TR><TD>001</TD>
+<TD>Blue</TD>
+<TD>101</TD>
+<TD>Magenta</TD>
+</TR>
+<TR><TD>010</TD>
+<TD>Green</TD>
+<TD>110</TD>
+<TD>Brown</TD>
+</TR>
+<TR><TD>011</TD>
+<TD>Cyan</TD>
+<TD>111</TD>
+<TD>Grey</TD>
+</TR>
+</TABLE></TD></TR>
+</TABLE>
+<P>
+<STRONG>How about EGA and VGA in Character Mode.</STRONG><BR>
+When an EGA or VGA card is working in Character modes it is working in a similar way to the old CGA Video Interface, the only real difference is the number of dots used to make up each character and this depends on the Video System in use. The matrix size can be 8 by 14, 8 by 16, 9 by 14 or 8 by 16. When a  DOS computer is booted it usually starts off in Video Mode Two (40 column by 25 rows of text) and then goes to Mode Three (80 column by 25 rows of text) by the time the DOS prompt is displayed.
+<P>
+Character Modes are quite efficient in that each character position on the screen only requires two bytes of data in the Video RAM to represent a character on the screen. They are also inflexible because they are limited to only displaying the characters available in the Character Set built into the Character ROM on the Video Interface.
+<P>
+<STRONG>Graphics Modes</STRONG><BR>
+In Graphics Modes, the <STRONG>Video RAM holds the Dot Structure Data</STRONG> for the display, and the number of bits required to represent each pixel depends on the maximum number of colours provided by the Video Mode in use. Two colours only require one bit per pixel, sixteen colours require four bits per pixel but 16.7 million would require 24 bits per pixel (three bytes per pixel). 
+<P>
+The CGA Video System had only 16 Kbytes of Video RAM and so at it's highest resolution, 640 by 200, the CGA Video System could only display graphics in two colours, one bit per pixel. A 640 by 200 resolution display requires 128,000 pixels. Divide 128,000 by eight to get back to bytes and we see we need 16K  Bytes of Video RAM. At a resolution of 320 by 200, CGA provided four colours.
+<P>
+<TABLE WIDTH=100%>
+<TR><TD>In it's simplest form VGA has two Graphics Modes, 640 by 480 pixels in 16 colours and 320 by 200 pixels by 256 colours. The official <STRONG>VESA standard for Super VGA</STRONG> were set many years ago when most VGA Video Interfaces had only 256 K or 512 Kbytes of Video RAM, and is <STRONG>800 by 600 pixels in 16 colours</STRONG>. Today Super VGA Video Systems are run in at least 256 colours, and more often in 64,000 or 16.7 million colour modes.
+<P>
+These figures are arrived at by multiplying the total number of pixels by the number of bytes required to produce that number of colours. 640 times 480 equals 326,400 pixels times 0.5 (4 bits needed for 16 colours and 4 bits is half a byte) equals 153,600 bytes of Video RAM required.</TD>
+
+<TD><STRONG>Amount of Video RAM required for some resolution and colour combinations.</STRONG>
+<TABLE BORDER>
+<TR><TH>Resolution and colours</TH>
+<TH>Bits<BR>required</TH>
+<TH>Amount of video RAM</TH>
+</TR>
+<TR><TD>640 by 480 by 16 colours</TD>
+<TD>4</TD>
+<TD>154 K (256 K)</TD>
+</TR>
+<TR><TD>640 by 480 by 256 colours</TD>
+<TD>8</TD>
+<TD>308 K (512 K)</TD>
+</TR>
+<TR><TD>640 by 480 by 65,536 colours</TD>
+<TD>16</TD>
+<TD>615 K (1 Meg)</TD>
+</TR>
+<TR><TD>640 by 480 by 16.7 Million</TD>
+<TD>24</TD>
+<TD>922 K (1 Meg)</TD>
+</TR>
+<TR><TD>800 by 600 by 16 colours</TD>
+<TD>4</TD>
+<TD>240 K (256 K)</TD>
+</TR>
+<TR><TD>800 by 600 by 256 colours</TD>
+<TD>8</TD>
+<TD>480 K (512 K)</TD>
+</TR>
+</TABLE>
+</TR></TABLE>
+<P>
+<A NAME="interlace"></A><H4>Interlaced Scanning</H4>
+Interlacing can be used with VGA Video Systems to provide higher resolution with a cheaper monitor. The higher resolution would normally require a higher Horizontal Scan Frequency but monitors with higher Horizontal Scan Frequencies cost more. Interlacing is a technique used with domestic Television systems to increase the apparent resolution by generating the display with two consecutive scans. The second scan produces lines between the first scan. The only problem is some people can see the flicker generated by interlacing and this can be quite fatiguing for some people.
+
+<H4>Where in the Memory Map is the Video RAM ? </H4>
+When DOS was first designed, 128 Kbytes of memory space was allowed to the Video RAM and this was allocated just above the 640 Kbytes of User RAM, from A0000 hex to BFFFF <SUB>hex</SUB>. The two original Video Interface Standards (MDA ad CGA) were assigned space in this are so as not to clash with one another, so they could coexist in the same computer. The Hercules Corporation improved the MDA Video Standard to include graphics capability, and the Hercules Video Standard then took over from IBM's original MDA standard. The Hercules Video Card (HGC) is often referred to as the MGA (Mono Graphics Card) or HGC (Hercules Graphics Card).
+<P>
+<UL>
+<LI>The <STRONG>CGA</STRONG> Video System has 16 Kbytes of Video RAM starting at B8000<SUB>hex</SUB>
+<LI>The <STRONG>MDA</STRONG> Video System has 4 Kbytes of Video RAM starting at B0000<SUB>hex</SUB>
+<LI>The <STRONG>Hercules</STRONG> Video System could use all or part of the region B0000 to BFFFF<SUB>hex</SUB>, depending on the Video Mode in use.
+<LI>The first examples of the <STRONG>EGA</STRONG> Video System had 128 Kbytes of Video RAM, using all the Memory Space allocated to the Video RAM.  The EGA specification was enhanced to require up to 256 Kbytes of Video RAM and the system had to switch the Video RAM in and out of the available space as required.
+<LI><STRONG>VGA</STRONG> Video Interface Cards have been available with as little as 256 Kbytes of Video RAM but 512 Kbytes has been a more general lower limit. Today VGA Video Interface Cards are equipped with at least One Meg of Video RAM, with 2 Meg more common.
+</UL>
+<P>
+When more than 128 Kbytes of Video RAM is required by the Video System, the RAM must be switched in and out of the 128 Kbyte of memory addresses allocated to the Video RAM.
+
+<H4>The Keyboard and the Video System</H4>
+As you have already learned, the Keyboard Service Routine takes the keystroke date from the Keyboard Interface, processes it, and puts two byte codes that represent the keystrokes into the Keyboard Buffer Area of RAM memory. 
+<P>
+Up to this point the characters have not been displayed on the screen. <STRONG>There is no direct link between the Keyboard Service Routine and the Video System</STRONG>. 
+<P>
+The Operating System or  Application, then reads the two byte codes from the Keyboard Buffer Area in memory, and processes them. The Operating System or Application then sends data to the Video System, usually via the Video Service Routine, to display the character <STRONG>if required</STRONG>. 
+<P>
+There is no need to display the characters as they are typed but it does provide the user with important feedback. The Operating System or Application can, and often does, write directly to the Video RAM but this is not good practice.
+
+<H4>Summary</H4>
+In <STRONG>text mode</STRONG>, the Video Service Routine generates an ASCII Code and an Attribute byte for each character to be displayed, and writes them to the Video RAM. The CRTC chip (the VGA chip in modern Video Systems) then scans the Video RAM and generates the Video Display on the display screen .
+<P>
+In <STRONG>graphics mode</STRONG> the process is much more complicated, the Video Service Routine must generate a pixel image of the character, including its colour information, and write this to the Video RAM.
+
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="videomon.html"><font
+color="#FFFFFF">PC Video Monitors</font></a></td>
+<td width="25%" bgcolor="#008080" align="center"><a href="videstan-2.html"><font
+color="#FFFFFF">PC Video standards</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table></CENTER>
+<P>
+
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/videosys.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:51 GMT -->
+</HTML>
+

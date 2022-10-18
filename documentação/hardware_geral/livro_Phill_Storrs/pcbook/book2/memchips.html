@@ -1,0 +1,166 @@
+<HTML>
+<TITLE>Memory hardware</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/memchips.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:34 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>PC Memory hardware over the years</H3></CENTER>
+
+<H4>The Evolution Of The Memory Chip </H4>
+The first few generations of DOS computer used <EM>Dual In Line</EM> (DIL) memory chips and since 1981 (when the PC computer was designed) memory chip technology increased the capacity of RAM Chips in steps of four times capacity, regularly. The first IBM PC used 16K by 1 bit RAM chips. Soon 64K by 1 bit chips were available and in regular use. The 256K by 1 bit made 640K on the system board possible. The original PC had a nine bit memory word, where the extra bit was used for Parity. Parity is a means of checking for errors in data stored in a memory. The parity bit is set to either a Zero or a One depending on the number of ones in the word when the word is written into the memory. When that same location is read, the parity bit in the memory is checked against a parity bit generated from the data that is read from memory. If an error is detected the user is notified of the problem. Not all DOS computers are fitted with parity chips.
+<P>
+<CENTER><IMG SRC="../images/ramgen1.jpg"><BR>
+Four generations of RAM devices</CENTER>
+
+<H4>DIL RAM (Historic interest only)</H4>
+The first few generations of DOS computers used Dual-in-line RAM chips. Over the years these devices increased from 16K bits in the first IBM PC, 64k bit chips used in the first clone PC's, to one Meg bit chips in the last PC computers to use this RAM technology.
+<P>
+<STRONG>During 1986-87, 640K could be supplied by one of these two configurations:</STRONG>-
+<P>
+<TABLE BORDER>
+<TR><TD>18 off (2 banks of  9)  64K by 1 bit chips
+<TD>and
+<TD>18 off (2 banks of  9)  256K by 1 bit chips
+</TR></TABLE>
+<BLOCKQUOTE>
+<B>or</B>
+</BLOCKQUOTE>
+<TABLE BORDER>
+<TR><TD>18 off (2 banks of  9) 256K by 1 bit chips
+<TD>and
+<TD>4 off  64K  by 4 bit chips, and 2 off  64K  by 1 bit chips
+</TR></TABLE> 
+<P>
+The next step in the evolution of RAM was the <STRONG>1Meg bit chip</STRONG>. These chips could be arranged as either:
+<UL>
+<LI>Chips that had 1024K locations by 1 bit wide
+<LI>Chips that had 256K locations by 4 bits wide
+</UL>
+When used in PC hardware, the banks of RAM consisted of:
+<P>
+<TABLE BORDER>
+<TR><TD>1024K locations by 1 bit wide chips
+<TD>A Bank of eight chips, or nine chips if parity was used
+</TR></TABLE>
+<BLOCKQUOTE>
+<B>or</B>
+</BLOCKQUOTE>
+<TABLE BORDER>
+<TR><TD>256K locations by 4 bits wide chips
+<TD>A Bank of two chips made an eight bit word<BR>
+a 256K by one bit chip per bank if parity was required
+</TR></TABLE>
+<P>
+The one Meg chips lead to PC/XTs having One Meg of RAM. The extra 384K available on these XT type computers was of little use. The memory space between 640K and 1 Meg is assigned to the reserved memory area and can't be used for Conventional Memory. The XT type computer can't use Extended Memory as the 8088 processor chip has only 20 address lines. 
+<P>
+<STRONG>If the hardware provided the facility</STRONG>, this extra 384K could be used for, a RAM disk (Virtual disk drive), a Print spooler (print buffer), or for EMS memory. These were only available if the hardware manufacturer provided <STRONG>Device Drivers</STRONG> for these facilities. The drivers for one brand of hardware would not work with another brand. 
+
+<H4>SIP RAM (Obsolete technology)</H4>
+<CENTER><IMG SRC="../images/sip1.jpg"></CENTER>
+<P>
+SIP stands for Single In-line Package. This package is a thick film module with a single row of pins on one edge and they plug into a single row of "round sockets". A thick film device consists of a ceramic substrate with conductive tracks silk screened onto it and the devices (partly packaged IC'S) soldered to the tracks. SIP RAM is expensive to manufacture but it was common in some of the early 386 and 486 computers. They were available as 256K by nine bits or One Meg by nine bits. SIP technology did not last very long because it was more expensive to produce.
+
+<H4>SIMM RAM</H4>
+<CENTER><IMG SRC="../images/sim301.jpg"><BR>
+30 pin SIMM device</CENTER>
+<P>
+SIMM stands for Single In-line Module. The SIMM is a far more popular package and these are a "circuit board" with a row of 30 or 72 fingers on each side. The RAM devices are surface mounted on the boards and these boards plug into a small edge connector that has a locking mechanism.
+<P>
+<TABLE>
+<TR><TH COLSPAN=2><STRONG>30 pin SIMM's with the following capacities<BR>
+have been available</STRONG>:-
+<TR><TD>256k x 8 bit (no parity)
+<TD>256k x 9 bit (with parity)</TR>
+<TR><TD>1Meg x 8 bit (no parity)
+<TD>1Meg x 9 bit (with parity)</TR>
+<TR><TD>4Meg x 8 bit (no parity)
+<TD>4Meg x 9 bit (with parity)</TR> 
+</TABLE>
+
+<H4>DIMM</H4>
+The latest packaging for RAM devices is the DIMM, the Dual Inline Memory Module. These 168 pin devices are 64 bit wide versions of SIMM's. DIMM's have been designed for the Pentium which requires 64 bit wide RAM. This is achieved with 72 pin SIMM's by using two devices per bank, but DIMM's can be used individually with Pentium based hardware.
+<P>
+<CENTER><IMG SRC="../images/dimm1.jpg"><BR>
+This image shows a DIMM and a 72 pin SIMM<BR>
+note the two notches in the DIMM package</CENTER>
+
+<H4>Memory and Parity</H4>
+<STRONG>A byte of memory consists of eight bits</STRONG> but the first IBM PC was fitted with nine bit memory. <STRONG>The ninth bit provided Parity</STRONG>. Parity was a method of keeping a check on the data stored in memory, each time a byte of memory was written, a parity circuit generated a parity bit for that byte and stored it in the ninth (parity) bit. When each byte of memory was read, the parity circuit generated the parity bit from the eight data bits read back, and compared it with the ninthe parity bit. The concept of parity is left over from the days of magnetic core memory and is not realy neccessary with modern solid state memory. Over the years since the IBM PC was first introduced, PC hardware has gone through phases of using and not using parity, driven by fluctuations in the price of memory chips, and intense competition in the PC hardware market. A good indication if how un-important parity realy is is the fact that the first generation of Intels Triton Chipset, for the Pentium processor, did not provide for parity. Over recent years, System Boards and/or BIOS, have had parity as optional on most other PC hardware. When we talk about 32 bit memory in this chapter, we are only talking about the actual Data Bits, and we are not including the four Parity bits (one parity bit per eight data bits).
+
+<H4>30 pin SIMM's used in banks of two or four</H4>
+Older system boards using SIMM RAM had four or eight, 30 pin SIMM sockets. The memory banks in <STRONG>386DX and 486 </STRONG>boards required <STRONG>four devices per bank</STRONG>. This is because these processors access RAM 32 data bits at a time and 30 pin SIMM's are eight data bits wide. Four by 1Meg SIMM's gave 4Meg, and four 4Meg SIMM's gave 16Meg. If the board had eight sockets, 1Meg SIMM's could be used to provide eight Meg of RAM. Most System Boards from this era, would allow each bank to be fitted with different capacity SIMM's.
+<P>
+The <STRONG>386SX processors</STRONG> accessed RAM 16 bits at a time and so a <STRONG>bank of memory consisted of two 30 pin SIMM devices.</STRONG> Most 386SX boards had only four 30 pin SIMM sockets.
+<P>
+The <STRONG>386DX and 486 processors</STRONG> access the RAM 32 bits at a time and so a <STRONG>bank of memory consists of 4 SIMM devices</STRONG>.
+<P>
+Because the RAM is accessed two or four bytes at a time, (16 or 32 bit access), system boards using 30 pin SIMM's have to be upgraded in powers of two or four.
+<P>
+The next evolution of RAM technology was the 72 pin SIMM and these provide 32 bit RAM access. 72 pin SIMM's are available in quite a few types, with and without parity, FP RAM and EDO RAM. You will learn more about these technologies in a later module.
+<P>
+<CENTER><IMG SRC="../images/sim721.jpg"><BR>
+72 pin SIMM device</CENTER>
+<P>
+<STRONG>486 and Cyrix 586</STRONG> based computers, (systems with a 32 bit internal bus) can use <STRONG>72 pin SIMM's individually</STRONG>.  72 pin SIMM's are available in four, eight and sixteen and 32 Meg capacities. <STRONG>Pentium based computers require 64 bit wide memory and so 72 pin SIMM's are used in pairs in Pentium (64 bit) hardware.</STRONG>
+
+<H4>Installing SIMM RAM</H4>
+<CENTER><IMG SRC="../images/sim451.jpg"><BR>
+Insert the SIMM into it's socket so it sits at about 45 degree and make sure it is pushed fully home</CENTER>
+<P>
+<CENTER><IMG SRC="../images/simpush1.jpg"><BR>
+Use two fingers to push the SIMM into the upright position, and make sure the fixing clips have closed</CENTER>
+<P>
+<CENTER><IMG SRC="../images/simin1.jpg"><BR>
+This is how the SIMM should look when it is installed</CENTER>
+
+<H4>Upgrading memory and re-using memory from older generation PC computer hardware</H4>
+Today it is not economical to upgrade the memory on system boards using the old DIL RAM technology. Many of the early 386 and 486 System boards had custom made RAM boards that plugged into a special "RAM slot" and these will no longer be available for this "old" hardware. Memory expansion cards plugged into the ISA bus slots will run about three times slower than RAM on the system board and upgrade boards of this type are no longer available. SIP technology has been obsolete now for many years and it is difficult to get SIMM devices new today. It is far cheaper to replace the system board with a more modern hardware and new RAM devices.
+<P>
+Another problem arrises when asked to upgrade 32 bit hardware with 64 bit System Boards. The 32 bit hardware could use single 72 pin SIMM devices, but the 64 bit hardware requires two 72 pin devices per Bank.  The 30 pin SIMM's out of old hardware is of not much use in modern 64 bit hardware as eight devices per bank would be required. There were adaptors available that would take four 30 pin sims and plug into 72 pin SIMM sockets. These were available in both left and right hand versions. These take up quite a lot of space and quite often there is no space for them above the RAM area which is usually under the power supply.
+
+<H4>RAM Access Speed</H4>
+The access speed of a RAM chip is a measure of how long it takes for an address from the address bus to stabilise inside the chip ( How long after an address is sent to the chip does it take for the data to be valid).
+<P>
+The original IBM PC with its 4.7MHz clock could use 200-300nsec RAM chips. The 8MHz turbo computers introduced the concept of interleaved addressing and this meant slow chips could be used with higher clock speeds. Another technique used to enable slower RAM chips to be used is to put wait states into the memory access. Wait states involve the processor missing a few clock cycles between when it sends out a memory address and when it reads or writes that address. It is quite common for poorly designed system boards to have wait states during RAM access due to poor board layout.
+<P>
+Many of the older 286 and 386 computers had dip switches or jumpers to select how many wait states to use for RAM and ROM access. Modern DOS computers have the number of wait states controlled from the Extended CMOS set-up.
+<P>
+Modern SIMM devices have an access speed of 60 or 70nSecs and with the use of interleaved access techniques, this is quite fast enough for computers using SIMM technology.
+<P>
+The Cache RAM chips used on the system boards are in a DIL package and are special fast static RAM's (about 20nSec access time) designed for use in Cache and are quite a lot more expensive than SIMM RAM. Video Cards also require very fast RAM chips with access times as fast as 10nSec.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="memory.html"><font
+color="#FFFFFF">Back to the PC memory chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="lowmem.html"><font
+color="#FFFFFF">How the PC uses its Low Memory area</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="xmsmem.html"><font
+color="#FFFFFF">Extended Memory and High Memory</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="../images/memmap.jpg"><font
+color="#FFFFFF">The PC Memory Map</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="cache.html"><font
+color="#FFFFFF">Cache memory</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/memchips.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

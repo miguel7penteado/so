@@ -1,0 +1,270 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/keyboard.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:45 GMT -->
+<HEAD>
+<title>The PC keyboard</title>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>The PC Keyboard operation</H3>
+
+The IBM PC was equipped with a keyboard that had <A HREF="../images/kb84.jpg">84 keys</A>, with the function keys on the left side of the keyboard. The keyboard was connected to the PC using a 5 pin DIN connector and this was plugged into a socket on the rear of the system board.
+<P>
+The IBM AT introduced a <A HREF="../images/kb101.jpg">101 key</A> keyboard and this soon became the standard for most PC clones. This keyboard had the function keys along the top of the keyboard and a Numeric Keypad at the right hand end. There was also two extra function keys provided on this keyboard. The latest trend is to an <A HREF="../images/mserg01.jpg">Ergonomic Keyboard </A> design like this one from Microsoft.
+
+<H4>Keyboard Basics</H4>
+A typical modern computer keyboard consists of processor chip connected to a matrix of keys arranged in an array of X and Y scan lines. The keyboard processor puts an active low, "one of" count on each output line in turn, and then it scans the input lines, one at a time, for a low. The input lines are pulled high by pull-up resistors, but will be pulled low if jointed to an active low output line by a key press.
+<P>
+The first PC keyboards used a 8048 processor chip and an 8 by 11 or 12 matrix. The matrix usually consisted of eight output lines and 11 or 12 input lines. Later PC keyboards used 8049 processors, and the 101 key keyboard needs at least a 10 by 11 matrix to access all the keys.
+<P>
+The keyboard processor uses a look-up table to find a code that represents the key that has been pressed. When the keyboard processor finds a "Key Press" during its scanning of the matrix, it sends a code to represent that key, to a keyboard interface circuit in the computer. In the past many computer systems have used ASCII codes to represent the keys in the matrix but the DOS computers use quite a complex procedure of <STRONG>Press and Release codes.</STRONG>
+
+<H4>Keyboard mechanics</H4>
+Three types of keyboard contacts (switches) have been used in PC keyboards
+<OL>
+<LI><STRONG>Mechanical contact</STRONG>. These have a toggle action and usually provide good <EM><A HREF="#tact">tactile</A></EM> and <EM><A HREF="#audio">audible</A></EM> resposes. The better quality keyboards have a life expetancy of one or two million key presses per key.
+<P>
+<LI><STRONG>Coductive rubber pad.</STRONG> This type of keyboard has improved a lot over the years. The earliest examples had poor <EM>feel</EM> and were often quite unreliable. Today this type of keyboard is available in both <EM><A HREF="#soft">soft-touch</A></EM> and <EM><A HREF="#click">click</A></EM> type and is very reliable.
+<P>
+<LI><STRONG>Capacitive contact</STRONG>. These high quality keyboards were popular in the early days of  PC computers but are very expensive to produce. The original IBM PC, PC/XT and PC/AT computers used this type of keyboard. The key matrix is a series of very tiny capacitors joining the X and Y lines of the matrix. The key tops press down a capacitive plate close to two capacitive plates on the circuit board inside the keyboard, thus rising the capacitance between the X and Y lines of the matrix.
+</OL>
+
+<H4>Keyboard connectors</H4>
+The PC keyboard is connected to the computer via one of two types of connector.
+<P>
+Until recently, most PC computers used a <STRONG>5 pin DIN</STRONG> connector on the computers system board and this supplied plus 5 volt and ground to the keyboard, and received data and clock signals from the keyboard, and supplied them to the keyboard interface circuit on the system board.
+<P>
+<IMG SRC="../images/5pindin.gif" align=right>
+<STRONG>The pins on the 5 pin DIN connector are assigned thus:</STRONG>
+<UL>
+<LI>Pin 1 = Clock (from keyboard)
+<LI>Pin 2 = Data (from keyboard)
+<LI>Pin 3 = Reset (not used)
+<LI>Pin 4 = Ground
+<LI>Pin 5 = 5 volt supply
+</UL>
+<P>
+The IBM PS/2 range of computers introduced a smaller connector, a <STRONG>Miniature 6 pin DIN</STRONG>, and this <STRONG>PS/2 interface</STRONG> is becoming the new standard. Many modern system boards have both a 5 pin DIN and a Miniature 6 pin DIN connector as keyboard interface sockets.  Adaptors are available to adapt both types of connectors between the keyboard and the system board. <STRONG>Caution</STRONG>, this is the same connector as used for the PS/2 mouse interface and some system boards have a PS/2 mouse connector on the rear of the board.
+<P>
+<IMG SRC="../images/m6pindin.gif" align=right>
+<STRONG>The pins on the PS/2 keyboard connector are assigned thus:</STRONG>
+<UL>
+<LI>Pin 1 = Data (from keyboard)
+<LI>Pin 2 = n/c
+<LI>Pin 3 = Ground
+<LI>Pin 4 = 5 volt supply
+<LI>Pin 5 = Clock (from keyboard)
+<LI>Pin 6 = n/c
+</UL>
+
+<H4>The DOS computers keyboard</H4>
+When we press a key on a PC keyboard a <STRONG>Press Code </STRONG>is generated by the action of pressing the key and a <STRONG>Release Code</STRONG> is generated when the key is released. The press and release codes are used to produce the "Typmatic" multiple key stroke feature.
+<P>
+The data from the keyboard is sent to a <STRONG>Keyboard Interface Circuit</STRONG> on the System board in <STRONG>Serial</STRONG> form. Each byte of Keystroke Data is clocked into the interface circuit by a <STRONG>Clock Signal</STRONG> provided by the keyboard itself.
+<P>
+The Keyboard Interface Circuit in the PX/XT (the first generation 8 bit bus DOS computers) is quite different to that used in the AT type and all subsequent types of DOS computers. The interface used in the 8 bit bus computer used a <STRONG>serial in -parallel out shift register</STRONG> to accept the keystroke data and the interface is only single sided. The interface is uni-directional, the keyboard only talks to the computer and the computer does not talk back to the keyboard. The AT computer introduced a bi-directional interface, and used an 8042 microprocessor chip in the keyboard interface to accept the keystroke data, and to provide some of the processing of the data. The basic processes involved are the same for both types of interface.
+
+<H4>What happens when you press a key on a PC keyboard ?</H4>
+When a key on the keyboard is pressed, the keyboard processor determines a <A HREF="scancode.html">Scan Code</A> for that key from its position in the key matrix. The Scan Code for each key represents the keys position on the keyboard, rather than a particular character. When the PC. keyboard has a key pressed it clocks a Scan Code representing that key, into the computers Keyboard Interface circuit on the system board. When the keyboard interface circuit has received 8 bits (XT keyboard) or 11 bits (all other DOS computers) of Key Stroke data, it generates a <STRONG>Hardware Interrupt on IRQ 1</STRONG>, to start the <STRONG>Keyboard Service Routine</STRONG>. 
+<P>
+<STRONG>Note; -</STRONG> As mentioned above, the keyboard also generates release-codes when that key is released but we will discussed this later.
+
+<H4>Interrupts and service routines</H4>
+When the computers processor gets the <STRONG>hardware interrupt signal IRQ 1</STRONG>, via an 8259 IRQ controller chip, it runs the Interrupt Handling Routine to find out the interrupt number that caused the interrupt. 
+<P>
+It them uses this number to find the vector, from the <STRONG>Interrupt Vector Table</STRONG>, that points to the <STRONG>Keyboard Service Routine</STRONG>. <EM>The Vector is the address of the start of the Keyboard Service Routine</EM>.
+
+<H4>The Keyboard Service Routine</H4>
+The processor loads the start address of this routine into it's program counter and then proceeds to run the Keyboard Service Routine. The Keyboard Service Routine takes the Scan Code from the Keyboard Interface Circuit and produces a <STRONG>Two Byte Code</STRONG> that it puts in a <STRONG>Keyboard Buffer</STRONG> area in <STRONG>RAM Memory</STRONG>. 
+<P>
+Other routines within the operating system or applications read the Key Stroke Data from the keyboard Buffer and make use of it.
+
+<H4>The Status Bytes</H4>
+The Status Bytes keep track of the shift state keys. A number of keys on the keyboard do not produce characters but they do determine what a particular key stroke means. These keys include the two <STRONG>Shift</STRONG> keys, the <STRONG>Control</STRONG>, the <STRONG>Alt.</STRONG>, <STRONG>Caps Lock</STRONG>, <STRONG>Num. Lock </STRONG>, <STRONG>Scroll Lock</STRONG> and the <STRONG>Insert</STRONG> Keys.
+<P>
+These keys effect two <STRONG>Status Bytes</STRONG>, stored in low RAM Memory, and these bytes keep track of the state of these keys. 
+<P>
+When the Keyboard Service Routine accepts a Scan Code from the keyboard, it   consults the two <STRONG>Status Bytes at 417 and 418 hex</STRONG>, to see how the states of these keys, effect the Scan Code and hence the data produced.
+<P>
+<CENTER>
+<STRONG>The bits of the status bytes are used thus.</STRONG>
+<P>
+<TABLE BORDER>
+<TR><TH>Byte 417 hex</TH>
+<TH> </TH>
+<TH>Byte 418H hex</TH>
+<TH> </TH>
+</TR>
+<TR><TD><STRONG>Bit</STRONG></TD>
+<TD><STRONG>1=active, 0=inactive</STRONG></TD>
+<TD><STRONG>Bit</STRONG></TD>
+<TD><STRONG>Meaning</STRONG></TD>
+</TR>
+
+<TR><TD>7</TD>
+<TD>Insert state</TD>
+<TD>7</TD>
+<TD>1=Ins depressed</TD>
+</TR>
+
+<TR><TD>6</TD>
+<TD>Cap's lock</TD>
+<TD>6</TD>
+<TD>1=Caps-lock depressed</TD>
+</TR>
+
+<TR><TD>5</TD>
+<TD>Num lock</TD>
+<TD>5</TD>
+<TD>1=Num lock depressed</TD>
+</TR>
+
+<TR><TD>4</TD>
+<TD>Scroll lock</TD>
+<TD>4</TD>
+<TD>1=Scroll lock depressed</TD>
+</TR>
+
+<TR><TD>3</TD>
+<TD>Alternate</TD>
+<TD>3</TD>
+<TD>1= Cont-Num lock active</TD>
+</TR>
+
+<TR><TD>2</TD>
+<TD>Control</TD>
+<TD>2</TD>
+<TD>1=Pcjr keyboard click active</TD>
+</TR>
+
+<TR><TD>1</TD>
+<TD>Left shift</TD>
+<TD>1</TD>
+<TD>not used</TD>
+</TR>
+
+<TR><TD>0</TD>
+<TD>Right shift</TD>
+<TD>0</TD>
+<TD>not used</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+<STRONG>Example; -</STRONG> The <STRONG>"A" Key</STRONG>, has a Scan Code of 1E hex and could be <STRONG>"A"</STRONG>, <STRONG>"a"</STRONG>, or <STRONG>"ALT A"</STRONG>, depending on the status of the Status Bytes.
+<P>
+<STRONG>Important:- </STRONG>The shift state keys listed above, do not produce codes in the keyboard buffer, but they do effect the Status Bytes, setting and resetting the bits in the bytes that they control.
+
+<H4>The data written by the Keyboard Service Routine</H4>
+The Keyboard Service Routine generates <STRONG>two byte codes</STRONG>, that it places into the keyboard buffer. The keyboard buffer is 32 bytes of RAM from 41E hex to 43D hex (0041E to 0043D). This is a circular buffer and the pointer to the <EM>start address is kept in locations 41A hex and 41B hex</EM> and the pointer to the <EM>end address is in locations 41C hex and 41D hex</EM>.
+ <P>
+<STRONG>The Two Byte codes take the following form.</STRONG>
+<P>
+<STRONG>Normal Characters</STRONG>
+<UL>
+<LI>Main byte (low byte) ASCII code
+<LI>Aux byte (high byte) SCAN code
+</UL>
+<P>
+<STRONG>Special Characters</STRONG>
+<UL>
+<LI>Main byte (low byte) 00(zero)
+<LI>Aux byte (high byte) Scan-code or special code.
+</UL>
+<P>
+
+<STRONG>Example; - The "A" key has a scan-code of 1E hex.</STRONG>
+<CENTER><TABLE BORDER>
+<TR><TH>Keys pressed </TH>
+<TH>Aux byte</TH>
+<TH>Main byte</TH>
+</TR>
+<TR><TD>A "big" upper case "A" will produce</TD>
+<TD>1Ehex</TD>
+<TD>41hex (see the ASCII character set)</TD>
+</TR>
+<TR><TD>A "little" lower case "a" will produce</TD>
+<TD>1Ehex</TD>
+<TD>61hex (see the ASCII character set)</TD>
+</TR>
+<TR><TD>An "ALT A" will produce</TD>
+<TD>1Ehex</TD>
+<TD>00hex (Special Key)</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+
+The Auxiliary Byte values for the Special Keys can be seen in <A HREF="table1.html">the Auxiliary Byte values for the Special Keys</A>
+
+<H4>How do The AT and XT keyboard interfaces differ ?</H4>
+The XT and all later DOS computers handle the problem of keyboard interfacing quite differently. Today the XT type interface is dead and the interface first used in the AT type computers keyboard interface in 1983, is used in all modern DOS computers.
+<P>
+<STRONG>Note:</STRONG>The keyboard from an old XT type computer may not be able to be used in a more modern PC Computer system. Many of the XT keyboards were XT type keyboards only. Some keyboards have an XT/AT interface switch but most modern keyboard can detect the type of interface in use automatically. The switch on the keyboard would be labeled XT/AT or 8088/80286.
+<P>
+<STRONG>Data is sent by the Keyboard to the Interface Circuit in Serial form.</STRONG>
+<P>
+Data is send from the keyboard to the interface circuit on the computers System board in serial form and this data is clocked into the interface one bit at a time by a clock signal that is also supplied by the keyboard. With the more modern type keyboard interface the data takes the form of an eleven bit word with, one Start Bit (a low) followed by eight Data Bits (least significant bit first) an Odd Parity Bit and a Stop Bit (a high).
+<P>
+The Data and Clock lines that run between the keyboard and the keyboard interface circuit are normally high logic, pulled up by "pull-up" resistors on the keyboard end. When the keyboard wishes to send keystroke data to the computers keyboard interface it puts the data one bit at a time on the Data Line and then pulls the Clock Line low for a short duration while holding each data bit steady for a short time. The data rate is typically about 10K bits per second.
+<P>
+In modern PC computers, the interface lines between the keyboard and the interface circuit are <STRONG>bi-directional</STRONG>, and the computer can send commands to the keyboard via the same Data and Clock lines. The computer is really boss of the show and if the computer does not wish to receive key stroke data from the keyboard at any time, it holds the Clock line from the keyboard low. 
+<P>
+The keyboard checks the state of the Clock line before it tries to send data to the computer and so it can see if the computer is ready to receive key stroke data. If the keyboard finds the clock line low it can store up to 16 key-presses itself. It will then send these to the keyboard interface circuit when the computer releases it's control of the clock line. 
+<P>
+When the <STRONG>computer wishes to send a command to the keyboard</STRONG> it forces the data line low and leaves the clock line high. When the keyboard see's these conditions it responds with the hex code FA. If the keyboard detects an error in the data transmitted to it by the computer it will respond with FE hex and this code requests a re-transmission of the code that was in error. Errors are detected via the parity bits that accompany the codes sent by the keyboard or the computer on the keyboard interface lines.
+<P>
+<STRONG>A Shift Register or a Microprocessor</STRONG>
+<P>
+In the XT type computer the keyboard interface circuit consists of a <STRONG>Serial In - Parallel Out Shift Register</STRONG> and some logic circuits to generate a Hardware Interrupt (IRQ1) when keypress data has been loaded into this shift register. the Interrupt Service Routine invoked by the IRQ1 then reads the keypress data from the shift register via an 8255 programmable I/O chip.
+<P>
+The AT type computer in 1983 introduced a more advanced keyboard interface circuit using an 8042 microprocessor chip. The data sent over the data line from the keyboard to the interface on the system board is an eleven bit word consisting of a start bit, eight data bits, a parity bit and a stop bit. This data is clocked into the keyboard interface by a clock signal supplied by the keyboard on a clock line between the keyboard and the interface circuit. The keyboard interface processor receives the serial data from the keyboard, checks the parity of the data, and presents the data at its output buffer. The interface circuit then generates an IRQ1 to call on the Keyboard Service Routine to take this data from the buffer, and to process it. 
+
+<H4>The Release Codes</H4>
+Most key presses produce a Keycode that represents the keys position on the keyboard rather than and actual character. Two types of Keycodes are sent by the keyboard to the Keyboard interface circuit on the computers System board. The Keypress code (make code) is sent when a key is pressed and a Release code (break code) is sent when the key is released. 
+<P>
+Modern DOS computer keyboards support three sets of Press and Release codes. The Release codes are used to operate the key repeat function (called Typematic by IBM), that produces multiple key strokes if a key is held down for more than half a second. This function can be disabled by applications if required. The delay and the rate at which keystrokes are produced are determined by default values stored in low memory addresses.
+
+<H4>The Keyboards power up sequence</H4>
+On power up the keyboard runs a self-test routine that checks the keyboards processor and interface and then sends the code AA to the computers keyboard interface, if the keyboard is functioning correctly, or FD if a fault is discovered. 
+<P>
+Once the diagnostic is finished the keyboard starts scanning the key matrix and monitoring the two Data and Clock lines between the keyboard and the computers keyboard interface. At this point some keyboards send out a string of AA bytes and this is thought to be part of the keyboards way of discovering if it is connected to an XT or AT type computer. This string of AA's has even parity instead of odd parity and so when the computer responds with a "re-send command" the keyboard can identify the interface in use.
+
+<H4>Keyboard terms</H4>
+<A NAME="tact"></A><STRONG>Tactile response</STRONG> - the key top provides some resistance to being depressed.<BR>
+<A NAME="audio"></A><STRONG>Audible response</STRONG> - the key produces a click or other sound when the key is pressed.<BR>
+<A NAME="soft"></A><STRONG>Soft-touch</STRONG> - the keyboard has very little tactile response. (often referred to as the wet feel)<BR>
+<A NAME="click"></A><STRONG>Click</STRONG> = the keyboard produces a loud audible response when pressed<BR>
+
+<P>
+<B><FONT COLOR="Red">Do not confuse the operation of the keyboard interface and the Video System. There is no direct link between the two. The Video System reads data from the Video RAM and produces the Video Display from that. The data in the Video RAM is written there by the Operating System or an Application.</FONT></B>
+
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="99%">
+<tr>
+<td width="33%" bgcolor="#008080" align="center"><a href="sequence.html"><font
+color="#FFFFFF">The sequence of events involved with the PC keyboard</font></a></td>
+<td width="33%" bgcolor="#008080" align="center"><a href="scancode.html"><font
+color="#FFFFFF">The Scan Codes for a PC Computer Keyboard</font></a></td>
+<td width="33%" bgcolor="#008080" align="center"><a href="table1.html"><font
+color="#FFFFFF">The Auxiliary Byte values for the Special Keys</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="99%">
+<tr>
+<td width="33%" bgcolor="#008080" align="center"><a href="morekeyb.html"><font
+color="#FFFFFF">More technical details on the PC Keyboard</font></a></td>
+<td width="33%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="33%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+ 
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/keyboard.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:49 GMT -->
+</HTML>
+

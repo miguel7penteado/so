@@ -1,0 +1,61 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/ioports.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<HEAD>
+<TITLE>The PC's I/O ports</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>THE PC AND IT'S I/O PORTS </H3>
+
+The 8086 family of processors provide 64K of I/O addresses, the first 4096 of which are the easiest to access from within a program. In the DOS systems part of this first 4K  of the I/O space is assigned to the common I/O functions. The most basic of I/O functions are Parallel, Serial and Games Ports. Disk access (both Floppy and Hard disk), the Video Display System, the Keyboard Interface and the Speaker (provides the turn on beep and other simple sounds) are also assigned I/O addresses in the I/O space.
+<P>
+This I/O space is assigned to the standard I/O functions and these assignments go back to the "Start of DOS". See the list of I/O Port assignments at the end of this chapter.
+<P> 
+In looking at I/O assignment in the DOS system we must also consider the DMA ports (Direct Memory Access), and the IRQ lines (Interrupt ReQuest) and sometimes memory address space. We will cover DMA and IRQ in other chapters in PC Peripherals. Some I/O functions are also assigned memory space for RAM and/or BIOS Extension ROMs.
+<P>
+<STRONG>It is important to make sure two I/O cards are not trying to use the same I/O assignments.</STRONG>
+
+<H4>Basic I/O function hardware</H4>
+Over the years, some PC Computers had some or all of the basic I/O functions built into the System Board, but it was more common to find some form of I/O card, or cards, plugged into Bus Slots. Building the basic I/O functions into the System Board made the computer cheaper to produce, but it meant the System Board was usually destroyed by a simple fault in one of the basic I/O interfaces. This was an important consideration when the System Board was usually more expensive than the processor mounted on it. During these years the useful life of a PC Computer System was thought to be five or six years.
+<P>
+During this era, basic I/O functions could be supplied by one of two possible combinations
+<UL TYPE=SQUARE>
+<LI><STRONG>A single FDC/IDE SPG Card</STRONG> 
+<LI><STRONG>An SPG card and an FDC/IDE card</STRONG>.
+</UL>
+<P><BLOCKQUOTE>
+<STRONG>SPG</STRONG> = Serial, Parallel and Games Ports<BR>
+<STRONG>FDC/IDE =</STRONG> Floppy Disk Drive Interface and IDE Hard Disk Drive Interface 
+</BLOCKQUOTE><P>
+The wheel has turned full circle and today System Boards have all these basic I/O functions built into the System Board. They are provided by the "chip set" the board is built around. The cost of the System Board is usually low when compared to the cost of the processor and the useful life of a modern PC Computer System is only two or three years. It will be very obsolete in two years and not worth replacing with the same level of technology.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="ioassign.html">The common I/O port assignments</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="parallel.html">The PCs Parallel Ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="serial.html">The PCs Serial (Comms) Ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="games.html">The PCs Games (Joystick) Port</a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/ioports.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

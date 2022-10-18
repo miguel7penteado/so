@@ -1,0 +1,138 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/hdlimit.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:09 GMT -->
+<HEAD>
+<TITLE>Hard Disk Drive size limits</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware Book</H2>
+<H3>Historical Hard Disk Drive capacity limits</H3>
+
+DOS versions up to and including DOS 3.3 imposed very restrictive limits on Hard Disk Drive Interfaces. The worst limit involved Hard Disk Drives larger than 32 MByte. A Drive larger than 32 MByte had to be split into sections and no section could be larger than 32 MByte. This limitation was overcome in later DOS versions and DOS 6.22 can theoretically address a Hard Disk Drive of up to two tera-bytes (two trillion bytes). The only problem is the 16 bit FAT used by DOS and older Windows Operating Systems, lowers this limit to 2.1 GByte.
+<P>
+This is really only a theoretical limit and <STRONG> in practice a limit of 528 MBytes was imposed by the original BIOS</STRONG>. The BIOS is a series of routines, stored in a ROM, that test, configure and boot up your computer and provide services to DOS and application software. BIOS stands for Basic Input/Output Services. 
+<P>
+A good way to look at the disk size limitations is to look at the various limitations imposed by layers in the system. 
+<P>
+Disk access involves four layers, data must travel through all four layers on its way between the DISK and you. These layers are:-
+<OL>
+<LI>The Hard Disk Drive 
+<LI>The Hard Disk Drive Interface
+<LI>The BIOS service routines (in particular, Int 13 routine)
+<LI>The Operating System.
+</OL>
+<P>
+<H4>The limits imposed by the Hard Disk Drive Interface</H4>
+As this limit was imposed by the history of the PC Computer,  we will start with the ST506 Interface, that was used in the XT and early AT type Computers. As Hard Disk Drives use multiple platters, there are multiple read/write heads inside the Drive. Each disk surface is divided up into circular concentric areas called tracks and each track is divided into a number of sectors. Each sector contains 512 bytes of data. The Tracks are usually referred to as Cylinders because they can be looked at as a Cylinder extending down through the multiple platters. When we talk about Tracks, we are talking about the Tracks on one side of a Platter, when we are talking about Cylinders, we are talking about all Tracks on the same plane, through all platters.
+<P>
+The Hard Disk Drive in the first IBM PC/XT Computer had 306 Tracks (Cylinders), four (4) Heads reading four surfaces on two platters, and used 17 Sectors per track. 306 x 17 x 4 x 512 Bytes per Sector gave a capacity of 10,370 KBytes. 
+<P>
+The original <STRONG>ST506</STRONG> Hard Disk Drive Interface could only support 8 Heads but manufactures broke the rules and most of the last of the ST506 Hard Disk Drive Interface cards supported 16 heads. This means the ST506 Interface imposes the first constraint, the disk could have no more than 16 heads. 
+<P>
+The newer <STRONG>ESDI</STRONG> Hard Disk Drive Interface supported up to 256 heads, up to 4096 Cylinders, and up to 256 Sectors per Track. Given the sector size of 512 bytes this would mean an ESDI drive could have a capacity of up to 135 GBytes. Not bad foresight for the early 1980s.
+<P>
+The IDE Hard Disk Drive Interface, and the universal device interface, SCSI, do not need to know about the numbers of Heads and Cylinders, as they are designed quite differently. They are only concerned with the total number of Sectors on the Hard Disk Drive. 
+
+<H4>Limits imposed by the BIOS</H4>
+The BIOS (Basic Input Output Services) provides disk services via a software interrupt service routine, <STRONG>Int 13 hex.</STRONG>. These services were originally designed for Floppy Disk Drives, and this is the cause of many of the limits. Three eight bit registers are used to store the Track, Head and Sector detail. The CH is used to store the Track number, the DH register stores the Head number and the CL register is used to store the Sector number. Eight binary bits can represent 256 values, so this means this BIOS service routine can support up to <STRONG>256 Tracks, 256 Heads, and 256 Sectors per track</STRONG>. The above organisation would give a capacity of over 8 GByte, not a bad insight for 1982, when Hard Disk Drives small enough to fit inside a PC Computer were just becoming a reality. The only problem was the arrangement was wrong, a Drive with more than 16 heads is impractical and even the first Hard Disk Drives had more than 256 cylinders.
+<P>
+This BIOS imposed limitation was overcome by modifying the Int 13 routine for Hard Disk Drives. The use of the CL and CH registers was changed. The low six bits of the CL register stored the number of sectors and the extra two bits not used in CL were tacked onto the front of the 8 bits in the CH register to give 10 bits for the number of cylinders. This means the Int 13 routine, when working with Hard Disk Drives, could recognise a maximum  of 1023 Tracks, a maximum of 63 Sectors per track, and a maximum of 256 Heads (sides). The 1023 Track barrier is a problem as modern drives can have as many as 5000 Cylinders.
+<P>
+One way to overcome the problem is to not tell DOS the drives real configuration. Rather than saying there are 2000 Cylinders and four Heads, we say they have 1000 Cylinders and eight Heads. The resulting capacity is the same, and the process is called <STRONG>TRANSLATION</STRONG>. Remember we are using the terms Cylinder and Track almost interchangeably here, a Track is a single track on one side of a platter, a Cylinder refers to all the Tracks on one plane.
+<P>
+The last layer in the path between the disk and the user is the Operating System and DOS and Windows have their own size limitations. The major limitation here is caused by the Boot Record. The boot record is located in the first sector of track one on a Hard Disk Drive and contains a record of the disks format and a short boot strap loader routine. DOS versions up to 3.31 set aside two bytes (16 bits) for a record of the total number of sectors per logical drive. Under these earlier DOS versions, a large drive could be split into a number of logical drives by the FDISK command (each must be 32 MByte or less) and this made it possible to use drives larger than 32 MByte with these DOS versions. 
+<P>
+The 16 bit limit on the total number of sectors meant a Hard Disk Drive could have a maximum of 65,536 sectors, a total capacity of 32 MByte. (65536 sectors x 512 bytes per sector) DOS 3.1 and later removed this limit by setting aside four bytes for the total number of sectors and the 32 bit number produced can describe a two Tera Byte disk size.
+<P>
+Here is a table describing where the original IDE specifications 528 MByte limit came from. The maximum capacity limits of IDE Hard Disk Drives was the combination of the lowest values for each parameter across the four layers of communication.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR><TH>               </TH>
+<TH>Limit imposed by the Int13 routine</TH>
+<TH>Limits imposed by the IDE interface</TH>
+<TH>Limit on the original IDE specification</TH>
+</TR>
+
+<TR><TD>Maximum sectors per track</TD>
+<TD>63</TD>
+<TD>255</TD>
+<TD>63</TD>
+</TR>
+<TR><TD>Maximum number of heads</TD>
+<TD>255</TD>
+<TD>16</TD>
+<TD>16</TD>
+</TR>
+<TR><TD>Maximum number of cylinders</TD>
+<TD>1024</TD>
+<TD>65536</TD>
+<TD>1024</TD>
+</TR>
+<TR><TD>Maximum capacity</TD>
+<TD>8.4GB</TD>
+<TD>136.9GB</TD>
+<TD>528MB</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+For many years now DOS computers have used translation so the numbers reported to the CMOS setup at the time of installation is quite different to the actual organisation of the Hard Disk Drive. Translation can be used to make the organisation of the drive fit into the limits imposed by the BIOS, by the Hard Disk Drive Interface and by the Operating System. If we look at the specifications for the modern Hard Disk Drives we will see they do not have a constant number of Sectors per Track. The outer Tracks have the most Sectors per track and the Sectors per Track reduces in Zones, as the Tracks get closer to the centre of the platter. Tracks closer to the centre have a shorted linear length and so to keep the recording speed almost constant, these Tracks must have less Sectors per Track.
+
+<H4>Enhanced IDE and Fast-ATA</H4>
+To overcome the limits imposed on disk size by the various factors outlined above, the IDE drive and interface manufacturers have adopted a series of new standards. Although you see it advertised by different names, sometimes generally referred to as simply Enhanced IDE, there are actually two emerging standards, Enhanced IDE and Fast AT Attachment, Fortunately for us, the two work effectively the same.
+
+<H4>Inside The New IDE</H4>
+Enhanced IDE and Fast ATA drives both offer Logical Block Addressing (LBA), providing Hard Disk Drive volume sizes up to 8.4 GByte, well above the original IDE limit of 528 MByte. Remember the 16 bit FAT used in DOS and older Windows Operating Systems still limits Hard Disk Drive size to 2.1 GByte. Each of the schemes also defines a variation of the IDE interface that operates up to a maximum transfer rate of between 11.1 MByte/sec and 32 MByte/sec. These maximum transfer rates are much faster than the original IDE transfer rate of about 3.3 MByte/sec. 
+
+<H4>What makes this technology so fast?</H4>
+These new drives are fast for reasons even beyond their enhanced specifications. As with every new generation of drive technology, they simply employ significantly improved Drive hardware. Faster rotational speeds are a crucial factor, Rotational speeds of between 4,495 RPM and 5,400 RPM. are common, and the fastest Hard Disk Drives rotate at 10,000 RPM. This is a big boost over the 3600 RPM of IDE Interfaced Hard Disk Drives just a few years ago. Passing data past the read write head faster, makes the data transfer rate faster. 
+<P>
+Read/write head technology itself has also evolved from the clumsy mechanical stepper-motor construction to a more elegant voice-coil solution. The first PC Computer Hard Disk Drives were rated at a 120 ms average access time. That figure dropped to the mid-20 ms region by 1990, and now, the average seek time, ranges from 8 ms to 12 ms. Not only is the data getting to the head faster, but the head is moving from track to track in roughly 1/10th the time it originally took.
+
+<H4>Enhanced IDE is changing all the rules.</H4>
+It boosts maximum Hard Disk Drive size to 8.4 GByte, the maximum number of  IDE Interfaced devices to four, and the maximum transfer rate to in excess of 32 MByte/sec. It also defines an ATA Packet Interface (ATAPI) for CDROM drives, with other specifications for Tape Backup and high capacity Removable Media Drives.
+<P>
+Enhanced IDE has changed four main elements of the old IDE specification:
+<P> 
+<OL>
+<LI>BIOS redesign to support high-capacity EIDE drives 
+<LI>Increased host-transfer rates
+<LI>The implementation of two EIDE channels, each providing for a Master and a Slave device. 
+<LI>And perhaps most significantly, support of non-disk IDE peripherals, via the ATAPI standard 
+</OL>
+
+<H4>Fast-ATA and Enhanced IDE are almost the same</H4>
+In an effort to draw a distinction between what the drive does and what the rest of the system does, Seagate Technology introduced the term Fast-ATA for its Hard Disk Drive Interface technology. Having an extra term for essentially the same thing has lead to some confusion. The relationship between the two interfaces is straightforward.
+<P>
+A Fast-ATA Hard Disk Drive offers the same fast transfer modes as an Enhanced IDE Hard Disk Drive, and it shares most other features as well. In particular, it needs the same support from the computer, and it can take advantage of any Enhanced IDE features that do not depend specifically on the Drive. The key difference is that Fast-ATA does not cover anything that is not included in the Hard Disk Drive. As a practical matter then, a Fast-ATA Hard Disk Drive is identical to an Enhanced IDE Hard Disk Drive. 
+<P>
+In the last module of this subject group, PC Servicing two, you will learn how these standards are racing ahead, providing faster transfer rates and a more flexible interface.
+<P>
+<HR>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="20%" bgcolor="#008080" align="center"><a href="eide.html"><font
+color="#FFFFFF">IDE, ATA, CAM, ATAPI and LBA</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="hdtech.html"><font
+color="#FFFFFF">Hard Disk Drive technologies</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="hdinter.html"><font
+color="#FFFFFF">Hard Disk Drive Interfaces</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="eidetech.html"><font
+color="#FFFFFF">More technical details of EIDE</font></a></td>
+<td width="20%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="20%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table></CENTER>
+<HR>	
+Copyright &copy; Phil. Storr 4<SUP>th </SUP>December
+1998
+<HR>
+
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/hdlimit.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:09 GMT -->
+</HTML>

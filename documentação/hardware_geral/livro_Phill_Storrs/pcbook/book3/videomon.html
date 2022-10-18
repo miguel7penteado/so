@@ -1,0 +1,379 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/videomon.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:51 GMT -->
+<HEAD>
+<TITLE>Video systems and monitors</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC="../images/pc2.jpg" ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>PC Video monitors</H3>
+<H4>Monitor Basics</H4>
+Let's start with the fundamentals, how does a cathode ray tube work ?. A high voltage is fed into a conductive coating on the "bell" and face of the tube and a beam of electrons, (the electrons are emited from a heated cathode in the neck of the tube), is accelerated toward the front of the tube. The inside face of the tube is coated with phosphors that glow when they are hit by electrons traveling at high speed. On a monochrome display, these phosphors are spread in an even layer across the entire face of the tube. Colour monitors, however, have three different colour phosphors: <FONT  COLOR=#FF0000>red</FONT>, <FONT  COLOR=#00FF00>green</FONT>, and <FONT  COLOR=#0000FF>blue</FONT>, arranged in dot or stripe groups.
+<P>
+If you would like to see how this is done look at you Monitor or Television set with a magnifying glass and you will see for yourself that a white screen is actually made up of red, green, and blue dots. 
+<P>
+The electron beam when it strikes the phosphor is turned on and off to produce dots (called Pixels) on the screen. Each pixel may cover several of the dot or stripe groups mentioned above.
+
+<H4>What do we call these Dots ?</H4>
+The first issue to consider is resolution: the number of dots that can be displayed on the screen at one time. These were originally called <STRONG>picture elements</STRONG>, but that has been shortened to <STRONG>pixel</STRONG>. A pixel is a two-dimensional object, with height and width dimensions. The width is determined by how fast the electron beam can turn off and on.  The height is determined by the height of the electron beam. One major misconception is the connection between the size of the Pixels and the size of the Phosphor Dots. There is no connection between the size of a pixel and the size of the phosphor dots used in a tube.  
+<P>
+The pixel size is a function of the image resolution being displayed on the screen. You can use the same monitor to display a 640x480 pixel image in one mode, and a 1,024x768 image in another. The screen stays the same size, so the pixels in the second mode have to be smaller since there are more of them on the same screen. The phosphor dots do not change size when you change display resolutions, they are physical feature of the monitor.  A monitor with a smaller <STRONG>dot pitch</STRONG>, the distance between the phosphor dots, will have a finer "grain" and will be able to produce sharper images at higher resolutions than a monitor with a larger dot pitch. The pixel size for a given resolution on a given screen size is the same, no matter what the dot pitch. When talking about the dot-pitch of a modern VGA monitor, the largest dot pitch that should be considered is 0.28mm.
+
+<H4>The original DOS Computer video systems</H4>
+For the original IBM PC, there were two types of Video Display Adaptors (Video Interface cards), a monochrome character-only display called the <STRONG>Mono Graphics Adaptor (MDA)</STRONG> and the <STRONG>Colour Graphics Adaptor (CGA)</STRONG>. About 1982, an after market supplier produced the Hercules Graphics Card (HGC), an improved MDA type card that provided a monochrome grapics mode.
+<P>
+<STRONG>MDA provided only 80 characters by 25 lines character mode only</STRONG>
+<P>
+<STRONG>The Hercules Graphics Card (HGC) provided :</STRONG>
+<UL>
+<LI>80 characters by 25 lines character mode
+<LI>720 by 350 resolution graphics mode
+</UL>
+<P>
+<STRONG>Colour Graphics Adaptor (CGA) in Character Mode provided :</STRONG>
+<UL>
+<LI>80 characters by 25 lines character mode
+<LI>40 characters by 25 lines character mode
+</UL>
+The CGA video system could provide 16 foreground colours in Character modes
+<P>
+<STRONG>Colour Graphics Adaptor (CGA) in Graphics Mode provided :</STRONG>
+<UL>
+<LI>640 by 200 resolution in two colour
+<LI>320 by 200 in four colours
+</UL>
+These limits were due to the small size of the Video RAM (16Kbytes) provided on the CGA Video Interface Card.
+<P>
+The resolution of PC Video Systems has been rising steadily since those early days. The standard (Generic) VGA display has a 640 by 480 resolution. This equates to 307,200 pixels per screen. The growing acceptance of a Graphical User Interface has increased the demand for higher resolutions and now 800 by 600 (480,000 pixels) is the most common. The fall in price and resultant increase in the popularity of 17 inch monitors has meant 1,024 by 768 resolution (786,432 pixels per screen) and 1,280 by 1,024 (1310,720 pixels) are now supported by modern Video Interface cards.
+
+<H4>The amount of information required to create an image</H4>
+In graphics display modes it takes one bit of information to describe whether a pixel is on or off. If we wish to display this pixel in more than two colours, then we need more information for each pixel. 
+<P>
+The <STRONG>CGA display</STRONG> in 640 by 200 Graphics mode consisted of 128,000 pixels. In two-colour mode this required 16,000 bytes of Video RAM, 128,000 pixels (one bit per pixel) divided by 8 to get back to bytes. Four colours require two bits per pixel and so the same 16,000 bytes of Video RAM could only provide a resoultion of 320 by 200 in four-colour mode. 
+<P>
+The CGA video system can display more colours in Character Modes because the information in the Video RAM represented characters rather than individual pixels. In 80 character by 25 line Character Mode, a CGA display requires 2000 bytes of Video RAM to hold an ASCII code for each character, and a further 2000 bytes of Video RAM to hold an Attribute byte to control the colour of each character. The ASCII Codes and Attribibute Bytes are stored in alternate locations in the Video RAM. Each character position on the screen in character mode requires two bytes of information, one for the ASCII code for the character to be displayed, and one for the attribute byte that determines the characters character.
+<P>
+The <STRONG>Generic VGA</STRONG> standard provides 16 colours at 640 by 480. It takes four bits to describe the colour of each pixel. Multiply these four bits by the 307,200 pixels in a 640 by 480 display, divide by 8 bits to get how many Bytes are required and you have 153,600 bytes of Video RAM is required to store the information for a one screen display. The first VGA Video Cards were equiped with 256K bytes of Video RAM and so they could display only 16 colours in 640 by 480 resolution. 256 colours (eight bits per pixel) requires 307,200 bytes of Video RAM.
+<P>
+Sixteen colours are not enough for modern Windows applications and so a minimum standard for VGA is 256 colours. The VGA standards provide for modes with thousands or millions of colours.  <STRONG>"High colour"</STRONG> use <STRONG>15 bits or 16 bits per pixel</STRONG>, and this means 32,768 or 65,536 simultaneous colours, respectively.  <STRONG>"True colour" </STRONG> uses 24-bits per pixel and provides 16.7 million colours to each pixel on the screen.
+<P>
+The <STRONG>original VESA</STRONG> standard for <STRONG>Super VGA</STRONG> was 800 by 600 resolution at 16 colours (4 bits per pixel) and this requires 240,000 bytes of Video RAM.  A 1,024 by 768 true-colour image (24 bits per pixel) requires 2,359,296 bytes of Video RAM. 
+
+<H4>What about the Human Eye ?</H4>
+The computer does not have much time to get this information onto the screen. The problem lies in the way that human visual perception works. Thomas Edison (among others) found that by displaying a series of still images quickly enough, an observer will perceive the series as a single moving image. Movie films use 24 images per second, and our Television broadcast system uses 25 images per second to achieve this effect. If we use a slower rate, the sequences become jerky and the illusion of motion is lost.
+<P>
+Part of the problem is that monitors must update rapidly enough so that things that move on the screen appear to move smoothly. Twenty to thirty images per second may seem fast, but there's another problem that makes it not fast enough. Phosphors glow after they've been excited by the electron beam, and they start to fade as soon as the beam passes by. Some monitors use phosphors that fade more slowly than others. The old monochrome monitors used long persistence phosphors, but most monitors today rely on short to medium persistence phosphors. 
+<P>
+Many people don't realise it, but screen flicker is more pronounced if you look off to the side of a monitor, rather than directly at the centre of the screen.  That is largely because the human eye has two kinds of receptors - rods and cones. Cones are responsible for colour vision, but need a fair amount of light to work.  These cells are concentrated in the centre of the retina, at the centre of your field of vision. Rods only perceive images in black-and-white, but are more sensitive to dim light levels and to motion. There are no rods at the centre of your field of vision, so you are most sensitive to moving images in your peripheral vision.
+<P>
+As it turns out, with the phosphors in use in most colour monitors these days, most users can notice the flicker with screens that are updated as frequently as 60 times per second. This is also referred to as the <STRONG>refresh rate</STRONG>. We now more often than not, operate the PC Video system with refresh rates of 70 to 100 times per second.
+
+<H4>Where does the Scan Frequencies fit into the picture ?</H4>
+Hertz (abbreviated "Hz") is a unit of measurement in cycles per second and is used to quantify cyclical phenomena. A screen that is refreshed 60 times a second has a 60Hz refresh rate. Since this also refers to how often the electron beam starts from the top of the screen, it is also called the <STRONG>Vertical Scan Rate</STRONG>. Other frequencies are also of concern when you are looking at monitor specifications.  
+<P>
+One is the <STRONG>Horizontal Scan Rate</STRONG>, or how often the electron beam leaves the left edge of the image to paint a horizontal line. This rate is directly affected by two factors, the Vertical Scan Rate and the resolution.  If you have a faster scan rate and/or a higher resolution, the Horizontal Scan Rate will also have to be higher.
+<P>
+Lets consider a generic VGA image with a 60Hz refresh rate. There are 640 pixels across the screen and 480 pixels down the screen to make up an image. The electron beam must scan across the screen 480 times to reach all the phosphors on the screens surface. Each of these 480 lines must be scanned 60 times a second, which means that the beam must scan 28,800 lines a second (480 lines times 60 per second). There is also time taken up in having the beam move from the bottom right corner back up to the upper left before it starts again (Retrace). The scan rate is a bit faster than this to take into account the time it takes for the beam to Retrace back to the start of the next line.
+<P>
+The <STRONG>Horizontal Scan Rate</STRONG> for a <STRONG>generic VGA</STRONG> display with a <STRONG>Verical Scan Rate</STRONG> of <STRONG>60 Hz.</STRONG> is <STRONG>31.5KHz.</STRONG>.
+<P>
+Increase the resolution to <STRONG>800 by 600 </STRONG>with the same <STRONG>60Hz Vertical Scan Rate</STRONG>, and you will find the <STRONG>Horizontal Scan Rate</STRONG> will be <STRONG>37.88Khz</STRONG>. This is more than 20 percent faster than the requirement for generic VGA. Super VGA is more demanding on a monitor's Horizontal Scan circuit than the generic VGA signal. 
+<P>
+Some Video Interface cards provide a Super VGA Video (800 by 600) mode that uses a 56Hz refresh rate and a horizontal scan rate of 35.16KHz. This mode will allow most older non Super VGA monitors to operate at 800 by 600 resolution. 
+<P>
+A <STRONG>Super VGA monitor</STRONG> is one that operates at minimum Vertical Scan Rate of 72Hz and Horizontal Scan Rate or 48KHz. The Video Electronics Standards Association (VESA) calls for a 72Hz Vertical Scan Rate for 800 by 600 and a 48KHz Horizontal Scan Rate. <STRONG>VESA considers a 72Hz refresh rate the minimum required for flicker free operation.</STRONG>
+<P>
+Many people with 15-inch and larger screens are now using 1,024 by 768 or higher resolution modes. At 60Hz refresh, this calls for a horizontal scan rate of 48.3KHz, and at 70Hz refresh, the horizontal scan rate has to be 56.4KHz, nearly double the scan rate of the original generic VGA display.
+
+<H4>What about the Video Bandwidth</H4>
+Vertical Scan Rates describe what goes on at the screen level, and Horizontal Scan Rates do the same for the single scan line level, but what about the individual pixel level ?. The important measure here is how fast the electron beam can turn on and off, which means how many discrete pixels can be displayed in a given time, assuming that you are alternating black and white pixels. The measure of this ability is called "bandwidth". 
+<P>
+<STRONG>What bandwidth did a monitor need to have to handle a simple CGA four-colour image?. </STRONG>
+There are a number of ways to estimate required bandwidth for a given signal, but a rule of thumb is to multiply the number of pixels by the Vertical Scan Rate, and then add 50 percent to the result. For the original CGA display, we multiply 320 by 200 by 60, which gives 3,840,000, and then multiply that by 1.5 to give us 5,760,000Hz, or 5.76MHz.  This means that the monitor needs to be able to turn the electron beam on and off more than 5 million times per second in order to display the image correctly. At a resolution of 640 by 200 a CGA video system required a video bandwidth of about 11Mhz.
+<P>
+<STRONG>A 640 by 480 VGA screen</STRONG> - 640 by 480 pixels times 60Hz times 1.5 yields a bandwidth requirement of 27.6MHz.
+<P>
+<STRONG>Super VGA 800 by 600 image</STRONG> - with a 72Hz refresh rate, and the required bandwidth is 51.8MHz, nearly 10 times that of the CGA display requirement. At 1,024 by 768 at 70Hz refresh, you need a bandwidth of at least 97.1MHz.
+<P>
+In a video display, insufficient bandwidth is relatively easy to identify. The transition for the beam from off to on should be essentially instantaneous. Where the signal is low, the pixel will be off, and where the signal is high, the pixel will be on. A perfect signal will have this square shape, creating a sharp transition between off and on pixels. On the other hand, the image suffers when a monitor tries to display a signal that exceeds its bandwidth. This results in a <EM>smearing</EM> of the transition between off and on pixels. Instead of having <EM>off</EM> and <EM>on</EM> pixels adjacent to each other, you get a series of pixels that shade from black to white, or white to black. 
+<P>
+This effect is easy to spot. All you need to do is fill your screen with black-and-white, closely spaced vertical lines, and examine the transitions. Simply create a text file that fills your screen with capital M characters. You will get white letters on a black background under DOS, or you can use the Windows Notepad to get black letters on a white background. In either case, you should look for a sharp transition from black to white and back again. If the lines of text appear to have a Grey background compared with the white or black background between the lines, then your monitor is not completely up to handling that resolution image.
+
+<H4>Video Signals can be Digital or Analog</H4>
+Now that we have the components required to define an image, we need to look at how that information travels from the computer to the screen. The old MDA and CGA displays used <STRONG>Digital Video Signals</STRONG> (also refered to as <STRONG>TTL Video Signals</STRONG>) between the display adaptor and the monitor. Individual wires carried one bit of Video information, turning on and off the appropriate pixels when required. 
+<UL>
+<LI>With the <STRONG>MDA</STRONG> display, one wire carried the basic on/off signal while a second determined the intensity level, normal or bright. 
+<LI>With the <STRONG>CGA</STRONG> display, three separate wires carried signals for the separate <FONT  COLOR=#FF0000>Red</FONT>, <FONT  COLOR=#00FF00>Green</FONT>, and <FONT  COLOR=#0000FF>Blue</FONT> electron guns, while a fourth wire carried the <STRONG>Intensity</STRONG> signal. This provided a <STRONG>maximum of 16 colours</STRONG>.
+<LI>The <STRONG>EGA</STRONG> adaptors added two more signal wires so that there would be separate intensity signals for each colour. EGA had two signals for each of the Primary colours. This arrangement only provided for a palette of <STRONG>64 colours</STRONG>. To significantly increase the number of available colours would mean the addition of many more video signal wires between the video interface card, and the video monitor.
+</UL>
+<P>
+The solution was to use <STRONG>Analog Video Signals</STRONG>. VGA introduced the use of Analog Video Signals. The relative brightness of each colour component for a given pixel is specified by varying the voltage on a single wire. With just one lead each for the <FONT  COLOR=#FF0000>Red</FONT>, <FONT  COLOR=#00FF00>Green</FONT>, and <FONT  COLOR=#0000FF>Blue</FONT> components, the Video Adaptor card can produce a nearly infinite range of colours. The Video Card requires Digital to Analog (DAC) converters to convert the binary colour information stored in the Video RAM into the Analog Signals required by the Video Display Monitor. Here is a <A HREF="../images/vgamon.jpg">typical block diagram</A> of a VGA Colour Monitor.
+
+<H4>Synchronising the Horizontal and Vertical Scans with the Video Card</H4>
+The Video Display Monitor requires two other signals, in addition to the Video Signals. The monitor needs to coordinate the movement of the Electron Beam, both Vertically and Horizontally, with the scanning process on the Video Card. The process of matching the Video Display Monitor's electron beam movements (and the controlling circuitry associated with it) to the information in the Video Ram is called <STRONG>Synchronisation</STRONG>, and is simply shorten to <STRONG>Sync</STRONG>.
+<P>
+<STRONG>Note</STRONG> MDA and CGA Video Displays only had to handle a single Vertical Scan Rate, and a single Horizontal Scan Rate. Later Video Systems generate different Scan Rates depending on the Video Mode they are operated at.
+<P>
+The first VGA monitors had to operate at Scan Frequencies, of 60 Hz Vertical and 31.5KHz Horizontal. The original Super VGA resolution of 800 by 600 pixels, needed Scan Frequencies of 60 HZ and 37.88 KHz. Many older low cost VGA monitors could not operate at the required Scan Rrequencies for even generic Super VGA. In the early days of VGA Standards, this was overcome by some Video Interface Card manufacturers by the use of non-standard Super VGA Video Modes, and Scan Frequencies. Scan frequencies of 56 Hz and 35.15K Hz was one solution. 
+
+<H4>Matching the Monitor to the Video Adaptor Card</H4>
+In order to make sure your Video Display Monitor is well-suited for your Video Display Adaptor, you need to ascertain that they are matched for all three frequency requirements. 
+<UL>
+<LI>Starting with the resolution mode that you intend to use, make sure that the monitor can handle the fastest Vertical Scan Rate that the card can deliver at that mode, so you get the least flicker.
+<LI>Make sure the Video Display Monitor can handle the Horizontal Scan Rate that the card produces at the resolution, and at that refresh rate, to make sure that the image will sync properly.
+<LI>Finally, make sure that the Video Display Monitor has sufficient bandwidth to handle the highest-frequency signal that the card will produce at that resolution, so you get as sharp an image as possible.
+</UL>
+
+<H4>Types Of  Video Display Monitor (Video Display Unit)</H4>
+The Video Display Monitor has had to evolve along with the Video System and most older Monitors can only be used with one type of Video Interface Card. Video Display Monitors designed for use with MDA or HGA cards, and CGA or EGA Video Display cards each operated at a unique set of Horizontal and Vertical Scan Frequencies and used Digital (TTL) Video Input Signals.
+<P>
+All of these Video Systems used a DB9S connector on the back of the Video Interface Card, and operated with fixed Scan Frequencies. Monitors designed for use with each Video Standard only had to operate at one set of Scan Frequencies. As the Video Standards proliferated, Multi-System monitors (trade marks of Multi-Scan and Flex-Scan) became available that could be used on a range of Video Systems, but they were expensive.
+<P>
+The VGA Video System has changes the rules and today a VGA Video Display Monitor can be called upon to operate over a wide range of Scan Frequencies, depending on the Video Mode (resolution) required. Cheaper VGA Video Display Monitors can only operate over a narrow range of Scan Frequencies and so will only operate at some VGA modes. VGA monitors require three Analog Video Signals and two Sync. Signals. 
+<P>
+<STRONG>VGA</STRONG> uses a special three row DB15 connector, referred to as a <STRONG>Miniature DB15S</STRONG> connector. 
+<P>
+Multi-Scan and Flex-Scan multi-standard monitors had to cope with both the TTL and Analog Video Signals and may have switched automatically between these standards or may have had a TTL/Analog switch. This type of Video Display Monitor usually used a DB9S connector so it could connect to the old Digital (TTL) Video Interface Cards (MDA, HGC, CGA, and EGA), and required an adaptor to connect to VGA Video Inteface Cards.
+
+<H4>The various types of monitor that have been available to the PC computer</H4>
+<UL>
+<LI>A <STRONG>Composite Mono Video Display Monitor</STRONG> had a single coax cable between the Video Display Card and the Monitor, and used an <STRONG>RCA audio type socket</STRONG> on the Video Card. The Video and Sync. signals were combined onto one single signal on the coax cable. A Sync Separator circuit inside the Monitor separated the Horizontal and Vertical Sync. Signals from the Video Signal. The Video Signal was made by combining the Red, Green, Blue, and Intensity Video Information into a single Monochrome Analog Video Signal. <STRONG>This Monitor was used with CGA Video Interface Cards and operated with a Horizontal Scan Frequency of 15.75 KHz and a Vertical Scan Frequency of 60 Hz</STRONG>.<BR>
+A <A HREF="../images/compmon.jpg">typical block diagram</A> of a Composite Mono Video Display Monitor.
+<P>
+<LI>In the USA domestic <STRONG>NTSC Television Receivers</STRONG> were used with CGA Video Interface Cards and the early CGA Cards had two Composite Video Outputs - one was for a Composite Mono Video Display Monitor and the other provided an NTSC Colour Television signal for use with a Television Receiver, via an RF Modulator Module.
+<P>
+<LI>A more advanced version of the Composite Mono Monitor was the <STRONG>Dual Mode Mono Monitor</STRONG>. It was popular during the mid 1980's. This Monitor could work with either CGA or MDA/MGA Video Interface Cards. The Scan Frequencies and input configuration switched automatically between the two Video Standards. This Monitor used a DB9S connector on the back of the Video Interface Card. It accepted two Video Signals from MDA or MGA Video Interface Cards and four Video Signals from CGA Video Interface Cards.
+<P>
+<LI>The MDA/HGC Video Interface Cards used a <STRONG>TTL Mono Video Display Monitor.</STRONG> This Monitor required two Video Signals and two Sync. Signal and these were supplied via a DB9S connector on the back of the Video Interface Card. The Horizontal Scan Frequency was 18.432 KHz and the Vertical Scan Frequency was 50 Hz.<BR>
+A <A HREF="../images/monomon.jpg">typical block diagram</A> of a TTL Mono Video Diaplay Monitor.
+<P>
+<LI>The <STRONG>RGB Colour Video Display Monitor</STRONG> was the standard Colour Monitor for use with CGA Video Interface Cards. Most RGB Monitors had four Video Inputs, Red, Green, Blue, and Intensity and so the term RGBI Monitor was sometimes used. Some very early Monitors of this type had only the RGB inputs and could only display up to eight foreground colours instead of the usual maximum of sixteen.<BR>
+A <A HREF="../images/rgbimon.jpg">typical block diagram</A> of an RGB (I) Colour Video Display Monitor.
+<P>
+<LI>The <STRONG>EGA Colour Video Display Monitor</STRONG> required six Video Inputs, two for each colour and two Sync. Signals. An EGA Video Interface Card used the same DB9S connector as the other Digital (TTL) Video Standards. The Video Signals were called, R0, R1, G0, G1, B0 and B1 and EGA used Scan Frequencies of  21.8 Khz and 60 Hz. The six Video Signals meant EGA could provide a <STRONG>maximum of 64 colours</STRONG> (2<SUP>6</SUP>).<BR>
+A <A HREF="../images/egamon.jpg">typical block diagram</A> of an EGA Colour Video Display Monitor.
+<P>
+<LI><STRONG>Multi-sync Video Display Monitors</STRONG> are available that can work over a wide range of Scan Frequencies and can accept Digital (TTL) inputs from CGA, MDA/MGA,  EGA, and Analog inputs from VGA Video Interface Cards. These monitors use a DB9 connector. Multi-Sync Monitors require an adaptor plug or cable when used with VGA Video Interface Cards. Multi-Sync monitors are much more expensive than single system video monitors because of the circuitry required to switch the scan frequencies from one frequency to another, and to switch the Video inputs.
+<P>
+<LI><STRONG>Low cost VGA Colour Display Monitors</STRONG> A few years ago Low Cost VGA Monitors were available that only operated over a narrow range of Scan Frequencies, usually 31 to 36 KHz and 50 to 60 Hz. These monitors can't be used with some of the more advanced VGA Modes and they must produce an Iinterlaced Display when used at 1024 by 768 resolution.
+<P>
+Interlacing is only an issue for 1024 by 768 and above modes. For the average Windows user who has a 14 or 15 inch display, 800 by 600 resolution is about optimum for the size of the display and this mode can be generated without interlacing, on the ower cost VGA Monitors.<BR>
+A <A HREF="../images/vgamon.jpg">typical block diagram</A> of a VGA Colour Video Display Monitor.
+
+<BLOCKQUOTE>
+<STRONG>Interlaced Scanning</STRONG> Interlacing can be used to provide 1024 x 768 resolution on Low Cost VGA Monitors. Interlacing is a process where the screen is scanned twice to build up each image. The second scan writes its lines between the lines written by the first scan. Interlacing is used in our domestic Television system to double the number of lines in the display - each scan writes 312½ lines. The overall effect is a picture that has 625 lines.
+</BLOCKQUOTE>
+
+<LI>A <STRONG>Non-interlaced VGA Video Display Monitor</STRONG> Most modern VGA Monitors are of this type, even most of the Low Cost ones. They work over a wider range of Scan Frequencies and will generate a 1024 by 768 resolution image without Interlacing. 
+<P>
+<LI><STRONG>Digital VGA Monitors</STRONG> are the latest Video Display Technology. <EM>The term Digital in this case refers to the signal processing performed inside the Monitor to adjust it to the signals it is receiving from the Video Interface Card</EM>. The Monitor has a processor inside and this keeps track of the Horizontal and Vertical Scan Rates and adjusts the Scan Circuits to suit. The user also has digital controls for brightness, contrast and picture size, and the Monitor can remember the user's settings for 2 or 3 Video Modes (sets of Scan Frequencies).
+</UL>
+
+<H4>VGA Operating Modes</H4>
+The following is a table of Horizontal Scan Rates required the Video Display Monitors must operate at for the following Video Resolutions.
+<CENTER><TABLE BORDER>
+<TR><TH>VGA Mode</TH>
+<TH>Resolution</TH>
+<TH>Horiz. Scan Rate (in KHz)</TH>
+<TH> </TH>
+</TR>
+<TR><TD>Standard VGA</TD>
+<TD>640 x 480</TD>
+<TD>31.5 Khz</TD>
+<TD></TD>
+</TR>
+<TR><TD>Super VGA</TD>
+<TD>800 x 600</TD>
+<TD>31.5 to 35.2 Khz</TD>
+<TD></TD>
+</TR>
+<TR><TD>Extended VGA</TD>
+<TD>1024 x 768</TD>
+<TD>35.5 (interlaced)</TD>
+<TD>48.0 (non interlaced)</TD>
+</TR>
+<TR><TD>Ultra Ext VGA</TD>
+<TD>1280 x 1024</TD>
+<TD>48.2 (interlaced)</TD>
+<TD>64.0 (non interlaced)</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+Here is a description of some of the STATE OF THE ART video options that have been available for DOS computers over the past few years. This area of technology is advancing very rapidly and what is todays state of the art may well be obsolete in no more than six month's.
+<P>
+<STRONG>Continuous Edge Graphics (CEG)</STRONG><BR>
+This is a good example of how technology ages very quickly, it enjoyed only about six months of popularity. Edsun Laboratories, developed its continuous-edge graphics (CEG) chip to increase the number of colours on-screen with no memory penalty. This chip exchanged 32 of VGA's 256 colours for mix values, which indicate the ratio for "blending" adjacent colour dots.  The result was smooth transitions between colours at their borders or edges, colours that blend together gradually, with a minimum loss of sharpness. The drawback of the CEG system was that your programs needed to know the chip's special codes for colour mixing, and few applications take advantage of it. 
+<P>
+The CEG chip replaced the standard Digital to Analogue Converter (DAC) chip on the VGA card. The CEG option provided significantly improved images, by removing most of the `staircasing' or `jagged edges' normally seen. The CEG technology was especially suited to CAD and Desktop Publishing or any other graphically intensive software applications. 
+<P>
+<STRONG>Sierra Hi-Colour</STRONG><BR>
+Another advance in digital to analog (DAC) chips was the Hi-colour standards. Two Hi-colour standards exist, <STRONG>15 bit colour,</STRONG> giving <STRONG>32K simultaneous on-screen colours</STRONG> and using 5 bits for each primary colour. The <STRONG>16 bit</STRONG> version, giving <STRONG>64K colors</STRONG>, uses 5 bits for red and blue, and 6 bits for green. This follows the 16-bit colour standard set by IBM's XGA system. In either case, 2 bytes of Video RAM is required for every pixel on the screen. 
+<P>
+<STRONG>True-Colour</STRONG><BR>
+True-Colour provides <STRONG>16,700,000 colours</STRONG>. A 24 bit word is used to control the colour. and the amount of Video RAM required can be found from the horizontal resolution times the vertical resolution times the number of bytes required to define the colour (in this case, 3). True-Colour at 640 by 480 resolution  requires 921,600 bytes of Video RAM. 
+ 
+<H4>The VGA Chip</H4>
+So far we have only talked about the DAC chips in VGA cards. The real heart of any modern video card is it's VGA chip or Chip Set. When we talk about a VGA CHIP we are talking about the VLSI chip, or chip set, that performs most of the functions required on a VGA video card. These chips are made by a number of manufacturers and each provides it's own particular improvements and requires its own Video Driver files for specific software packages to provide its most advanced features. Video cards using the same VGA chips or chip sets are available from several manufacturers and as the market is very competitive the prices are quite low for even the video cards with the highest performance. Video driver files for most advanced software packages are specific for the VGA chip or chip set the video card is based on and the latest driver files for popular software packages are usually available from local Bulletin Board Services.
+<P>
+The use of Hi-colour and True-colour DAC chips originally had two draw backs. Firstly many more colours require much more Video RAM than does 256 colours at the same resolution. Secondly, graphics operations take considerably longer, simply because there are many more bytes of Video RAM to be processed. These problems have been overcome by the technology introduced by the next topic.
+
+<H4>Accelerators and Co-processors</H4>
+Video Display Adaptors fall into one of three categories. Frame Buffer, Accelerated, or Co-processed. Accelerated and Co-processed Video Adaptors are significantly faster than Frame Buffer Video Adaptors.  Video Co-processors and Accelerators achieve higher speeds partially because they trim the amount of data that needs to be transferred to the Video RAM by the Application or Operating System, in a similar way Character Mode does it. Instead of transferring coded character matrices (large slabs of pixel data) from the application to the Video RAM, Co-processors and Accelerators receive coded, or cryptic, instructions describing how to generate the on-screen patterns of pixels, how to draw a line or box, or fill an area with colour. The Video Adaptor uses these instructions to generate the information in the Video RAM itself, rather than relying on the Application or Operating System to put it there.
+<P>
+<STRONG>The Co-processor or Accelerator chipset on the Video Adaptor card generates the image, relieving the computers Processor of all the effort of writing the data for the image pixel by pixel to the Video RAM.</STRONG>
+<P>
+The difference between the Co-processor and the Accelerator is program-ability. The Accelerator is a fixed-function Co-processor, with built-in abilities to handle specific graphics actions related to particular programs and applications. The Co-processor can be programmed to do anything, the Accelerator is hard-wired to do certain graphics operations. 
+
+<H4>Dram and Vram</H4>
+The type of RAM used in a particular Video Interface Card may have some effect on the cards speed performance. Some Video Interface Cards use DRAM and others use VRAM. What's the difference ? 
+<UL>
+<LI>DRAM is organised in various sizes, with 256K by 4 bit chips being a popular configuration and certain types of DRAM can run in Page Mode, which is an especially efficient method of accessing sequential memory locations, making them very effective for Video Display Memory (Video RAM). 
+<LI>VRAM, on the other hand, is typically organised in one Meg by one Bit configurations. Even though it is more expensive, its speed advantages may make it worth the added cost.
+</UL>
+The Video Display Interface circuitry and its BIOS also influence display speed because some designs are simply better than others. The drivers that link the Video Interface Card to the Operating System may also effect the speed of the Video System, some people claim the drivers for genuine S3 brand products, are faster than those supplied with the generic S3 products supplied by third parties using S3's chip sets.
+
+<H4>Local Bus Video Interface Cards</H4>
+No matter how fast the Video Interface Card itself works, another traditional bottle neck has been the common ISA Bus slots. Any I/O card working on the ISA Bus is limited to a transfer speed of 8 MHz. This problem has been reduced by putting the Video Interface on the Local Bus with the computers memory. At first the Local Bus was a proprietary affair whose hardware was specific to a particular manufacturer. Often the Video Interface was built into the System Board. This was bad practice as it did not provide an upgrade path.
+<P>
+Early in 1993 the VESA Local Bus started to appear in lower priced computers and Intel announced its competing PCI Local Bus. The Local Bus operates at 33 MHz which is about four times the speed of the ISA Bus, and as it is a 32 bit Bus rather than a 16 bit Bus, it would appear to provide up to eight times faster data transfer. As it turns out the processor may then become the bottle neck in the system and figures like two to three times are often more realistic, without Video Co-processor or Accelerator techniques. Combine Local Bus and Accelerating techniques and we can get performance boosts as much as 30 to 100 times the speed of a conventional ISA bus, frame buffer, VGA Video Adaptor.
+<P>
+<TABLE WIDTH=100%>
+<TR><TD ALIGN=CENTER><IMG SRC="../images/visavesa.jpg"><BR>
+A VESA Bus card and an ISA Bus card compared</TD>
+<TD ALIGN=CENTER><IMG SRC="../images/trivga1.jpg"><BR>
+A Trident PCI Bus VGA Video Interface Card</TD>
+</TR></TABLE>
+
+<H4>How much Video RAM is required ?</H4>
+The amount of Video RAM on a Video Interface Card determines the card's Maximum Resolution and Colour Depth. The first VGA Video Interface Cards were supplied with 256 Kbytes of Video RAM but as the price of RAM dropped, boards were supplied with either 512K or 1,024 Kbyte of Video RAM (display memory). Today it is difficult to purchase frame buffer type Video Interface Cards and modern Video Cards have at least one Meg of Video RAM fitted with 2 Meg or 4 Meg available as options. ISA bus interfaced Video Cards, and even VESA Local Bus cards, are almost unobtainable as the PCI Local Bus technology has taken over in this area. This can lead to difficulties when repairing older hardware. Early in 1998 we are seeing a new Video Card Interface standard emerging, called the Advanced Graphics Port (AGP). This is an enhancement to the PCI Bus standards that operates at a Bus speed of 66 MHz, instead of 33 MHz.
+<P> 
+The following table illustrates how much Video RAM is required for the various Resolution / Colour Depth combinations.
+<P>
+<CENTER><TABLE BORDER>
+<TR><TH>Resolution</TH>
+<TH>Colour depth (bits)</TH>
+<TH>Number of colours</TH>
+<TH>RAM required on board</TH>
+</TR>
+<TR><TD>640x480</TD>
+<TD>4</TD>
+<TD>16</TD>
+<TD>256 K</TD>
+</TR>
+<TR><TD>640x480</TD>
+<TD>8</TD>
+<TD>256</TD>
+<TD>512 K</TD>
+</TR>
+<TR><TD>640x480</TD>
+<TD>16</TD>
+<TD>65,536</TD>
+<TD>1.0 Meg</TD>
+</TR>
+<TR><TD>640x480</TD>
+<TD>24</TD>
+<TD>16,777,216</TD>
+<TD>1.0 Meg</TD>
+</TR>
+<TR><TD>800x600</TD>
+<TD>4</TD>
+<TD>16</TD>
+<TD>256 K</TD>
+</TR>
+<TR><TD>800x600</TD>
+<TD>8</TD>
+<TD>256</TD>
+<TD>512 K</TD>
+</TR>
+<TR><TD>800x600</TD>
+<TD>16</TD>
+<TD>65,536</TD>
+<TD>1.0 Meg</TD>
+</TR>
+<TR><TD>800x600</TD>
+<TD>24</TD>
+<TD>16,777,216</TD>
+<TD>1.5 Meg (2 Meg)</TD>
+</TR>
+<TR><TD>1024x768</TD>
+<TD>4</TD>
+<TD>16</TD>
+<TD>512 K</TD>
+</TR>
+<TR><TD>1024x768</TD>
+<TD>8</TD>
+<TD>256</TD>
+<TD>1.0 Meg</TD>
+</TR>
+<TR><TD>1024x768</TD>
+<TD>16</TD>
+<TD>65,536</TD>
+<TD>1.5 Meg (2 Meg)</TD>
+</TR>
+<TR><TD>1024x768</TD>
+<TD>24</TD>
+<TD>16,777,216</TD>
+<TD>2.5 Meg (4 Meg)</TD>
+</TR>
+<TR><TD>1280x1024</TD>
+<TD>4</TD>
+<TD>16</TD>
+<TD>1.0 Meg</TD>
+</TR>
+<TR><TD>1280x1024</TD>
+<TD>8</TD><TD>256</TD>
+<TD>1.5 Meg (2 Meg)</TD>
+</TR>
+<TR><TD>1280x1024</TD>
+<TD>16</TD>
+<TD>65,536</TD>
+<TD>2.5 Meg (4 Meg)</TD>
+</TR>
+<TR><TD>1280x1024</TD>
+<TD>24</TD>
+<TD>16,777,216</TD>
+<TD>4.0 Meg</TD>
+</TR>
+<TR><TD>1600x1200</TD>
+<TD>4</TD>
+<TD>16</TD>
+<TD>1.0 Meg </TD>
+</TR>
+<TR><TD>1600x1200</TD>
+<TD>8</TD>
+<TD>256</TD>
+<TD>2.0 Meg</TD>
+</TR>
+<TR><TD>1600x1200</TD>
+<TD>16</TD>
+<TD>65,536</TD>
+<TD>4.0 Meg</TD>
+</TR>
+<TR><TD>1600x1200</TD>
+<TD>24</TD>
+<TD>16,777,216</TD>
+<TD>6.0 Meg</TD>
+</TR>
+</TABLE></CENTER>
+
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="videosys.html"><font
+color="#FFFFFF">The PC Video system</font></a></td>
+<td width="25%" bgcolor="#008080" align="center"><a href="videstan-2.html"><font
+color="#FFFFFF">PC Video standards</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table></CENTER>
+<P>
+
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/videomon.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:57 GMT -->
+</HTML>
+

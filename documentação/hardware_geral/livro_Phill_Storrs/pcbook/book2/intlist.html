@@ -1,0 +1,383 @@
+<HTML>
+<TITLE>List of interrupts</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/intlist.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The list of standard Interrupt assignments</H3>
+
+The INTERRUPT VECTOR TABLE (I.V.T.) is stored in RAM memory in the first 1024 bytes of the computers addressable memory space. This table consists of 256 Vectors. Each Vector requires four bytes because addresses must be specified in Segment and Offset format. This is necessary because the 8088 processor used in the first PC's has only 16 bit registers and a 20 bit number is required to define a 20 bit address. The 20 bit number is made from two 16 bit numbers by adding the "Offset" to the "Segment" with a four bit offset.
+<P>
+The Vectors stored in the Interrupt Vector Table are used to locate the Interrupt Service Routines that service the interrupts available to the BIOS, to DOS and to Applications.
+<P>
+<CENTER><TABLE BORDER>
+<TR><TH>Int. Num.</TH>
+<TH>Address in I.V.T.</TH>
+<TH>Description</TH>
+</TR>
+<TR><TD>0</TD>
+<TD>00-03</TD>
+<TD>CPU divide by zero</TD>
+</TR>
+<TR><TD>1</TD>
+<TD>04-07</TD>
+<TD>Debug single step</TD>
+</TR>
+<TR><TD>2</TD>
+<TD>08-0B</TD>
+<TD>Non Maskable Interrupt (NMI input on processor)</TD>
+</TR>
+<TR><TD>3</TD>
+<TD>0C-0F</TD>
+<TD>Debug breakpoints</TD>
+</TR>
+<TR><TD>4</TD>		
+<TD>10-13</TD>			
+<TD>Arithmetic overflow</TD>
+</TR>
+<TR><TD>5</TD>		
+<TD>14-17</TD>			
+<TD>BIOS provided Print Screen routine</TD>
+</TR>
+<TR><TD>6</TD>		
+<TD>18-1B</TD>			
+<TD>Reserved</TD>
+</TR>
+<TR><TD>7</TD>		
+<TD>1C-1F</TD>			
+<TD>Reserved</TD>
+</TR>
+<TR><TD>8</TD>		
+<TD>20-23</TD>			
+<TD>IRQ0, Time of day hardware services</TD>
+</TR>
+<TR><TD>9</TD>		
+<TD>24-27</TD>			
+<TD>IRQ1, Keyboard Interface</TD>
+</TR>
+<TR><TD>A</TD>		
+<TD>28-2B</TD>			
+<TD>IRQ2, ISA Bus cascade services for second 8259</TD>
+</TR>
+<TR><TD>B</TD>		
+<TD>2C-2F</TD>			
+<TD>IRQ3, Com 2 hardware</TD>
+</TR>
+<TR><TD>C</TD>		
+<TD>30-33</TD>			
+<TD>IRQ4, Com1 hardware</TD>
+</TR>
+<TR><TD>D</TD>		
+<TD>34-37</TD>			
+<TD>IRQ5, LPT2, Parallel port hardware (Hard Disk on XT)</TD>
+</TR>
+<TR><TD>E</TD>		
+<TD>38-3B</TD>			
+<TD>IRQ6, Floppy Disk adaptor</TD>
+</TR>
+<TR><TD>F</TD>		
+<TD>3C-3F</TD>			
+<TD>IRQ7, LPT1, Parallel port hardware</TD>
+</TR>
+<TR><TD>10</TD>		
+<TD>40-43</TD>			
+<TD>Video services, see note 1</TD>
+</TR>
+<TR><TD>11</TD>		
+<TD>44-47</TD>			
+<TD>Equipment check</TD>
+</TR>
+<TR><TD>12</TD>		
+<TD>48-4B</TD>			
+<TD>Memory size determination</TD>
+</TR>
+<TR><TD>13</TD>		
+<TD>4C-4F</TD>			
+<TD>Floppy I/O routines</TD>
+</TR>
+<TR><TD>14</TD>		
+<TD>50-53</TD>			
+<TD>Serial port I/O routines</TD>
+</TR>
+<TR><TD>15</TD>		
+<TD>54-57</TD>			
+<TD>PC used for Cassette tape services</TD>
+</TR>
+<TR><TD>16</TD>		
+<TD>58-5B</TD>			
+<TD>Keyboard I/O routines</TD>
+</TR>
+<TR><TD>17</TD>		
+<TD>5C-5F</TD>			
+<TD>Printer I/O routines</TD>
+</TR>
+<TR><TD>18</TD>		
+<TD>60-63</TD>			
+<TD>Points to basic interpreter in a "real" IBM PC</TD>
+</TR>
+<TR><TD>19</TD>		
+<TD>64-67</TD>			
+<TD>Bootstrap loader</TD>
+</TR>
+<TR><TD>1A</TD>		
+<TD>68-6B</TD>			
+<TD>Time of day services</TD>
+</TR>
+<TR><TD>1B</TD>		
+<TD>6C-6F</TD>			
+<TD>Services Ctrl-Break service</TD>
+</TR>
+<TR><TD>1C</TD>		
+<TD>70-73</TD>			
+<TD>Timer tick (provides 18.2 ticks per second)</TD>
+</TR>
+<TR><TD>1D</TD>		
+<TD>74-77</TD>			
+<TD>Video parameters</TD>
+</TR>
+<TR><TD>1E</TD>		
+<TD>78-7B</TD>			
+<TD>Disk parameters</TD>
+</TR>
+<TR><TD>1F</TD>		
+<TD>7C-7F</TD>			
+<TD>Video graphics</TD>
+</TR>
+<TR><TD>20</TD>		
+<TD>80-83</TD>			
+<TD>Program termination (obsolete)</TD>
+</TR>
+<TR><TD>21</TD>		
+<TD>84-87</TD>			
+<TD>All DOS services available through this Interrupt</TD>
+</TR>
+<TR><TD>22</TD>		
+<TD>88-8B</TD>			
+<TD>Terminate address</TD>
+</TR>
+<TR><TD>23</TD>		
+<TD>8C-8B</TD>			
+<TD>Ctrl-Break exit address</TD>
+</TR>
+<TR><TD>24</TD>		
+<TD>90-93</TD>			
+<TD>Critical error handler</TD>
+</TR>
+<TR><TD>25</TD>		
+<TD>94-97</TD>			
+<TD>Read logical sectors</TD>
+</TR><TR><TD>26</TD>		
+<TD>98-9B</TD>			
+<TD>Write logical sectors</TD>
+</TR>
+<TR><TD>27</TD>		
+<TD>9C-9F</TD>			
+<TD>Terminate and stay resident routines (obsolete)</TD>
+</TR>
+<TR><TD>28 to 3F</TD>		
+<TD>A0-A3 to FC-FF</TD>		
+<TD>Reserved for DOS</TD>
+</TR>
+<TR><TD>40 to 4F</TD>		
+<TD>100-103 to 13C-13F</TD>	
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>50</TD>		
+<TD>140-143</TD>			
+<TD>Reserved for BIOS</TD>	
+</TR>
+<TR><TD>51</TD>		
+<TD>144-147</TD>		
+<TD>Mouse functions</TD>
+</TR>
+<TR><TD>52 to 59</TD>		
+<TD>148-14B to 164-167</TD>		
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>5A</TD>		
+<TD>168-16B</TD>		
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>5B</TD>		
+<TD>16C-16F</TD>		
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>5D</TD>		
+<TD>174-177</TD>		
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>5E</TD>		
+<TD>178-17B</TD>		
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>5F</TD>		
+<TD>17C-17F</TD>		
+<TD>Reserved for BIOS</TD>
+</TR>
+<TR><TD>60 to 66</TD>		
+<TD>180-183	 to 198-19B</TD>	
+<TD>Reserved for User programs</TD>
+</TR>
+<TR><TD>67</TD>		
+<TD>19C-19F</TD>		
+<TD>Used for EMS functions</TD>
+</TR>
+<TR><TD>68 to 6F</TD>		
+<TD>1A0-1A3 to 1BC-1BF</TD>		
+<TD>Unused</TD>
+</TR>				
+<TR><TD>70</TD>		
+<TD>1C0-1C3</TD>		
+<TD>IRQ8, ISA bus Real time clock</TD>
+</TR>
+<TR><TD>71</TD>		
+<TD>1C4-1C7</TD>		
+<TD>IRQ9, takes the place of IRQ2</TD>
+</TR>
+<TR><TD>72</TD>		
+<TD>1C8-1CB</TD>		
+<TD>IRQ10 (available hardware interrupt)</TD>
+</TR>
+<TR><TD>73</TD>		
+<TD>1CC-1CF</TD>		
+<TD>IRQ11 (available hardware interrupt)</TD>
+</TR>
+<TR><TD>74</TD>		
+<TD>1D0-1D3</TD>		
+<TD>IRQ12 (available hardware interrupt)</TD>
+</TR>
+<TR><TD>75</TD>		
+<TD>1D4-1D7</TD>		
+<TD>IRQ13, maths co-processor</TD>
+</TR>
+<TR><TD>76</TD>		
+<TD>1D8-1DB</TD>		
+<TD>IRQ14,	ISA bus hard disk controller</TD>
+</TR>
+<TR><TD>77</TD>		
+<TD>1DC-1DF</TD>		
+<TD>IRQ15, (available hardware interrupt)</TD>
+</TR>
+<TR><TD>78 to 7F</TD>		
+<TD>1E0-1E3 to 1FC-1FF</TD>		
+<TD>Unused</TD>
+</TR>
+<TR><TD>80 to 85</TD>	
+<TD>200-203 to 214-217</TD>	
+<TD>Reserved for basic</TD>
+</TR>
+<TR><TD>86 to F0</TD>		
+<TD>218-21B to 3C0-3C3</TD>		
+<TD>Used by basic</TD>
+</TR>
+<TR><TD>F1 to FF</TD>		
+<TD>3C4-3C7 to 3C4-3FF</TD>		
+<TD>Unused</TD>
+</TR>
+<TD></TABLE></CENTER>
+<P>
+Many of the Software Interrupt Service Routines provide multiple services. When programmers are writing routines that make use of an  Interrupt Service Routine they must put a number that indicates which function they require form that service routine into the processors "A" register before they call the service routine. See exercise 12 for more details. The functions provided by the various service routines and the numbers required to access each function are described in great detail in the various DOS programming manuals. As hardware people we need not know anything about all of this but it is interesting to have a very basic understanding of what is happening.
+<P>
+<H4>The Video Services Routine</H4>
+A good example of the functions available in an Interrupt Service Routine is what we find in the Video Services Routine, INT10 Hex. Here is a list of these functions.
+<P>
+<CENTER><TABLE BORDER>
+<TR><TH>Function Number</TH>
+<TH>Description</TH>
+</TR>
+<TR><TD>0</TD>
+<TD>Set Video Mode</TD>
+</TR>
+<TR><TD>1</TD>
+<TD>Set cursor size</TD>
+</TR>
+<TR><TD>2</TD>
+<TD>Set cursor position</TD>
+</TR>
+<TR><TD>3</TD>
+<TD>Read cursor position</TD>
+</TR>
+<TR><TD>4</TD>
+<TD>Read Light-pen position</TD>
+</TR>
+<TR><TD>5</TD>
+<TD>Set active display page</TD>
+</TR>
+<TR><TD>6</TD>
+<TD>Scroll window up</TD>
+</TR>
+<TR><TD>7</TD>
+<TD>Scroll window down</TD>
+</TR>
+<TR><TD>8</TD>
+<TD>Read character and attribute</TD>
+</TR>
+<TR><TD>9</TD>
+<TD>Write character and attribute</TD>
+</TR>
+<TR><TD>A</TD>
+<TD>Write character</TD>
+</TR>
+<TR><TD>B</TD>
+<TD>Set colour palette</TD>
+</TR>
+<TR><TD>C</TD>
+<TD>Write Pixel dot</TD>
+</TR>
+<TR><TD>D</TD>
+<TD>Read Pixel dot</TD>
+</TR>
+<TR><TD>E</TD>
+<TD>Write character as TTY</TD>
+</TR>
+<TR><TD>F</TD>
+<TD>Get current Video Mode</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+In exercise 12 we use Function 1 of INT 10 to change the size of the Cursor.
+<P>
+We put a number that indicates the start of the cursor into the "high" part of the "C" register (CH) and a number that represents the end of the cursor into the "low" part of the "C" register (CL). The registers are 16 bit long but can be looked at as two eight bit registers.
+<P>
+The cursor is made up out of up to eight horizontal lines. The "start" and "end" numbers above indicate how many of these lines are used and so determine the size (height and position) of the cursor.
+
+<H4>A look at the contents of the IVT</H4>
+We can examine the contents of the Interrupt Vector Table using DEBUG.  Debug is a MACHINE LANGUGE MONITOR and it is supplied as a DOS EXTERNAL command.
+<P>
+Debug is a very low level high level language and uses very simple single letter commands.
+The DUMP command can be used to display the contents of memory loctaions.
+<P>
+<STRONG>DUMP</STRONG> - Displays memory contents.
+<UL>
+<LI>D
+<LI>D [start-address]
+<LI>D [start-address] [end-address ]
+<LI>D [start-address] L [length]
+</UL>
+<P>
+Example to display the first four address we would use either of these two lines :-	
+<UL>
+<LI>d 0:0 L4
+<LI>d 0000:0000 L4
+</UL>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FFD700" align="center"><a href="irq.html">Back to the Interrupt chapter</a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/intlist.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

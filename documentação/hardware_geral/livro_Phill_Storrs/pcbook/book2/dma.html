@@ -1,0 +1,86 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/dma.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<HEAD>
+<TITLE>The PC and DMA</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The PC and Direct Memory Access (DMA)</H3>
+
+DMA stands for Direct Memory Access. DMA is a way of facilitating "high speed" data transfer between a "device" and the computers RAM Memory without the aid of the processor. The device is usually some I/O device on the computers System Board or on a card plugged into the computers External Bus Slots. 
+<P>
+The process of DMA is handled by a DMA chip and it can be considered as a primitive secondary processor whose job is to relieve the main processor of much of the burden of memory transfers between memory and I/O devices. The DMA chip was originally an Intel 8237 device. It should be noted some of the early "other DOS computers" did not have a DMA chip and DOS had to recognise this and work around it. There are three possible ways that the 8237 can transfer data - I/O to Memory, Memory to I/O and Memory to Memory. DOS computers, (whatever incarnation, unfortunately do not have the Memory to Memory mode wired in.
+
+<H4>How does DMA work ?</H4>
+When a device, such as a floppy disk controller, requests a DMA transfer, it does so by signalling the 8237 on the DRQ (DMA Request) line.  The 8237 then signals the processor that it wants to take control of the bus by activating the HRQ (Hold Request) line to the processor.  The system waits for the main processor to finish whatever it is doing and then disconnects it from the bus and activates the HOLDA (Hold Acknowledge) line, which causes the processor to be locked out.  (The processor is not actually halted, as in the command HLT, merely left idle.) The 8237 takes control of the bus, signals the device that it is ready via the DACK (DMA Acknowledge) line and transfers data to or from the device.  When the transfer is completed the DMA is disconnected from the bus, all the lines are reset and the processor is reconnected to the bus and carries out whatever tasks are next demanded of it.  The whole process is ready to begin again. 
+
+<H4>Why do we need DMA ?</H4>
+On first consideration of this DMA transfer cycle, it would appear that all the DMA chip does is to steal processor cycles and do I/O operations, which the main processor is quite capable of doing itself. This is all true, but for the main processor to do this transfer it would have to do so through an interrupt routine. This interrupt routine would have the overheads of being called, saving registers and being interrupted by requests with higher priority' causing it to have to save its own registers on the stack and having to be called again once the higher priority interrupt has finished. The DMA chip, on the other hand, only needs to be programmed once with however many bytes you wish to transfer and the address of where this transfer is to start from or go to. It then keeps count of how many bytes have been transferred, so there is no need to call the interrupt routine or to Pop and Push registers.  This massively reduces the run-time overhead.
+
+<H4>The 8237 DMA Controller Chip</H4>
+The 8237 chip in DOS computers is a DMA controller and provides four DMA channels per chip. The 8-bit bus dos computers (those based on the 8088 processor) had one 8237 chip and the AT, 16-bit bus computer, introduced a second 8237 device, a technique that has been followed by all later generation of DOS computers.
+<P>
+In the more advanced DOS computers the memory refresh is done by dedicated circuitry, thus leaving DMA channel 0 free, and DMA channel 3 is no longer required for hard disk transfer. The second 8237 device is cascaded to the first through channel 4 (ie the second chip's channel 0) leaving channels 5,6 and 7 available. The second 8237 device actually connects to the processors DMA input line and the first device (the one that provides DMA0 to DMA3) connects into the DMA0 of the second device.
+<P>
+In an 8 bit bus DOS computer system, the 8237 was programmed in priority mode with channel 0 having the highest priority and channel 3 the lowest. The 8 bit bus DOS computers used DMA techniques to refresh the dynamic rams. A timer chip produced an interrupt about every 15usecs and the interrupt service routine for this hardware interrupt (IRQ0) used the first DMA channel (DMA0) to do a "dummy" read on the memory, causing it to be refreshed.
+<P>
+When you look inside a modern PC computer you will not see the 8237 chips because their functions are integrated into the Chip Set.
+
+<H4>The standard DMA channel assignments</H4>
+<STRONG>The 8 bit bus XT type computer</STRONG><P>
+<PRE>
+<EM>DMA Channel		Standard Assignment</EM>
+0			Used to refresh the dynamic RAM memory
+1			Available but is the Default for most Sound Cards
+2			Floppy disk controller
+3			Hard disk controller
+</PRE>
+<P>
+These are all 8 bit data channels and DMA's 1, 2, and 3 are available on the external bus connector. If you look at the details of the XT bus connector you will see DMA has two types of control signal, a DMA Request and a DMA Acknowledge. These DMA control lines use Active Low logic.
+<P>
+<STRONG>The ISA bus and later generation computers</STRONG><P>
+<PRE>
+<EM>DMA Channel		Standard Assignment</EM>
+0			Available
+1			Available but is the Default for most Sound Cards
+2			Floppy disk controller
+3			ECP parallel port on LPT 1
+4			Cascade for the second device (DMA 0 to 3)
+5			Available but is also the Default for some Sound Cards
+6			Available
+7			Available
+</PRE>
+<P>
+DMA 0, 5, 6 and 7 are wired to the ISA busses 16 bit extension connector, the 36 contact edge connector. Note DMA 0, 5, 6, and 7 can be used for 16 bit data transfers.
+<P>
+<STRONG>Note</STRONG> DMA 0 is not used in the 16 bit bus and latter computers for RAM refresh and is available for another use.
+
+<H4>What else uses DMA ?.</H4>
+When adding I/O cards to a computer system you must take into account any DMA assignments that the existing and the extra cards may require. Some cards that <STRONG>may require DMA</STRONG> are :-
+<UL>
+<LI>SCSI interface
+<LI>Sound card
+<LI>Optical Scanner interface
+<LI>Network card. 
+</UL>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/dma.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+

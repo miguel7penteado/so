@@ -1,0 +1,88 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/hdxt.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:14 GMT -->
+<HEAD>
+<TITLE>XT computers, hard drives and Real Time Clocks</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>PC/XT 8bit bus PCs, Hard Drives<BR>
+and Real Time Clocks</H3>
+
+This chapter is of historical interest only, but it does answer some questions posed by the origins of the DOS computer.
+
+<H4>Support for a Hard Drive was not built into the XT's BIOS ROM.</H4>
+The XT type computer does not have BIOS Support for hard drives built into it's own BIOS ROM so hard drive support is supplied by a BIOS Extension ROM located on the hard drive interface card. This ROM is mapped into the computers memory starting at memory address C8000, or expressed in Segment and Offset, C800:0000.
+<P>
+The Hard Drives usually fitted to an old XT type computer was an ST506 type the first step in the process of formatting the hard drive involves setting up the Low Level Format.
+<P>
+Most eight bit (XT type) hard drive interface cards have a routine built into the BIOS Extension ROM to perform a Low Level Format. The most common address for the start of this routine is C800:0005 but you should be aware other addresses have been used by some card manufacturers.
+<P>
+This routine is run from Debug with the command G= followed by the starting address. Form this point on the actual procedure can be different for cards from different manufacturers.
+<P>
+<UL>
+<LI>(a) Some cards have jumpers or dip switches to set the drive type so the card knows about the drives "organisation" - it's number of cylinders, sides and sectors.
+<LI>(b) Other cards have a Soft Setup that asks you to select the drive type from a list of drives or to supply the cylinder, side and sector information. Most cards are either MFM or RLL and so you do not usually have to supply the sector information as this is fixed for the particular interface card.
+</UL>
+<P>
+Not all eight bit hard drive interface cards have the Low Level Format routine built in but most do - the interface card used in the original IBM XT did not have the routine built in and you require a Diagnostic to perform a Low Level Format on the hard drive
+in these computers.
+<P>
+<STRONG>The steps involved in Formatting the hard drive in an old XT (8 bit bus) DOS computer.</STRONG>
+<UL>
+<LI>Perform a low level format using either the DEBUG supplied routine or a software routine on a diagnostic disk.
+Boot the XT type computer from a system disk and start DEBUG. At the -  prompt use the G = C800:5 command (or whatever address the card uses for it's low level routine) to run the low level format routine.<BR>
+Note: The old hard drives used in these computers quite often tended to demagnetise itself and as the "disk overhead data" (the track, sector and side identifiactions etc) never get's rewritten, the drive eventually becomes unreadable due to read errors when this data is being read. When this happens it is necessary to rewrite the Low Level Format.
+<LI>Partition the drive using the DOS external command FDISK. 
+Reboot the computer from  a system floppy disk and then at the A:\&gt; DOS prompt run FDISK and create a PRIMARY DOS partition.
+<LI>Create the DOS Format of the disk and put make it bootable using the DOS external command FORMAT. 
+Reboot the computer again and then proceed to Format drive C: with an operating system - FORMAT C:/S/U
+This process sets up the DOS infrastructure on the disk - the Boot Record, The File Allocation Table and the Directory area.
+</UL>
+<P>
+<STRONG>Once the disk has been prepared you should then setup DOS and UTIL subdirectories.</STRONG>
+<UL>
+<LI>Create a DOS subdirectory and you would put only the DOS files that would be needed to make the computer useful. Remember these old computers only have small hard drives and DOS is much larger today that it was when these computers were new.
+<LI>Create a UTIL subdirectory and put the "hardware support" files, the clock program/s, hard drive parking utility, and the turbo program (if one is required) into this subdirectory,
+<LI>Write a CONFIG.SYS file for the computer you are working on that sets the country to 061, the files and buffers to 20.
+<LI>Finally write an AUTOEXEC.BAT file for this computer that sets the Path to the Root directory, the DOS Subdirectory and UTIL Subdirectory, and sets the Prompt to Drive and Path. Your autoexec file should have the usual "good housekeeping" lines at the start. 
+</UL>
+<P>
+Don't forget the command lines that run the files you put into the UTIL subdirectory to set the RTC, to park the hard drive and to set the turbo mode.
+<P>
+<STRONG>Important.</STRONG>
+If you are going to reformat an old hard drive you must first save any of the hardware support files that are used on that computer and a copy of the AUTOEXEC.BAT file that calls them. You may also wish to save a Bootable DOS floppy disk and a all the DOS support files and External DOS commands so you can put the old version of DOS back on this machine.
+
+<H4>The Real Time Clock, Parking The Hard Drive and Turbo Programs</H4>
+The old XT type computer did not have a built in Real Time Clock and this facility was usually supplied by an after market RTC on the I/O card that also supplied the parallel and serial I/O ports.
+<P>
+The RTC function was activated by a Clock Program called from the Autoexec.bat file. This file transferred the Time and Date from the Battery backed-up Real Time Clock on the I/O card to the computers own Time and Date clock on the system board. The problem with this arrangement is that because the RTC function was not designed into the system by IBM no I/O address assignments were ever made for it. This lead to the after-market suppliers of RTC boards using any old I/O addresses they liked. This lead to many versions of the Clock Program being used and each will only activate it's own version of the hardware. The names used for these clock programs are names like CLOCK, TIMER, GETCLOCK, and the same name is often used for quite different versions of the clock program.
+<P>
+The AUTOEXEC.BAT file should run the "clock program" at boot-up and as these old hard drives did not
+"Park" the hard drive's heads automatically we used to often load an "AUTOPARK" utility from the 
+AUTOEXEC.BAT .this utility parks the hard drive after a period of inactivity.
+<P>
+The IBM PC and PC/XT computers operated with a clock speed of 4.7Mhz but it was not long before the clone manufacturers started to supply TURBO computers which could run with a 4.7MHz clock or a faster clock, usually 8MHz but 10 and 12MHz machines were available towards the "end of the era".
+<P>
+Some computers used a hardware switch and some used a software switch that required a "TURBO" program to be run from the AUTOEXEC.BAT file.
+<P>
+<HR>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table></CENTER>
+
+<HR>
+Copyright &copy; Phil. Storr, last updated 4<SUP>th </SUP>December
+1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/hdxt.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:14 GMT -->
+</HTML>

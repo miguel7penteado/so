@@ -1,0 +1,199 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/printers.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:03 GMT -->
+<HEAD>
+<TITLE>Printers</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC="../images/pc2.jpg" ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>PRINTERS (Hard Copy Devices)</H3>
+
+The most popular personal computer peripheral after the Video Display Monitor must be a Printer, all serious users of personal computers need to produce a hard copy of the documents they work with.
+
+<H4>Printers can be classified in several ways.</H4>
+<STRONG>By the way they actually form the characters on the paper</STRONG>
+<UL>
+<LI>Solid character
+<LI>Dot Matrix
+</UL>
+<P>
+<STRONG>Printers can also be classified as</STRONG>
+<UL>
+<LI>Impact
+<LI>Non-impact.
+</UL>
+
+<H4>Common types of printers that have been used with personal computers</H4>
+<STRONG>Solid character types</STRONG> (all of these printers are Impact printers)
+<UL>
+<LI>Teletype	(character wheels)
+<LI>Typewriter	(character bars)
+<LI>Golf Ball	(first high quality printer)
+<LI>Daisywheel	(very high quality printer)
+<LI>Drum	(very high speed line printers used on mini and main frame systems)
+<LI>Band	(very high speed line printers used on mini and main frame systems)
+</UL>
+<P>
+This type of printer is limited to one type-face (font) at a time. The golf ball and daisy wheel printers had interchangeable "balls" and "wheels" to change the type-face but it was not practicle to change the fonts within a document. All the above printer types are now obsolete.
+<P>
+<STRONG>Dot Matrix</STRONG> (the first two only are Impact printers)
+<UL>
+<LI>Impact Dot Matrix
+<LI>Thermal Dot Matrix - Thermal paper - Thermal ribbon 
+<LI>Ink Jet
+<LI>Laser
+<LI>Wax transfer (colour)
+</UL>
+
+<H4>Impact Dot Matrix</H4>
+The most popular printer for a long time was the Impact Dot matrix. When the first P.C. computer was released, this type of printer produced very poor results and daisy wheel printers were used for letter quality printing.
+
+Modern Impact Dot Matrix printers are available in 9 pin and 24 pin models and even the cheapest nine pin models produce acceptable NLQ (near letter quality) results. 24 pin printers are faster and produce much better results than 9 pin printers.  A 9 pin printer has to make three passes to print 24 dots! Characters printed in Draft mode have far fewer dots than those printed in NLQ mode. In NLQ mode, the same dot is struck multiple times to increase the image density.
+
+<H4>Printer options</H4>
+<STRONG>Paper feed</STRONG><BR>
+Printers can accept Fan Fold (tractor feed) or Cut Sheet paper and most older Impact Dot Matrix printers usually had a "tractor feed" as standard and some provided a simple means of feeding a single sheet of paper at a time. With most Impact Dot Matrix printers a "cut sheet feeder" is an expensive option. For many users the cut sheet feeder is better than tractor feed, it uses photo-copy paper which is of much higher quailty that fan fold paper. 
+<P>
+<STRONG>Character sets.</STRONG><BR>
+When used at a DOS level it is important that the printer be aware of the IBM extended character set. Old Impact Dot Matrix printers usually do not support the IBM character set. They may only support the EPSON "Italic" characters set in addition to standard ASCII.
+
+<H4>What sort of printer should we use ?</H4>
+Today the most popular printer is the Ink Jet, but if we require the best print quality and high speed, a Laser Printer is the best option. Printers are now a low cost item with Ink Jet printers available for as little as $100.
+<CENTER>
+<P>
+<STRONG>For and against laser Vs Ink jet   (the pluses (+) Vs. minuses (-).)</STRONG>
+<TABLE BORDER>
+<TR><TH>Characteristic</TH>
+<TH>Laser</TH>
+<TH>Ink jet</TH>
+</TR>
+<TR><TD>Resolution</TD>
+<TD>Minimum of 300 DPI, and available up to 1200 DPI (dots per inch) (+)</TD>
+<TD>maximum of 720 DPI (-)</TD>
+</TR>
+<TR><TD>Cost of running</TD>
+<TD>cheap paper cost (+)</TD>
+<TD>may require special paper (-)</TD>
+</TR>
+<TR><TD> </TD>
+<TD>toner and drum is expensive to replace (-)</TD>
+<TD>ink cartridges can be expensive</TD>
+</TR>
+<TR><TD> </TD>
+<TD>colour is very expensive (-)</TD>
+<TD>colour is cheaper (+)</TD>
+</TR>
+<TR><TD>Environmental</TD>
+<TD>generates ozone, ozone attacks plastics and rubbers (-)</TD>
+<TD>very clean (+)</TD>
+<TR><TD> </TD>
+<TD>higher power consumption (-)</TD>
+<TD>low power consumption (+)</TD>
+</TR>
+<TR><TD>Cost</TD>
+<TD>A3 sheet size is very expensive (-)</TD>
+<TD>A3 option low cost (+)</TD>
+<TR><TD> </TD>
+<TD>Laser printers more expensive (-)</TD>
+<TD>Ink Jet printers less expensive (+)</TD>
+</TR>
+<TR><TD>Speed</TD>
+<TD>Laser is faster (+)</TD>
+<TD>Ink Jet is slower (-)</TD>
+</TR>       
+</TABLE></CENTER>
+
+<H4>The Printer Interface</H4>
+The most common interface used for printers is the Centronics <B>Parallel interface</B>. The serial ports (COM ports) are sometimes used to interface laser printers, or where a printer is located some distance from a host computer. The Centronics interface has a cable length limit of 3 metre but this can often be exceeded. If a serial printer is to be used under DOS, or simple software, the COM port being used must be configured and the "standard printer output "must be diverted away from LPT1:. The <STRONG>DOS external command MODE</STRONG> is used to perform both of these tasks and all it involves is to include the following two command lines in the AUTOEXEC.BAT file of the computer.
+<P>
+<STRONG>This first line configures the COM port.</STRONG><BR>
+<PRE>	
+	<STRONG>MODE COMX: SSSS,N,8,1,P</STRONG>
+	Where	COMX = COM1, COM2, COM3, or COM4.
+		SSSS = Data speed, 1200, 2400, 4800, 9600 etc.
+		N    = parity - N = none
+	            	      - O = odd
+		                  - E = even
+		8    = data word size, 7 or 8
+		1    = one stop bit, 1, 1½, or 2
+		P    = tells DOS the device is slow (don't timeout)
+</PRE>
+<P>
+ This next line diverts the standard printer output away from LPT1: and to the com port in use.
+<P><PRE>
+		<STRONG>MODE LPT1: = COMX :</STRONG>
+</PRE>
+<P>
+You must look in the printer manual for the actual values to use in the MODE command. Some printers can be configured for bit rates, word size, stop bits and parity, and some have fixed values. Watchout for settings with a seven bit word. - Seven bits will only provide the ASCII character set, eight bits are required for the IBM Extended Character Set.
+<P>
+Many "old" printers only have an ASCII character set and those that do have some sort of extended character set, may only have the EPSON "Italic" set or some non standard extended character set. For a printer to be DOS compatible it must produce the IBM Extended Character Set.
+
+<H4>Setting up Printers</H4>
+Modern printers can be configured for interface, paper feed, character sets, "emulation", page size, character size and line space. Most older printers had D.I.P switches to configure the printer, but modern printers use a "soft set-up" that is controlled from the normal printer buttons, and either displays the settings or options on a L.C.D. screen display, or prints it on the paper. <STRONG>CAUTION</STRONG> - A modern printer without its manual may be almost useless. 
+
+<H4>Sharing Printers</H4>
+Printers can be shared by ; -
+<UL>
+<LI>Simple manual switch box
+<LI>Automatic switch box
+<UL>
+<LI>These usually have a large buffer with several Meg of Ram.
+</UL>
+<LI>Local area network
+<LI>Printer Sharer Device
+<UL>
+<LI>Each computer has a "box" on one of it's parallel or serial ports, and this box is linked to other boxes via a 4 wire telephone type cable and RJ11 connectors. The cable goes from computer to computer and to a similar "box" on the back of  the printer. The boxes are sometimes powered from the ports and sometimes a plug pack must be used.  
+</UL>    
+</UL>
+<P>
+<STRONG>CAUTION:</STRONG> - Some of the parallel ports on modern system boards and on SPG and IDE/SPG (Serial Parallel Games) cards will not power such devices. This is due to the "V.L.S.I." output devices used on these cards. They can't supply the current required by external interface boxes (and sometimes software security devices)
+
+<H4>Problems with Printers</H4>
+<STRONG>Problem's can be in; - </STRONG>
+<UL>
+<LI>The printer interface in the host computer
+<LI>The cable between the computer and the printer
+<LI>The printer itself
+<UL>
+<LI>The printers interface
+<LI>The electronics that drives the print mechanism
+</UL>
+<LI>The software or operating system configuration
+</UL>
+<P>
+<STRONG>It is good practice if you are a field service technician to carry with you at all times; - </STRONG>
+<UL>
+<LI>A spare parallel port card or I/O card that includes a parallel port.
+<LI>A spare parallel printer interface cable.
+<LI>Diagnostic Software and Loop-back plugs.
+</UL>
+<P>
+All printers have a built in self-test-mode that is accessed through some combination of buttons as the power is turned on. This test does not test the printers interface, or how the printer is setup.
+<P>
+When testing the parallel port watch out for the port assignment. If the printer is on LPT1: you can test the interface by copying a file to it. COPY AUTOEXEC.BAT PRN  You can redirect the display to the printer port. DIR &gt;PRN or you can use the Print Screen function.
+<P>
+This does not always mean the port is functioning correctly. The CENTRONICS interface uses two sets of Hand shaking lines and several Control lines. DOS and many software packages only use some of these lines and this simple test may not show up some faults.
+
+<H4>Testing a parallel (LPT) port</H4>
+A parallel port can be tested with diagnostic software like CHECKIT. This sort of software requires a Loop Back Plug to test the port fully. The Loop-Back Plugs required by the various diagnostic packages are not the same.
+
+<H4>Remember</H4>
+DOS (and simple software) can only talk to the parallel printer if it is connected to LPT1: and the DOS hardware has three alternative Parallel Port I/O assignments. When the BIOS goes through it’s POST routine it looks at what I/O ports are available and assigns LPT1:, to one of them. 
+
+<H4>The evolution of the Parallel port</H4>
+Over the years since the PC was first produced the Parallel port has evolved and it's data throughput has risen from about 100 Kbytes per second to as high as 2 Megbytes per second in the case of the latest Enhanced Parallel Port. You will learn more about this in a another chapter. 
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/printers.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:03 GMT -->
+</HTML>

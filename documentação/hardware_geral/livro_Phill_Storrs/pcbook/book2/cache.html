@@ -1,0 +1,116 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/cache.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<HEAD>
+<TITLE>An introduction to Cache memory</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>Cache Memory Systems</H3>
+
+We can represent a computers memory and storage systems, hierarchy with a triangle with the processors internal registers at the top and the hard drive at the bottom. The internal registers are the fastest and most expensive memory in the system and the system memory is the least expensive.
+<P>
+<STRONG>Here is a representation of that hierarchy.</STRONG>
+<UL>
+<LI>Internal Registers (less than 1K, fastest access)
+<LI>Level One Cache (inside the processor, 8K or 16K at present)
+<LI>Level Two Cache (on the system board, 64K to 1Meg, static RAM with 20nsec access)
+<LI>Main Memory (on the system board, 4Meg to 128Meg, uses dynamic RAM with 50 to 70nsec access)
+<LI>Mass storage devices (hard drives, CDROM, tape systems)
+</UL>
+
+<P>
+The definition of a Cache is a <B>place for concealing or storing anything</B>. This implies that a Cache in computer terms is memory that is transparent to the user. A cached memory system is one that combines a <B>small amount of fast expensive memory</B>, with a <B>larger amount of slower cheaper memory</B>, to achieve a memory system that approximates the speed of the fast memory while costing little more than the slower memory. The fast cache memory is imposed between the Microprocessor and the bulk of the primary storage. 
+<P>
+A Cache Controller Routine attempts to keep the Cache filled with data or instructions the microprocessor in most likely to need next. If the information the microprocessor requests next is held in the Cache, it can be retrieved without  the wait states normally required when accessing the system RAM.  This fasted possible retrieval is called a Cache Hit. If the required data is not in the cache then it is received from the System RAM or Storage Device and the result is called a Cache Miss. 
+<P>
+A measure of the effectiveness of a Cache system is the ratio of hits to total number of memory access. (Number of Hits / Total number of access x 100 %) For Level One or Level Two Caches to be effective this ration must be in excess of 60%. A cache between the processor and a disk drive can still provide benefits at lower ratios because of the great differences between the access speed of memory and disk drives.
+<P>
+Modern computer systems can make use of a cache in three places :-
+<UL>
+<LI><B>The Level One Cache</B> (also called the Primary Cache) is inside the Processor chip, between the main memory or the Level Two Cache and the Processor.
+<LI><B>The Level Two Cache</B> (also called the Secondary Cache) is external to the Processor chip but is between the Processors Registers or the Primary Cache, and the main memory.
+<LI><B>A Hard Drive Cache</B> is between the Hard Drive and the Processor. This can be implemented in <B>Software</B> where it uses some of the systems main memory or in <B>Hardware</B> where it uses dedicated Processor chip with it's own memory system.
+</UL>
+<P>
+The 486 Processor introduced the idea of a Cache built into the processor with an 8K Level One Cache and since then some 486 processors have had a 16K Level One Cache. The Pentium Classic uses two 8K  Level One Caches, and later Pentium chips have even larger Caches.
+<P>
+The Level Two Cache uses fast static RAM chips and in addition to the actual Cache chips there is a TAG RAM that contains the lowest address in the main memory of the block held in each Cache location, and it may hold some bits used to decide which part of the Cache to overwrite when more Cache space is required. Cache technology is complicated and many variations in the way it is organised and used are available.   
+<P>
+The Pentium Pro Processor started a new trend in putting the Level Two Cache on the chip instead of the System Board. This is an expensive process but gives a big increase in performance. Pentium  Pro Processors are available with either 256K, 512K or 1Meg on-board Level Two Cache. This technology has been continued on in the Pentium II Processor.
+
+<H4>Cache Configurations</H4>
+<STRONG>Direct Mapped Cache - </STRONG>The direct-mapped Cache divides the cache RAM into small units called lines (corresponding to the lines of storage used by Intel 32-bit processors), each of which is identified by a an index bit in the TAG RAM. The main memory is divided into blocks the size of the Cache, and the lines in the Cache correspond to locations within such a memory block. Each line can be drawn from a different block, but only from the location corresponding to the location in the Cache. Which block the line is drawn from is identified by a tag (hence the name TAG RAM). The Cache controller, the Hardware and Software Routines that controls the Cache operation, can determine if a given byte is stored in the Cache by checking the TAG for an index value. The problem with this type of Cache is if a program regularly moves between addresses with the same index value in different blocks of memory, the Cache manager will need to continually refresh which results in Cache misses. 
+<P>
+<STRONG>Fully Associative Cache - </STRONG>A fully associative Cache is one where any main memory location can be placed in any Cache location. Any part of the Cache can be associated with any part of the main memory. Lines of bytes from anywhere in the main memory can be put side by side in the Cache. The main shortcoming in this approach is that the Cache controller must check the address of every line in the Cache to determine whether a memory request from the processor is a hit or miss.  In this type of Cache the TAG must contain the full address of the main memory location stored at each Cache location and replacement bits. When a memory access is made, the entire TAG needs to be searched for a match. To be efficient, a fully associative Cache is only viable if the TAG is a Contents Addressable Memory (CAM). CAM chips are not common and are relatively expensive so fully associative Cache systems are rarely used on PC Systems.
+<P>
+<STRONG>Set Associative Cache - </STRONG>This is a compromise between the above two techniques and involves dividing the Cache into several smaller direct-map areas. The Cache is described by the number of ways it is divided into, hence we have terms like four-way set-associative Cache. this Cache resembles four smaller direct-mapped Caches. This arrangement overcomes the problem of moving between blocks with the same indexes. As a result the Set Associative Cache has more performance potential than a direct-mapped cache. Unfortunately this type of  Cache is more complex making it more expensive to implement. One drawback is the more "ways" the Cache is split into, the longer the Cache controller must search to determine whether needed information is in the Cache. This slows down the operation of the Cache and so the more "ways" it is split the slower the performance. It seems as though a four way split is a good compromise between performance and complexity. 
+
+<H4>Cache Updating</H4>
+With a Cache system, at least two versions of the same data exist in the system, one in the <STRONG>Main Memory</STRONG> or on the <STRONG>Hard Disk Drive</STRONG>, and the other in the <STRONG>Cache</STRONG>. If the Processor is reading data then this is not a problem because both copies are the same. A problem can occur however when the Processor writes to memory and the data in the Cache only is updated. Any other system components that have access to the memory will read old data and in the case of a Hard Disk Drive Cache, a power failure would result in the loss of current data. There are several methods of processing "writes" and many chipsets and BIOS configurations allow the user to choose between several options.
+<P>
+<STRONG>Write-Through - </STRONG>With a Write-Through system each write to memory that scores a Cache hit causes the Cache controller to update the Cache and then the corresponding memory location immediately. This method is the safest in terms of data security but it is the slowest because every write operation is in effect a Cache miss.
+<P>
+<STRONG>Buffered Write Through or Posted-Write - </STRONG>This technique is similar to Write-Through except the Cache controller releases the bus to the Processor after the Cache has been updated. The Cache controller then proceeds to update the corresponding main memory location. If the Processor follows the write with a read that scores a Cache hit then that read can proceed simultaneously with the Cache controllers write (posted write). If the processor follows the write by another write, or a read that scores a Cache miss, Then the processor will have to wait until the Cache controller has finished updating the main memory. This option should provide a slight performance improvement over a write-through operation and is quite safe.
+<P>
+<STRONG>Write-Back - </STRONG>With a Write-Back Cache, writes from the Processor only go to the Cache and the Cache Controller will only update the main memory during periods of bus inactivity or when the Cache contents are to be replaced. This technique is fast in terms of letting the Processor get on with what is there to do but it is also risky in terms of data loss. The main memory does not necessarily match the Cache until an update has occurred. 
+<P>
+<STRONG>Write-Back with Dirty Bit - </STRONG>This option is similar to the Write-Back option except that each location has a bit in the TAG RAM that is called a <EM>Dirty Bit</EM>. This bit is set whenever data is written to the Cache. When a Cache line is to be replaced, the Cache controller will only update the main memory locations for that line if the Dirty Bit is set. If the Dirty Bit is not set then the line in the Cache has not been rewritten and there is no need to write it back.
+<P>
+If a system offers both Write-Back and Write-Back with Dirt Bit then the latter technique will be the fastest option.
+
+<H4>Cache Coherency</H4>
+The write policies discussed above ensure the main memory contents reflect any modification to the Cache data either immediately or some short time later. A problem does arise when devices like the DMA chips have access to the main memory. If a device other than the Processor write or reads data to or from the main memory then either the Cache or the main memory will contain old data. The simplest solution to this problem is to designate shared memory as non-cacheable. All access to a non-cacheable block of memory are deemed to be a miss and the data is read from, or written to, the main memory location. Most modern chip sets provide the option of specifying several blocks of memory as non-cacheable.
+
+<H4>Hard Disk Cache</H4>
+<STRONG>Software Hard Disk Caching - </STRONG>A Software Hard Disk Cache is provided by Software operating under the Operating System and using some of the System RAM to speed up access to information stored on a Hard Disk (or CDROM Drive). It does this by storing frequently used information in <EM>fast access RAM</EM> rather than <EM>slow access Hard Disk Drives</EM>. The RAM used by the Cache routine today is in Expanded Memory. The most commonly used Disk Cache for DOS and Windows 3.xx was Smartdrive, supplied as part of DOS and Windows. After market products were also available.
+<P>
+Although not directly tied to the internal DOS architecture Software Cache products operate in fast System Memory close to the CPU and access this memory 32 bits or 64 bits at a time, at the Processor Bus speed.
+<P>
+Operating Systems such as Unix and NetWare also implement intelligent Hard Disk Caches under direct Operating System control. An Operating System might cache directory information or queue disk requests for intelligent re-ordering of physical read/write requests. In addition, some Operating Systems can dynamically adjust the cache size according to current operating requirements (for example, reducing disk cache buffers and increasing communications buffers).
+<P>
+<STRONG>Hardware Hard Disk Caching - </STRONG>Software Hard Disk Caches have two problems. Some of the System RAM must be assigned to the Cache, reducing the amount of RAM available to the Operating System and Applications, and the System CPU must service the Cache Routine, reducing the time it can spend on carry out tasks for the Operating System and the Applications. A Hardware Hard Disk Cache Controller is on a card plugged into a Bus Slot and has it's own Processor and RAM.
+<P>
+Hardware Hard Disk Controllers are expensive, often difficult to install, and can't be readily disabled like Software Caches. The Disk Cache Controller has its own Processor chip and its own RAM devices. Separate Cache subsystems, unlike Software Caches, help the System CPU in disk management tasks without taking up memory required by applications or the Operating System. Many Hard Disk Caching Controllers allow CPU access to data in the controller's cache memory while the controller performs write or read-ahead operations with the Disk Drive. Depending on the application, an Operating System or third-party software cache system combined with a Hard Disk Caching Controller may provide the ultimate disk performance. This configuration is commonly used in high performance Server computers where the speed of data throughput is most important.
+<P>
+Disk Caching reduces the time required to move data between the Hard Disk Drive and the Processor. When accessing data from a Hard Disk Drive, delays in regulating disk buffer transfers, including command formulation and issuance, head seeks, disk rotation, head settling, reading/writing data, moving data from the Operating System to Hard Disk, and the overhead in managing and moving the data in and out of the Processor, accumulate and slow performance.
+<P>
+Both IDE and SCSI Hard Drive Controller cards are available with Hardware Cache on board. Most Cached Hard Disk Drive controllers can have between 1Meg and 16Mbyte of RAM installed and they use common SIMM RAM. The cost of an Enhanced IDE, hardware cached controller, is of the order of  $150 to $200 plus memory and a SCSI device is in the range $400 to $1000.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="memory.html"><font
+color="#FFFFFF">Back to the PC memory chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="memchips.html"><font
+color="#FFFFFF">PC Memory hardware over the years</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="lowmem.html"><font
+color="#FFFFFF">How the PC uses its Low Memory area</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="xmsmem.html"><font
+color="#FFFFFF">Extended Memory and High Memory</font></a></td>
+<td width="25%" bgcolor="#3CB371" align="center"><a href="../images/memmap.jpg"><font
+color="#FFFFFF">The PC Memory Map</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/cache.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>
+
+
+

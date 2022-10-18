@@ -1,0 +1,139 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/procupgd.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+<HEAD>
+<TITLE>Processor upgrades</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>Upgrading PC hardware</H3></CENTER>
+
+It is quite common to be asked to upgrade existing PC hardware by changing the Processor or the System Board and Processor. Some of the factors you must take into account before proceeding with such a task are listed below.<BR>
+As 80486 hardware is obsolete now the <A HREF="486.html">notes for a 486 upgrade</A> are on a separate page.
+<P>
+<STRONG>Is the Power Supply suitable</STRONG><BR>
+Modern PC cases are fitted with at least 200 watt power supplies and this will be sufficient for even the most heavily optioned PC.
+<P>
+Some of the non standard hardware from manufacturers like IBM, NEC, COMPAQ and others often used non standard Power Connectors, and/or may not have all four supply voltages available.
+<P>
+<STRONG>What about the Case and System Board</STRONG><BR>
+Some DOS computers use non standard cases with one or more of the following problems.
+<UL>
+<LI>Slot spacing non standard
+<LI>Mounting holes/posts in the wrong place. Fixing this problem may require extensive surgery - you may have to cut away existing brackets and fabricate new ones.
+<LI>Limited number of available slot spaces on the back plane. (often caused by the original board having some or all of the I/O circuitry built onto the System Board.
+</UL>
+<P>
+Today, most System Boards are made to a new standard, the <STRONG>ATX format</STRONG>, and these have the Serial and Parallel connectors mounted on the System Board. ATX boards cannot be used in conventional (Baby AT) PC cases. There are also other Form Factors for System Boards emerging now, two of these are <STRONG>NLX</STRONG>, a new Low Profile design, and <STRONG>Compact ATX</STRONG>, intended for the so-called "sub US$1000 PC systems".
+<P>
+<STRONG>Can the existing RAM be re-used ?</STRONG><BR>
+No modern Pentium systems boards will accept the 30 pin or 72 pin SIMM RAM. All modern boards use only DIMM RAM devices.
+<P>
+If you are re-cycling old Pentium Systems, you may be able to make use of 72 pin SIMM RAM but these will have to be used in pairs of identical devices.
+<P>
+72 pin SIMMs underwent several changes in technology over the years and the more modern EDO RAM devices may not work in older system boards. EDO is an acronym for "Extended Data Out". This means that the RAM can output data for longer periods of time than conventional DRAM. It does this by holding data on the outputs of the DRAM while preparing for the next read operation. As a result, there is an approximately 20 ns overlap between one read and the next. If the BIOS does not have support for EDO RAM it is unlikely it will work in that board.
+
+<STRONG>DIMM RAM</STRONG><BR>
+The latest RAM package is the Dual Inline Memory Module and several technologies are developing in this package. DIMM RAM is available as EDO, SDRAM, and BEDO technologies. Not all Chip-sets support all these technologies, and four types of DIMM packaged SDRAM are available.
+<P>
+Because RAM technology is advancing so fast, it is usually better to use new RAM in upgrading "high end" PC Systems, the cost of the new RAM is outweighed by the increase in performance obtained.
+<P>
+<STRONG>Processor upgrades</STRONG><BR>
+In the past PC Systems have been sold as Upgradable, all you had to do to "move up" to later technology was to replace the Processor chip with the newer device. In practice this has not been the case. Most System Boards will not work reliably with processors that were not available at the time when they were designed.
+<P>
+Also, some system boards may not work reliably with other brand Pentium type Processors, unless they are supported by the BIOS on the board. This may be ovecome by upgrading the BIOS. Over the years the Internal operating speed of the Pentium Classic and Pentium MMX Processors rose to over 200 MHz using the same socket, and older Systems Boards designed and built before the fastest Processors were released, may not work with newer Processors. 
+<P>
+Itel has gone away from the Socket 7 for it's latest generation Processors but AMD and Cyrix/IBM have continued to use it. Older Socket 7 boards will not be able to supply the Bus Clock Speeds and supply voltages required by these new Pentrium Clone chips. For example, until recently all Socket 7 processors required a Bus Clock Speed of 66 MHz but this has been pushed up to 75 MHz, 83 MHz, and then 100 MHz. The Front Side Bus Speed (as the Bus Clock Speed is now called) is now heading for 120 to 133 MHz. The traditional Intel Pentium chips used two pins to set the Processors Bus Speed Mutiplier and the greates multiplier was three times. The other manufacturers are using more pins and higher mutipliers.
+<P>
+<STRONG>Processor Supply Voltages</STRONG><BR>
+The trend is to a spilt power supply with 2.8 volt (now as low as 1.9) to the Core of the processor, and 3.3 volt (also 3.45/3.5) to the I/O and interface circitry. The Pentium Pro and Pentium II processors can consume as much as 45 watt and the Voltage Regulators supplying the 3.3 and/or 2.8 Volt, must be able to supply 10 to 15 Amp to the procressor. Better System Boards now use Switch-mode power supplies on the board to regulate the supply voltages to the Processor chip. This gives far less heat dissipation than using linear regulators.
+<P>
+<STRONG>Processor sockets</STRONG><BR>
+Intel Pentium Classic and Pentium MMX, and the Pentium compatible Processors, plug into a <A HREF="#socket">Socket 5 or Socket 7</A> and these are part of a long line of Processor sockets. Socket 5 and 7 are a Staggered Pin Grid Array (SPGA) as opposed to Socket 4, a 296 Pin Grid Array (PGA), used for the 80486 and the Pentium 60 and 66 MHz Processors. Since the days of the 386 Processors the Pin Grid Array type socket itself evolved from having either 168, 169,237,238 or 387 pins. The Pentium Pro introduced a larger Socket 8. Itels next move was away from Sockets and to an edge connector cofiguration, called Slot One. This was first used with the Pentium II. In an effort to try to frustrate the efforts of the Pentium Clone manuafacturers, Itel changed the Celeron Processor to use a new socket called <B>Socket 370</B>.
+<P>
+<STRONG>Precautions</STRONG><BR>
+When perfoming a hardware upgrade, start by switching the system off and unpluging all the cables connected to it. Remove both the power cables and the signal cables that go to the peripherals, and make sure you note where each cable went. Slide the cover off the system's case.
+<P>
+At this stage, and throughout the process, guard against dangerous static discharge by grounding yourself to the case chassis using a <STRONG>WRIST STRAP</STRONG>. The case should also be grounded to a good earth point. If your workbench is not equipped with a suitable earth point you could equip a three pin power plug with only an earth wire, and a clip on the other end, to connect to the computer under repair.
+<P>
+<STRONG>Removing the System Board</STRONG><BR>
+If you are removing the System Board, note where all the cables attached to the various expansion cards are attached, paying attention to the orientation of pin one for each cable. Disconnect cables attached to the Expansion Cards and then pull out all Expansion Cards. The Expansion Cards will have Hard and Floppy disk cables and Serial and Parallel cables. Newer hardware will have most of the I/O functions provided on the System Board, pay attention to the orientation of the cables on such boards, it may be hard to read the markings with the board in place.
+<P>
+<B>Important:</B> There is no Industry standard covering the pin configurations of the ribbon cables from the I/O cards and on-board I/O interfaces. Always use the Parallel, Serial and PS/2 connectors supplied with a new system board, and make sure to keep the old connectors with the old boards, in case they are to be used again.
+<P>
+Some PC cases allow easy access to the System Board with the board in place but if access is not that easy it is better to remove the board from the case. You may be able to gain better access if you remove the power supply. The System Board will have a speaker cable, one or more cables for the system lock, power led, turbo led, turbo switch and reset switch.  If your system follows standard PC design, you'll find only one or two screws, usually one near the center of the back of the board and perhaps one near the center at the front of the board. Take out these screws and then either slide the board to the left to disengage the mounting posts or if the system uses the press fit mounting posts, squeeze each post with long nose pliers and press them out of the holes in the case.
+<P>
+Once the System Board is out, lay it flat on an Anti-Static Bag on your work surface and connect your wrist strap to an earth pad near one of the mounting holes on the back of the board. The mounting hole near the keyboard socket usually provides an earth connection between the System Board and the computers case.
+<P>
+<STRONG>Put the processor into the socket</STRONG><BR>
+If it is a Socket 7 or Socket 370 device, hold the processor only by its edges, place the chip on top of its socket in the <STRONG>proper orientation</STRONG>. With a ZIF socket, simply raise the lever; the chip should drop directly into place. Lock the lever, and your processor is installed. 
+<P>
+If it is a Slot one device, you may have to consult the system boards documentation to find out how the support frame attaches to the board.
+<P>
+<STRONG>Correct orientation</STRONG><BR>
+Make sure <STRONG>pin one</STRONG> on the Processor, is plugged into pin one on the socket. Pin one on the Processor is indicated by a small flat on the corner of the chip. The chip will look like a square with one corner cut-off. <STRONG>The cut-off corner indicates pin one</STRONG>. Watch out for the markings on the System Boards, some boards have the Processor marked as an X-Y matrix with numbers along one side and letters along the other side. Pin one does not usually correspond to the number one on the board. The Processor socket is usually marked with a square with one corner cut-off. <STRONG>Pin one of the socket is by the cut-off corner</STRONG>. 
+<P>
+If you apply power to a System Board with the Processor plugged in the wrong way around, the Processor or the System Board, or both, may be destroyed.
+<P> 
+<STRONG>Heat-sinks and Fans</STRONG><BR>
+Most Processors require a heat sink and fan. In 80486 Systems this was usually a little assembly that was held onto the Processor by a plastic band that fitted around and under the Processor, later generation Processors use a metal clip that locks onto two lugs on the side of the socket.
+<P>
+<A NAME="socket"></A><H4>The recent CPU sockets</H4>
+<TABLE BORDER>
+<TR><TH align=center>Characteristics</TH>
+<TH align=center>Old 486 socket</TH>
+<TH align=center>Socket 1</TH>
+<TH align=center>Socket 2</TH>
+<TH align=center>Socket 3</TH>
+<TH align=center>Socket 4</TH>
+<TH align=center>Socket 5</TH>
+<TH align=center>Socket 6</TH>
+<TH align=center>Socket 7</TH>
+<TH align=center>Socket 8</TH>
+</TR>
+<TR><TD align=center>number of pins</TD>
+<TD align=center>168</TD>
+<TD align=center>169</TD>
+<TD align=center>238</TD>
+<TD align=center>237</TD>
+<TD align=center>273</TD>
+<TD align=center>320</TD>
+<TD align=center>335</TD>
+<TD align=center>321</TD>
+<TD align=center>387</TD>
+</TR>
+<TR><TD align=center>Proc. voltage</TD>
+<TD align=center>5V</TD>
+<TD align=center>5V</TD>
+<TD align=center>5V</TD>
+<TD align=center>3.3 or 5V</TD>
+<TD align=center>5V</TD>
+<TD align=center>3.3/3.45V</TD>
+<TD align=center>3.3/3.45V</TD>
+<TD align=center>3.3/3.45V*</TD>
+<TD align=center>3.3V</TD>
+</TR>
+<TR><TD align=center>Original CPU</TD>
+<TD align=center>486DX</TD>
+<TD align=center>486SX, DX</TD>
+<TD align=center>486SX, DX, DX2</TD>
+<TD align=center>486SX, DX, DX2, DX4</TD>
+<TD align=center>Pentium 60, 66</TD>
+<TD align=center>Pentium 75 and above</TD>
+<TD align=center>486DX4</TD>
+<TD align=center>Pentium 75 and above</TD>
+<TD align=center>Pentium Pro 150 and up</TD>
+</TR>
+</TABLE>
+<P>
+<STRONG>* Note:</STRONG> Due to the Pentium MMX Processors and the Cyrix/IBM 6x86L requiring a dual voltage supply, newer System Boards will allow for 2.8 volt (and often as low as 2.1) as well as 3.3 volt (up to 3.5). 
+<P>
+The next generation of Pentium Processors, the Prentium II, use what is now called <STRONG>Slot One</STRONG>. Slot one is electrically identical to Socket 8 but is an <STRONG>edge connector</STRONG>, rather than a Pin Grid Array socket. A completely new socket is about to be used with a "very cheap" version of the Intel Celeron chip.
+<P>
+Copyright Phil. Storr, last updated at 1:06 PM on 8/08/99
+<hr>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/procupgd.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+</HTML>

@@ -1,0 +1,42 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/tapeqic.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:11 GMT -->
+<HEAD>
+<TITLE>QIC tape technology </TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The QIC-40 and QIC-80 tape technology</H3>
+
+<H4>Organization of a QIC tape</H4>
+A QIC tape is organised into tracks and there may be from 20 to 42 tracks across the tape. The data is stored on the tape as a serial bit stream and as the tape comes to it's end holes in each end of the tape (or reflective tape in the smaller cartridge) indicate the "end of tape" and the drive reverses the tape and moves the read/write head assembly up or down to the next track. 
+<P>
+The first track written is just below the middle of the tape and the head is moved up and down as the tape is "used up", going from one track to the next as though the tape was one continuos length, rather than a series of parallel tracks running in opposite directions. The tracks on the top half of the tape (half the total number of tracks for that particular QIC format) are recorded in one direction and the rest of the tracks recorded on the bottom half of the tape are recorded in the other direction. 
+<P>
+Each track is divided into "blocks" of either 512 or 1024 bytes and then into "segments" usually containing 32 blocks. Eight of the blocks in each segment contain "error correction codes to keep a check on the validity of the data stored on the segment. In addition to the ECC 's, each block also has a CRC (cyclic redundancy check) on each block to make sure the data in each individual block is correct.
+<P>
+Most tape backup software reserves part or all of track zero or a separate directory track to keep a record of the files on the disk.
+<P>
+The read/write head usually has a write section in the center flanked by a read head on each side. This allows the data that has just been written to be read and verified and if the data is found to be faulty then that block is rewritten before the next block is processed.
+<P>
+<HR>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="tapemag.html"><font
+color="#FFFFFF">The Magnetic Tape chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 4<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/tapeqic.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:11 GMT -->
+</HTML>

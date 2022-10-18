@@ -1,0 +1,97 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/ioassign.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+<HEAD>
+<TITLE>The I/O address assignments</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The more common I/O address assignments</H3>
+<PRE>
+<STRONG>I/O Address	USE    </STRONG>                                                                                    
+0000-000f	Slave DMA controller (8237 chip)
+0010-001F	System
+0020-0021	First Interrupt controller (8259 chip)
+0030-0031 	Second interrupt controller
+0040-0043	Programable Interval Timer 1 (8254 chip)
+0048-004B	Programable Interval Timer 2
+0050-006F	System	devices
+0070-0071	NMI Enable / Real Time Clock
+0080-008B	DMA Page registers 
+0090-009F	System devices
+00A0-00A1	Slave interrupt controller
+00C0-00DE	Master DMA controller
+00F0-00FF	System devices
+0100-0167	System devices
+<STRONG>0168-016F	IDE Interface - Quaternary channel</STRONG>
+<STRONG>0170-0177	IDE interface - Secondary channel</STRONG>
+<STRONG>01E8-01EF	IDE Interface - Tertiary channel</STRONG>
+<STRONG>01F0-01F7	IDE interface - Primary channel</STRONG>
+<STRONG>0200-0207	Games Port (joystick port)</STRONG>
+<STRONG>0220-022F	Usually used by sound cards, also used by NOVEL NETWARE KEY CARD</STRONG>
+0270-0273	Plug and Play hardware
+<STRONG>0278-027A	Parallel  Port *</STRONG>
+0280-028F	Sometimes used for LCD Display I/O
+02B0-02DF	Alternate VGA Video Display Adaptor assignment (secondary address)
+02E0-02E7	GPIB 0, data aquisition card 0 (02E1 to 02E3 only)
+<STRONG>02E8-02EF	Serial Port - COM 4</STRONG>
+<STRONG>02F8-02FF	Serial Port - COM 2</STRONG>
+<STRONG>0300-031F	Often used as a default for Network Interface cards</STRONG> (was prototype card)</STRONG>
+<STRONG>0320-023F	ST506 and ESDI Hard Disk Drive Interface (mostly used in PX/XT and early PC/AT)</STRONG>
+<STRONG>0330-0331	MPU-401 (midi) interface, on Sound Cards </STRONG>
+0360-036F	Sometimes used for Network Interface cards
+<STRONG>0376-0377	Another address used by the Secondary IDE Controller (see 0170-0177)</STRONG>
+<STRONG>0378-037A	Parallel Port * </STRONG>
+<STRONG>0388-038B	FM (sound) synthesis port on sound cards</STRONG>
+<STRONG>03B0-03BB	MDA, EGA and VGA  Video Display Adaptor  (only 03B0 to 03BB used)</STRONG>
+<STRONG>03BC-03BF	Parallel Port (originally only fitted to IBM mono display adaptors) *</STRONG>
+<STRONG>03C0-03DF	EGA / VGA Video Display Adaptor, (Primary address)</STRONG>
+03E0-03E7	PCIC PCMCIA Port Controller
+<STRONG>03E8-03EF	Serial Port - COM 3</STRONG>
+<STRONG>03F0-03F6	Floppy Disk Drive Interface</STRONG>
+<STRONG>03F7-03f7	Another address used by the Primary IDE Controller (see 01F0-01F7)</STRONG>
+<STRONG>03F8-03FF	Serial Port - COM 1</STRONG>
+<STRONG>0533-0537	Windows sound system (used by many sound cards)</STRONG>
+
+These next assignments are recent additions, and are used by some modern chip-sets used in System Boards.
+
+0678-067F	Used by the Extended Parallel Port at 0278 (more about EPP soon)
+0778-077F	Used by the Extended Parallel Port at 0378 (more about EPP soon) 
+07BC-07C5	Used by the Extended Parallel Port at 03BC (more about EPP soon)
+0CF8-0CFB	PCI  data registers
+FF00-FF07	IDE Bus Mastering Registers
+FFA0-FFA7	Primary IDE Bus Mastering Registers
+FFA8-FFAF	Secondary IDE Bus Mastering Registers
+</PRE>
+<P>
+* The three Parallel Port assignments listed in this table are assigned as LPT1 to LPT3 in the following order : <STRONG>3BC, 378, 278</STRONG>. Usually a PC has only one Parallel Port and the <STRONG>BIOS setup routines assignes the first Parallel Port hardware it finds in the above order, to LPT1.</STRONG> If a second Parallel Port is found it will be assigned LPT2, in the order above. 
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="ioports.html"><font
+color="#FFFFFF">Back to the PC and its I/O Ports</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="parallel.html">The PCs Parallel ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="serial.html">The PCs Serial (Comms) ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="games.html">The Games (Joystick) port</a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/ioassign.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:43 GMT -->
+</HTML>

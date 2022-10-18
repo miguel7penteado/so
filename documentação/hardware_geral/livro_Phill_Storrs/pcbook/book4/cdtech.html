@@ -1,0 +1,147 @@
+<HTML>
+<TITLE>CDROM technology</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/cdtech.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:10 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>CDROM Technology</H3>
+<H4>The CDROM</H4>
+A CDROM Drive uses a small plastic-encapsulated disk that can store a great deal of Computer Data or an Audio Signal, and this information is retrieved using a Laser Beam. A CD can store vast amounts of information because it uses light to record data in a form that is more tightly packed than the form magnetic read/write heads of a conventional disk drive or audio tape drive can manage. 
+<P>
+The huge capacity and read-only nature of the CDROM combined with the very low manufacturing cost of the media and the low cost of the drives makes it a perfect medium for storing massive amounts of data that does not need to be altered. Most modern software packages are distributed on CD and this technology has made complex Multi Media software with lots of high definition and colourful images possible. CD technology is still advancing with standards for highly compressed "real time video", and even far greater storage capacity, still under development.
+<P>
+The actual mechanics of the Computer CD Drive and its Audio counterpart are the same, only the way the information is stored is different. This means a CDROM Drive in a computer will also play Audio CDs. Unlike the audio CD player that has lots of buttons and a LCD readout to control and display the program information, the computer CD uses software to control the drive when it is being used to play audio CDs.
+<P>
+The CDROM drive requires an interface to connect it to the computer. Many sound cards have a CDROM interface built in but we must be aware of the fact that until recently, no one CDROM drive interface standard was in use. Each brand of drive used its own unique interface, and many sound cards supplied up to four types of CD interface, each with its own connector.
+
+<H4>The CDROM Drive</H4>
+CDROM drive can be mounted Internally (inside the PC) or in an external enclosure. The first CDROM drives used a Caddy that protected and supported the CDROM but now all drives are "Caddy Less".
+<P>
+The current CDROM technology provides 650 to 680MegByte of storage space at a fraction of magnetic media's cost per megabyte. CDROM is now the most cost-effective distribution medium. Most software packages and operating systems are supplied as standard, on a CDROM.
+
+<H4>CDROM drive Performance Specifications</H4>
+The performance measurements to know are a drive's seek or access time (how long it takes the drive to find a piece of data on the disc) and its <STRONG>data-transfer</STRONG> or throughput rate. Typical performance figures for CDROM drives are, access time 280msec, burst data transfer rate of 2.5Mbyte/sec in async mode and 4.0Mbyte in sync mode and hard error rates of better than 10 to the power of 12 (after error correction). 
+<P>
+The first CDROM Drives had a data-transfer rate of 150 Kbytes per second but it was not long before "MultiSpin" Double Speed drives provided 300 Kbytes per second. Triple speed drives had a very short life span and were replaced by Quad speed drives, providing 600 Kbytes per second data-transfer speed. In the middle of 1996, Hex and Eight speed drives were the industry standard with data-transfer rates of 900 and 1200 Kbytes per second. Early in 1997 the 12 speed drive was the norm and now 24 and 32 speed drives are the state of the art. When a manufacturer talks about a 24 speed or 32 speed he does not usually mean what he did when talking about two and four speed drives. Today the speed rating is the maximum possible when reading the outer most tracks. When reading the inner most tracks a sixteen speed drive is no faster than an eight speed drive.
+<P>
+CDROM Drives, like Hard Drives, get a performance boost from caching. Some CDROM Drives have as much as 256K of built-in buffer memory. 
+
+<H4>CDROM Drive Interfaces</H4>
+A CDROM drive requires an interface circuit to interface it to the computers bus and this is often provided on the Sound Card. Until recently CDROM drives used either a SCSI interface or a proprietary interface, based loosely on the ISA bus. This is often called the <STRONG>AT interface</STRONG>.
+<P> 
+The <STRONG>proprietary CDROM interfaces</STRONG> were designed by <STRONG>Sony</STRONG>, <STRONG>Mitsumi</STRONG>, <STRONG>Panasonic</STRONG>, and <STRONG>Hitachi</STRONG> and as each one is different, interface cards often had three or four connectors to provide for all possible drives available. All proprietary interfaces except the Sony use a 40 pin header plug, the same as that used for IDE hard drives. Sony uses a 36 pin header cable. <STRONG>Note:</STRONG> Old sound cards with these proprietary interfaces cannot be used to interface modern EIDE CDROM drives.
+<P>
+CDROM drives that use a <STRONG>SCSI interface</STRONG> cost more, but do offer more options for adding extra drives, up to seven on one interface card. SCSI is used when multiple CDROM drives are required on the same computer, in situations like file servers in libraries. The SCSI interface is often not easy to get operating and so it is best to avoid SCSI devices if they do not provide any significant advantage. You will learn more about the SCSI interface in PC Servicing two.
+
+<H4>Enhanced IDE</H4>
+The CDROM drive industry has now standardized on the more economical and <EM>standard</EM> <STRONG>Enhanced IDE interface</STRONG> for CDROM drives. The Hard Drive IDE interface has been Enhanced to include provision for CDROM drives and tape backup devices and this is referred to as Enhanced IDE. You will learn more about this in PC Servicing two. The PC design allows for up to four Enhanced IDE channels, each channel providing for a master and a slave device. Modern system boards have a two channel EIDE controller built in, providing a <STRONG>Primary</STRONG> and a <STRONG>Secondary</STRONG> channel. Each of these EIDE channels requires a small range of I/O addresses and an IRQ line.
+<P>
+The interface cable between the CDROM drive and the IDE interface is a 40 pin header cable, the same as used for IDE hard drives.
+<P>
+<STRONG>Important </STRONG>- All CDROM drives also have an <STRONG>audio cable</STRONG> between the drive and the sound card. This is only used when the drive is playing <STRONG>Audio CDs</STRONG>. This cable has three conductors (audio left and right, and ground) and usually has a small four pin connector on each end. No one standard exists for these connectors and so some drive manufacturers supply an audio cable with multiple connectors on one end.
+
+<H4>Installing EIDE interface CDROM drives </H4>
+Each Enhanced IDE channel can have a <STRONG>master</STRONG> and a <STRONG>slave</STRONG> device connected. Most modern EIDE devices have the details of the master/slave jumpers printed on the drive. If these details are not available on the drive you can often find them via the internet.
+<P>
+When connecting hard drives and CDROM drives to EIDE controllers you have several options in configuration. 
+<OL>
+<LI>If you have one hard drive and one CDROM drive you could connect them both to channel one with the hard drive as the master and the CDROM as a slave. <BR>
+This configuration has the disadvantage of the slowest device, the CDROM drive, slowing down the access to the fastest device, the hard drive. 
+<P>
+<LI>It is better to connect <STRONG>hard drives to the primary channel</STRONG> and the <STRONG>CDROM, as a master, to the secondary channel</STRONG>.
+</OL>
+
+<H4>Sound cards and CDROM drives</H4>
+Many modern sound cards often have an Enhanced IDE controller fitted on the card and this is intended to be used to interface a CDROM drive. 
+<P>
+As modern System Boards have a two channel EIDE controller built onto the System Board, it may cause clashes between EIDE channels on the System Board and the Sound Card. If the Secondary EIDE channel is turned on, on the System Board, it will clash with the Secondary EIDE channel on the Sound Card. This can be fixed by :-
+<OL>
+<LI>Turning the Secondary EIDE channel on the Sound Card off and plugging the CDROM drive (as a master device), into the Secondary channel, on the System Board. 
+<LI>Turning the Secondary EIDE channel on the System Board off, and plugging the CDROM drive into the Secondary channel on the Sound Card. 
+<LI>Turning both Secondary EIDE controllers off and using the CDROM drive as a slave device on the Primary EIDE controller. <STRONG>Important:</STRONG> In this configuration, the slower CDROM drive may slow the operation of the Hard Drive down.
+</OL>
+<P>
+<STRONG>Important: </STRONG>Some earlier System Boards with built in Primary and Secondary EIDE channels did not seem to disable the secondary channel properly when required. This caused clashes with Sound Cards that had a Secondary EIDE channel fitted, even when the Secondary IDE channel was turned off on the System Board. Modern System Boards have the selection and control of the EIDE channels configured from within the CMOS setup and it is easy to disable the Secondary EIDE channel this way.
+<P>
+<STRONG>Remember</STRONG> when using EIDE channels provided by ISA bus Sound Cards, the data rate will be limited to 2 to 3MHz because of the bus speed and width of the ISA Bus.
+
+<H4>CDROM drive Parallel interface</H4>
+External CDROM drives are available that plug into Parallel Ports, but older Parallel interfaces are too slow for smooth video playback. This type of interface is useful when you wish to connect a CDROM drive to a Lap-top computer that does not have a built in drive.
+
+<H4>How the CDROM works.</H4>
+<UL>
+<LI>A motor rotates the CD and varies the rotational speed so as to maintain a Constant Linear Velocity. Instead of arranging the surface of the disk into concentric circles called "tracks" like Magnetic Media does, the CD has one single track that starts at the center of the disk and spirals out to the circumference of the disk. This track is divided into sectors of equal size. The Constant Linear Velocity is achieved by varying the rotational speed of the disk as the laser assembly moves over the surface of the disk - the disk is rotated faster when its inner "SPIRALS" are being read. 
+<LI>The laser assembly consists of a laser diode, a prism, a light sensitive diode, and a lens controlled by a focusing coil. The laser beam passes straight through the prism and projects a focused beam of laser light onto the surface of the CD.
+<LI>The laser beam penetrates the protective layer and strikes a reflective layer of aluminium on the top side of the disk.
+<LI>The surface of the reflective layer consists of a series of "Lands" and "Pits". The "lands" are flat surface areas and the "pits" are tiny bumps on the reflective layer. These two surfaces are a record of the binary "1s" and "0s" used to store information.
+<LI>Light that strikes a pit is scattered, but light that strikes a land is reflected directly back to the laser assembly and is reflected by the prism, onto the light sensitive diode. The Laser diode and the light sensitive diode are arranged at right angles to each other, the laser is directly over the surface of CD.
+<LI>Each pulse of light that strikes the light sensitive diode generates an electrical signal and these signals are matched against timing pulses to generate the "1s" and "0s" required to regenerate the original information recorded on the CD.
+</UL>
+
+<H4>Configuring the CDROM drive for DOS and Windows 3.xx</H4>
+The CDROM interface needs a <STRONG>device driver</STRONG> to "add" it to DOS. This is achieved by using a "device =" line in the <STRONG>CONFIG.SYS file</STRONG>. The device driver will be a .SYS file and in the case of the older proprietary interfaces, and SCSI interfaces, is provided with the interface card. Each interface card had it's own driver file and uses it's own syntax so you must have the information, and the "device driver file", for the card you have. With the modern EIDE interfaced CDROM drives, the device driver follows a standard and is almost universal.
+<P>
+In addition to the device driver for the interface, DOS also requires the CDROM extensions. These are added by running a file called <STRONG>MSCDEX.EXE </STRONG>from the <STRONG>AUTOEXEC.BAT</STRONG> file on start-up. The syntax associated with installing this file is well described in the DOS help.
+<P>
+More modern operating systems like Windows 95 have built in support for CDROM devices and will install drivers for the device when the operating system is installed. This still poses a problem when we are installing the operating system on the computer for the first time. We must use a <B>boot floppy disk</B> with an operating system and CDROM drivers on it to get the computer going so we can read a CDROM to install the operating system. This disk is provided with the OEM versions of the operating system, or you can create one youself.
+
+<H4>CD-Recordable (CD-R)</H4>
+Recordable CD drives (known as CD-R) provide cheap data storage when measured at a cost per Megabyte. You can create a 670MB disc and any data you desired could remain instantly accessible. Online mass storage this way can be an affordable reality for large data bases, so long as the data recorded does not have to change at any time. This means even data bases with a very limited market can be economically produced.
+<P>
+The hardware costs $450 to $700 for the CD-R drive and a host computer with a fast high capacity Hard Drive is also required. The media (a blank CD-R disk) costs about $2 to $3. Creating a CD-R is not the same as copying files to a Hard Disk. First the contents of the CD-R are built as an image (or virtual CD) on the Hard Disk of the host machine and then they are transferred to the blank CDROM. 
+
+<H4>CD-ReWritable (CD-RW)</H4>
+CD-ReWritable is essentially CD-Recordable with the added benefit of a rewrite function. CD-RW is based on phase-change technology and it allows discs to be written and re-written up to 1000
+times.
+<P>
+The recording layer of a CD-RW disc is polycrystalline. This layer is a mixture of silver, indium, antimony and tellurium. During the recording process, the laser heats selected areas
+of the recording track to the recording layer's melting point of 500 to 700 degrees Celsius. When melted, the crystals on the track flow into an amorphous phase. The medium quickly cools, locking in the properties of the heated areas.
+<P>
+<CENTER><IMG SRC="../images/homedisc.gif" NOSAVE HEIGHT=54 WIDTH=496></CENTER>
+<P>
+The amorphous areas have a lower reflectivity than the crystalline areas and this creates a "peak-and-trough" pattern on the recording track. This pattern can be read as pits and lands
+of the traditional CD. In the rewrite process, amorphous areas on the track can be returned to the crystalline phase through annealing, or heating the track at a temperature below the layer's melting point for a longer period.
+<P>
+Once recorded, a CD-RW track is read in the same way as a normal CD tracks. Transitions between low and high reflectivity on the disc's surface are detected by the laser of the reading device and the length of the periods between those transitions are interpreted in the same way as are traditional pits and lands of a pressed CD, or the optical "marks" on a CD-R disc.
+<P>
+<IMG SRC="../images/www.gif"><A HREF="http://www.cdpage.com/cdrwi.html">This information was taken from the home page of Compact Disk Consulting</A>
+<P>
+After a bad start with several manufacturers producing drives with differing capacities, the CD-RW standard has emerged and is gaining acceptance rapidly as a low cost method of providing high capacity mass storage that can be rewritten. 
+
+<H4>DVD, the next step</H4>
+The next development in the area of the CDROM technology is the <A HREF="cddvd.html">Digital Vesatile Disk (DVD)</A>. DVD was released on the market during the second half of 1997.
+
+<H4>Mounting CDROM drives</H4>
+Some CDROM drives are designed to be mounted in either plane but this must be checked with the drive specifications. 
+<P>
+<STRONG>Important: </STRONG>The screws used to mount the drive must be quite short, only about 5mm long, or else damage may be done to the drive. Look for screws supplied with the drive, many manufacturers include the correct screws in the packaging.
+
+<H4>CD-Juke Boxes and CD Arrays</H4>
+In a library situation (or on a BBS or World Wide Web home page) we can use a CDROM jukebox or a CD Array to store many CDRoms, thus providing a very large "on-line" data base for multiple users. <STRONG>CD-Juke boxes </STRONG>are complex mechanical devices that change CDs in and out of a drive or multiple drives, from a stack of CDs, as required by the users of the system they are used on. A <STRONG>CD Array</STRONG> is multiple CDROM drives, each with one CD in it, connected to a file server system of some sort and made available to multiple users. CD Arrays are made up by connecting up to seven SCSI interfaced CDROM drives to each SCSI interface card in a file server. This is a far more flexible system than the Juke box but will not be as cost effective in a situation where many CDs are required.
+<P>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="cddvd.html"><font
+color="#FFFFFF">Digital Vesatile Disk (DVD)</font></a></td>
+<td width="25%" bgcolor="#008080" align="center"><a href="magoptic.html"><font
+color="#FFFFFF">Magnetic-optical technology</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr 4<SUP>th </SUP>December
+1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/cdtech.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:10 GMT -->
+</HTML>
+
+
+

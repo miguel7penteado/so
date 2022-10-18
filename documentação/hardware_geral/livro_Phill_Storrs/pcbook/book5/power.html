@@ -1,0 +1,151 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/power.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+<HEAD>
+<TITLE>The PC Power Supply</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The PC Power Supply</H3>
+The power supply found in most PC type computers supplies power to  the system board, disk drives and all other internal components. It is a <STRONG>switch mode</STRONG> regulated power supply.
+<P>
+<CENTER><IMG SRC="../images/pcps2.jpg">&#160<IMG SRC="../images/pcps1.jpg"></CENTER>
+<CENTER><B>A typical modern 200 watt PC power supply</B></CENTER>
+<P>
+In most desk top cases the power supply is located at the rear and to the right of the computers case and in tower cases the power supply is at the top and rear of the case.
+<P>
+The power supply is usually housed in a  black or silver case with warning labels on the top. The warning labels advise everyone not to take off the lid to the power supply as it has some very dangerous high voltages inside. The 240 volt AC mains is rectified inside the case and produces a primary supply voltage of about 340 volts DC that has one side of that supply connected to the common ground, also connected to the case. If a person were to come in contact with the output of the primary side of the supply there is a very low impedance back to the power source (ETSA) and this means very high currents can be supplied, leading to <FONT  COLOR=#FF0000>Death or Severe Injury</FONT>.
+
+<H4>Switch mode supply operation</H4>
+A switch mode power supply chops this high DC voltage from the <STRONG>primary supply</STRONG> at a high frequency (usually about 25KHz) and supplies it to a transformer that has several secondary windings on it.
+<P>
+The lower high frequency voltages from the secondary windings are then rectified and filtered producing <STRONG>secondary voltages</STRONG> of plus and minus <STRONG>5 volt</STRONG> and plus and minus <STRONG>12 volt.</STRONG>
+<P>
+A <STRONG>voltage regulator</STRONG> circuit monitors the secondary voltages and varies the mark to space ration of the chopper signal to keep the 5 volt, in particular, to within 5 percent of 5 volt. The regulator circuit also monitors the primary current and will shut the power supply down if two much current is being supplied. Most PC power supplies only regulate the 5 volt supply as this is the most critical. 
+<P>
+In addition to the voltage regulator and over current protection, most PC power supply circuits have a <STRONG>Crow Bar</STRONG> circuit to make sure the 5 volt never rises higher than about 6.5 volt, the logic circuits in a computer would be destroyed by voltages much higher than 5 volt in a short period of time. The Crow Bar circuit basically consists of a Zener Diode and a Silicon Controlled Rectifier (SCR) that simply blows the primary fuse when the 5 volt supply rises to an unsafe level.
+<P>
+The primary input circuit is protected by a fuse and also has a current limiting resistor, usually a Negative Temperature Coefficient resistor, that limits the current through the primary rectifier to a safe value when the power is first turned on. The in-rush current into the primary filter capacitors would be very high without this resistor.
+<P>
+To help reduce Radio Frequency Interference (RFI) the input circuit also has a high frequency filter circuit consisting of two radio frequency chokes (RFC) and four ceramic capacitors. The switching frequency used is usually about 25KHz and the square wave signal driving the primary of the switching supply would produce a great deal of RFI at radio and television broadcasting frequencies. 
+<P>
+A switch mode power supply uses a small, highly efficient, high frequency transformer rather than a large, heavy, less efficient, 50 Hz transformer, used in conventional power supplies. This means they are cheaper, lighter, and more efficient than the conventional power supplies. The disadvantages of a switch mode supply is that it is more complex and often not serviceable and they produce significant radio frequency interference (RFI). They can also be dangerous to service.
+
+<H4>The various power supply configurations</H4>
+<UL>
+<LI>The original IBM PC power supply was capable of delivering 63 Watts.
+<LI>The IBM PC/XT power supply was upgraded to 130 Watts and most PC/XT clones had a 130 Watt supply.
+<LI>The IBM PC/AT power supply was upgraded to 150 Watt.
+<LI>Modern PC systems are now fitted with a 200 Watt, or larger, power supply.
+</UL>
+<P>
+The latest technologies used in hard disk drives and system boards require far less power than the earlier generation PC computers so even lower power supples would often be sufficient except in cases where the user wishes to use many options.
+<P>
+<CENTER><IMG SRC="../images/pcps3.jpg">&#160<IMG SRC="../images/pcps4.jpg"></CENTER>
+<CENTER>This is a typical older 130 watt PC power supply</CENTER>
+<P>
+<TABLE WIDTH=100%>
+<TR><TD><H4>The Power supply connectors</H4>
+There are four types of connectors you will find on a Baby AT style PC power supply. The two six pin connectors plug onto the System Board and the two other connectors are for the disk drives. The small one is for 3.5 inch Floppy drives, the other for 5.25 inch floppy drives and all hard drives. ATX cases use a different power connector for the System Board.</TD>
+<TD><IMG SRC="../images/pcps5.jpg"></TD>
+</TR></TABLE>
+<P>
+<STRONG>The disk drive connectors</STRONG><BR>
+There are two types of connector used here, the traditional larger disk drive connector used on 5 1/4  floppy disk drives and hard disk drives and the smaller connector seen mostly on the 3 1/2 floppy disk drives. Both of these connectors supply plus 5 volt and 12 volt and have two ground connections. Modern 3 1/2 floppy disk drives use only the plus 5 volt supply.
+<P>
+<CENTER><STRONG>The larger connector for 5 1/4 floppy drives etc</STRONG></CENTER>
+<IMG SRC="../images/525power.gif" align=right>
+<TABLE BORDER>
+<TR><TH ALIGN=CENTER>Pin</TH><TH ALIGN=CENTER>Colour</TH><TH ALIGN=CENTER>Used for</TH></TR>
+<TR><TD ALIGN=CENTER>1</TD><TD ALIGN=CENTER>Yellow</TD><TD ALIGN=CENTER>plus 12 volt</TD></TR>
+<TR><TD ALIGN=CENTER>2</TD><TD ALIGN=CENTER>Black</TD><TD ALIGN=CENTER>12 volt ground</TD></TR>
+<TR><TD ALIGN=CENTER>3</TD><TD ALIGN=CENTER>Black</TD><TD ALIGN=CENTER>5 volt ground</TD></TR>
+<TR><TD ALIGN=CENTER>4</TD><TD ALIGN=CENTER>Red</TD><TD ALIGN=CENTER>plus 5 volt</TD></TR>
+</TABLE>
+<P>
+Pin one is the pin on the right hand side of the plug if we look at it from the pin side, with the cut-off corners to the top. 
+<P>
+<TABLE WIDTH=100%>
+<TR><TD><STRONG>The smaller connector for 3 1/2 inch floppy drives</STRONG><BR>
+Pin one is the pin on the left hand side if we look at the power plug from the pin side with the keying strip to the bottom.</TD>
+<TD><TABLE BORDER>
+<TR><TH ALIGN=CENTER>Pin</TH><TH ALIGN=CENTER>Colour</TH><TH ALIGN=CENTER>Used for</TH></TR>
+<TR><TD ALIGN=CENTER>1</TD><TD ALIGN=CENTER>Red</TD><TD ALIGN=CENTER>plus 5 volt</TD></TR>
+<TR><TD ALIGN=CENTER>2</TD><TD ALIGN=CENTER>Black</TD><TD ALIGN=CENTER>5 volt ground</TD></TR>
+<TR><TD ALIGN=CENTER>3</TD><TD ALIGN=CENTER>Black</TD><TD ALIGN=CENTER>12 volt ground</TD></TR>
+<TR><TD ALIGN=CENTER>4</TD><TD ALIGN=CENTER>Yellow</TD><TD ALIGN=CENTER>plus 12 volt</TD></TR>
+</TABLE></TD></TR></TABLE>
+<P>
+<TABLE WIDTH=100%>
+<TR><TD><STRONG>The system board power connectors (Baby AT type case)</STRONG><BR>
+This connector supplies all four voltages and has multiple pins for the plus 5 volt, plus 12 volt and ground contacts. There are two types of connector found on typical PC type power supplies.
+<UL>
+<LI>A single, non keyed 12 pin connector, only found on the power supplies from old PC/XT clone machines from the early 1980's. This connector will not fit onto modern System Boards.
+<LI>A pair of 6 pin keyed connectors, often labelled P8 and P9, terminology left over from the computers IBM heritage. 
+</UL>
+<P>
+<STRONG>The connector pinouts are arranged  as follows:</STRONG><BR>
+This diagram shows the typical two piece connector used with Baby AT type system boards. Make sure the two 6 pin connectors are plugged in such that the two black wires on each connector are together.</TD>
+
+<TD><TABLE BORDER>
+<TR><TD>PIN</TD><TD>COLOUR</TD><TD>Function</TD><TD>Connector</TD></TR>
+<TR><TD>P8-1</TD><TD>ORANGE</TD><TD>POWER GOOD</TD><TD ROWSPAN=6><B><CENTER>P8</CENTER></B></TD></TR>
+<TR><TD>P8-2</TD><TD>RED</TD><TD>+5V</TD></TR>
+<TR><TD>P8-3</TD><TD>YELLOW</TD><TD>+12V</TD></TR>
+<TR><TD>P8-4</TD><TD>BLUE</TD><TD>-12V</TD></TR>
+<TR><TD>P8-5</TD><TD>BLACK</TD><TD>GND</TD></TR>
+<TR><TD>P8-6</TD><TD>BLACK</TD><TD>GND</TD></TR>
+<TR><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>P9-1</TD><TD>BLACK</TD><TD>GND</TD><TD ROWSPAN=6><B><CENTER>P9</CENTER></B></TD></TR>
+<TR><TD>P9-2</TD><TD>BLACK</TD><TD>GND</TD></TR>
+<TR><TD>P9-3</TD><TD>WHITE</TD><TD>-5V</TD></TR>
+<TR><TD>P9-4</TD><TD>RED</TD><TD>+5V</TD></TR>
+<TR><TD>P9-5</TD><TD>RED</TD><TD>+5V</TD></TR>
+<TR><TD>P9-6</TD><TD>RED</TD><TD>+5V</TD></TR>
+</TABLE></CENTER></TD>
+</TR></TABLE>
+
+<H4>ATX format SYSTEM BOARD Power connector</H4>
+<TABLE WIDTH=100%>
+<TR><TD>The ATX format System Boards use a 20 pin two row power connector that is quite different to the traditional AT (or Baby AT) format System Board.
+<P>
+The ATX specification provides for "soft power down" modes where the power is removed from the five main power rails but is still available on the +5 Volt Standy line. The +5 Volt Standy line is used to power the circuitry on the System Board to "wake up" the power supply. The specification for the +5 Volt line at present calls for a maximum of 10mA but this will be increased in the future to 720mA to allow for functions like Wake on LAN.
+<P>
+The PS-ON (Power On) is used to turn on and off the main supply lines (+3.3, +5, +12, -5 and -12 Volt) under control of the "soft power down" circuitry. The PW-OK (Power Good) line monitors the +5 Volt and +3.3 Volt lines to ensure they are within 5% of their nominated voltage.</TD>
+<TD><TABLE BORDER>
+<TR><TD>Pin</TD><TD>Line</TD><TD>Colour</TD><TD>Pin</TD><TD>Line</TD><TD>Colour</TD></TR>
+<TR><TD>11</TD><TD>+3.3 Volt<BR>+3.3 Volt sense</TD><TD>Orange<BR>Brown</TD><TD>1</TD>
+<TD>+3.3 Volt</TD><TD>Orange</TD></TR>
+<TR><TD>12</TD><TD>-12 Volt</TD><TD>Blue</TD><TD>2</TD><TD>+3.3 Volt</TD><TD>Orange</TD></TR>
+<TR><TD>13</TD><TD>Common</TD><TD>Black</TD><TD>3</TD><TD>Common</TD><TD>Black</TD></TR>
+<TR><TD>14</TD><TD>PS-ON</TD><TD>Green</TD><TD>4</TD><TD>+5 Volt</TD><TD>Red</TD></TR>
+<TR><TD>15</TD><TD>Common</TD><TD>Black</TD><TD>5</TD><TD>Common</TD><TD>Black</TD></TR>
+<TR><TD>16</TD><TD>Common</TD><TD>Black</TD><TD>6</TD><TD>+5 Volt</TD><TD>Red</TD></TR>
+<TR><TD>17</TD><TD>Common</TD><TD>Black</TD><TD>7</TD><TD>Common</TD><TD>Black</TD></TR>
+<TR><TD>18</TD><TD>-5 Volt</TD><TD>White</TD><TD>8</TD><TD>PW-OK</TD><TD>Grey</TD></TR>
+<TR><TD>19</TD><TD>+5 Volt</TD><TD>Red</TD><TD>9</TD><TD>+5V Standby</TD><TD>Purple</TD></TR>
+<TR><TD>20</TD><TD>+5 Volt</TD><TD>Red</TD><TD>10</TD><TD>+12 Volt</TD><TD>Yellow</TD></TR>
+</TABLE></TD>
+</TR></TABLE>
+
+<H4>The 240 volt power connectors</H4>
+Most power supplies on PCs use the IEC general purpose connector for the 240V AC input. The AC voltage is switched by the PC Main ON/OFF switch and routed to the reverse socket  IEC connector. This allows you to switch power to the computer monitor on and off with the PC s main on/off switch. Do not plug anything else inti this socket, the mains switch in the PC case is nott  designed to switch any more current than required by the PC power supply and a Video Display Monitor.
+<P>
+The back or side of many PC power supplies also have a 240/115 Volt voltage selector. Make sure this switch is in the 240V position. It is a good policy to cover this switch with a blank label to stop users experimenting with it.
+
+<H4>Economics of replacement</H4>
+The PC power supply is a rugged and reliable unit. The replacement cost is so low compared to the labour costs of repair that most times it is more cost effective to replace rather than repair. This statement is true of most aspects of PC servicing.
+<P>
+Unless you are trained and experienced in repairing regulated switch-mode power supplies I would recommend you just perform a modular replacement of a faulty power supply.
+<P>
+If you are tempted to service PC power supplies you must use an <STRONG>isolation transformer</STRONG> to isolate you from the 240 volt AC power mains.
+<P>
+<HR>
+Copyright &copy; Phil. Storr, last updated 9<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/power.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:21 GMT -->
+</HTML>

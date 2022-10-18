@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<!-- Mirrored from www.cs.unc.edu/~porter/courses/comp630/s22/ref/i386/c17.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 14:14:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>80386 Programmer's Reference Manual -- Chapter 17</TITLE>
+</HEAD>
+<BODY>
+<B>up:</B> <A HREF="toc.html">
+Table of Contents</A><BR>
+<B>prev:</B> 
+<A HREF="s16_04.html">
+16.4  Transferring Control Among Mixed Code Segments></A><BR>
+<B>next:</B> 
+<A HREF="s17_01.html">17.1  Operand-Size and Address-Size Attributes</A>
+<P>
+<HR>
+<P>
+<H1>Chapter 17  80386 Instruction Set</H1>
+<P>
+This chapter presents instructions for the 80386 in alphabetical order. For
+each instruction, the forms are given for each operand combination,
+including object code produced, operands required, execution time, and a
+description. For each instruction, there is an operational description and a
+summary of exceptions generated.
+<P>
+<A HREF="s17_01.html">17.1  Operand-Size and Address-Size Attributes</A>
+<BR><A HREF="s17_02.html">17.2 Instruction Format</A>
+
+<H2>Instruction Set</H2>
+
+<A HREF="AAA.html"> AAA  ASCII Adjust after Addition</A>
+<BR><A HREF="AAD.html"> AAD  ASCII Adjust AX before Division</A>
+<BR><A HREF="AAM.html"> AAM  ASCII Adjust AX after Multiply</A>
+<BR><A HREF="AAS.html"> AAS  ASCII Adjust AL after Subtraction</A>
+<BR><A HREF="ADC.html"> ADC  Add with Carry</A>
+<BR><A HREF="ADD.html"> ADD  Add</A>
+<BR><A HREF="AND.html"> AND  Logical AND</A>
+<BR><A HREF="ARPL.html"> ARPL  Adjust RPL Field of Selector</A>
+<BR><A HREF="BOUND.html"> BOUND  Check Array Index Against Bounds</A>
+<BR><A HREF="BSF.html"> BSF  Bit Scan Forward</A>
+<BR><A HREF="BSR.html"> BSR  Bit Scan Reverse</A>
+<BR><A HREF="BT.html"> BT  Bit Test</A>
+<BR><A HREF="BTC.html"> BTC  Bit Test and Complement</A>
+<BR><A HREF="BTR.html"> BTR  Bit Test and Reset</A>
+<BR><A HREF="BTS.html"> BTS  Bit Test and Set</A>
+<BR><A HREF="CALL.html"> CALL  Call Procedure</A>
+<BR><A HREF="CBW.html"> CBW/CWDE  Convert Byte to Word/Convert Word to Doubleword</A>
+<BR><A HREF="CLC.html"> CLC  Clear Carry Flag</A>
+<BR><A HREF="CLD.html"> CLD  Clear Direction Flag</A>
+<BR><A HREF="CLI.html"> CLI  Clear Interrupt Flag</A>
+<BR><A HREF="CLTS.html"> CLTS  Clear Task-Switched Flag in CR0</A>
+<BR><A HREF="CMC.html"> CMC  Complement Carry Flag</A>
+<BR><A HREF="CMP.html"> CMP  Compare Two Operands</A>
+<BR><A HREF="CMPS.html"> CMPS/CMPSB/CMPSW/CMPSD  Compare String Operands</A>
+<BR><A HREF="CWD.html"> CWD/CDQ  Convert Word to Doubleword/Convert Doubleword to Quadword</A>
+<BR><A HREF="DAA.html"> DAA  Decimal Adjust AL after Addition</A>
+<BR><A HREF="DAS.html"> DAS  Decimal Adjust AL after Subtraction</A>
+<BR><A HREF="DEC.html"> DEC  Decrement by 1</A>
+<BR><A HREF="DIV.html"> DIV  Unsigned Divide</A>
+<BR><A HREF="ENTER.html"> ENTER  Make Stack Frame for Procedure Parameters</A>
+<BR><A HREF="HLT.html"> HLT  Halt</A>
+<BR><A HREF="IDIV.html"> IDIV  Signed Divide</A>
+<BR><A HREF="IMUL.html"> IMUL  Signed Multiply</A>
+<BR><A HREF="IN.html"> IN  Input from Port</A>
+<BR><A HREF="INC.html"> INC  Increment by 1</A>
+<BR><A HREF="INS.html"> INS/INSB/INSW/INSD  Input from Port to String</A>
+<BR><A HREF="INT.html"> INT/INTO  Call to Interrupt Procedure</A>
+<BR><A HREF="IRET.html"> IRET/IRETD  Interrupt Return</A>
+<BR><A HREF="Jcc.html"> Jcc  Jump if Condition is Met</A>
+<BR><A HREF="JMP-2.html"> JMP  Jump</A>
+<BR><A HREF="LAHF.html"> LAHF  Load Flags into AH Register</A>
+<BR><A HREF="LAR.html"> LAR  Load Access Rights Byte</A>
+<BR><A HREF="LEA.html"> LEA  Load Effective Address</A>
+<BR><A HREF="LEAVE.html"> LEAVE  High Level Procedure Exit</A>
+<BR><A HREF="LGDT.html"> LGDT/LIDT  Load Global/Interrupt Descriptor Table Register</A>
+<BR><A HREF="LGS.html"> LGS/LSS/LDS/LES/LFS  Load Full Pointer</A>
+<BR><A HREF="LLDT.html"> LLDT  Load Local Descriptor Table Register</A>
+<BR><A HREF="LMSW.html"> LMSW  Load Machine Status Word</A>
+<BR><A HREF="LOCK.html"> LOCK  Assert LOCK# Signal Prefix</A>
+<BR><A HREF="LODS.html"> LODS/LODSB/LODSW/LODSD  Load String Operand</A>
+<BR><A HREF="LOOP.html"> LOOP/LOOPcond  Loop Control with CX Counter</A>
+<BR><A HREF="LSL.html"> LSL  Load Segment Limit</A>
+<BR><A HREF="LTR.html"> LTR  Load Task Register</A>
+<BR><A HREF="MOV.html"> MOV  Move Data</A>
+<BR><A HREF="MOVRS.html"> MOV  Move to/from Special Registers</A>
+<BR><A HREF="MOVS.html"> MOVS/MOVSB/MOVSW/MOVSD  Move Data from String to String</A>
+<BR><A HREF="MOVSX.html"> MOVSX  Move with Sign-Extend</A>
+<BR><A HREF="MOVZX.html"> MOVZX  Move with Zero-Extend</A>
+<BR><A HREF="MUL.html"> MUL  Unsigned Multiplication of AL or AX</A>
+<BR><A HREF="NEG.html"> NEG  Two's Complement Negation</A>
+<BR><A HREF="NOP-2.html"> NOP  No Operation</A>
+<BR><A HREF="NOT.html"> NOT  One's Complement Negation</A>
+<BR><A HREF="OR.html"> OR  Logical Inclusive OR</A>
+<BR><A HREF="OUT.html"> OUT  Output to Port</A>
+<BR><A HREF="OUTS.html"> OUTS/OUTSB/OUTSW/OUTSD  Output String to Port</A>
+<BR><A HREF="POP-2.html"> POP  Pop a Word from the Stack</A>
+<BR><A HREF="POPA.html"> POPA/POPAD  Pop all General Registers</A>
+<BR><A HREF="POPF.html"> POPF/POPFD  Pop Stack into FLAGS or EFLAGS Register</A>
+<BR><A HREF="PUSH.html"> PUSH  Push Operand onto the Stack</A>
+<BR><A HREF="PUSHA.html"> PUSHA/PUSHAD  Push all General Registers</A>
+<BR><A HREF="PUSHF.html"> PUSHF/PUSHFD  Push Flags Register onto the Stack</A>
+<BR><A HREF="RCL.html"> RCL/RCR/ROL/ROR  Rotate</A>
+<BR><A HREF="REP.html"> REP/REPE/REPZ/REPNE/REPNZ  Repeat Following String Operation</A>
+<BR><A HREF="RET.html"> RET  Return from Procedure</A>
+<BR><A HREF="SAHF.html"> SAHF  Store AH into Flags</A>
+<BR><A HREF="SAL.html"> SAL/SAR/SHL/SHR  Shift Instructions</A>
+<BR><A HREF="SBB.html"> SBB  Integer Subtraction with Borrow</A>
+<BR><A HREF="SCAS.html"> SCAS/SCASB/SCASW/SCASD  Compare String Data</A>
+<BR><A HREF="SETcc.html"> SETcc  Byte Set on Condition</A>
+<BR><A HREF="SGDT.html"> SGDT/SIDT  Store Global/Interrupt Descriptor Table Register</A>
+<BR><A HREF="SHLD.html"> SHLD  Double Precision Shift Left</A>
+<BR><A HREF="SHRD.html"> SHRD  Double Precision Shift Right</A>
+<BR><A HREF="SLDT.html"> SLDT  Store Local Descriptor Table Register</A>
+<BR><A HREF="SMSW.html"> SMSW  Store Machine Status Word</A>
+<BR><A HREF="STC.html"> STC  Set Carry Flag</A>
+<BR><A HREF="STD.html"> STD  Set Direction Flag</A>
+<BR><A HREF="STI.html"> STI  Set Interrupt Flag</A>
+<BR><A HREF="STOS.html"> STOS/STOSB/STOSW/STOSD  Store String Data</A>
+<BR><A HREF="STR.html"> STR  Store Task Register</A>
+<BR><A HREF="SUB.html"> SUB  Integer Subtraction</A>
+<BR><A HREF="TEST.html"> TEST  Logical Compare</A>
+<BR><A HREF="VERR.html">VERR, VERW Verify a Segment for Reading or Writing</A>
+<BR><A HREF="WAIT.html"> WAIT  Wait until BUSY# Pin is Inactive (HIGH)</A>
+<BR><A HREF="XCHG.html"> XCHG  Exchange Register/Memory with Register</A>
+<BR><A HREF="XLAT.html"> XLAT/XLATB  Table Look-up Translation</A>
+<BR><A HREF="XOR.html"> XOR  Logical Exclusive OR</A>
+<P>
+<HR>
+<P>
+<B>up:</B> <A HREF="toc.html">
+Table of Contents</A><BR>
+<B>prev:</B> 
+<A HREF="s16_04.html">
+16.4  Transferring Control Among Mixed Code Segments></A><BR>
+<B>next:</B> 
+<A HREF="s17_01.html">17.1  Operand-Size and Address-Size Attributes</A>
+</BODY>

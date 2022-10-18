@@ -1,0 +1,2 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+12:36:25	0/0	---M--	301	error ('Moved%20Permanently')	text/html	date:Tue,%2018%20Oct%202022%2015:36:26%20GMT	http://www.computer-engineering.org/index.html	F:/a/teclado_mouse/www.computer-engineering.org/index.0.delayed	(from )

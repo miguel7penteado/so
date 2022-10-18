@@ -1,0 +1,121 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book1/dos.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:26 GMT -->
+<HEAD>
+<TITLE>An introduction to the DOS Operating system </TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>An introduction to the DOS Operating System</H3>
+
+The heart of the DOS operating system are the <STRONG>three SYSTEM files</STRONG> that make up the DOS itself. These three files are called <STRONG>IO.SYS, MSDOS.SYS and COMMAND.COM</STRONG>. The two files with the <STRONG>.SYS</STRONG> extension are made <STRONG>HIDDEN</STRONG> and <STRONG>READ ONLY</STRONG> so they cant be deleted from the disk. These two files provide the various routines that form the basics of the DOS Operating System. The third file is the <STRONG>Command Interpreter</STRONG> and it processes the <STRONG>user commands</STRONG> and directs operations. The COMMAND.COM file is not hidden or made read only.
+<P>
+<STRONG>When the DOS computer is BOOTED, these three system files are loaded into the computers RAM memory.</STRONG> The COMMAND.COM file is loaded in two parts and the TRANSIENT portion of this file is usually flushed from memory, when an application is loaded, and reloaded when the application is terminated. This is done to make more memory space available for applications.
+
+<H4>DOS has two types of commands</H4>
+<UL>
+<LI><STRONG>INTERNAL commands</STRONG><BR>
+The code for internal commands is <STRONG>loaded into the computers RAM memory</STRONG> as part of the operating system at boot up and these commands are available at all times. <STRONG>Some examples of DOS Internal commands</STRONG> are, <EM>copy, dir, del, md, cd, rd, type, time, date, cls, ver.</EM>
+<P>
+<LI><STRONG>EXTERNAL commands</STRONG><BR>
+The code for these is <STRONG>kept as files on the boot disk</STRONG> and must be loaded into RAM Memory when required. When an external command is finished with, DOS flushes it from the memory to make more room for other commands or applications. When we load DOS onto a computers hard disk from a set of DOS installation disks, the install routine puts the external command files into the DOS subdirectory and they are made available to the user, via the DOS Path statement in the Autoexec.bat file. <STRONG>Some examples of DOS External commands</STRONG> are, <EM>format, diskcopy, diskcomp, xcopy, help, edit, sys, chkdsk, scandisk, fdisk.</EM>
+</UL>
+<P>
+A summary of the <A HREF="help.html"><STRONG>HELP for DOS 6.22 commands</STRONG></A> with the commands not available in Windows 95 DOS indicated.
+<P>
+<H4>Other DOS Files</H4>
+When you look at the boot disk of DOS computer you will see several types for DOS files.
+<UL>
+<LI>Firstly there are the three system files mentioned above. These three files must be in the root directory of the boot disk. A directory listing will not display the two hidden files, only the Command processor file.
+<LI>DOS also requires the External command files and these will usually be found in the DOS sub directory on the boot disk. These files will have a file name the same as the command name and a file extension of either .COM or .EXE
+<LI>There will also be Device Driver files and these will have file extensions of .COM .EXE or .SYS. Device driver files supplied by DOS will usually be in the DOS sub directory but device driver files will often be suppled by hardware vendors and these will usually be put into a sub directory related to the product they support. A good example of this is the device drivers required to support sound cards and CDROM drives.
+<LI>There are the various DOS support files and these will be found in the DOS sub directory. These files provide support for national characteristics such as keyboard differences and character sets, and for various display types etc.
+<LI>Lastly there are the optional configuration files, the CONFIG.SYS and the AUTOEXEC.BAT files and these will be in the root directory of the boot disk.
+</UL>
+
+<H4>Configuring DOS</H4>
+When DOS loads, it allocates memory for work space and for configuration settings. The DOS configuration information helps it work with files (how many are open and can be opened), work with disk drives (buffering disk data, how many drives are available, file search path), work with hardware devices (through device drivers), and work with the Video system and Keyboard. DOS is configured by two Optional files it looks for on the boot disk at start-up. These files are called CONFIG.SYS and AUTOEXEC.BAT.
+
+<STRONG>The CONFIG.SYS file</STRONG><P>
+After loading the DOS system files, the computer reads from a file called CONFIG.SYS, and automatically executes the statements in the file.  CONFIG.SYS is used to define important DOS environment settings, and to change the settings from the DOS default values. Some of the most common CONFIG.SYS statements are:
+<UL>
+<LI>FILES = (the number of files, DOS can have open)
+<LI>BUFFERS = (memory to use for temporary data storage)
+<LI>DEVICE  = (install a device driver)
+</UL>
+<P>
+<STRONG>Device Drivers</STRONG><P>
+Device drivers are loaded from the CONFIG.SYS file and remain in memory and act as custom extensions to DOS, performing functions such as changing the keyboard's characteristics or establishing basic communication with a local area network. Device drivers are often provided as a part of certain hardware or software products. Device drivers provide support for devices that are not supported by DOS. The most common examples of device drivers today are the files that provide DOS with support for Sound Interface cards and CD-ROM Drives. These device driver files are supplied by the manufacturer of the particular hardware in use. 
+<P>
+<STRONG>The AUTOEXEC.BAT</STRONG><P>
+After DOS is loaded, the computer looks for an optional file called AUTOEXEC.BAT. This file contains a series of DOS commands and these are automatically executed after DOS is loaded. Some typical functions carried out by this file are -
+<UL>
+<LI>Set the system prompt (e.g. C:\&gt;)
+<LI>Set-up a search path for DOS to use when looking for programs
+<LI>Load the support file for the Mouse device.
+</UL>
+<P>
+The AUTOEXEC.BAT is also used to run programs on start up that may be required to perform some tasks on start-up. The old XT type computers usually had a "Real Time Clock on the I/O card and the time and date from this clock had to be transferred to the computers system clock on start-up. A clock program was usually run from the AUTOEXEC.BAT file to achieve this. 
+The AUTOEXEC.BAT file can also be used to load Terminate and Stay Resident programs that may provide the user with some special facilities as a background task to the applications they may use. An application program can be started from the AUTOEXEC.BAT file and the user may never need to see the DOS prompt.
+<P>
+<STRONG>Support for the Mouse Device</STRONG><P>
+In the early days of DOS, the mouse was supported by a Device Drives (a .SYS file) loaded from the Config.sys file but today it is usual to provide Mouse support with a .COM file loaded from the Autoexec.bat file. Some device drivers files are .EXE or .COM files and these are usually loaded from the Autoexec.bat file instead of the Config.sys file.
+
+<H4>Booting the DOS Computer</H4>
+The processes of booting a computer involves loading the operating system into the computers RAM memory. When you turn on a PC Computer it runs a series of routines that are located in the BIOS ROM and these routines perform the following functions.
+<UL>
+<LI>Test hardware.
+<LI>Identify the computers configuration and record details of the configuration in an area of memory.
+<LI>Setup programmable I/O devices and configure the areas of RAM that DOS uses for itself.
+<LI>Load an operating system from a boot disk.
+</UL>
+<P>
+These processes will be covered in more detail in a chapter on the POST routines.
+<P>
+The last of the above processes involves looking for an operating system on a boot disk. Traditionally the computer will look at the first floppy disk drive (drive A:) first and if it does not find an operating system on a disk in this drive it will look at the first hard drive (drive C:) for an operating system. Over the years the boot routines in the BIOS ROM that start the computer up have been changed and now most modern DOS computers give the user a BIOS setup option of bypassing the initial search for an operating system on drive A:.
+<P>
+The "Boot Strap Loader" routine that loads DOS into memory is looking for a disk with the three DOS System files on it, IO.SYS, MSDOS.SYS and COMMAND.COM.
+<P>
+The boot strap loader routine in the BIOS ROM does not actually load DOS itself, it loads a boot strap loader from the Boot Sector on the boot disk and this second boot strap loader loads the operating system. This is done to make the DOS hardware more universal by allowing for operating systems other than DOS to be loaded.
+<P>
+Another interesting point to note is that all disks have a Boot Sector, not only System Disks. If you try to boot a DOS computer from a non-system disk (a disk that has been formatted without the three DOS system files) you will get an error message about the disk being a non-system disk. This error message is coming from the boot strap loader contained in the boot sector of the disk. The boot strap loader in the BIOS ROM has loaded the boot sector from the disk, and the boot strap loader loaded into RAM from the boot sector, then looks for the three DOS system files on this disk.
+
+<H4>Making a System Disk (boot disk)</H4>
+Before a Floppy Disk can be used on any computer system it must be TESTED for SURFACE DEFECTS and its DOS infrastructure must be setup. The surface of a floppy disk is divided into Tracks, Sides and Sectors and some of the sectors are assigned to providing support for the data that is to be stored on the disk. The process of preparing a disk for use is called FORMATTING. 
+<P>
+The Format process is provided by the DOS External Command, Format and we have some options available when formatting a disk.
+<UL>
+<LI>Format the disk as a Data Disk without the three DOS system files. this will provide a disk with maximum disk space available.<BR>
+<STRONG>Examples:</STRONG> <EM>FORMAT A:</EM> or <EM>FORMAT A: /U</EM>
+<LI>Format the disk as a System Disk. This means the format command will transfer the three DOS system file to the disk. This will produce a Boot disk that can be used to boot a PC computer.<BR>
+<STRONG>Examples:</STRONG> <EM>FORMAT A: /S</EM> or <EM>FORMAT A: /S /U</EM>
+</UL>
+<P>
+The only other way the SYSTEM FILES can be out onto a disk is to use the DOS External Command, SYS.<BR>
+<STRONG>Examples:</STRONG> <EM>SYS A:</EM> or <EM>SYS C:</EM><BR>
+This command will copy the three system files to a disk if there is room for them on that disk.
+<P>
+When we produce a System disk, FORMAT or SYS, <STRONG>only puts the three system files onto the disk</STRONG>, it does not put any of the DOS external command files, device drivers or support files on it.
+<P>
+When we load the latest versions of DOS onto the hard disk drive in a modern DOS computer, the original DOS disks provide automated routines for formatting the boot disk, transferring the DOS system files, setting up a DOS sub directory containing the external command files, the device drivers and the support files, and creating simple Config.sys and Autoexec.bat files.
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="help.html"><font
+color="#FFFFFF">DOS 6.22 help</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book1.html"><font
+color="#FFFFFF">Book one index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book1/dos.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:27 GMT -->
+</HTML>

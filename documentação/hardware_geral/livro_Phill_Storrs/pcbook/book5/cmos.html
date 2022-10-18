@@ -1,0 +1,215 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/cmos.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+<HEAD>
+<TITLE>The CMOS</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware Book</H2>
+<H3>Understanding the CMOS</H3>
+<H4>Background</H4>
+The idea of keeping the Computers configuration information was started by IBM with the introduction of the PC/AT computer. This information is stored in a battery backed-up RAM called the CMOS. The CMOS  memory is a 64 or 128 bytes of RAM that is part of the system clock chip or one of the chipset chips. The name came form the material the RAM was made out of, Complementary Metal Oxide Semiconductor. This material was used because it could be backed-up by a battery, requiring a very low operating current to keep the data in the RAM with the power turned off.
+<P>
+Originally, the IBM PC/AT only made use of a small portion of CMOS memory and the balance of the 64 bytes was left undefined. It was not long, once other manufacturers cloned the AT, that other areas of the CMOS was quickly appropriated by various BIOS manufacturers for such user-selectable options as memory wait states, memory type, initial boot drive selection, boot-up clock speed, hard drive interface type, green options, shadow RAM options, cache options, and password protection of the CMOS contents.
+
+<H4>What does the CMOS do ?</H4>
+The function of CMOS RAM is to store information your computer needs when it boots up, such as Disk Drive details, Keyboard type and Video Interface information, details of the configuration of the PCI Bus slots and even a Password to restrict access to the CMOS. If the battery that powers your CMOS RAM dies, all this information is lost, and your PC will boot with the CMOS basic defaults. In most cases, this means you'll have no access to your Disk Drives until you supply the CMOS with the necessary information. 
+<P>
+It is a good idea to keep a copy of all the information stored in CMOS, in case disaster strikes. The battery can go flat, the data in the CMOS can be lost by a static electric discharge to the keyboard, or the data can be lost when a new card is plugged into the Bus, or other inside modifications are performed.
+<P>
+The information stored in CMOS is required by your computer's Basic Input/Output System, or BIOS. The system <STRONG>BIOS</STRONG> is stored in a <STRONG>64K by 8 bit wide ROM on the System Board</STRONG>. If the System BIOS was actually accessed from this ROM during normal operation the PC's speed would be greatly reduced. This is overcome by copying the contents of the BIOS ROM into some RAM where it is accessed 32 or 64 bits at a time, at far greater speed. The access speed of RAM devices is about three times quicker than ROM's. This process is called Shadowing and can also be used for BIOS Extension ROMs fitted on peripheral cards.
+<P>
+You have already learned the role of the system BIOS is to test the system, recognize the hardware devices, initialize some I/O devices and locate and load the operating system. Once the operating system is loaded, the BIOS then works with it to enable access to the hardware devices. The BIOS them provides basic input/output services to the operating system and applications.
+<P>
+Except for devices that contain their own BIOS information, for example EGA and VGA Video Interface cards, some Network Interface cards and bootable SCSI controllers, the BIOS initializes the devices according to the information stored in CMOS. The Video Interface card in modern PC Computers has a BIOS Extension ROM on the card and it can be shadowed into RAM to speed up operation, we will see how this is done later. If the PC is booted from a SCSI Hard Disk Drive, or it is operating as a Diskless Workstation, the appropriate interface cards will have a BIOS Extension ROM to provide extra support to the System BIOS for these devices.
+<P>
+In the first IBM AT machines, and some clones, the only way to setup the CMOS was to use a SETUP utility supplied with the machine, on a Floppy Disk. Most BIOS manufacturers soon used some of the unused areas of the BIOS ROM to include CMOS setup routines that were accessed with some "hot key" combination, at the time of boot-up.
+
+<H4>The CMOS Setup Program</H4>
+The BIOS Setup routine is contained in the BIOS ROM and while the POST is in progress, you can access this routine by some Hot Key combination. The Setup routine lets you examine and alter your CMOS settings. When activated, a screen will pop up with several menu options. Exactly what you will see depends on which brand of BIOS your computer is running. 
+<P>
+<CENTER>The Award BIOS fitted to our Computers here at Regency TAFE have the following BIOS Setup options.
+<TABLE BORDER>
+<TR><TD>Standard CMOS Setup</TD>
+<TD>BIOS Features Setup</TD>
+<TD>Chips Features Setup</TD>
+<TD>Power Management</TD>
+</TR>
+<TR><TD>PnP/PCI Configuration</TD>
+<TD>Integrated Peripherals</TD>
+<TD>Load Setup Defaults</TD>
+<TD>Password Setting</TD>
+</TR>
+<TR><TD>IDE HDD Auto Detection</TD>
+<TD>Save and Exit Setup</TD>
+<TD>Exit Without Saving</TD>
+<TD></TD>
+</TR>
+</TABLE></CENTER>
+<P>
+Be extremely careful when changing CMOS settings, as you can easily render the computer unbootable. Fortunately, to enter CMOS Setup, you don't need to load the operating system. Just turn on the machine and press the appropriate key combination. If your BIOS can't find the information it needs, it will inform you that you must enter CMOS Setup and make changes. Even better, today's BIOS have auto-configuration features, which make CMOS Setup much easier than it was a few years ago.
+<P>
+When you exit CMOS Setup (procedures vary according to BIOS brand), you'll be asked whether you want to save changes. If you're not certain, don't save your changes. In either case, exiting will cause your machine to reboot, so you'll be able to tell immediately whether you've done something drastically wrong.
+
+<H4>Standard CMOS Setup</H4>
+The Standard CMOS Setup lets you configure Floppy Disk and Hard Disk Drive types, Keyboard installation, and Primary Video Interface (display type). This is the starting point for all PC BIOS, because without a keyboard you can't do anything, without a Video Interface you can't see anything, and without a Disk Drive you can't run anything. The Standard CMOS Setup also sets the System Time and Date. The Time and Date is maintained by a real Time Clock in the same chip as the CMOS, and operating on from the same battery power source.
+<P>
+<BLOCKQUOTE>
+The CMOS <STRONG>Time and Date setting</STRONG> Use the adjustment keys (usually listed at the bottom of the screen) to change the System Time and Date. DOS and Windows provide a means of making these changes from within the operating system also.
+<P> 
+The <STRONG>keyboard setting:</STRONG> This option is provided for situations where you have a computer operating un attended and you do not have a keyboard fitted. If you choose Not Installed as the option, the BIOS will not check for it during POST and, as a result, will not display an error message.
+<P> 
+<STRONG>Video Display Type:</STRONG> Your BIOS needs to know how to display information on initial boot-up, and gives you a choice between, CGA, MDA, EGA and VGA. It might also offer some other options here.
+<P> 
+<STRONG>Floppy Disk Drives:</STRONG> You can set each drive (drive A: and B:) for capacities between 360K and in most cases 2.88Meg, and also Not Installed.
+<P> 
+<STRONG>Hard Disk Drive configuration:</STRONG> This is by far the most complex task in setting up the CMOS. Fortunately modern BIOS provide an IDE HDD Auto Detection utility that recognises the Hard Disk Drive details and configures the CMOS automatically. With older systems it will be necessary to perform the configuration manually, configuring each Hard Disk Drive individually. 
+<P>
+<BLOCKQUOTE>
+Modern PC Computers have an Enhanced IDE Controller, built into the System Board and it can handle up to four devices, including CDROM drives). Older systems with the IDE Controller on a plug in card do not usually have BIOS support for IDE devices controlled by the CMOS. The controller may be called, IDE, EIDE ATA, AT-bus, or Fast-ATA.
+<P>
+<STRONG>Important:</STRONG> If the computer boots from a SCSI Hard Disk Drive or uses a Hardware Cache Controller, the drive configuration depends on the controller, not the BIOS, and you don't configure the CMOS for the drive type. With SCSI drives you usually set the CMOS to "<STRONG>no drive installed</STRONG>", the BIOS Extension ROM on the SCSI Interface does the rest. Hardware Cache Controllers also have a BIOS Extension ROM but you usually configure the CMOS to a <EM>type "one"</EM> drive (an old 10Meg drive) and the controller does the rest.
+<P>
+In the early days of Hard Disk Drives each Hard Disk configuration was given a number but when the numbers reached 46, the industry decided to stop this practice. They then introduced the concept of a User Defined type of Drive and in most systems today this is type 47. When you select type 47 or User Defined, you must provide the parameters yourself, and these include:
+<P>
+<STRONG>Cylinders: </STRONG>This value shows the number of cylinders on your hard disk.<BR>
+<STRONG>Heads: </STRONG>This value represents the number of heads on your hard disk.<BR>
+<STRONG>Sectors: </STRONG>This value shows the number of sectors per hard disk track.<BR>
+<P>
+<STRONG>Size: </STRONG>This value refers to the size of your Hard Disk Drive, expressed in Megabytes (MB). Don't worry if this number is at slight variance with the size of the disk you think you have, you will still have access to all the data storage space.
+<P>
+<STRONG>Write Precompensation (WPCom):</STRONG> On IDE, EIDE, or SCSI Hard Disk Drives, it's a meaningless value, because IDE/EIDE drives contain the necessary information themselves, and SCSI disks are handled by their controllers. On pre-IDE disks, however, the BIOS had to compensate for the difference in the density of data on the disks' inner tracks versus the outer tracks, and the WPCom value accomplished that. Usually, the number is either 0 or 65535.
+<P>
+When installing hard drives you may de given up two three options for the way the EIDE Interface addresses the drive. These include <STRONG>Normal</STRONG>, the old "CHS" way that limits the drive size to just over 500Meg, and <STRONG>Large</STRONG> or <STRONG>Extended CHS</STRONG> and <STRONG>Logical Block Addressing (LBA)</STRONG>. 
+<P>
+<STRONG>Logical Block Addressing (LBA):</STRONG> This is an addressing scheme that's at the heart of EIDE disk control. LBA assigns a number to each sector on the hard disk, a more efficient way to address Hard Disk Drives than the older system of Cylinder, Head, and Sector (CHS) addressing. LBA has always been used for SCSI disks, but the IDE standard was enhanced to use this as an alternative addressing method in 1994. This is the best way to address modern high capacity hard drives.
+<P>
+Usually it's not necessary to configure the LBA settings manually for Hard Disk Drives, because the BIOS Auto Detect routine handles this for us. Because older BIOS do not support LBA, manufacturers of  Hard Disk Drives often supply a Floppy Disk containing a device driver that allows you to use the entire Hard Disk Drive with these old BIOS.
+</BLOCKQUOTE></BLOCKQUOTE>
+
+<H4>Some of the Advanced CMOS Settings</H4>
+Unlike the standard settings, several of the advanced CMOS settings can be adjusted to improve your system's performance. Different BIOS makers offer different options, and their CMOS setup programs group these options into various categories. If you find an option not listed here, use your CMOS setup program's help menu to see what the option does. If  in doubt you can visit the Web site of the System Board or BIOS maker.
+<P>
+Be aware that changing many of these CMOS settings can prevent the computer from starting up properly. <STRONG>If the Computer does not boot</STRONG>, try entering the CMOS Setup again, you can usually get this far, and select the <STRONG>default settings</STRONG>. If that fails, try powering down the computer, then holding down the Del key while you power it back up. With many BIOS versions, this resets the BIOS defaults and allow the machine to boot. 
+<P>
+If the BIOS setting get to badly messed up, you may have to reset the BIOS by physical means, this usually involves removing a jumper to power down the CMOC and them shorting two jumper pins for some time to drain away all power to the CMOS. When experimenting with the CMOS settings, change only one option at a time, then save the CMOS settings and reboot the machine to see whether the Computer behaves any differently.
+<P>
+The following options are usually under headings such as Advanced Options, or BIOS Features and Chipset Features. Many of the advanced options have a simple choice, either On or Off , or Enabled and Disabled.
+<P>
+<BLOCKQUOTE>
+<STRONG>Virus Warning:</STRONG> This option can be quite a problem, it gets in the way when installing or upgrading Operating Systems and Applications, it is better to turn this <STRONG>off</STRONG> and use Anti Virus software, running in the background all the time.
+<P>
+<STRONG>Auto Configuration option:</STRONG> This option may have alternative names but its purpose is the same. If this option is set to <STRONG>on</STRONG>, the best defaults for many of the other settings are selected automatically and these options will not be alterable by us under the CMOS setup. The settings controlled in this way are usually those to do with Cache and RAM options and the PCI Bus.
+<P>
+<STRONG>CPU or Internal Cache:</STRONG> This refers to the Level 1 Cache inside the processor. It should normally be <STRONG>on</STRONG> but it can be handy to turn it off for debuging system problems.
+<P>
+<STRONG>External Cache:</STRONG> This is the Level 2 Cache, the Cache (high-speed RAM) that in the 486 and older Pentium type processors, is on the System Board. The more advanced Pentium processors have the Level 2 cache inside the processor. This should be turned <STRONG>on</STRONG> but again, you can experiment with turning it on and off for system debugging.
+<P>
+If you notice a Computer is slower than you think it should be, check to make sure that the L2 cache memory setting hasn't automatically switched itself off, as may happen during failed memory checks at start-up. 
+<P>
+Other Cache related options you may or may not find in the Advanced or Chipset features include:
+<P>
+<BLOCKQUOTE>
+<STRONG>WriteBack</STRONG> or <STRONG>WriteThru</STRONG> caching algorithm; the former is the default, and the latter (which is slightly faster) should be used only if you are unafraid of a possible (but unlikely) loss of data should the PC's power go down. You may also find something about <STRONG>Cache Timing</STRONG>, experiment with all these options to fine tune the system.
+</BLOCKQUOTE>
+<P>
+<STRONG>Above 1MB Memory Test, or Quick POST:</STRONG> The BIOS checks System Memory for errors or malfunctions. It checks the first megabyte automatically, but it will check all your memory if you tell it to. This seems like a good idea, except that DOS and Windows offer their own verification through system drivers, so the BIOS check is unnecessary, especially since it slows boot time by several seconds. Turn it off for better boot-up speed, but toggle it on if you're finding small, inexplicable errors in your applications. I suggest you turn this one <STRONG>off</STRONG>.
+<P>
+<STRONG>Parity check:</STRONG> Most RAM supplied today does not have Parity bits so this option will usually be automatically setup to off.
+<P>
+<STRONG>Wait for F1 on Error:</STRONG> By default, if your system encounters a nonfatal error, one that will still allow the operating system to start, at boot time, everything will halt until you press the F1 key. 
+<P>
+<STRONG>Floppy Disk Drive Seek at Boot:</STRONG> By default, most systems will look for Floppy Disk Drives when they boot. Floppy Disk Drives are rarely used to boot computers anymore, so there's little need for your system to check the Floppy Disk Drive before it boots from the Hard Disk Drive.
+<P>
+<STRONG>System Boot Sequence:</STRONG> This setting tells the BIOS on which drive to find the operating system. The standard sequence used to be A:, C:, this meant that the BIOS would check the Floppy Disk Drive first, and if a floppy disk wasn't present, it would look on the first Hard Disk Drive (C:) for the operating system. 
+<P>
+This sequence is the reason the computer fails to boot-up if you leave a nonbootable Floppy Disk in the A: drive. If you choose the sequence C:, A: you can't simply boot the System from a Floppy Disk whenever you wish. The latest BIOS provides boot options for   CDROM Drive and High Capacity Removable Media drives also.
+<P>
+<STRONG>Swap Floppy Drive:</STRONG> This option gives a quick way of switching from booting from either 3.5 or 5.25 inch Floppy Disks, if both types of drives are fitted, and the boot sequence is set to A:,C:.
+<P>
+<STRONG>Number Lock boot-up status:</STRONG> By default, most PCs boot with the Num Lock key turned <STRONG>on</STRONG>. If you don't need this, you can set it to off in the CMOS setup. 
+<P>
+<STRONG>Boot-up Speed:</STRONG> Most PC Computer system still have a provision to run at a much slower speed for the sake of compatibility with old software. This provision may also be called "Turbo Speed". This provision is now obsolete and so the Boot-up speed should be set to <STRONG>high</STRONG>. It can be set to low as an aid to debugging memory and boot problems.
+<P>
+<STRONG>Enhanced IDE options:</STRONG> The settings for these are usually under the Integrated Peripherals group of options but they may be under BIOS Features on their own. See the Integrated Peripherals options for details
+<P>
+<STRONG>Gate A20 Mode:</STRONG> This option is involved in the how the Himem area is addressed and is best left at the default value. Once again ,experiment with it if you are game.
+<P>
+<STRONG>Typematic Rate:</STRONG> The typematic rate, expressed in characters per second, is the rate at which a key repeats  if you hold it down. The typematic rate can also be set through the Control Panel in Windows. 
+<P>
+<STRONG>Typematic Rate Delay:</STRONG> This is the length of time between when you hold a key down and when it will begin to auto-repeat. If you have heavy fingers or a disability that makes it difficult to lift your fingers quickly off the keys, set this to a higher value. This delay can also be set through the Windows Control Panel. 
+<P>
+<STRONG>Setup System Password, or Security Option:</STRONG> use these if you want to ensure that you're the only person who can modify the CMOS on the machine. Most systems have some way of defeating this password but it is necessary to remove the case to do this.
+<P>
+<STRONG>Numeric Processor Test:</STRONG> This is only found on old 386 and 486 System Boards, If the processor contains a math coprocessor, or in the case of the 486SX Chip, a coprocessor is fitted, this setting should be toggled <STRONG>on</STRONG>. 
+<P>
+<STRONG>Shadowing:</STRONG> Shadowing refers to the copying of ROM-based BIOS code into RAM for much faster access. RAM is at least twice as fast as ROM devices and the RAM is accessed 32 or 64 bit wide whereas the ROM is only eight bits wide. In some cases, you can specify that the shadow be cacheable also. Shadowing on PC Computers works well only with DOS and Windows system but it can often be a problem with PC-based Unix systems such as Linux.
+<P>
+The two most important areas of memory to Shadow are the Video BIOS and the System BIOS. These may be covered by their own entries in the CMOS Setup or they may be options under a range of Shadow Memory areas.
+<P>
+<BLOCKQUOTE>
+<STRONG>Video ROM Shadow C000: </STRONG>The area between memory addresses C0000h and C7FFFh.
+<P>
+<STRONG>System BIOS Shadow F000 (also called System ROM Shadow):</STRONG> The area between F0000 and FFFFF.
+<P>
+Depending on your BIOS, you may be offered several other shadowing opportunities. If using bootable SCSI or Network Interface cards, you can experiment with Shadowing the BIOS Extension ROMS on these cards to see if it speeds the system up, or in the worse case, makes the system unstable. To do this you must know the memory allocation of the ROM.
+</BLOCKQUOTE>
+<P>
+<STRONG>Power Management Options:</STRONG> Most recent PC BIOS allow us to adjust certain power settings. The primary idea behind this is to cut power to specific devices when they're not in use. A secondary purpose is to "wake up" the machine when other devices are activated. 
+<P>
+<BLOCKQUOTE>
+<STRONG>Full-On-to-Standby Time-Out and Standby-to-Suspend Time-Out:</STRONG> Computers capable of power management typically have three modes: Full-On, Standby, and Suspend. Full-On means that all devices are powered on at all times, whereas Suspend means that only a minimal amount of power is reaching the system, just enough to stop it from shutting down completely. A system in Standby mode powers back up more quickly than a system in Suspend mode. You can set the length of time the machine can sit inactive before switching to a lower-powered mode. 
+<P>
+<STRONG>Hard Disk Power-Down Mode and Hard Disk Time-Out:</STRONG> Because decreasing the power to the hard disk results in such a long delay when powering back up controlling power to the hard disk is separate from controlling power to the computer as a whole. 
+<P>
+<STRONG>IRQ 3 through IRQ 15:</STRONG> The Power Down Modes are controlled by activity on the IRQ lines and so you must determine which IRQs will wake the machine up. When on event occurs while the computer is in Standby or Suspend mode, IRQ activity will cause the computer to switch to Full-On mode automatically. An example would be a if you were using a Fax/Modem on COM2, IRQ 3 would need to be monitored for activity on that COM port so the modem could pass data to the computer.
+</BLOCKQUOTE>
+<P>
+<STRONG>Integrated Peripherals:</STRONG> These include Parallel Port Mode (Normal, Bidirectional, Enhanced Parallel Port, and Extended Capabilities Port) Parallel Port I/O address and IRQ, Serial Ports I/O addresses and IRQ's, EIDE controllers on/off and IRQ's used, and Floppy Disk Drive Controller on/off. Other peripherals that can be turned on or off and configured for I/O port and IRQ line include USB and IrDA ports. These interfaces are built into most modern Chipsets.
+<P>
+There are also usually some advanced features for the EIDE controllers such as Transfer Modes to use. You can experiment with these but it is often best to accept the option the "Auto Detect Hard Drive" routine selects for each drive. 
+<P>
+<STRONG>PCI Bus Settings:</STRONG> The PCI Bus can be tuned by adjusting some of the PCI Bus settings, including enabling or disabling PCI Burst Mode and setting the IRQ channel assignments on the Bus. This one can be ignored if the Auto Configuration option is set to on.
+<P>
+<STRONG>Memory related options:</STRONG> The Advanced CMOS settings may have a wide range of options associated with the RAM memory and these can be adjusted to achieve optimum performance. When we accept the BIOS defaults for these options the PC will work reliably but not to it's ultimate performance level. Depending on the processor used and the RAM fitted, we may be able to fine tune these options to achieve performance increases of as much as 20% under some circumstances. This is possible because all RAM is not the same. For instance one manufacturers RAM may perform faster than another and one brand of RAM may work better with one type of processor than another. Look for options involving <STRONG>Read and Write cycles, DRAM Timing</STRONG>, and <STRONG>Pipelining</STRONG>.
+<P>
+<STRONG>Operating System Setting:</STRONG> Some BIOS have an option that allows us to setup a PC for the particular Operating System we are using. The options here can be DOS, Windows, OS/2 and sometimes UNIX.
+<P>
+<STRONG>Memory Hole at 15Meg:</STRONG> This option is provided because some older peripheral cards had 1Meg of RAM on the card, addressed in the memory range 15 to 16Meg. This was quite common on older Video Capture cards. With this option set to on, this area of memory on the System Board is deactivated, and the area is then available for cards that have RAM in the area.
+<P>
+The trick to using the CMOS Setup to optimise a PC is to change one setting at a time until everything is working optimally. It is good practice to write down all the settings in case you have to set them from scratch later. 
+</BLOCKQUOTE>
+
+<H4>Notes</H4>
+<UL>
+<LI>At least one System Board I have used has the CMOS Reset jumper set to the <B>Rseset</B> position by default and the board will not function at all, until this jumper is put in the <B>Normal</B> position.
+<LI>Some older System Boards with the battery soldered into the board have a four pin connector for an external battery. It is easier to leave the old battery in place and use an external battery pack with AA cells when the Nicad battery on the board fails.
+</UL>
+
+<H4>Accessing the CMOS</H4>
+The CMOS memory exists outside of the normal address space and cannot contain directly executable code. The CMOS is not addressed from the address bus. It is reachable through the machine code IN and OUT commands at port number 70h and 71h . To read a CMOS byte, an OUT to port 70h is executed with the address of the byte to be read and an IN from port 71h will then retrieve the requested information. The following simple BASIC program will read the 128 bytes of date in the CMOS and print them to the screen in 8 rows of 16 values. The displayed data is in hexadecimal. If the CMOS is only 64 bytes long the same data will be repeated for the second 64 bytes.
+<P>
+<BLOCKQUOTE>
+<PRE>
+10 CLS
+20 FOR i = 0 TO &amp;H7F
+30 OUT &amp;H70, i
+40 PRINT USING "\   \"; HEX$(INP(&amp;H71));
+50 NEXT i
+60 PRINT " " 
+</PRE>
+</BLOCKQUOTE>
+<P>
+<HR>
+<A HREF="cmoslist.html">Look at a list of what each byte of the CMOS means</A>
+<P>
+<A HREF="book5.html">Back to the book five index</A>
+<HR>
+Copyright &copy; Phil. Storr, last updated 7<SUP>th</SUP> December 1998
+<HR>
+
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/cmos.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+</HTML>

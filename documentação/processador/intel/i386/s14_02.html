@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+
+<!-- Mirrored from www.cs.unc.edu/~porter/courses/comp630/s22/ref/i386/s14_02.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 14:14:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>80386 Programmer's Reference Manual -- Section 14.2</TITLE>
+</HEAD>
+<BODY>
+<B>up:</B> <A HREF="c14.html">
+Chapter 14 -- 80386 Real-Address Mode</A><BR>
+<B>prev:</B> <A HREF="s14_01.html">14.1  Physical Address Formation</A><BR>
+<B>next:</B> <A HREF="s14_03.html">14.3  Interrupt and Exception Handling</A>
+<P>
+<HR>
+<P>
+<H1>14.2  Registers and Instructions</H1>
+The register set available in real-address mode includes all the registers
+defined for the 8086 plus the new registers introduced by the 80386: FS, GS,
+debug registers, control registers, and test registers. New instructions
+that explicitly operate on the segment registers FS and GS are available,
+and the new segment-override prefixes can be used to cause instructions to
+utilize FS and GS for address calculations. Instructions can utilize 32-bit
+operands through the use of the operand size prefix.
+<P>
+The instruction codes that cause undefined opcode traps (interrupt 6)
+include instructions of the protected mode that manipulate or interrogate
+80386 selectors and descriptors; namely, 
+<A HREF="VERR.html">VERR</A>, 
+<A HREF="VERR.html">VERW</A>, 
+<A HREF="LAR.html">LAR</A>, 
+<A HREF="LSL.html">LSL</A>, 
+<A HREF="LTR.html">LTR</A>, 
+<A HREF="STR.html">STR</A>,
+<A HREF="LLDT.html">LLDT</A>, and 
+<A HREF="SLDT.html">SLDT</A>. 
+Programs executing in real-address mode are able to take
+advantage of the new applications-oriented instructions added to the
+architecture by the introduction of the 80186/80188, 80286 and 80386:
+<UL>
+<LI> New instructions introduced by 80186/80188 and 80286.
+<UL>
+<LI> <A HREF="PUSH.html">PUSH</A> immediate data
+<LI> Push all and pop all (<A HREF="PUSHA.html">PUSHA</A> and 
+<A HREF="POPA.html">POPA</A>)
+<LI> Multiply immediate data
+<LI> Shift and rotate by immediate count
+<LI> String I/O
+<LI> <A HREF="ENTER.html">ENTER</A> and 
+<A HREF="LEAVE.html">LEAVE</A>
+<LI> <A HREF="BOUND.html">BOUND</A>
+</UL>
+<LI> New instructions introduced by 80386.
+<UL>
+<LI> <A HREF="LGS.html">LSS</A>, 
+<A HREF="LGS.html">LFS</A>, 
+<A HREF="LGS.html">LGS</A> instructions
+<LI> Long-displacement conditional jumps
+<LI> Single-bit instructions
+<LI> Bit scan
+<LI> Double-shift instructions
+<LI> Byte set on condition
+<LI> Move with sign/zero extension
+<LI> Generalized multiply
+<LI> <A HREF="MOVRS.html">MOV</A> to and from control registers
+<LI> <A HREF="MOVRS.html">MOV</A> to and from test registers
+<LI> <A HREF="MOVRS.html">MOV</A> to and from debug registers
+</UL>
+</UL>
+<P>
+<HR>
+<P>
+<B>up:</B> <A HREF="c14.html">
+Chapter 14 -- 80386 Real-Address Mode</A><BR>
+<B>prev:</B> <A HREF="s14_01.html">14.1  Physical Address Formation</A><BR>
+<B>next:</B> <A HREF="s14_03.html">14.3  Interrupt and Exception Handling</A>
+</BODY>

@@ -1,0 +1,234 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/serial.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:44 GMT -->
+<HEAD>
+<TITLE>The PCs Serial Ports</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The PCs Serial Ports:</H3>
+PC Hardware these days comes equiped with two Serial Ports. IBM originally called these Communications ports and so you will find them more often referred to as COM ports.
+<P>
+<UL TYPE=SQUARE>
+<LI>The SERIAL PORT uses either a DB9P or a DB25P connector on the PC computer.
+<LI>The Serial Ports use the RS232C communications standard that specifies logic levels of  Plus and Minus 3 to 15 volt.  
+<LI>The Serial Ports use a UART device to convert from parallel to serial and serial to parallel.
+<LI>The UART chip also looks after the data rate (bits per second), the parity and the flow control.
+<LI>Buffer chips (originally 1488 and 1489 devices) convert the TTL logic levels from the UART to the RS232 levels of Plus and Minus 5 to 15 volt.
+</UL>
+<P>
+<STRONG>Serial Ports can be used for:</STRONG>
+<UL>
+<LI>Mouse or similar input device
+<LI>Telephone Modems (most of these also can provide a Fax connection)
+<LI>Printer with a Serial Interface
+<LI>Computer to Computer file transfer (utilities like Laplink and Interlink)
+<LI>Simple Network (software like Lantastic Z and Interserver)
+<LI>Digitizer input device used for CAD drawing
+<LI>Digital Camera
+<LI>Data Aquisition and Control (often used to connect bar code readers, scales and cash registers)
+<LI>Software Security Devices
+</UL>
+
+<H4>UART (Universal Asynchronus Transmitter Receiver)</H4>
+This is the heart of the Serial Port with this device performing the parallel to serial and serial to parallel conversions and providing the Hand Shaking between the two devices connected together.
+<P>
+<TABLE WIDTH=100%>
+<TR><TD><B>The history of the UART chip</B><BR>
+Over the years, since the introduction of the DOS computer, three types of UARTS have been used in this hardware. The first was the <STRONG>8250</STRONG> chip, this was followed by the <STRONG>16450</STRONG> chip, and then the <STRONG>16550</STRONG> chip.
+
+<TD><TABLE BORDER>
+<TR><TH>UART type</TH>
+<TH>Max. Data Rate</TH></TR>
+<TR><TD>8250</TD>
+<TD>9600 bits/second</TD></TR>
+<TR><TD>16450</TD>
+<TD>30K bits/second</TD></TR>
+<TR><TD>16550</TD>
+<TD>&#62;100K bits/second</TD></TD>
+</TABLE>
+</TR></TABLE>
+<P>
+The 8250 chip was used in the Serial Ports of PC or XT computers, and the 16450 in the Serial Ports of 286 (AT) and then 386, and 486 machines, until early 1995. Over the years the maximum data rate provided by devices connected to the Serial Ports has been steadily rising. Back in 1987 a 2.4Kbits/second Telephone Modem was considered fast. The most cost effective Telephone Modems today are transferring data at as fast as 56Kbits/sec with 33.6Kbits/sec modems being phased out rapidly. The Serial Ports must keep up with the modem and therefore the UART must be faster than the modem.
+<P>
+<B>UART stands for UNIVERSAL ASYNCHRONOUS RECEIVER TRANSMITTER</B><BR>
+The main job of a UART is to convert the computer's parallel data from the bus into a serial flow for transmission and when information is being received, the UART collects it into bytes (8 bits) and passes those bytes onto the bus. The UART provides the shift registers for parallel to serial and for serial to parallel conversions and all the  Flow Control (hand shaking) required to control the flow of data to and from the computer and some other device.
+<P>
+<B>What does the UART chip look like ?</B><BR>
+The 16550 is otherwise identical to its predecessors and so it can be used as a 16450 or 8250 replacement. The older I/O cards found in DOS computer hardware had a 40 pin DIL UART chip mounted on a socket and so it would be simple to upgrade by just replacing the chip. A 40 pin 16550 chip usually costs more than a new I/O card and  so it is not economical to replace the UART chip on old I/O cards. Some SPG cards had a 16450 chip soldered in, making it almost impossible to replace it. Another chip you will sometimes find on old I/O cards is the 16451. This chip is a 16450 with a Parallel Interface as well as the UART. 
+<P>
+Starting with the SPG and IDE/FDC-SPG cards used in 386 and 486 hardware, the UARTS were in a chip called an <STRONG>ASICS chip</STRONG>. This was a custom VLSI chip that contained 2 UARTs, the Parallel Port, Games Port, and often the Floppy Disk Drive Controller. 
+<P>
+Modern PC hardware has the UARTS built into the System Boards chip-set and all these provide 16550 type UARTS, capable of data rates in excess of 100Kbits/second. Diagnostic software is available that will detect the type of UARTs fitted.
+<P>
+The TTL logic levels from the UART device require Line Driver chips to convert the output signals to RS232 levels, and other Line Driver chips to convert the input signal RS232, levels back to TTL logic levels. Today these drivers are often built into the ASICS chip or the chip-set but the 1488 and 1489 line driver devices were used for many years. The line drivers require + and - 12 to 15 Volts supplies. Alternative Line Driver Chips are available that generate the + and - 12 Volts inside the chip and these are used in note-book type computers. The Line Driver Chips often fail due to near lightning strikes and ground potential faults. 
+
+<H4>How many wires do we need for a serial connection ?</H4>
+RS232 connection can be made with as few as 2 wires and a ground wire, but a full implementation of the standard uses 9 wires. The Serial Ports on the back of the DOS computer use either a DB9P or a DB25P plug and maximum cable length in unshielded cables is about 30 metres. If you need to put a printer some distance from the computer it is being used on it is neccessary to use a Serial Interface rather than a Parallel Interface. The serial interface is not as prone to electrical interferance from power wiring.
+<P>
+<TABLE WIDTH=100%>
+<TR><TD WIDTH=50%><H4>The I/O assignments used for the Serial Ports:</H4>
+The Serial Port requires a small range of I/O addresses and an IRQ line. The original DOS assignments were like this.
+<TD><TABLE BORDER WIDTH=100%>
+<TR>
+<TD><B>COM Port</B></TD>
+<TD><B>I/O Address</B></TD>
+<TD><B>IRQ</STRONG></B></TD>
+</TR>
+<TR>
+<TD>COM 1</TD>
+<TD>3F8 to 3FF</TD>
+<TD>IRQ 4</TD>
+</TR>
+<TR>
+<TD>COM 2</TD>
+<TD>2F8 to 2FF</TD>
+<TD>IRQ 3</TD>
+</TR>
+</TABLE>
+</TR></TABLE>
+<P>
+<TABLE WIDTH=100%>
+<TR><TD WIDTH=50%>With the introduction of DOS vesion 3.1 provision was made to have two more Serial Ports and the resources assigned to these were:
+<TD><TABLE BORDER WIDTH=100%>
+<TR>
+<TD><B>COM Port</B></TD>
+<TD><B>I/O Address</B></TD>
+<TD><B>IRQ</B></TD>
+</TR>
+<TR>
+<TD>COM 3</TD>
+<TD>3E8 to 3EF</TD>
+<TD>IRQ 4</TD>
+</TR>
+<TR>
+<TD>COM 4</TD>
+<TD>2E8 to 2EF</TD>
+<TD>IRQ 3</TD>
+</TR>
+</TABLE></CENTER>
+</TR></TABLE>
+<P>
+The problem with the extra two Serial Ports is that they do not have unique IRQ lines assigned to them and some hardware and/or software is not good at sharing such resources. Specialised Serial Interface Cards are available that provide four or eight Serial Ports and these are intended for use in UNIX systems and they may not have driver software for DOS systems. These cards are often used for "point of sale" computers in installations like Service Stations and Supermarkets.
+
+<H4>Using internal modems</H4>
+Modern PC hardware has 2 Serial Ports, and these can be configured as either of the four available COM Ports. If you wish to use an Internal Modem on either COM 1 or COM 2 you must turn off the corresponding COM Port on the System Board (or I/O card with older hardware), or configure it as one of the other COM ports.  An Internal Modem has a Serial Interface built into the Modem card and must be configured so it does not clash with other hardware in the system. You can often configure an External Modem as COM 3 or COM 4 but watch out for IRQ 4 and IRQ 3 clashes. Some ports and software will allow two COM ports to share the same IRQ line. <STRONG>Note:</STRONG> Modern PC System Boards provide control over the "on board" Parallel and Serial Ports via the CMOS setup routines.
+
+<H4>Using a printer with a Serial Interface on a PC</H4>
+Most application software configures the Serial Ports UART for Data Rate, Word Size and Parity. If you wish to use a Serial Port at the DOS level, you must use the DOS external command called MODE to do this.
+<P>
+<STRONG>If you wished to use a printer with a serial interface instead of one with a parallel interface, When running DOS applications, you would have to add these 2 lines to the AUTOEXEC.BAT file.</STRONG> This is not required when using a MSWindows Operating System.
+<P><BLOCKQUOTE>
+<EM>MODE COM1: 9600,N,8,1,P</EM><BR>   
+<EM>MODE PRN = COM1: </EM>   (The alternative to this line is MODE LPT1: = COM1:)<BR>
+</BLOCKQUOTE><P>
+The actual values in the first line above will depend on the parameters required by the printer. This information is obtained from the printer handbook and will be similar to the listing below.
+<UL>
+<LI>COM Port can be 1, 2, 3 or 4 
+<LI>Data Rate can be 300, 600, 1200, 2400, 4800, 9600 bits per second (bps)
+<LI>The N above is for <EM>No Parity</EM> but this could be <EM>O for odd</EM> or <EM>E for even</EM>
+<LI>Word Size can be 7 or 8 bits
+<LI>Stop Bits can be 1, 1 1/2, 2
+</UL>
+<P>
+Bit rates with the latest UART devices used in PC computers can be far higher than 9600, with speeds of 19.2K, 28.8K, 33.6K and 56K being used today. 
+<P>
+The <STRONG>"P"</STRONG> tells the Serial Port Service Routine to wait for the device on the other end, do not time-out after a predetermined time. This is necessary if a slow device like a printer is connected.
+
+<H4>Providing more the two Serial Ports</H4>
+<B>The problem</B><BR>
+<TABLE WIDTH=100%>
+<TR><TD>While each of the four Serial Ports defined here has it's own unique I/O addresses, only two IRQ's are assigned. PC hardware and software is not good at sharing IRQ lines and so the above assignments may lead to problems with devices interacting with one another in a way that hinders the proper operation of one or both devices, sharing the same IRQ line. This problem should be overcome with the full introduction of Plug and Play technology but until that happens, to both the hardware and the operating systems, we will have possible trouble with providing more than two Serial (Communication) Ports.
+
+<TD><TABLE BORDER>
+<TR><TH>COM Port</TH>
+<TH>I/O address (hex)</TH>
+<TH>IRQ</TH></TR>
+<TR><TD>1</TD>
+<TD>3F8</TD>
+<TD>IRQ4</TD></TR>
+<TR><TD>2</TD>
+<TD>2F8</TD>
+<TD>IRQ3</TD></TR>
+<TR><TD>3</TD>
+<TD>3E8</TD>
+<TD>IRQ4</TD></TR>
+<TR><TD>4</TD>
+<TD>2E8</TD>
+<TD>IRQ3</TD></TR>
+</TABLE>
+</TR>
+</TABLE>
+<P>
+While each of the four Serial Ports defined above has it's own unique I/O addresses, only two IRQ's are assigned. PC hardware and software is not good at sharing IRQ lines and so the above assignments may lead to problems with devices interacting with one another in a way that hinders the proper operation of one or both devices, sharing the same IRQ line. This problem should be overcome with the full introduction of Plug and Play technology but until that happens, to both the hardware and the operating systems, we will have possible trouble with providing more than two Serial (Communication) Ports.
+<P>
+<B>Why would you want more than two Serial Ports ?</B><BR>
+Serial Ports are used for a wide range of I/O functions and computers used in CAD/CAM installations for example may have a Mouse, a Digitizer, a Plotter and a Modem fitted. The Mouse can make use of the PS/2 Mouse port fitted to most modern System Boards, but this uses one of the Available IRQ's and still leaves us with three Serial Ports required.
+<P>
+Another situiations where more than two Serial Ports may be required is where multiple modems are required or devices like Bar Code Readers are in use. This is common if a PC is used as a "point of sale" terminal, and with the cost of PC being so low, they are often the most cost efective way of providing these facilities.
+<P>
+<B>Overcoming the problem</B><BR>
+The easiest way to overcome the lack of IRQ assignments is to change either COM1 or COM3 and COM2 or COM4 to alternative IRQ lines. Modern PC Computer hardware has the Serial Ports provided by the Chipset built into the System Board. You can change the I/O addresses and IRQs assigned to these ports from the CMOS setup routines. Many older SPG and FDC/IDE-SPG cards had jumpers to select the I/O addresses and IRQ lines for each port and to turn each I/O function off. You could provide extra Serial Ports, selecting alternative I/O addresses and IRQs, using one of these cards. Only one problem, remember most of these cards were fitted with 16450 UARTs, too slow for modern Telephone Modems. You would have to use these other Serial Ports for devices like the Mouse, and a Digitzer.
+<P>
+Serial Port cards are available that provide one or two extra Serial Ports at all possible I/O addresses and IRQs via jumpers or some form of Soft-setup, but these are quite expensive for what they are.
+<P>
+<B>Possible available IRQ assignments</B><BR>
+<UL TYPE+SQUARE>
+<LI>IRQ9 is only used by some EGA and VGA cards and can usually be disabled on these cards.<BR>
+(IRQ9 is also called IRQ2 as IRQ2 is used for the "cascade" and IRQ9 is wired to IRQ2's bus pin)
+<LI>IRQ7 is assigned to the first Parallel Port.
+<LI>IRQ5 is assigned to the second Parallel Port. 
+</UL>
+<P>
+<BLOCKQUOTE>
+The IRQ lines are not usually required by the Parallel Ports and will usually be available for other uses. IRQ5 was used for the Hard Disk Controller in an XT type (8 bit bus) computer but is available in modern PC Computers. This means IRQ5 and IRQ7 may be available.
+</BLOCKQUOTE>
+<P>
+<STRONG>Common default assignments to look out for</STRONG><BR>
+<UL TYPE=SQUARE>
+<LI>Many Sound Cards use IRQ5 or IRQ7 as a default IRQ, particularly older cards with an eight bit interface. Most 16 bit Sound cards use IRQ10 as the default.
+<LI>Old 8 bit Network Inteface cards often use IRQ3 as the default. If IRQ3 is used by a network card it will mean you will have to disable COM2. It is best to change the network card to IRQ2 or 5, making COM2 available. If you are using a 16 bit network card you can use IRQ11, 12 or 13.
+<LI>Internal Modems/Fax Cards have a built-in Serial Port and must be assigned unique I/O addresses and IRQ.
+<LI>Bus Mouse cards also have a built-in Serial Port and need I/O and IRQ assignments, by default they usually use IRQ2.
+</UL>
+<P>
+<B>Which IRQ lines may be available ?</B><BR>
+From what I have said above it is clear you may have <STRONG>IRQ9, IRQ5 and/or IRQ7</STRONG> available for use with COM3 and COM4. Watch out for what IRQ9 is actually called,  IRQ9 in a 16 bit bus DOS computer is wired to the IRQ2 Bus pin, the real IRQ2 is used to cascade a second interrupt controller device. The IRQ9 input on this second device is wired to IRQ2's place on the ISA bus. Windows wants to call this hardware interrupt IRQ9 but some software is quite happy if it is called IRQ2.
+<P>
+In the past <STRONG>IRQ10, IRQ11, IRQ12 and IRQ15</STRONG> have been available but recent advances in PC technology have lead to these being assigned to standard uses. IRQ10 is often used by Sound Cards, IRQ11 by Network Interface cards, and IRQ12 is used if the PS/2 Mouse Port fitted to most System Boards, is in use. 
+<P>
+With the introduction of the second IDE interface channel these days, usually used for interfacing to a CDROM Drive, IRQ15 is assigned to this channel and is no longer available. 
+<P>
+<B>How to make use of these extra COM ports</B><BR>
+Modern GUI Operating Systems have support for almost any combination of I/O address and IRQ built in and some DOS software packages have a facility to configure the COM ports for I/O address and IRQ line. 
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="ioports.html"><font
+color="#FFFFFF">Back to the PC and its I/O Ports</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="ioassign.html">The common I/O port assignments</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="parallel.html">The PCs Parallel ports</a></td>
+<td width="25%" bgcolor="#DDA0DD" align="center"><a href="games.html">The Games (Joystick) port</a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/serial.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:44 GMT -->
+</HTML>

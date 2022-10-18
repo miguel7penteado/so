@@ -1,0 +1,82 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/morekeyb.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:50 GMT -->
+<HEAD>
+<TITLE>More technical information on the PC keyboards</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>More technical information on the PC Keyboard</H3>
+
+<H4>The three modes of operation</H4>
+In <STRONG>mode one</STRONG>, the XT mode, the Keypress code is a seven bit code with bit eight always at Zero. The Release code is the Keypress code with bit eight set to a one.  Bit eight is always zero on the Keypress codes and is always one in the Release codes. The Keypress and Release codes are used to drive the "Typmatic" key repeat function provided by the DOS keyboard.
+<P>
+<STRONG>Mode two </STRONG>is an extended 84 key code set where the keys common to the 84 and 101 key keyboards use the same Press and Release codes. The "new keys" on the cursor pad are sent with an E0 prefix. (The codes for each function represented by the keys on the keypad are the same as produced by those same keys on the 84 key keyboard but are prefixed with the code E0.) The UP ARROW key on the 84 key keyboard has a Press code of 75 hex and on the 101 key keyboard the Press code consists of the bytes E0 and 75 hex. 
+<P>
+The Release code for these extended characters is usually a two byte sequence consisting of the hex number F0 followed by the Keypress code for that keystroke. The Release code for the UP ARROW example above would be E0 F0 75 hex.
+If the Numlock key is down then the Press code will be E0 12 E0 75 hex. The E0 12 hex sequence provides the "shift state" - this is the same as Shift Up Arrow on an 84 key keyboard. The Release code for this sequence will be E0 F0 75 E0 F0 12 hex.
+<P>
+In this mode the data is sent from the keyboard to the keyboard interface circuit in the same way as in Mode one and at the end of transmission the keyboard interface circuit disables the interface until the system accepts the data sent. If the data received has a parity error the keyboard interface circuit will send a Reset command to the keyboard. 
+<P>
+<STRONG>Mode three</STRONG> eliminates all the confusions of Mode two by assigning each key a unique Press code but many keyboards do not support this Mode and many don't support the "change Mode" (F0) command.
+
+<H4>The commands sent by the keyboard to the computer include these control codes.</H4>
+<PRE>
+	00	The 16 key buffer overflowed
+	AA	Self-test passed
+	EE	Sent in response to EE form the computer
+	F0	Break code prefix
+	FA	Acknowledge receipt of command without error
+	FE	Resend last command
+	FD	Self-test failed (84 key keyboard)
+	FC	Self-test failed (101 key keyboard)
+</PRE>
+
+<H4>The commands sent by the computer to the keyboard include these control codes.</H4>
+<PRE>
+	ED	Set or reset the status LED's according to the next byte
+		Bit 0	Scroll lock
+		Bit 1	Num lock
+		Bit 2	Caps lock
+		(zero = off, one = on)
+		Bit 3-7 must be zero
+	EE	Used as a diagnostic aid - the keyboard does not respond with FA
+	F3	Sets the key repeat and delay timing according to the next byte.
+		Bit 7 = 0
+		Delay = (Binary value of bits 5 and 6) + 1 * 256 ms
+		Repeat rate	A = Binary value of bits 0 to 2
+				B = Binary value of bits 3 and 4
+				Rate = (8+A) *  2^B * 4.17 ms
+	F4	Clears the key buffer and starts scanning the keys
+	F5	Restores default settings and wait for an enable command
+	F6	Restore default settings
+	FE	Retransmit the last character sent
+	FF	Reset the keyboard 
+</PRE>
+
+<STRONG>Additional commands for the 101 key keyboard</STRONG><BR>
+<PRE>
+	F0	Followed by another byte to select the mode of operation 
+		(not available with all keyboards)
+	F2	Sends two ID bytes after FA acknowledge
+</PRE>
+<P>
+<HR>
+<A HREF="#"></A>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="75%">
+<tr>
+<td width="25%" bgcolor="#008080" align="center"><a href="keyboard.html"><font
+color="#FFFFFF">Back to the keyboard chapter</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book3.html"><font
+color="#FFFFFF">Book three index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book3/morekeyb.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:50 GMT -->
+</HTML>

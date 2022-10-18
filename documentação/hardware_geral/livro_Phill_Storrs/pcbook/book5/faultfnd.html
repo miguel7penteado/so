@@ -1,0 +1,93 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/faultfnd.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+<HEAD>
+<TITLE>Logical Fault Finding</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>Logical fault finding procedure’s</H3>
+Fault finding PC Computer equipment at a component level is not practical or even possible because of the proprietary nature of many of the Chips used, and the technologies employed to produce the System Boards and Peripheral Cards. The only way this can be done is to return the boards to the original Manufacturer where they are analyzed in a "bed of nails" test bench by a powerful computer system, and then faulty devices removed and replaced using expensive rework equipment. In many cases individual devices are specially produced for each manufacturer and are only available so long as the board is in production. Because of the rapid development of this technology, the production life of most boards is six months to one year.
+
+<H4>System Board, Processor and Power Supply</H4>
+Measuring voltages and wave forms around the chips is not possible without damaging individual devices because of the close spacing of the pins on the surface mount devices. If you join two pins together with a measuring probe, the chances are you will destroy the device or another device connected to it. The only safe place to measure supply voltages is on the power connectors. Switch mode power supplies generally either work properly or not at all, so if one or more of the Power or Turbo LED’s, is illuminated, the chances are the power supply is functioning correctly. If in doubt, check for plus 5 volt and plus 12 volt on the disk drive connectors.
+<P>
+The best way of knowing if the Processor is functioning is to feel its temperature after the computer has been on for some time. If the Clock Generator is not operating and supplying a clock signal to the Processor, the Processor will not even warm up above the ambient temperature. Identifying and gaining access to the Clock pins on the Processor chip to see if the Clock signal is present is not usually possible. The Clock generator is part of the Chipset and if it fails the System Board is useless. 
+<P>
+Plug in diagnostic cards called <STRONG>POST Cards</STRONG> are available and these display a series of error codes produced by the Power On Self Test routines on a LED display, as the computer is booted. The error codes are available for most brands and versions of BIOS but as these devices mostly test functions built into the Chipset, about all they can be used for is to see if the Processor is functioning and to prove a System Board is faulty.
+
+<H4>RAM</H4>
+When you boot a PC Computer you get some indication of  whether the RAM is functioning by the RAM Test but this is not an exhaustive test and tests the RAM only under the best possible circumstances. Once the Operating System is loaded and an Application is running, the RAM is subjected to a far more rigorous test than that provided by the Power On Self Test. The timing of the read/write and enable signals to the RAM devices is critical and this is where many faults occur under actual operating conditions. Most PC Computers have RAM access parameters that can be setup in the CMOS that determine these conditions and these can be tuned to achieve an optimum level of performance. If you suspect RAM problems are causing a System to crash during operation, you can try several procedures to see if this is the problem is with the RAM.
+<BLOCKQUOTE>
+The first logical procedure to carry out is to set the RAM parameters to the defaults provided by the CMOS setup routine. This will reset the timing signals to conservative values rather than optimum ones, that may be on the limits of the devices. You may see figurers relating to Wait States and RAM access, Wait States make the processor miss a few clock cycles between sending out an address on the Address Bus and looking for the data at that address on the Address Bus.
+<P>
+The speed of RAM access is related to the External Clock speed (also called Bus Speed) of the Processor and so lowering the Clock speed, will allow the devices more time to get ready to output data between the time the address is sent and the data read. This is not a long term solution to the problem but it will indicate the problem may be with the RAM. Some users are setting the processor clock speed higher than the rating on the chip, a process called Over Clocking, and this will usually lead to intermittent problems particularly at high ambient temperatures.
+<P>
+Replace the RAM with know good devices. Be aware not all brands and types of RAM will work satisfactorily in all System Boards. This is where Internet access may be handy, you may be able to contact the boards Manufacturer’s Support Department and ask about the type and brand of RAM you are using. Older System Boards may only function with FP-RAM, not EDO-RAM, and as FP-RAM is obsolete technology it is now hard to obtain new.
+<P>
+Simple RAM tests can be carried out using Diagnostic Software like Checkit but these are not as good as actually running Applications. Bench Mark test are often used to test RAM under real operating conditions but if the system fails, there is no way of knowing for sure, if the failure was caused by RAM.
+</BLOCKQUOTE>
+
+<H4>Video Display and Interface</H4>
+The easiest component in a PC Computer system to test is the Video Display. Firstly, look for the indicator light on the front, if it is not illuminated the chances are the power supply in the display has failed. Repairing these devices is a specialist job and is best left to those with the resources and experience in the field. If you are confident at carrying out a first line service on the display you can take off the case and look at the mains power fuse. It may have fatigued with age and replacing it may restore operation once again. If you do replace the fuse and it blows instantly when the power is turned on again, do not be surprised, this is typical of Switch Mode Power Supply faults and indicates a failure in the Power Supply or Deflection circuits.
+<P>
+If the indictor light is on or flashing, and the screen is blank, try the Video Display on another computer, this will then indicate if the Monitor or Video Interface is at fault. If there is some sort of image on the screen, but it is rolling, wrong colours, or diagonal lines across the screen, then the cable between the Monitor and the Interface may be faulty. These same faults can be caused by a failure in the Video Interface but it is unusual.
+<P>
+Correct operation of the Video Interface can be verified by connecting a known good display to the interface but we must be careful with what type of display it is. Most workshops have an old VGA Display for testing but if the Video Interface is set for high resolution and high scan frequency modes, this monitor may not function properly and will give a false indication. Be sure you are using an appropriate display that will handle all the video modes the interface is capable of.
+<P>
+Once we are sure the Video Interface is at fault, there are alternative actions that can be taken.
+<BLOCKQUOTE>
+Is the fault simply the wrong device drivers for the Video Interface fitted to the computer ?. This would be a setup problem and with modern Operating Systems like Windows 95 this is unlikely to be the cause. Modern Operating Systems usually detect an inappropriate Video Interface setting and default to a safe mode of operation.
+<P>
+Is the Video Interface on the System board, or on a plug in card ?. If the Video Interface is on  a separate interface card, replacing it is a simple matter. If the original brand/model is no longer available make sure to remove the old driver files and install any new files that may be required by the card. Operating Systems like Windows 95 will make this procedure easy by defaulting to generic VGA mode and asking for the new support files.
+</BLOCKQUOTE>
+The latest trend for cheap PC Systems is to include the Video Interface on the System Board and if the interface fails, there may be nothing else for it, the System Board must be replaced. Some boards have jumpers to disable on-board peripherals and it may be possible to disable the Video Interface, and install a card in a bus slot. Many of these cheap boards however have very few Bus Slots and so there may not be a fee slot to use for this.
+
+<H4>Parallel and Serial I/O Ports</H4>
+These are best tested with  diagnostic software like Checkit and look-back plugs. Although it is possible to do a partial test on I/O ports without loop-back plugs, a full test requires they be fitted, this couples the output and input lines together so all lines are tested.
+
+<H4>Floppy Disk Drives</H4>
+Diagnostic disks for use with proprietary diagnostic software is available that will test Floppy Disk Drives for alignment and correct operation. disk drives are such a cheap item it is doubtful if this procedure is economical. If a Floppy Disk Drive will read a Disk that was formatted and written to in itself but will not read a Disk formatted and written to in another drive, them the drive is most likely out of alignment. 
+<P>
+The best way to carry out a simple Floppy Disk Drive test is to prepare a Disk "full of files" on a known good drive, and try to copy it to a TEMP subdirectory on the hard drive of the test machine, using the command XCOPY or a similar procedure under Windows. You can fill a Disk "full of files" from the DOS or Windows subdirectory.
+<P>
+If a Floppy Disk Drive will not read or write first check the drive is correctly reported in the CMOS Setup, and they try another cable between the Floppy Drive Interface and the Drive. If these two checks fail, the problem is most likely in the Drive or the Interface. The drive is easy to replace but a failed Interface now days means the System Board must be replaced.
+
+<H4>Hard Disk Drives.</H4>
+The first possibility to consider is that there may be a Virus on the drive. Try booting the computer from a Floppy Disk in A: drive and then try accessing the Hard Drive. Caution is needed here: Make sure you boot the computer using the same File System as the Hard Drive was formatted with. This was not a problem before Microsoft introduced the FAT32 File System. DOS with it’s old FAT16 File System cannot access a disk written with a FAT32 File System. If you discover a Virus, the removal procedure depends on a number of factors, outside the scope of this course at this time.
+<P>
+Testing Hard Drives is quite difficult and here we will only consider drives using the most common interface, Enhanced IDE. Faults in this area can be due to a faulty drive, the drive wrongly configured in the CMOS setup, incorrect Master/Slave configuration, or a faulty Hard Drive Interface or cable.
+<P>
+ The first step is to run the CMOS setup routine and check the drives reported parameters correspond with those for the particular drive. Modern PC CMOS Setup routines provide a means of detecting the drive parameters and these in turn usually provide options of how to use the drive. These options involve how to overcome drive size limits originally imposed by the BIOS Routines and the Operating System. If a drive has been formatted under one of these options it will not be readable under the others. (Terms like LBA, Large and Normal apply here)
+<P>
+There is a chance the BIOS may incorrectly report a drives parameters but this would be unusual. A more likely problem is incorrectly configured Master/Slave jumpers on the drives if a drive is used with a second Hard Drive or a CDROM or similar device on the same Controller. The Internet is a good source of information on drive parameters and jumper settings.
+<P>
+If the CMOS information and the jumper settings seem correct, try the drive on its own in the same machine. If this fails, try it in another computer, on it’s own. If it will not boot you can then try using FDISK and reformatting the drive, bearing in mind any data on the drive will be lost forever. This may fix the problem, if the information on the drive was damaged by a fault in the Operating System or an Application.
+<P>
+If the drive functions correctly in the other machine, try it in the first machine with a new interface cable. If this fails then the problem is most likely in the Hard Drive Interface and as this is usually built into the System Board, the board must be replaced.
+
+<H4>Mouse</H4>
+If the Mouse fails to operate the problem may be due to a faulty Mouse Port (usually a Serial I/O port), a faulty Mouse or cable, or the mouse wrongly configured in the Operating System or Application. As a Mouse is such a cheap device, the quickest way to test it’s operation is to replace it and to reboot the computer. The computer must be rebooted so the initialisation routines will pick up the presence of the Mouse. Diagnostic Software like Microsoft’s MSD and Checkit can be used to test the operation of the Mouse, and the I/O port.
+
+<H4>Modem</H4>
+This is a complex subject and it should be left until you have a good understanding of Modems, Data Communications and Serial I/O Ports. At this level, about all you can do if the modem is an external device, is to test the Serial Port.
+
+<H4>Printers</H4>
+Again this is a complex problem and the steps taken depend on the type of printer and the interface used to connect it to the computer. Most printers are connected to the computer via a Parallel I/O Port and a first-line servicing procedure would involve testing the Parallel Port and replacing the cable between the computer and the printer.
+<P>
+A further complication involves the device drivers that provide support to the Operating System and Applications for the printer. If these are not installed and configured correctly the printer will not function properly. Installation disks are provided with printers, and Operating Systems like Windows 95 have native support built in for many common printers. Diagnostic Software like MSD and Checkit provide very basic printer test procedures.
+
+<H4>CDROM and Sound Interfaces</H4>
+Modern PC hardware uses CDROM Drives interfaced via the Enhanced IDE Interface, shared with Hard Disk Drives and similar devices. The best way to test a suspect CDROM drive is replace it with a known good one, after carrying out obvious tests like jumper configuration and cable replacement, and checking to see the required support files are in place. This latter procedure depends on the Operating System in use and may require an installation disk from the manufacturer.
+<P>
+Sound cards also require support files that depend on the operating system in use and the best way to test these is to re-install the software, using the disks that came with the interface card.
+<P>
+<HR>
+Copyright &copy; Phil. Storr, last updated 7<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book5/faultfnd.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:16 GMT -->
+</HTML>

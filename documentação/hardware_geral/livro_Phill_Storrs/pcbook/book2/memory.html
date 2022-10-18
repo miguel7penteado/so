@@ -1,0 +1,263 @@
+<HTML>
+<TITLE>Memory basics</TITLE>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/memory.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:33 GMT -->
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+
+<H3>The DOS Computer and its Memory</H3></CENTER>
+
+Computer Memory can be described by the <EM>hardware</EM> that constitutes it or by the way it is used or <EM>allocated</EM>. 
+<H4>Hardware types</H4>
+<UL>
+<LI><STRONG><A HREF="#ram">RAM</A></STRONG> - Random Access (read/write) Memory
+<LI><STRONG><A HREF="#rom">ROM</A></STRONG> - Read Only Memory
+</UL>
+
+<H4>Memory allocations</H4>
+<UL>
+<LI><A HREF="#base">Base Memory</A>
+<LI><A HREF="#ext">ExTended memory</A>
+<LI><A HREF="#exp">ExPanded (EMS) memory</A>
+<LI><A HREF="#xms">XMS memory</A>
+<LI><A HREF="#vir">Virtual memory</A>
+</UL>
+ 
+<H4>Memory hardware</H4>
+<A NAME="ram"></A><STRONG>RAM Memory</STRONG><BR>
+RAM (Random Access Memory) provides the work areas where DOS and software applications perform their operations. This memory can be read from, so that program code loaded here can be executed repeatedly.  It can also be written to, so that program data can be altered and saved to disk.  RAM is volatile memory - the contents are lost when the power is turned off.
+<P>
+<A NAME="rom"></A><STRONG>ROM Memory</STRONG><P>
+ROM (Read Only Memory) is memory reserved for use by the operating system and hardware devices.  It contains the instructions used by the operating system and software programs to manage resources.  It cannot be written to by software programs and is not used for work space. The most common uses for ROM are for the BIOS routines.
+
+<H4>Memory allocations</H4>
+<A NAME="base"></A><STRONG>Base Memory</STRONG><BR>
+This is the One Meg byte of memory originally available to DOS. Remember the 8088 processor used in the first PC computer, had only 20 address lines. 20 address lines limit the addressable memory range to one meg byte (2 to the 20th power is 1,024,000).
+<P>
+<A NAME="ext"></A><STRONG>Extended Memory</STRONG><BR>
+Extended memory is memory addressed at 1M byte and above. Although DOS cannot address memory above one Meg in its default mode, 80286 and above  processors can address this area directly in <STRONG>protected mode</STRONG>, used by some non-DOS operating systems and some recent DOS application programs. Extended memory can be remapped to act as expanded memory, XMS memory, and RAM (non-physical) disk drives.  
+<P>                
+<A NAME="exp"></A><STRONG>Expanded Memory</STRONG><BR>
+Expanded (EMS) memory is accessed by mapping 64K bytes of memory (called a page) from a non-DOS addressable area into a specific memory address in the Reserved Memory Area. The 64K byte area of the reserved memory used to map this extra memory into, is called the Page Frame. The Page Frame must lay between the top of the Video BIOS Extension ROM at C7FFF, and the start of the System BIOS ROM at F0000. The presence of other BIOS Extension ROMs and RAM on specialized I/O cards, must be taken into account when allocating the Page Frame. With older versions of DOS, EMS Memory is managed by a device driver installed from the config.sys file at boot-up. The EMS Manager makes memory available to EMS-aware products that use this memory for temporary work and data storage. 
+<P>
+The technique for swapping pages of memory above and below the 1M byte limit is called bank switching and up to 32M byte of memory can be addressed this way. 
+<P>
+The first implementation of EMS Memory was the <STRONG>Above Board from Intel</STRONG> and it provided EMS memory via a hardware card plugged into a Bus Slot in PC and PC/XT computers. When the AT computer was released the Extended memory it provided was of no use to DOS so schemes were devised to manage this memory as Expanded Memory, rather than Extended Memory. Later versions of DOS have much more extensive Memory Management provisions and the device driver EMM386 can provide Expanded Memory by making some Extended memory available for this purpose and switching it in and out of the Page Frame as applications requests it. 
+<P>
+EMS was originally a method of providing more memory to a system constrained by the limits of the 20 bit Address Bus of the 8088 processor. Today our modern operating systems do not require EMS but some old applications may not be able to make use of Extended memory, and may require some EMS Memory. The Memory Optimiser <STRONG>Memmaker</STRONG>, included with DOS, gives us the option of allowing for some EMS when configuring a DOS machine.
+<P>
+<CENTER>
+Expanded and extended memory are contrasted below.
+<TABLE BORDER>
+<TR><TH>Expanded memory</TH>
+<TH>Extended memory</TH>
+</TR>
+<TR><TD>Requires memory manager</TD>
+<TD>Non-managed memory</TD>
+</TR>
+<TR><TD>Requires page frame</TD>
+<TD>No page frame</TD>
+</TR>
+<TR><TD>CPU uses real mode</TD>
+<TD>CPU uses protected mode</TD>
+</TR>
+<TR><TD>DOS can address it</TD>
+<TD>DOS cannot address it</TD>
+</TR>
+<TR><TD>Available for 8088/86</TD>
+<TD>Not available for 8088/86</TD>
+</TR>
+</TABLE></CENTER>
+<P>
+<A NAME="xms"></A><STRONG>XMS Memory </STRONG><BR>
+The eXtended Memory Specification (XMS), developed by Microsoft, allows programs to request memory above the conventional memory area for program storage and use. The DOS device driver that provides XMS Memory is EMM386. Only XMS-aware programs use XMS memory but the Memory Manager can make memory available as either Extended or Expanded memory if an application requires these.
+<P>
+XMS memory can be allocated from three locations and you will learn more about these soon.<BR>
+<UL>
+<LI>Memory recovered from the Reserved Memory area in blocks called Upper Memory Blocks <A HREF="#umb">(UMBs).</A>
+<LI>Extended memory in blocks called Extended Memory Blocks (EMBs)
+<LI>The High Memory Area (<A HREF="#hma">HMA</A>), a specific 64K byte area in extended memory at address 100000hex .
+</UL>
+<P>
+<STRONG>Address line A20</STRONG><BR>
+Address line A20 is the 21st address line and it is this line that selects memory locations above one Meg. XMS memory from the High Memory Area is available due to a bug in the 80286 chip's emulation of the 8086/8088 processor chip, concerning the A20 address line. The bug was retained in the 80386 for compatibility, but the A20 address line control feature was added to turn the bug on and off.
+<P>
+<A NAME="vir"></A><STRONG>Virtual Memory</STRONG><BR>
+Virtual memory is a sleight-of-hand that involves some carefully orchestrated co-operation between the microprocessor, a virtual memory support program, and the computer's disk storage space.
+<P>
+When a program is being set up to run in the computer, the operating system creates a Virtual Memory Space which is a model of the amount of memory and the memory addresses that the program has at its disposal. Then a portion of the computer's "real" physical memory is given over to the sleight-of-hand operation that is the core of the virtual memory concept. Using a feature that is an integral part of the 386 and 486 processors, the operating system's Virtual Memory Manager routine tells the processor to make the real memory that's being assigned to the program to appear to be at some other address, the virtual address that the program will be using. A "memory mapping" feature in the processor makes the real memory appear to have a different working memory address than its true, real address.
+<P>
+This is just a shuffling act, a trick that makes some real memory addresses appear to be, and to work as, some other virtual address. The most important part of virtual memory comes in the next step, when our programs try to use more virtual memory than there is real memory. A program starts out with some of its (large) virtual memory space mapped into part of the computer's (smaller) real memory. As long as the program is only working with that part of its virtual memory, all goes well. The program is actually using different locations in memory than it thinks it is, but that does not matter. What happens when the program tries to use some of the larger virtual memory that hasn't been assigned as part of the smaller real memory ?. When that occurs, the Memory Manager consults a Mapping Table and discovers that the program is trying to use an address that doesn't currently exist. This condition is indicated by what is called a Page Fault.
+<P> 
+When there is a page fault indicating that a program is trying to use a virtual address that isn't actively mapped into real memory, a Virtual Memory Support routine swings into action. It temporarily places the program on hold while it deals with the crises. The Memory Manager chooses some part of the virtual memory that is currently in real memory, saves its contents temporarily onto the disk, this process is called swapping out. That part of the real memory is recycled to act as the newly-needed part of the virtual memory. When the swapped-out part of memory is needed again, it's swapped-in, copied back from the disk. As you can see, the computer's disk is used as a warehouse to store the parts of the virtual memory that are not currently in use.
+<P>
+Depending on a number of factors, the virtual memory operation can either run very smoothly, or it can involve so much swapping in and out of memory that too much time is spent waiting to swap  between  real memory and disk. When this happens, it's called Thrashing. When a virtual memory system starts to thrash, the system will be slow.
+<P>
+
+<H4>The Base Memory</H4>
+The Base Memory, the one Meg of addressable memory space available to the original IBM PC/XT is looked at as two Regions.
+<UL>
+<LI>Conventional Memory - memory from 00000 to 9FFFF hex (0 to 640 K byte)
+<LI>Reserved Memory - memory from A0000 to FFFFF hex (640 K byte to 1 MB)
+</UL>
+<P>
+<STRONG>Conventional Memory</STRONG> (also called User RAM or Base Memory)<BR>
+This is the first 640K bytes of memory from 00000 to 9FFFF hex. This is the area of memory where in older DOS versions, DOS loads itself and any device drivers installed by the CONFIG.SYS and AUTOEXEC.BAT files. This is also the area where DOS will load Application software. If the user loads resident programs (TSRs) such as keyboard enhancers, notepads etc, this is where they would have been put by older versions of DOS.
+<P>
+<STRONG>The Conventional Memory is crowded</STRONG>. This area is the most crowded in the computer. After configuring DOS and loading device drivers and resident programs, there may be about 400 to 600 K byte of free space for applications.  This may not be enough memory to run some applications, and those applications that do run may not be as efficient as they would be with more memory available.
+<P>
+Conventional memory is especially at a premium when the computer is running on a network, where the drivers can consume 100 K byte or more of RAM memory.  
+<P>
+<STRONG>Reserved Memory </STRONG><BR>
+This is the 384K bytes of address space above 640K bytes and is reserved for use by the system. Reserved Memory is used for the Video RAM, for the System BIOS ROM and any BIOS Extension ROMs and for any RAM fitted to special interface cards like Network cards and SCSI interfaces. Normally, application programs cannot address this area. We will look at how this area is used in more detail later.
+
+<H4>Memory above One Meg and DOS</H4>
+The CPU limits the amount of memory the computer can use. Built into the CPU (Central Processing Unit),  the computer's brain,  are limitations on how much memory the computer can use.  The Intel 286 and above  CPU chips used in today's desktop computers have two modes of operation: protected mode and real mode.
+<P>
+<STRONG>Real Mode Limits</STRONG><BR>
+In protected mode, CPUs can address more than one Meg byte of memory directly.  Unfortunately, when executing DOS they must run in real mode, which emulates the 8088 CPU for which DOS was developed.  Since the 8088 chip had a one megabyte address limit, 286 and above  chips running in real mode inherit this limitation as well.
+<P>
+DOS can be made to make some use of Extended Memory and can use some of the Reserved area, we will see how later.
+<P>
+Starting with the 80386, a mode switching problem of the 80286 was corrected, creating the opportunity for Memory Management Routines running on these CPU's, to deal with some of the constraints of DOS and the real mode. 
+<P>
+<STRONG>Upper Memory Blocks (UMBs)</STRONG><BR>
+Upper Memory Blocks are a way of filling holes in the reserved memory area. On 80386 and above computers, some unused address regions are always available within the upper 384K byte of the Reserved Memory. Extended memory beyond the one megabyte address limit of DOS can be used to fill the holes in the Reserved Memory area. Device drivers and TSR's that would otherwise need to be loaded into the Conventional Memory area, can then be relocated to these new memory areas within the first megabyte of address space. This frees up valuable memory in the first 640K byte for application programs. This extra memory made available in this way is referred to as Upper Memory Blocks (UMB's).
+<P>
+<STRONG>Unused areas in the Reserved Memory area</STRONG><BR>
+The 384K byte of the Reserved Memory address area is reserved for the Video RAM, the System BIOS ROM and BIOS Extension ROMs and RAM on some interface cards.  Depending on the combination of options installed, many computers use less than half of the Reserved Memory area.
+<P>
+<STRONG>Where is this Memory ?</STRONG><BR>
+The first 128K byte of Reserved Memory is used by the Video Interface for the Video RAM. Depending on the type of Video Interface in use, some space may be available in the memory space allocated to the Video RAM. The next 32K bytes, starting at C0000 hex, is assigned to the BIOS Extension ROM on the Video card. This area would be available if a CGA or MDA Video Card were fitted because these old Video Interfaces do not require a Video BIOS Extension ROM. 
+<P>
+At C8000 hex there may be a BIOS Extension ROM on a hard disk controller card. The "old" 8 bit bus XT type computers required a ROM on the Hard Disk Controller card to supply BIOS support for Hard Drives. In Modern computers this same assignment may be used for BIOS Extension ROMs on advanced controller cards like SCSI Interfaces or Cached Hard Disk controllers. Other add-in boards such as Local Area Network Interface cards and Scanner Interface cards may want to use this region. 
+<P>
+When configuring plug-in cards you must be careful to avoid having two cards wanting the same address space. It is good practice to draw up a Memory Map as you configure a computer and to include this with the documentation for that computer.
+<P>
+<STRONG>Holes in the BIOS ROM area</STRONG><BR>
+At the top of the Reserved Memory area there is another area where some memory space may be available. This is the region for the System BIOS ROM itself. Within the BIOS ROM there may be unused areas that can be detected and used by a sophisticated memory management routine. The operation of the BIOS ROM itself is not affected, only the addresses of unused BIOS areas are used to provide additional UMB's for DOS to load Device Drivers. Available addresses in the BIOS area include routines such as the POST (Power On Self Test), the ROM BASIC interpreter (only fitted to real IBM computers), advanced BIOS for OS/2, the CMOS configuring routines, and filler patterns used to pad out unused areas of the ROM. Although officially the BIOS ROM is 64K, (F0000 to FFFFF) in some systems the last 128K byte of the Reserved memory E0000 to FFFFF) is reserved for BIOS. Of this, as much as 80K byte can be recovered for use as High DOS memory by some memory optimiser programs.
+<P>
+<STRONG>Finding unused areas in the Reserved Memory</STRONG><BR>
+Find these unused areas is a task that can be shared by a Memory Optimiser routine and the computer user. It may involve some trial and error, especially on a complex system.  Such software is available from several "after market suppliers" and DOS 6 introduced a utility called <STRONG>MEMMAKER</STRONG> that looks for free memory space and configures files loaded from the CONFIG.SYS and AUTOEXEC.BAT files, to provide you with the maximum amount if free memory in the area below the Reserved Memory area.
+<P>
+<STRONG>Providing RAM Memory in the unused areas of the Reserved Memory</STRONG><BR>
+Physical memory is not actually moved into unused Reserved Memory address areas. The 80386 and all later Intel Family CPUs can translate physical memory addresses into logical addresses. These logical addresses are then presented to DOS, to Device Drivers and to application programs, and they can't tell the difference between actual physical memory located at these addresses and memory addressed with logical addresses. When unused address regions are found in the Reserved Memory area, the actual addresses of Physical Memory, usually obtained form the Extended Memory area, are mapped to the regions by the Memory Management routine.
+<P>
+DOS versions 5 and 6 provide two device program for making use of the "High Memory" and Upper Memory Blocks. HIMEM.SYS is a device driver that manages the computers memory above one Meg and EMM386.EXE manages the 386 and 486 processors advanced memory facilities and provides the Upper Memory Blocks. Computers based on the 80286 processor can make use of the High Memory area but they can't make use of Upper Memory Blocks.
+<P>
+<STRONG>Using Upper Memory Blocks</STRONG><BR>
+DOS will not directly load programs into the UMB's, so a Memory Management routine must load the designated programs there. In addition, there may be three or more separate holes of various sizes, so good memory management software will help the user allocate wisely among the available regions. The MEMMAKER routine in DOS 6 will try to do this for you.
+<P>
+<STRONG>Start-up Problems</STRONG><BR>
+To complicate matters, resident programs often require more memory to initialise themselves than they do once they go resident. Such programs should be loaded in a sequence that will maximise available UMB space. Other complications include programs that can't run in UMB's, or that must be loaded in a specific sequence. These must be handled on a case by case basis by the user
+<P>
+<STRONG>How much memory can be recover this way ?</STRONG><BR>
+The amount of memory to be gained by memory management is not fixed, it is a function of the machine's hardware and software configuration. Depending on the computer set-up, memory management may be able to free up as much as 200K byte of the Conventional Memory area. Such gains can enable an application to run that previously would not, while connected to a local area network, or allow for bigger spreadsheets and databases.
+<P>
+<STRONG>IMPORTANT:</STRONG> The proceeding chapters about the Reserved Memory Area only apply to computers running DOS or Windows up to version 3.11. Modern operating systems manage memory quite differently.
+
+<H4>Memory Speed </H4>
+Memory chip speed has some effect on the performance of a computer system. Memory chip speeds are measured in nanoseconds (ns). The speed of RAM chips may not always have as much do with the access speed of the RAM as we might think. Performance depends more on the width of the data path, from 8 bits with the 8088 Processor, to 16 bits with the 80286 and 80386SX, 32 bits with the 80386DX and 80486 chips and 64 bits with the Pentium Processor. It also depends on the clock speed at which the RAM is accessed, and the efficiency of the Memory Management Routine. In modern Intel based computers the memory on the System Board is usually accessed at the computers "board clock speed". Some System Boards are poorly designed and may access the memory with "wait states", making memory access far slower than it could be on a well designed board. This accounts for some of the differences in speed, between apparently identical systems.
+<P>
+If memory is located on plug in boards it runs at a far slower speed than memory on the System Board. If memory is plugged into an ISA Bus slot, the maximum clock speed of these slots is eight Meg Hz (8Mhz) and the data path is only 16 bit. The EISA and MCA busses provided 32 bit data paths but still operated at 8 MHz. The VESA and PCI Local Busses provided 32 bit data paths and a clock speed of 33 MHz but this is still slower than the board bus speed of modern systems. The first generation of 80386 computers had special plug in RAM cards that plugged into a special (non standard) 32 bit bus slot. These were early version of a Local Bus concept.
+
+<H4>Some terms you should be aware of.</H4>
+<A NAME="ads"></A><STRONG>Address Space</STRONG><BR>
+The amount of memory a CPU is designed to access. Address space is limited by the number of bits (binary digits) the CPU uses for addressing.  
+<UL>
+<LI>The 8088 CPU provided a 20 bit Address Bus and can access one Megabyte of Memory (2 to the 20th power).  
+<LI>The 80286 and 80386SX Processors had 24 Address Lines and could address 16 Megabytes of Memory (2 to the 24th). 
+<LI>The 80386DX and 80486 devices have 32 Address lines and can access more than 4 gigabytes of Memory (2 to the 32nd power).
+</UL>
+
+<P>
+<A NAME="bios"></A><STRONG>BIOS</STRONG><BR>
+The BIOS (Basic Input Output Services) routines are stored in ROM memory and provide instructions for system start-up and communication with hardware devices. The BIOS also provides Basic I/O Services to the Operating System and to Applications. BIOS routines are stored on a Read Only chip and are non-volatile. The BIOS routines, need memory address locations.  In the XT type computer, the BIOS ROM's address range started at FE000 hex (FE00:0000) and was 8K bytes long. The AT computer used a 64K byte BIOS ROM that started at address F0000 hex, (F000:0000) and this has been used in all Intel based hardware ever since.
+<P>
+<STRONG>Device Driver</STRONG><BR>
+An operating system enhancement program loaded during boot up by CONFIG.SYS and remaining in memory.  Such programs perform communication functions between the computer and attached hardware devices such as sound cards, CDROM drive interfaces, optical scanners, local area networks and non standard hardware, not provided for by the BIOS or a BIOS Extension ROM.
+<P> 
+<A NAME="pmode"></A><STRONG>Protected Mode</STRONG><BR>
+A mode of operation for the 80286 and above CPUs, which allows software running on them to access memory beyond 1 megabyte.  Multi-tasking operating systems run in protected mode.
+<P>
+<A NAME="rmode"></A><STRONG>Real Mode</STRONG><BR>A mode of operation of an 80286 and above  CPU that causes it to operate like the 8088 chip, and restricts its memory addressing capacity to 1 MByte.  DOS and most application programs must operate in real mode.
+<P>
+<A NAME="tsr"></A><STRONG>TSR</STRONG><BR>
+Terminate and Stay Resident (or Memory Resident) programs stay resident in memory after loading and remain active even when other programs are running.  These programs usually provide a utility function, such as mouse control, telecommunication, or menu shells.
+<P>
+<A NAME="vidr"></A><STRONG>Video Memory</STRONG><BR>
+The address regions between A0000 and BFFFF hex used by video adaptors .
+<CENTER><TABLE BORDER>
+<TR><TH>Video standard</TH>
+<TH>Assigned Memory area</TH>
+</TR>
+<TR><TD>MDA</TD>
+<TD>B0000 for 4K byte</TD>
+</TR>
+<TR><TD>CGA</TD>
+<TD>B8000 for 16K byte</TD>
+</TR>
+<TR><TD>HGC (Hercules)</TD>
+<TD>B0000 for 64K byte</TD>
+</TR>
+<TR><TD>EGA</TD>
+<TD>A0000 for 128K byte *</TD
+</TR>
+<TR><TD>VGA</TD>
+<TD>A0000 for 128K byte *</TD>
+</TR>
+</TABLE>
+* Some EGA and VGA modes only use only a portion of the full A0000 to BFFFF assignment.
+</CENTER>
+<P>
+<A NAME="lmem"></A><STRONG>Low Memory</STRONG><BR>
+The first few Kbytes of the RAM memory space starting at address 00000 hex. DOS uses this area of memory for the Interrupt Vector Table, for the BIOS Control Information Area and for the Intra-Application Area.
+<P>
+<STRONG>The BIOS Control Information Area</STRONG><BR>
+Contains details of the computers configuration and includes information about how many and what type of disk drives, details of the video system and the I/O addresses of the standard I/O ports.
+<P>
+<STRONG>The Intra-Application area</STRONG><BR>
+16 bytes of RAM that can be used by applications to share data with each other.
+<P>
+<A NAME="umb"></A><STRONG>UMB - Upper Memory Blocks</STRONG><BR>
+Blocks of unused memory addresses from the Reserved Area of memory that have been made available to DOS by re-mapping memory from the Extended Memory area to those addresses.
+<P>
+<A NAME="cmos"></A><STRONG>CMOS</STRONG><BR>
+A battery backed up RAM used in all 80286 and later Intel family processor based computers, to store details about the computers configuration. The XT type computer used a set of DIP switches to perform a similar function.
+<P>
+<A NAME="hma"></A><STRONG>High Memory Area (HMA)</STRONG><BR>
+This is the first 64K of RAM at the start of the Extended Memory region. It is the 64K directly above the the one meg of the Base Memory, starting at 100000 and extending to 10FFFF hex. 
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="50%">
+<tr>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="25%" bgcolor="#FF6347" align="center"><a href="book2.html"><font
+color="#FFFFFF">Book two index</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="20%" bgcolor="#3CB371" align="center"><a href="memchips.html"><font
+color="#FFFFFF">PC Memory hardware over the years</font></a></td>
+<td width="20%" bgcolor="#3CB371" align="center"><a href="lowmem.html"><font
+color="#FFFFFF">How the PC uses its Low Memory area</font></a></td>
+<td width="20%" bgcolor="#3CB371" align="center"><a href="xmsmem.html"><font
+color="#FFFFFF">Extended Memory and High Memory</font></a></td>
+<td width="20%" bgcolor="#3CB371" align="center"><a href="../images/memmap.jpg"><font
+color="#FFFFFF">The PC Memory Map</font></a></td>
+<td width="20%" bgcolor="#3CB371" align="center"><a href="cache.html"><font
+color="#FFFFFF">Cache memory</font></a></td>
+</tr>
+</table>
+<P></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 26<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book2/memory.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:11:34 GMT -->
+</HTML>

@@ -1,0 +1,159 @@
+<HTML>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/eide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:09 GMT -->
+<HEAD>
+<TITLE>An introduction to Enhanced IDE</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC=../images/pc2.jpg ALIGN=RIGHT>
+<H2>Phil Storrs PC Hardware book</H2>
+<H3>IDE, ATA, CAM, ATAPI and LBA</H3>
+The IDE (Integrated Drive Electronics) Hard Drive Interface started as the AT interface in 1986, when AT computers (80286 processor based) were still the current technology of the day. As DOS computer technology advanced, the IDE interface got left behind and it's 528 Meg limit on the size of Hard Drive partitions, and the limit of only two physical IDE Hard Drives, started to drive BIG Hard Drive technology and CDROM technology, towards the SCSI interface. At the time IDE was being developed by Western Digital, Seagate was developing ATA (AT Attachment) and some slight compatibility issues were caused by drives being built to one or other of these standards. 
+
+<H4>IDE and ATA</H4>
+Although we have two names for what is basically the same technology, IDE (Integrated Drive Electronics) and ATA (AT Attachment) are for our purposes, one and the same thing. A hard disk drive Interface designed to integrate the controller onto the drive itself, thereby reducing interface costs, and making firmware implementations easier.
+
+<H4>ATA-2</H4>
+ATA-2 was a compatible extension of the original ATA standard. The most important addition were performance enhancing features such as fast PIO and DMA modes. Another important feature was the improved Identify Drive command allowing a drive to tell the software exactly what its characteristics are. This is essential for both Plug'n'Play and compatibility with future revisions of the standard. <STRONG>ATA-2</STRONG> can provide transfer rates of up to <STRONG>16MB/sec</STRONG> (Megabyte per second).
+<P>
+While there is also a new way of addressing sectors on the hard disk, Logical Block Address (LBA), this is merely a simplification. Contrary to common myth, LBA has nothing to do with breaking the famous 528 MB barrier. In fact, even in the old ATA and IDE standards, the theoretical size limit was well over 100GB. The 528 Mbyte limit is in fact a combination of the combined limits of two mechanisms.
+
+<H4>EIDE and Fast-ATA</H4>
+<B>Enhanced IDE</B> (EIDE) was developed by Western Digital and involved two enhancements
+<UL>
+<LI>An Enhanced BIOS specification which broke the 528 Mbyte Hard Drive partition size barrier. 
+<LI>Hardware enhancements derived from Seagates ATA-2 standard and the ATAPI standard for interfacing CDROM drives and other devices. 
+</UL>
+<P>
+<B>Fast-ATA</B> from Seagate provided the Enhanced BIOS specification but did not make use of the ATAPI standards and did not provide support for CDROM drives.
+<P>
+Enhanced IDE (EIDE) not only broke the 528 Meg barrier, it also provided support for up to four EIDE devices. These devices could be physical hard drives or devices like CDROM drives, high capacity removable media and Tape Backup drives. The four drive capability is provided by having Primary and Secondary IDE channels, ea  ch with a Master and a Slave device. 
+<P>
+With local bus technology the data throughput can be as high as 33MB/s, but when used on an ISA bus the data rate would only be 2 to 3 MB/s, limited by the bus width and the bus speed. 
+
+<H4>Fast ATA-3</H4>
+The <STRONG>Fast ATA-3</STRONG> specification allows transfer rates of <STRONG>33MB/sec</STRONG>.  As is often the case with any new technology in this area, support for new standards like this from Operating Systems lags behind the development of the interfaces, and at first device drivers are needed to make use of the improved technology.
+
+<H4>ATAPI</H4>
+ATA Packet Interface is a standard designed for devices such as CDROMs and tape drives that plug into an EIDE Interface. For CDROMs, it has a somewhat lower CPU usage compared to proprietary adapters but there's no performance gain otherwise. For tape drives, ATAPI has potential for superior performance and reliability compared to the once popular "QIC" floppy interfaced tape drives. It is also far cheaper in implement than a SCSI Interface, often used for backup devices.
+<P>
+While ATAPI CDROMs use the hard disk interface, this does not mean that they look like a Hard Disk drive. From the Operating System point of view, they are a completely different kind of animal. ey most closely resemble a SCSI device. 
+
+<H4>The Interrupt 13h routine</H4>
+A service routine, Int 13, provided by the computers built in BIOS ROM, provides the I/O services required to access hard disk drives. Enhanced IDE requires an enhanced Interrupt 13h routine. 
+<P>
+At first the most common solution was to provide a BIOS Extension ROM on the IDE interface card, or to supply a device driver that was loaded from the config.sys file when the Operating System loaded. These two solutions supplied alternative Interrupt 13h routines and provided support for drives as large as 8.4GByte. Removing the Interrupt 13h barrier allows for support of high-capacity hard drives. This was a messy solution and sometimes caused compatibility issues.
+<P>
+The BIOS on the System Board of modern computers has an enhanced Interrupt 13h routine built in. Look in the CMOS setup and you will see parameters like "Normal", "LBA" and "Large", this is an indication of support for large hard drive partitions.
+<P>
+The enhanced BIOS Interrupt 13h routine can recognise the size of the Hard Drives as well as the nature of the non hard disk EIDE devices connected to the interface. This means the computer can be booted from an EIDE CDROM drive or from a high capacity removable media devices like ZIP or JAZ drives. 
+
+<H4>Partitions larger than 2 GByte</H4>
+Making use of all that <STRONG>8.4 GByte</STRONG> of hard disk space had to wait for a popular operating system that could recognise such a large drive. The FAT 16 (file allocation table) file system used in DOS, and in the original Windows 95, can only handle hard disk partitions up to 2 GByte.
+<P>
+<STRONG>Windows 95 OSR2</STRONG> released late in 1996, provided a <B>32 bit FAT option</B> for larger drives and this carried on to Windows 98. The only problem with using the 32 bit FAT is DOS and older versions of Windows will not recognise a FAT 32 drive.
+
+<a href="hdlimit.html"><H4>Why the original size limit existed ?</H4></A>
+The original IDE capacity limitation existed due to the number of bits allocated for specifying the Cylinder, Head, and Sector address information at both the Interrupt 13h level and at the IDE interface level. Because both the Interrupt 13h routine and the IDE interface specify differing maximum values, combining these two sets of limits, produces the 528 MByte barrier that meant large hard drives had to be split into partitions no larger than 528 MByte.
+<P>
+This table helps to explain where the 528 MByte limit came from. The maximum capacity limits of the technology was the combination of the lowest values for each parameter.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR><TH>               </TH>
+<TH>Limit imposed by the INT13 routine</TH>
+<TH>Limits imposed by the IDE interface</TH>
+<TH>Limit on the original IDE</TH>
+</TR>
+<TR><TD>Maximum sectors per track</TD>
+<TD>63</TD>
+<TD>255</TD>
+<TD>63</TD>
+</TR>
+<TR><TD>Maximum number of heads</TD>
+<TD>255</TD>
+<TD>16</TD>
+<TD>16</TD>
+</TR>
+<TR><TD>Maximum number of cylinders</TD>
+<TD>1024</TD>
+<TD>65536</TD>
+<TD>1024</TD>
+</TR>
+<TR><TD>Maximum capacity</TD>
+<TD>8.4GB</TD>
+<TD>136.9GB</TD>
+<TD>528MB</TD>
+</TR>
+</TABLE></CENTER>
+
+<H4>Making large partitions</H4>
+When formatting a drive in a modern PC computer the <B>BIOS setup</B> gives you choices as to how you wish to handle a large disk drive. Modern PC BIOS provide set-up routines that have an option to detect the hard drives and this routine will prompt you as to how to handle large disk drives. These options will be, Normal, LBA and Large or Extended CHS.
+
+<H4>Normal, LBA,  Large or Extended CHS</H4>
+<STRONG>Normal</STRONG> causes the BIOS to behave like an old fashioned one without translation. Use this if your drive doesn't need it (i.e.. has fewer than 1024 cylinders) or if you want to use the drive with a non-DOS operating system that doesn't understand translation. 
+<P>
+<STRONG>LBA </STRONG> uses so-called LBA addressing to access the hard disk. The advantage of LBA is that it theoretically is a little faster. The disadvantages are that not all drives support it, not even all large ones, and it sometimes turns out to be slower, depending on the drive. 
+<P>
+<STRONG>Large or Extended CHS</STRONG> tells the BIOS to use <STRONG>CHS</STRONG> translation. It uses a different geometry <STRONG>(Cylinders/Heads/Sectors)</STRONG> when talking to the drive than when talking to the BIOS. This type of translation works with all drives. 
+<P>
+<STRONG>WARNING: </STRONG>The BIOS may change the (translated) geometry if you change from Normal or Large to LBA. The same thing may happen if you transfer a disk that has been formatted on an old, non-LBA computer to a new one that uses LBA. This WILL often destroy the data on the disk.
+
+<H4>Logical Block Address </H4>
+Modify the Interrupt 13h BIOS provided routine, so that it translates the Cylinder, Head, Sector information passed to it, via the Interrupt 13 routine, into a 28 bit Logical Block Address (LBA).   The LBA solution is a clean and efficient way for accessing large capacity IDE drives. 
+<P>
+The LBA translation is loaded into the drive's task file registers. Bit 6 of the drive's SDH register is  set to indicate to the drive's firmware that it should interpret the information in its task file registers as LBA rather than Cylinder, Head and Sector information. This scheme allows for the full use of all of the bits allocated for CHS information at the Interrupt 13h interface, thereby supporting up to 8.4GB. 
+<P>
+Using a logical block addressing scheme is attractive primarily because it is 100 percent compatible with BIOS Interrupt 13 routine and allows for reduced overhead, producing higher performance. The logical block addressing scheme provides the compatibility essential for personal computer usage as well as enables the implementation of higher capacity disk drives required in today’s personal computers. 
+
+<H4>Large or Extended CHS </H4>
+Have the BIOS translate the CHS (Cylinder, Head, Side) address at the 13h interface to the CHS parameters being used at the drive interface.
+
+<H4>EIDE I/O addresses and IRQs</H4>
+The Primary IDE channel is assigned I/O addresses 01F0 to 01F7 and IRQ 14
+<P>
+The EIDE interfa specifications has made use of the <STRONG>Secondary addresses</STRONG> that were assigned to a Secondary hard drive controller but never implemented with ST506 or ESDI.<STRONG> The Secondary IDE channel</STRONG> uses I/O addresses of <STRONG>0170 to 0177</STRONG> and <STRONG>IRQ15</STRONG>
+<P>
+The EIDE standard has also added two more EIDE I/O channels and these are <BR>
+<STRONG>Tertiary channel</STRONG> at I/O addresses <STRONG>01E8 - 01EF</STRONG> and assigned <STRONG>IRQ 11 or 12</STRONG><BR>
+<STRONG>Quaternary channel</STRONG> at I/O addresses <STRONG>0168 - 016F</STRONG> and assigned <STRONG>IRQ 10 or 11</STRONG><BR>
+<P>
+
+These extra IDE channels may be used to provide for extra CDROM drives, Optical drives, Tape Back-up drives, and removable media drives (Zip, Jaz, LS120 and Syquest). With the EIDE interface becoming so powerfull and flexible these will be a great asset in the near future. All these EIDE channels will mean the SCSI interface is not neccessary for many devices that once used it. Many sound cards provide an EIDE interface intended for connecting a CDROM drive. These interfaces can often be configured as the Secondary, Tertiary or Quaternary channel, via jumpers or soft-setup. When using EIDE channels provided by sound cards <STRONG>remember</STRONG> if the card is an ISA bus card, the data rate will be limited to 2 to 3MHz because of the bus speed and width.
+
+<H4>Hard drive upgrade</H4>
+Some years ago hard drive prices were almost proportional to the capacity of the drive but today the per Megbyte price falls rapidly as the drive gets larger. If we are replacing a hard drive in an older system today, we may come across older BIOS that do not have support for drives larger than 528 Megbyte. 
+<P>
+Most 486 computers may not support <STRONG>LBA</STRONG> or similar technology. Look at the CMOS setup for the computer you are working on and see if it mentions Logical Block modes or Large partitions. If it does not then you will have to use a utility like <STRONG>Disk Manager</STRONG>, available from the hard drive vendors, to provide support for large drives. This support is provided by modifying the boot record and partition sector on the disk and the procedure adopted depends on who's version of Disk Manager you are using. Follow the instructions on the Disk Manager disk. Some "large" hard drives are being supplied with Disk Manager already on the disk but only use it if you have to. Do not use Disk Manager if the BIOS supports LBA or Large partitions.
+
+<H4>Installing EIDE devices</H4>
+Each Enhanced IDE channel can have a <STRONG>master</STRONG> and a <STRONG>slave</STRONG> device connected. Most modern EIDE devices have the details of the master/slave jumpers printed on the drive. If these details are not available on the drive you can often find them via the internet. <P>
+Some very old IDE devices may not coexist with other IDE and EIDE devices and this may cause problems if you wish to transfer data from on old drive to a new drive, in a master/slave configuration. If you are transfering an old hard drive from an older system and wish to keep the data on it, it is advisable to record the cylinder, sector, head and mode details, used in the old system, so you can set them up the same in the new system. You cant rely on the Auto Detect Hard Drive utility in a new system to get it the same.
+<P>
+When connecting hard drives and CDROM drives to EIDE controllers you have several options in configuration. For example if you have one hard drive and one CDROM drive you could connect them both to channel one with the hard drive as the master and the CDROM as a slave.
+<P>
+This configuration has the disadvantage of the slowest device, the CDROM drive, slowing down the access to the fastest device, the hard drive. It is better to connect <STRONG>hard drives to the primary channel</STRONG> and the <STRONG>CDROM, as a master, to the secondary channel</STRONG>.
+<P>
+<HR>
+<CENTER><P>
+<table border="0" cellpadding="5" cellspacing="1" width="100%">
+<tr>
+<td width="20%" bgcolor="#008080" align="center"><a href="hdtech.html"><font
+color="#FFFFFF">Hard Disk Drive technologies</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="hdinter.html"><font
+color="#FFFFFF">Hard Disk Drive Interfaces</font></a></td>
+<td width="20%" bgcolor="#008080" align="center"><a href="eidetech.html"><font
+color="#FFFFFF">More technical details of EIDE</font></a></td>
+<td width="20%" bgcolor="#FF6347" align="center"><a href="../index-2.html"><font
+color="#FFFFFF">Back to the opening index</font></a></td>
+<td width="20%" bgcolor="#FF6347" align="center"><a href="book4.html"><font
+color="#FFFFFF">Book four index</font></a></td>
+</tr>
+</table></CENTER>
+<HR>
+Copyright &copy; Phil. Storr, last updated 7<SUP>th</SUP> December 1998
+<HR>
+</BODY>
+
+<!-- Mirrored from philipstorr.id.au/pcbook/book4/eide.htm by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Oct 2022 15:12:09 GMT -->
+</HTML>
