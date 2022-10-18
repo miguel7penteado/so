@@ -1,4 +1,4 @@
-#JOS
+# JOS
 Um kernel simples de sistema operacional
 
 ## Pré-Requisitos
@@ -40,7 +40,7 @@ make install
 
 Então você terá em /usr/local/bin um monte de binários com nomes como i386-jos-elf-gcc. O makefile do laboratório deve detectar essa cadeia de ferramentas e usá-la de preferência à cadeia de ferramentas padrão da sua máquina. Se isso não funcionar, há instruções sobre como substituir a cadeia de ferramentas dentro do GNUmakefile nos laboratórios.
 
-## GDB corrigido
+### GDB corrigido
 A versão padrão do gdb não trata corretamente a transição para o modo longo durante a inicialização do JOS, gerando um erro "Packet too long". O patch abaixo irá corrigir isso:
 
 - Versões do GDB até 7.3: [patch](https://www.cs.unc.edu/~porter/courses/comp630/s22/gdb-7.2-arch-remote-change.patch)
@@ -66,7 +66,7 @@ patch -p1 < gdb-7.7.1-mute-message-too-long.patch
 sudo debian/rules binary
 ```
 
-## Emulador QEMU
+### Emulador QEMU
 QEMU é um emulador de PC moderno e rápido.
 
 Infelizmente, as facilidades de depuração do QEMU, embora poderosas, são um tanto imaturas, então recomendamos que você use a versão corrigida do QEMU do MIT em vez da versão padrão que pode vir com sua distribuição. A versão instalada em walter.cs.unc.edu já está corrigida. Para construir sua própria versão corrigida do QEMU:
@@ -96,7 +96,7 @@ O argumento prefix especifica onde instalar o QEMU; sem ele, o QEMU será instal
 make && make install
 ```
 
-## Kernel 
+### Kernel 
 GDB é seu amigo. Use o destino [qemu-gdb](https://www.cs.unc.edu/~porter/courses/comp630/s22/tools.html#make-qemu-gdb) (ou sua variante [qemu-gdb-nox](https://www.cs.unc.edu/~porter/courses/comp630/s22/tools.html#make-qemu-gdb-nox)) para fazer o QEMU esperar que o [GDB](https://www.cs.unc.edu/~porter/courses/comp630/s22/tools.html#gdb) seja anexado. Veja a referência do GDB abaixo para alguns comandos que são úteis ao depurar kernels.
 
 Se você está recebendo interrupções inesperadas, exceções ou falhas triplas, você pode pedir ao QEMU para gerar um log detalhado de interrupções usando o argumento [-d](https://www.cs.unc.edu/~porter/courses/comp630/s22/tools.html#qemu--d).
@@ -105,7 +105,7 @@ Para depurar problemas de memória virtual, tente os comandos do monitor QEMU [i
 
 (Lab 4+) Para depurar várias CPUs, use os comandos relacionados a threads do GDB, como threads e threads de informações.
 
-## Ambientes de usuário (laboratório 3+)
+### Ambientes de usuário (laboratório 3+)
 O GDB também permite depurar ambientes de usuário, mas há algumas coisas que você precisa observar, pois o GDB não sabe que há uma distinção entre vários ambientes de usuário ou entre usuário e kernel.
 
 Você pode iniciar o JOS com um ambiente de usuário específico usando [make run-name](https://www.cs.unc.edu/~porter/courses/comp630/s22/tools.html#make-run) (ou você pode editar kern/init.c diretamente). Para fazer o QEMU esperar que o GDB seja anexado, use a variante [run-name-gdb](https://www.cs.unc.edu/~porter/courses/comp630/s22/tools.html#make-run-x).
