@@ -123,7 +123,7 @@ Não carregue símbolos de nenhum arquivo .o, pois eles não foram realocados pe
 O objetivo do primeiro exercício é apresentar a linguagem assembly x86 e o ​​processo de bootstrap do PC, e começar com a depuração QEMU e QEMU/GDB. Você não terá que escrever nenhum código para esta parte do laboratório, mas deve passar por isso de qualquer maneira para seu próprio entendimento e estar preparado para responder às perguntas feitas abaixo.
 
 ## Introdução à montagem x86
-Se você ainda não estiver familiarizado com a linguagem assembly x86, você se familiarizará rapidamente com ela durante este curso! O PC Assembly Language Book é um excelente lugar para começar. Felizmente, o livro contém uma mistura de material novo e antigo para você.
+Se você ainda não estiver familiarizado com a linguagem assembly x86, você se familiarizará rapidamente com ela durante este curso! O [PC Assembly Language Book](../documentação/livros_assembly/pc_assembly_language.pdf) é um excelente lugar para começar. Felizmente, o livro contém uma mistura de material novo e antigo para você.
 
 Aviso: Infelizmente, os exemplos do livro foram escritos para o montador NASM, enquanto nós usaremos o montador GNU. O NASM usa a chamada sintaxe Intel enquanto o GNU usa a sintaxe AT&T. Embora semanticamente equivalente, um arquivo assembly diferirá bastante, pelo menos superficialmente, dependendo de qual sintaxe é usada. Felizmente, a conversão entre os dois é bastante simples e é abordada no Guia de Brennan para Montagem Inline.
 
